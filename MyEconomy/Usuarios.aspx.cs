@@ -20,45 +20,31 @@ namespace MyEconomy
         }
         public void LimparCampos()
         {
-            Txtid.Text = "";
-            Txtdescricao.Text = "";
-            Txtsenha.Text = "";
-            txtemail.Text = "";
-            chkinativo.Checked = false;
+        //    Txtid.Text = "";
+        //    Txtdescricao.Text = "";
+        //    Txtsenha.Text = "";
+        //    txtemail.Text = "";
+        //    chkinativo.Checked = false;
             
         }
         public void CarregaGrid()
         {
 
-            usuario.Isdelete =  chkinativoPesquisa.Checked;
-            usuario.Descricao = TxtdescricaoPesquisa.Text;
+            usuario.Isdelete = chkinativoPesquisa.Checked;
+            usuario.Descricao = Txtdescricaopesquisa.Text;
             GrdDados.DataSource = obj.PesquisarUsuarios(usuario);
             GrdDados.DataBind();
-           
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
 
         }
 
-       
 
-        protected void Button1_Click1(object sender, EventArgs e)
-        {
-            CarregaGrid();
-        }
 
-        protected void GrdDados_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
 
-        }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
 
-        }
+
+
+
 
         protected void btnsalvar_Click(object sender, EventArgs e)
         {
@@ -66,28 +52,33 @@ namespace MyEconomy
           
 
 
-            if (Txtid.Text == "")
-            {
-                usuario.Descricao = Txtdescricao.Text;
-                usuario.Senha = Txtsenha.Text;
-                usuario.Email = txtemail.Text;
-                usuario.Isdelete = chkinativo.Checked;
-                usuario.TrocarSenha = true;
-                obj.InserirUsuarios(usuario);
+            //if (Txtid.Text == "")
+            //{
+            //    usuario.Descricao = Txtdescricao.Text;
+            //    usuario.Senha = Txtsenha.Text;
+            //    usuario.Email = txtemail.Text;
+            //    usuario.Isdelete = chkinativo.Checked;
+            //    usuario.TrocarSenha = true;
+            //    obj.InserirUsuarios(usuario);
                 
 
 
-            }
-            else
-            {
-                usuario.Id = Convert.ToInt32(Txtid.Text);
-                usuario.Descricao = Txtdescricao.Text;
-                usuario.Senha = Txtsenha.Text;
-                usuario.Email = txtemail.Text;
-                usuario.Isdelete = chkinativo.Checked;
-                usuario.TrocarSenha = true;
+            //}
+            //else
+            //{
+            //    usuario.Id = Convert.ToInt32(Txtid.Text);
+            //    usuario.Descricao = Txtdescricao.Text;
+            //    usuario.Senha = Txtsenha.Text;
+            //    usuario.Email = txtemail.Text;
+            //    usuario.Isdelete = chkinativo.Checked;
+            //    usuario.TrocarSenha = true;
 
-            }
+            //}
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            CarregaGrid();
         }
     }
 }
