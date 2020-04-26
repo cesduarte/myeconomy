@@ -27,6 +27,13 @@ namespace MyEconomy
         //    chkinativo.Checked = false;
             
         }
+
+
+        public void LimparCamposPesquisa()
+        {
+            Txtdescricaopesquisa.Text = "";
+            chkinativoPesquisa.Checked = false;
+        }
         public void CarregaGrid()
         {
 
