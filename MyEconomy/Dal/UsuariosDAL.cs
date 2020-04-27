@@ -115,27 +115,27 @@ namespace MyEconomy
 
 
 
-                MySqlParameter pdescricao = new MySqlParameter("Descricao", MySqlDbType.VarChar, 200);
+                MySqlParameter pdescricao = new MySqlParameter("_descricao", MySqlDbType.VarChar, 200);
                 pdescricao.Value = usuario.Descricao;
                 objCommand.Parameters.Add(pdescricao);
 
-                MySqlParameter pusuario = new MySqlParameter("Usuario", MySqlDbType.VarChar, 200);
+                MySqlParameter pusuario = new MySqlParameter("_usuario", MySqlDbType.VarChar, 200);
                 pusuario.Value = usuario.Usuario;
                 objCommand.Parameters.Add(pusuario);
 
-                MySqlParameter psenha = new MySqlParameter("Senha", MySqlDbType.VarChar, 200);
+                MySqlParameter psenha = new MySqlParameter("_senha", MySqlDbType.VarChar, 200);
                 psenha.Value = usuario.Senha;
                 objCommand.Parameters.Add(psenha);
 
-                MySqlParameter pemail = new MySqlParameter("Email", MySqlDbType.VarChar, 200);
+                MySqlParameter pemail = new MySqlParameter("_email", MySqlDbType.VarChar, 200);
                 pemail.Value = usuario.Email;
                 objCommand.Parameters.Add(pemail);
 
-                MySqlParameter pisdelete = new MySqlParameter("Isdelete", MySqlDbType.Bit, 200);
+                MySqlParameter pisdelete = new MySqlParameter("_isdelete", MySqlDbType.Bit, 200);
                 pisdelete.Value = usuario.Isdelete;
                 objCommand.Parameters.Add(pisdelete);
 
-                MySqlParameter ptrocarSenha= new MySqlParameter("TrocarSenha", MySqlDbType.Bit, 200);
+                MySqlParameter ptrocarSenha= new MySqlParameter("_trocarSenha", MySqlDbType.Bit, 200);
                 ptrocarSenha.Value = usuario.TrocarSenha;
                 objCommand.Parameters.Add(ptrocarSenha);
 
