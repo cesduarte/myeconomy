@@ -19,6 +19,33 @@ namespace MyEconomy
             }
             
         }
+
+
+        public void CarregaGrid()
+        {
+
+            usuario.Isdelete = chkinativoPesquisa.Checked;
+            usuario.Descricao = Txtdescricaopesquisa.Text;
+            GrdDados.DataSource = obj.PesquisarUsuarios(usuario);
+            GrdDados.DataBind();
+
+        }
+
+        private void CarregaUsuarios(string id)
+        {
+            usuario = null;
+            foreach (UsuariosInformation usuario in obj.CarregarUsuariosCampos(id))
+            {
+                Txtid.Text = Convert.ToString(usuario.Id);
+                Txtdescricao.Text = usuario.Descricao;
+                Txtusuario.Text = usuario.Usuario;
+                Txtsenha.Text = usuario.Senha;
+                Txtemail.Text = usuario.Email;
+                Chkinativo.Checked = usuario.Isdelete;
+
+            }
+        }
+      
         public void LimparCampos()
         {
             Txtid.Text = "";
@@ -38,54 +65,12 @@ namespace MyEconomy
             chkinativoPesquisa.Checked = false;
 
         }
-        public void CarregaGrid()
-        {
-
-            usuario.Isdelete = chkinativoPesquisa.Checked;
-            usuario.Descricao = Txtdescricaopesquisa.Text;
-            GrdDados.DataSource = obj.PesquisarUsuarios(usuario);
-            GrdDados.DataBind();
-
-        }
+        
+               
 
 
 
 
-
-
-
-
-
-
-        protected void btnsalvar_Click(object sender, EventArgs e)
-        {
-
-
-
-
-            if (Txtid.Text == "")
-            {
-                usuario.Descricao = Txtdescricao.Text;
-                usuario.Senha = Txtsenha.Text;
-                usuario.Email = Txtemail.Text;
-                usuario.Isdelete = Chkinativo.Checked;
-                usuario.TrocarSenha = true;
-                obj.InserirUsuarios(usuario);
-
-
-
-            }
-            else
-            {
-                usuario.Id = Convert.ToInt32(Txtid.Text);
-                usuario.Descricao = Txtdescricao.Text;
-                usuario.Senha = Txtsenha.Text;
-                usuario.Email = Txtemail.Text;
-                usuario.Isdelete = Chkinativo.Checked;
-                usuario.TrocarSenha = true;
-
-            }
-        }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -105,6 +90,7 @@ namespace MyEconomy
             if (Txtid.Text == "")
             {
                 usuario.Descricao = Txtdescricao.Text;
+                usuario.Usuario = Txtusuario.Text;
                 usuario.Senha = Txtsenha.Text;
                 usuario.Email = Txtemail.Text;
                 usuario.Isdelete = Chkinativo.Checked;
@@ -124,6 +110,7 @@ namespace MyEconomy
             {
                 usuario.Id = Convert.ToInt32(Txtid.Text);
                 usuario.Descricao = Txtdescricao.Text;
+                usuario.Usuario = Txtusuario.Text;
                 usuario.Senha = Txtsenha.Text;
                 usuario.Email = Txtemail.Text;
                 usuario.Isdelete = Chkinativo.Checked;
@@ -136,6 +123,16 @@ namespace MyEconomy
         {
             LimparCampos();
             CarregaGrid();
+        }
+
+        protected void GrdDados_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string IdUsuarios = e.CommandArgument.ToString();
+
+            CarregaUsuarios(IdUsuarios);
+
+           ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
+
         }
     }
 }

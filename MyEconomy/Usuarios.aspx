@@ -56,7 +56,7 @@
                                     <asp:UpdatePanel ID="upusuarios" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
-                                                EmptyDataText="Não Existem infornações">
+                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand">
                                                 <Columns>
                                                     <asp:BoundField DataField="descricao" HeaderText="Descrição" />
                                                     <asp:BoundField DataField="usuario" HeaderText="Usuario" />

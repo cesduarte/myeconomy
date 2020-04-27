@@ -56,7 +56,44 @@ namespace MyEconomy
         }
 
 
+        public List<UsuariosInformation> CarregarUsuariosCampos(string Idusuario)
+        {
+            try
+            {
+                objConexao.Open();
 
+
+
+
+                string sql = "select * from tbl_usuarios where Idusuario = " + Idusuario;
+                objCommand = new MySqlCommand(sql, objConexao);
+                MySqlDataAdapter Objdata = new MySqlDataAdapter(objCommand);
+
+                DataTable objDataTable = new DataTable();
+                Objdata.Fill(objDataTable);
+
+                List<UsuariosInformation> ListaDeDados = new List<UsuariosInformation>();
+                foreach (DataRow dataRow in objDataTable.Rows)
+                {
+                    ListaDeDados.Add( new UsuariosInformation() { Id = int.Parse(dataRow["Idusuario"].ToString()), Descricao = dataRow["Descricao"].ToString(), Usuario = dataRow["Usuario"].ToString(), Senha = dataRow["Senha"].ToString(), Email = dataRow["Email"].ToString(),Isdelete= Convert.ToBoolean(dataRow["Isdelete"].ToString()) });
+                }
+
+
+                return ListaDeDados;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+        }
 
 
 
@@ -81,6 +118,10 @@ namespace MyEconomy
                 MySqlParameter pdescricao = new MySqlParameter("Descricao", MySqlDbType.VarChar, 200);
                 pdescricao.Value = usuario.Descricao;
                 objCommand.Parameters.Add(pdescricao);
+
+                MySqlParameter pusuario = new MySqlParameter("Usuario", MySqlDbType.VarChar, 200);
+                pusuario.Value = usuario.Usuario;
+                objCommand.Parameters.Add(pusuario);
 
                 MySqlParameter psenha = new MySqlParameter("Senha", MySqlDbType.VarChar, 200);
                 psenha.Value = usuario.Senha;

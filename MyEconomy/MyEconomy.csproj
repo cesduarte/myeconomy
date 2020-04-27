@@ -69,6 +69,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Banco\Scripts\1.0\Usuarios\CREATE.sql" />
+    <Content Include="Banco\Scripts\1.0\Usuarios\Procedure_InserirUsuarios.sql" />
+    <Content Include="Banco\Scripts\1.0\Usuarios\Procedure_PesquisaUsuarios.sql" />
     <Content Include="Componentes\css\style.css" />
     <Content Include="Componentes\icons\cryptocoins\css\cryptocoins-colors.css" />
     <Content Include="Componentes\icons\cryptocoins\css\cryptocoins.css" />
