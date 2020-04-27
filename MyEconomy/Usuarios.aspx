@@ -198,25 +198,32 @@
                                                    
                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição: </asp:Label>
                                                         <asp:TextBox ID="Txtdescricao"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="group" runat="server" class="text-danger" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdescricao"></asp:RequiredFieldValidator>
                                                         
                                                     </div>
                                                   <div class="form-group col-md-6">
                                                    
                                                         <asp:Label ID="Label2" runat="server" Text="Label">Usuario: </asp:Label>
                                                         <asp:TextBox ID="Txtusuario"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
-                                                        
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" class="text-danger" ValidationGroup="group" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtusuario"></asp:RequiredFieldValidator>
                                                     </div>
                                                      <div class="form-group col-md-6">
                                                    
                                                         <asp:Label ID="Label6" runat="server" Text="Label">Senha: </asp:Label>
-                                                        <asp:TextBox ID="Txtsenha"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                        <asp:TextBox ID="Txtsenha"  runat="server"  class="form-control form-control-sm" TextMode="Password"></asp:TextBox>
+
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="group" runat="server" class="text-danger" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtsenha"></asp:RequiredFieldValidator>
                                                         
                                                     </div>
                                                      <div class="form-group col-md-12">
                                                    
                                                         <asp:Label ID="Label7" runat="server" Text="Label">E-mail: </asp:Label>
-                                                        <asp:TextBox ID="Txtemail"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
-                                                        
+                                                        <asp:TextBox ID="Txtemail"  runat="server"  class="form-control form-control-sm" TextMode="Email"></asp:TextBox>
+                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtemail"
+                                                                            class="text-danger" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                                                                            Display = "Dynamic" ErrorMessage = "E-mail Invalido" ValidationGroup="group"/>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtemail"
+                                                       class="text-danger" Display = "Dynamic" ValidationGroup="group"  ErrorMessage = "Required" />
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
@@ -230,11 +237,11 @@
                                                           </asp:UpdatePanel>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    
+                                                   
                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                     <ContentTemplate>
-                                                    <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Salvar" UseSubmitBehavior="false"  OnClick="Button2_Click" />
-                                                        <asp:Button ID="Button5" class="btn btn-outline-primary" runat="server" Text="Limpar" OnClick="Button5_Click" />
+                                                    <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Salvar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group"  />
+                                                        <asp:Button ID="Button5" class="btn btn-outline-primary" runat="server" Text="Limpar"  OnClick="Button5_Click" />
                                                      </ContentTemplate>
                                                      </asp:UpdatePanel>
                                                         
@@ -248,10 +255,26 @@
                     </div>
                 </div>
         </div>
-
-   
-
-
+  <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><asp:Label ID="lblModalTitle" runat="server" Text=""></asp:Label></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <asp:Label ID="lblModalBody" runat="server" Text=""></asp:Label>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
 
 </asp:Content>
 
