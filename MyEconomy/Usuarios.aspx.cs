@@ -112,11 +112,11 @@ namespace MyEconomy
                 obj.InserirUsuarios(usuario);
 
 
+                
 
-                lblModalTitle.Text = "Validation Errors";
-                lblModalBody.Text = "Registro Incluido/alterado com sucesso";
-                upModal.Update();
-                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$(document).ready(function () {$('#myModal').modal();});", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('hide');", true);
+
+              
 
 
             }
