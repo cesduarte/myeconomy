@@ -36,7 +36,7 @@ namespace MyEconomy
             Txtdescricaopesquisa.Text = "";
             Txtusuariopesquisa.Text = "";
             chkinativoPesquisa.Checked = false;
-           
+
         }
         public void CarregaGrid()
         {
@@ -60,31 +60,31 @@ namespace MyEconomy
         protected void btnsalvar_Click(object sender, EventArgs e)
         {
 
-          
 
 
-            //if (Txtid.Text == "")
-            //{
-            //    usuario.Descricao = Txtdescricao.Text;
-            //    usuario.Senha = Txtsenha.Text;
-            //    usuario.Email = txtemail.Text;
-            //    usuario.Isdelete = chkinativo.Checked;
-            //    usuario.TrocarSenha = true;
-            //    obj.InserirUsuarios(usuario);
-                
+
+            if (Txtid.Text == "")
+            {
+                usuario.Descricao = Txtdescricao.Text;
+                usuario.Senha = Txtsenha.Text;
+                usuario.Email = Txtemail.Text;
+                usuario.Isdelete = Chkinativo.Checked;
+                usuario.TrocarSenha = true;
+                obj.InserirUsuarios(usuario);
 
 
-            //}
-            //else
-            //{
-            //    usuario.Id = Convert.ToInt32(Txtid.Text);
-            //    usuario.Descricao = Txtdescricao.Text;
-            //    usuario.Senha = Txtsenha.Text;
-            //    usuario.Email = txtemail.Text;
-            //    usuario.Isdelete = chkinativo.Checked;
-            //    usuario.TrocarSenha = true;
 
-            //}
+            }
+            else
+            {
+                usuario.Id = Convert.ToInt32(Txtid.Text);
+                usuario.Descricao = Txtdescricao.Text;
+                usuario.Senha = Txtsenha.Text;
+                usuario.Email = Txtemail.Text;
+                usuario.Isdelete = Chkinativo.Checked;
+                usuario.TrocarSenha = true;
+
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -112,11 +112,11 @@ namespace MyEconomy
                 obj.InserirUsuarios(usuario);
 
 
-                
+
 
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('hide');", true);
 
-              
+
 
 
             }
