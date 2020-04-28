@@ -119,6 +119,11 @@ namespace MyEconomy
                 usuario.Isdelete = Chkinativo.Checked;
                 usuario.TrocarSenha = true;
 
+                obj.AlterarUsuarios(usuario);
+                Label9.Text = "Registro alterado com sucesso";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
+                Timer1.Enabled = true;
+
             }
         }
 
