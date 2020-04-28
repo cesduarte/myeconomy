@@ -4,31 +4,36 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
-    <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Usuários</a></li>
-            </ol>
-        </div>
-    </div>
+    
 
     <div class="container-fluid">
+
         <div class="row">
 
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col p-md-0">
+                                <ol class="breadcrumb">
+                                    
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Pesquisar Usuários</a></li>
+                                </ol>
 
+                            </div> 
+
+                        </div>
                         <div id="accordion-three" class="accordion">
 
 
 
                             <div class="card">
                                 <div class="card-header">
+
                                     <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                         <ContentTemplate>
                                             <div class="d-flex align-items-center">
+
                                                 <ul class="mb-0 form-profile__icons">
 
                                                     <li class="d-inline-block">
@@ -42,10 +47,12 @@
                                                     <li class="d-inline-block">
                                                         <button type="button" id="teste1" class="btn btn-transparent p-0 mr-3" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
                                                     </li>
+                                                   
 
                                                 </ul>
 
                                             </div>
+
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                 </div>
@@ -231,14 +238,20 @@
                                          </asp:UpdatePanel>
                                     </div>
                                      <div class="modal-footer">
-                                         
+                                          
                                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                     <ContentTemplate>
+                                                     <%--   <asp:Panel ID="SuccessPanel" runat="server" 
+                CssClass="alert alert-success" Visible="False">
+                Form was submitted successfully.
+            </asp:Panel>--%>
                                                          <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Salvar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
                                                         <asp:Button ID="Button5" class="btn btn-outline-primary" runat="server" Text="Limpar"  OnClick="Button5_Click" />
                                                     </ContentTemplate>
                                          </asp:UpdatePanel>
                                     </div>
+
+                                  
 
                                 </div>
                             </div>
@@ -248,7 +261,32 @@
             </div>
         </div>
     </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="bootstrap-modal">
+                        <div class="modal fade bd-example-modal-sm" id="CadSucess" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-top modal-sm" role="document">
+                                <asp:UpdatePanel ID="UpdatePanel8" runat="server" ChildrenAsTriggers="true">
+                                        <ContentTemplate>
+                               <div class="alert alert-success">
 
+                                <strong>Sucesso!</strong> <asp:Label ID="Label9" runat="server" Text="Label"></asp:Label>  
+                                </div>
+                                            </ContentTemplate></asp:UpdatePanel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                
+            
+        
+            
 
 </asp:Content>
 

@@ -97,12 +97,14 @@ namespace MyEconomy
                 usuario.Isdelete = Chkinativo.Checked;
                 usuario.TrocarSenha = true;
                 obj.InserirUsuarios(usuario);
+                //SuccessPanel.Visible = true;
 
 
+                //Button2.Attributes.Add("onclick", "return confirm('teste')");
+                Label9.Text = "Registro incluido com sucesso";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
 
-                Label9.Text = "Usuário Adicionado com sucesso";
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('hide');", true);
-
+                
 
 
 
