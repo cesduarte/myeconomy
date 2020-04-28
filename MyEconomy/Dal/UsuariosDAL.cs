@@ -26,6 +26,8 @@ namespace MyEconomy
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.Parameters.Add(new MySqlParameter("_descricao", MySqlDbType.VarChar, 100));
                 objCommand.Parameters["_descricao"].Value = usuario.Descricao;
+                objCommand.Parameters.Add(new MySqlParameter("_usuario", MySqlDbType.VarChar, 100));
+                objCommand.Parameters["_usuario"].Value = usuario.Usuario;
 
                 objCommand.Parameters.Add(new MySqlParameter("_isdelete", MySqlDbType.Bit, 100));
                 objCommand.Parameters["_isdelete"].Value = usuario.Isdelete;

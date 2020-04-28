@@ -26,6 +26,7 @@ namespace MyEconomy
 
             usuario.Isdelete = chkinativoPesquisa.Checked;
             usuario.Descricao = Txtdescricaopesquisa.Text;
+            usuario.Usuario = Txtusuariopesquisa.Text;
             GrdDados.DataSource = obj.PesquisarUsuarios(usuario);
             GrdDados.DataBind();
 
@@ -99,7 +100,7 @@ namespace MyEconomy
 
 
 
-
+                Label9.Text = "Usuário Adicionado com sucesso";
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('hide');", true);
 
 

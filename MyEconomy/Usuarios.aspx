@@ -231,6 +231,7 @@
                                          </asp:UpdatePanel>
                                     </div>
                                      <div class="modal-footer">
+                                         
                                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                     <ContentTemplate>
                                                          <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Salvar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
