@@ -103,8 +103,8 @@ namespace MyEconomy
                 //Button2.Attributes.Add("onclick", "return confirm('teste')");
                 Label9.Text = "Registro incluido com sucesso";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
+                Timer1.Enabled = true;
 
-                
 
 
 
@@ -136,6 +136,12 @@ namespace MyEconomy
 
            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
 
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('hide');", true);
+            Timer1.Enabled = false;
         }
     }
 }

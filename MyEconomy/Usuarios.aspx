@@ -63,7 +63,7 @@
                                     <asp:UpdatePanel ID="upusuarios" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
-                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand">
+                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5">
                                                 <Columns>
                                                     <asp:BoundField DataField="descricao" HeaderText="Descrição" />
                                                     <asp:BoundField DataField="usuario" HeaderText="Usuario" />
@@ -275,6 +275,7 @@
 
                                 <strong>Sucesso!</strong> <asp:Label ID="Label9" runat="server" Text="Label"></asp:Label>  
                                 </div>
+                                            <asp:Timer ID="Timer1" runat="server" Enabled="False" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>
                                             </ContentTemplate></asp:UpdatePanel>
                             </div>
                         </div>
