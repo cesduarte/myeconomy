@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyEconomy.Modelo
 {
-    public class ContasBancariasInformation
+    public class ContasBancariasInformation: Usuarios
     {
         public int IdContasBancarias { get; set; }
         public string DescricaoContasBancarias { get; set; }

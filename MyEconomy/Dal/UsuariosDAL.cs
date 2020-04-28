@@ -63,11 +63,19 @@ namespace MyEconomy
             try
             {
                 objConexao.Open();
+                string sql;
 
+                if (Idusuario== "")
+                {
+                    sql = "select * from tbl_usuarios where isdelete = false order by descricao";
+                }
+                else
+                {
+                    sql = "select * from tbl_usuarios where Idusuario = " + Idusuario;
+                }
+                
 
-
-
-                string sql = "select * from tbl_usuarios where Idusuario = " + Idusuario;
+               
                 objCommand = new MySqlCommand(sql, objConexao);
                 MySqlDataAdapter Objdata = new MySqlDataAdapter(objCommand);
 
@@ -97,7 +105,7 @@ namespace MyEconomy
             }
         }
 
-
+       
 
 
 

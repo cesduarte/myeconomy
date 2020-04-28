@@ -163,8 +163,8 @@
                         <!-- Button trigger modal -->
                         <!-- Modal -->
 
-                        <div class="modal fade" id="CadastroModal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal fade bd-example-modal-lg" id="CadastroModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 
 
                                 <div class="modal-content">
@@ -196,20 +196,20 @@
                                                      </div>
                                                 </div>
                                                 <div class="form-row">
-                                                     <div class="form-group col-md-12">
-                                                          <asp:Label ID="Label2" runat="server" Text="Label">Saldo: </asp:Label>
-                                                         <div class="basic-form">
-                                                            <form action="#">
-                                                             <div class="input-group">
-                                                              <div class="input-group-prepend"><span class="input-group-text">$</span>
-                                                               </div>
-                                                                    <input type="text" class="form-control">
-                                            
-                                                               </div>
-                                                             </form>
-                                                            </div>
-                                                     </div>
+                                                      <div class="form-group col-md-6">
+                                                          <asp:Label ID="Label2" runat="server" Text="Label">Saldo R$: </asp:Label> 
+                                                          <asp:TextBox ID="Txtsaldo"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtsaldo"></asp:RequiredFieldValidator>
+                                                         
+                                                      </div>
                                                     
+                                                    <div class="form-group col-md-6">
+                                                         <asp:Label ID="Label3" runat="server" Text="Label">Usuário: </asp:Label>
+                                                        <asp:DropDownList ID="Dropusuario" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
+                                                          
+                                                         </asp:DropDownList>
+                                                        
+                                                     </div>
                                                    
                                                 </div>
                                                
@@ -231,10 +231,6 @@
                                           
                                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                     <ContentTemplate>
-                                                     <%--   <asp:Panel ID="SuccessPanel" runat="server" 
-                CssClass="alert alert-success" Visible="False">
-                Form was submitted successfully.
-            </asp:Panel>--%>
                                                         <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Salvar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
                                                         <asp:Button ID="Button5" class="btn btn-outline-primary" runat="server" Text="Limpar"  OnClick="Button5_Click" />
                                                     </ContentTemplate>
