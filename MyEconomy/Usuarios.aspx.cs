@@ -23,27 +23,42 @@ namespace MyEconomy
 
         public void CarregaGrid()
         {
-
-            usuario.Isdelete = chkinativoPesquisa.Checked;
-            usuario.Descricao = Txtdescricaopesquisa.Text;
-            usuario.Usuario = Txtusuariopesquisa.Text;
-            GrdDados.DataSource = obj.PesquisarUsuarios(usuario);
-            GrdDados.DataBind();
+            try
+            {
+                usuario.Isdelete = chkinativoPesquisa.Checked;
+                usuario.Descricao = Txtdescricaopesquisa.Text;
+                usuario.Usuario = Txtusuariopesquisa.Text;
+                GrdDados.DataSource = obj.PesquisarUsuarios(usuario);
+                GrdDados.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
 
         }
 
         private void CarregaUsuarios(string id)
         {
-            usuario = null;
-            foreach (UsuariosInformation usuario in obj.CarregarUsuariosCampos(id))
+            try
             {
-                Txtid.Text = Convert.ToString(usuario.Id);
-                Txtdescricao.Text = usuario.Descricao;
-                Txtusuario.Text = usuario.Usuario;
-                Txtsenha.Text = usuario.Senha;
-                Txtemail.Text = usuario.Email;
-                Chkinativo.Checked = usuario.Isdelete;
 
+
+                usuario = null;
+                foreach (UsuariosInformation usuario in obj.CarregarUsuariosCampos(id))
+                {
+                    Txtid.Text = Convert.ToString(usuario.Id);
+                    Txtdescricao.Text = usuario.Descricao;
+                    Txtusuario.Text = usuario.Usuario;
+                    Txtsenha.Text = usuario.Senha;
+                    Txtemail.Text = usuario.Email;
+                    Chkinativo.Checked = usuario.Isdelete;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
             }
         }
       
@@ -88,42 +103,49 @@ namespace MyEconomy
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            if (Txtid.Text == "")
+            try
             {
-                usuario.Descricao = Txtdescricao.Text;
-                usuario.Usuario = Txtusuario.Text;
-                usuario.Senha = Txtsenha.Text;
-                usuario.Email = Txtemail.Text;
-                usuario.Isdelete = Chkinativo.Checked;
-                usuario.TrocarSenha = true;
-                obj.InserirUsuarios(usuario);
-                //SuccessPanel.Visible = true;
+                if (Txtid.Text == "")
+                {
+                    usuario.Descricao = Txtdescricao.Text;
+                    usuario.Usuario = Txtusuario.Text;
+                    usuario.Senha = Txtsenha.Text;
+                    usuario.Email = Txtemail.Text;
+                    usuario.Isdelete = Chkinativo.Checked;
+                    usuario.TrocarSenha = true;
+                    obj.InserirUsuarios(usuario);
+                    //SuccessPanel.Visible = true;
 
 
-                //Button2.Attributes.Add("onclick", "return confirm('teste')");
-                Label9.Text = "Registro incluido com sucesso";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
-                Timer1.Enabled = true;
+                    //Button2.Attributes.Add("onclick", "return confirm('teste')");
+                    Label9.Text = "Registro incluido com sucesso";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
+                    Timer1.Enabled = true;
 
 
 
 
+                }
+                else
+                {
+                    usuario.Id = Convert.ToInt32(Txtid.Text);
+                    usuario.Descricao = Txtdescricao.Text;
+                    usuario.Usuario = Txtusuario.Text;
+                    usuario.Senha = Txtsenha.Text;
+                    usuario.Email = Txtemail.Text;
+                    usuario.Isdelete = Chkinativo.Checked;
+                    usuario.TrocarSenha = true;
+
+                    obj.AlterarUsuarios(usuario);
+                    Label9.Text = "Registro alterado com sucesso!";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
+                    Timer1.Enabled = true;
+
+                }
             }
-            else
+            catch(Exception ex)
             {
-                usuario.Id = Convert.ToInt32(Txtid.Text);
-                usuario.Descricao = Txtdescricao.Text;
-                usuario.Usuario = Txtusuario.Text;
-                usuario.Senha = Txtsenha.Text;
-                usuario.Email = Txtemail.Text;
-                usuario.Isdelete = Chkinativo.Checked;
-                usuario.TrocarSenha = true;
-
-                obj.AlterarUsuarios(usuario);
-                Label9.Text = "Registro alterado com sucesso";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
-                Timer1.Enabled = true;
-
+                throw new Exception();
             }
         }
 

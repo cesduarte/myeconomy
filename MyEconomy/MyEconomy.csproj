@@ -72,6 +72,7 @@
     <Content Include="Banco\Scripts\1.0\Usuarios\CREATE.sql" />
     <Content Include="Banco\Scripts\1.0\Usuarios\Procedure_InserirUsuarios.sql" />
     <Content Include="Banco\Scripts\1.0\Usuarios\Procedure_PesquisaUsuarios.sql" />
+    <Content Include="Classificacao.aspx" />
     <Content Include="Componentes\css\style.css" />
     <Content Include="Componentes\icons\cryptocoins\css\cryptocoins-colors.css" />
     <Content Include="Componentes\icons\cryptocoins\css\cryptocoins.css" />
@@ -4961,11 +4962,49 @@
     <Content Include="Componentes\plugins\x-editable\dist\bootstrap3-editable\img\loading.gif" />
     <Content Include="Componentes\plugins\x-editable\dist\bootstrap3-editable\js\bootstrap-editable.min.js" />
     <Content Include="Componentes\plugins\xml\plugin.js" />
+    <Content Include="Contas.aspx" />
+    <Content Include="ContasAPagar.aspx" />
+    <Content Include="ContasBancarias.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Diagrama\Modelagem.xml" />
+    <Content Include="Investimento.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classificacao.aspx.cs">
+      <DependentUpon>Classificacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classificacao.aspx.designer.cs">
+      <DependentUpon>Classificacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contas.aspx.cs">
+      <DependentUpon>Contas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contas.aspx.designer.cs">
+      <DependentUpon>Contas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContasAPagar.aspx.cs">
+      <DependentUpon>ContasAPagar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContasAPagar.aspx.designer.cs">
+      <DependentUpon>ContasAPagar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContasBancarias.aspx.cs">
+      <DependentUpon>ContasBancarias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContasBancarias.aspx.designer.cs">
+      <DependentUpon>ContasBancarias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\ClassificacaoDAL.cs" />
+    <Compile Include="Dal\ContasAPagarDAL.cs" />
+    <Compile Include="Dal\ContasBancariasDAL.cs" />
+    <Compile Include="Dal\ContasDAL.cs" />
+    <Compile Include="Dal\InvestimentoDAL.cs" />
     <Compile Include="Dal\UsuariosDAL.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -4974,6 +5013,18 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Investimento.aspx.cs">
+      <DependentUpon>Investimento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Investimento.aspx.designer.cs">
+      <DependentUpon>Investimento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ClassificacaoInformation.cs" />
+    <Compile Include="Modelo\ContasAPagarInformation.cs" />
+    <Compile Include="Modelo\ContasBancariasInformation.cs" />
+    <Compile Include="Modelo\ContasInformation.cs" />
+    <Compile Include="Modelo\InvestimentoInformation.cs" />
     <Compile Include="Modelo\UsuariosInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">

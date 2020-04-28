@@ -10,15 +10,13 @@
     <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="Componentes/images/favicon.png">
-    <!-- Pignose Calender -->
-    <link href="Componentes/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
-    <!-- Chartist -->
-    <link rel="stylesheet" href="Componentes/plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="Componentes/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+   
+   
    
     <!-- Custom Stylesheet -->
     <link href="Componentes/css/style.css" rel="stylesheet">
-
+    
+   
      <link rel="icon" type="image/png" sizes="16x16" href="Componentes/images/favicon.png">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -248,6 +246,26 @@
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Cadastro</span>
                         </a>
                         <ul aria-expanded="false">
+                            <li><a href="Classificacao.aspx">Classificação</a></li>
+                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a href="Contas.aspx">Contas</a></li>
+                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                        </ul>
+                         <ul aria-expanded="false">
+                            <li><a href="ContasAPagar.aspx">Contas a pagar</a></li>
+                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a href="ContasBancarias.aspx">Contas bancárias</a></li>
+                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                        </ul>
+                         <ul aria-expanded="false">
+                            <li><a href="Investimento.aspx">Investimento</a></li>
+                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                        </ul>
+                        <ul aria-expanded="false">
                             <li><a href="Usuarios.aspx">Usuários</a></li>
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                         </ul>
@@ -324,26 +342,19 @@
     <script src="Componentes/js/gleek.js"></script>
     <script src="Componentes/js/styleSwitcher.js"></script>
 
-    <!-- Chartjs -->
-    <script src="./plugins/chart.js/Chart.bundle.min.js"></script>
+   
+   
     <!-- Circle progress -->
     <script src="Componentes/plugins/circle-progress/circle-progress.min.js"></script>
     <!-- Datamap -->
-    <script src="Componentes/plugins/d3v3/index.js"></script>
-    <script src="Componentes/plugins/topojson/topojson.min.js"></script>
-    <script src="Componentes/plugins/datamaps/datamaps.world.min.js"></script>
+   
     <!-- Morrisjs -->
     <script src="Componentes/plugins/raphael/raphael.min.js"></script>
     <script src="Componentes/plugins/morris/morris.min.js"></script>
-    <!-- Pignose Calender -->
-    <script src="Componentes/plugins/moment/moment.min.js"></script>
-    <script src="Componentes/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-    <!-- ChartistJS -->
-    <script src="Componentes/plugins/chartist/js/chartist.min.js"></script>
-    <script src="Componentes/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+  
 
 
-
+     
     
     
       
