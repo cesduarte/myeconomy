@@ -64,8 +64,8 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5">
                                                 <Columns>
-                                                    <asp:BoundField DataField="descricao" HeaderText="Descrição" />
-                                                    <asp:BoundField DataField="saldo" HeaderText="saldo" />
+                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Descrição" />
+                                                    <asp:BoundField DataField="Saldo" HeaderText="saldo" DataFormatString="{0:c}" />
                                                   
 
                                                     <asp:TemplateField>
@@ -73,7 +73,7 @@
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
                                                                 CommandName="Editar" Text="Editar"
                                                                 CommandArgument='<%# DataBinder
-                                                                .Eval(Container.DataItem, "Idcontabancaria")%>' />
+                                                                .Eval(Container.DataItem, "Idcontasbancarias")%>' />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

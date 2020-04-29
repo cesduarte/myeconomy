@@ -85,7 +85,7 @@ namespace MyEconomy
                 List<UsuariosInformation> ListaDeDados = new List<UsuariosInformation>();
                 foreach (DataRow dataRow in objDataTable.Rows)
                 {
-                    ListaDeDados.Add( new UsuariosInformation() { Id = int.Parse(dataRow["Idusuario"].ToString()), Descricao = dataRow["Descricao"].ToString(), Usuario = dataRow["Usuario"].ToString(), Senha = dataRow["Senha"].ToString(), Email = dataRow["Email"].ToString(),Isdelete= Convert.ToBoolean(dataRow["Isdelete"].ToString()) });
+                    ListaDeDados.Add( new UsuariosInformation() { IdUsuario = int.Parse(dataRow["Idusuario"].ToString()), Descricao = dataRow["Descricao"].ToString(), Usuario = dataRow["Usuario"].ToString(), Senha = dataRow["Senha"].ToString(), Email = dataRow["Email"].ToString(),Isdelete= Convert.ToBoolean(dataRow["Isdelete"].ToString()) });
                 }
 
 
@@ -119,7 +119,7 @@ namespace MyEconomy
                 objCommand.CommandText = "Procedure_inserirUsuarios";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
-                MySqlParameter pid = new MySqlParameter("_Idusuarios", SqlDbType.Int);
+                MySqlParameter pid = new MySqlParameter("_Idusuarios", MySqlDbType.Int32);
                 pid.Direction = ParameterDirection.Output;
                 objCommand.Parameters.Add(pid);
 
@@ -180,8 +180,8 @@ namespace MyEconomy
                 objCommand.CommandText = "Procedure_AlterarUsuarios";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
-                MySqlParameter pid = new MySqlParameter("_idusuarios", SqlDbType.Int);
-                pid.Value = usuario.Id;
+                MySqlParameter pid = new MySqlParameter("_idusuarios", MySqlDbType.Int32);
+                pid.Value = usuario.IdUsuario;
                 objCommand.Parameters.Add(pid);
 
 

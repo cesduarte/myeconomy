@@ -63,7 +63,7 @@
                                     <asp:UpdatePanel ID="upusuarios" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
-                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5">
+                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging">
                                                 <Columns>
                                                     <asp:BoundField DataField="descricao" HeaderText="Descrição" />
                                                     <asp:BoundField DataField="usuario" HeaderText="Usuario" />
@@ -80,7 +80,7 @@
                                                     </asp:TemplateField>
                                                 </Columns>
                                                 <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" />
-                                                <PagerStyle HorizontalAlign="Right" Wrap="True" />
+                                                <PagerStyle HorizontalAlign="Right" Wrap="True" CssClass="page-item" />
                                             </asp:GridView>
 
                                         </ContentTemplate>
@@ -132,7 +132,7 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-md-5">
                                                         <div class="form-check form-check-inline">
-                                                            <asp:CheckBox ID="chkinativoPesquisa" class="form-check-input" runat="server" />
+                                                            <asp:CheckBox ID="chkinativoPesquisa" class="form-check-input" runat="server" AutoPostBack="True" />
                                                             <asp:Label ID="Label4" runat="server" Text="Label">Inativo</asp:Label>
                                                         </div>
                                                     </div>

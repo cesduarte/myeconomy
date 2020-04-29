@@ -25,6 +25,9 @@ namespace MyEconomy
         {
             try
             {
+
+                UsuariosInformation usuario = new UsuariosInformation();
+                             
                 usuario.Isdelete = chkinativoPesquisa.Checked;
                 usuario.Descricao = Txtdescricaopesquisa.Text;
                 usuario.Usuario = Txtusuariopesquisa.Text;
@@ -47,7 +50,7 @@ namespace MyEconomy
                 usuario = null;
                 foreach (UsuariosInformation usuario in obj.CarregarUsuariosCampos(id))
                 {
-                    Txtid.Text = Convert.ToString(usuario.Id);
+                    Txtid.Text = Convert.ToString(usuario.IdUsuario);
                     Txtdescricao.Text = usuario.Descricao;
                     Txtusuario.Text = usuario.Usuario;
                     Txtsenha.Text = usuario.Senha;
@@ -128,7 +131,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    usuario.Id = Convert.ToInt32(Txtid.Text);
+                    usuario.IdUsuario = Convert.ToInt32(Txtid.Text);
                     usuario.Descricao = Txtdescricao.Text;
                     usuario.Usuario = Txtusuario.Text;
                     usuario.Senha = Txtsenha.Text;
@@ -157,11 +160,15 @@ namespace MyEconomy
 
         protected void GrdDados_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            string IdUsuarios = e.CommandArgument.ToString();
+            if (e.CommandName == "Editar")
+            {
+                string IdUsuarios = e.CommandArgument.ToString();
 
-            CarregaUsuarios(IdUsuarios);
+                CarregaUsuarios(IdUsuarios);
 
-           ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
+
+            }
 
         }
 
@@ -169,6 +176,12 @@ namespace MyEconomy
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('hide');", true);
             Timer1.Enabled = false;
+        }
+
+        protected void GrdDados_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GrdDados.PageIndex = e.NewPageIndex;
+            CarregaGrid();
         }
     }
 }
