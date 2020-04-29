@@ -1,6 +1,6 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Procedure_inserirContasBancarias`(
 IN _descricaocontasbancarias nvarchar(200), 
-IN _saldo decimal,
+IN _saldo decimal(10,2),
 In _idusuario int,
 IN _isdelete bool)
 BEGIN

@@ -27,6 +27,9 @@ namespace MyEconomy
                 objCommand.Parameters.Add(new MySqlParameter("_descricaocontasbancarias", MySqlDbType.VarChar, 100));
                 objCommand.Parameters["_descricaocontasbancarias"].Value = ContasBancariasinf.DescricaoContasBancarias;
 
+                objCommand.Parameters.Add(new MySqlParameter("_idusuario", MySqlDbType.Int32));
+                objCommand.Parameters["_idusuario"].Value = ContasBancariasinf.IdUsuario;
+
 
 
                 objCommand.Parameters.Add(new MySqlParameter("_isdelete", MySqlDbType.Bit, 100));
@@ -129,7 +132,7 @@ namespace MyEconomy
                 pdescricao.Value = ContasBancariasinf.DescricaoContasBancarias;
                 objCommand.Parameters.Add(pdescricao);
 
-                MySqlParameter psaldo = new MySqlParameter("_saldo", MySqlDbType.Decimal);
+                MySqlParameter psaldo = new MySqlParameter("_saldo", MySqlDbType.Decimal, 100);
                 psaldo.Value = ContasBancariasinf.SaldoContasBancarias;
                 objCommand.Parameters.Add(psaldo);
 

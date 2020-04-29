@@ -122,6 +122,15 @@
                                                         <asp:TextBox ID="Txtdescricaopesquisa" runat="server" class="form-control form-control-sm"></asp:TextBox>
                                                     </div>
                                                 </div>
+                                                <div class="form-row">
+                                                     <div class="form-group col-md-6">
+                                                         <asp:Label ID="Label6" runat="server" Text="Label">Descrição usuário: </asp:Label>
+                                                        <asp:DropDownList ID="Dropusuariopesquisa" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
+                                                          
+                                                         </asp:DropDownList>
+                                                        
+                                                     </div>
+                                                </div>
                                                
                                                 <div class="form-row">
                                                     <div class="form-group col-md-5">
@@ -203,8 +212,8 @@
                                                      
                                                           <asp:RangeValidator ID="MyRangeValidator"  Display="Static" Type="Double" class="text-danger"
                                                            MaximumValue="99999999,99" MinimumValue="-99999999,99" EnableClientScript="true" 
-                                                            ControlToValidate="Txtsaldo" runat="server" SetFocusOnError="true" 
-                                                           ErrorMessage="* Informações inválidas"></asp:RangeValidator>
+                                                            ControlToValidate="Txtsaldo" runat="server" SetFocusOnError="true"  ValidationGroup="group"
+                                                           ErrorMessage="* O formato do campo saldo está incorreto"></asp:RangeValidator>
                                                          
 
                                                       </div>
@@ -214,6 +223,8 @@
                                                         <asp:DropDownList ID="Dropusuario" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="Dropusuario"></asp:RequiredFieldValidator>
+
                                                         
                                                      </div>
                                                    

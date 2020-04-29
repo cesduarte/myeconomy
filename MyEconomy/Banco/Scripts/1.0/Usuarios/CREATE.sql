@@ -8,3 +8,17 @@ CREATE TABLE `myeconomy`.`TBL_USUARIOS` (
   `TrocarSenha` boolean,
   PRIMARY KEY (`Idusuario`),
   UNIQUE INDEX `Idusuario_UNIQUE` (`Idusuario` ASC) VISIBLE);
+  
+  
+  
+insert INTO `myeconomy`.`tbl_usuarios`
+(
+`Descricao`,
+`Isdelete`
+)
+VALUES
+(
+
+'--',
+false
+);

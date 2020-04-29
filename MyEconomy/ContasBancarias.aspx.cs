@@ -18,8 +18,9 @@ namespace MyEconomy
         {
             if (!Page.IsPostBack)
             {
-                CarregaGrid();
                 CarregarUsuario();
+                CarregaGrid();
+              
             }
 
          
@@ -31,7 +32,8 @@ namespace MyEconomy
             {
                 ContasBancariasInf.Isdelete = chkinativoPesquisa.Checked;
                 ContasBancariasInf.DescricaoContasBancarias = Txtdescricaopesquisa.Text;
-               
+                ContasBancariasInf.IdUsuario= Convert.ToInt32(Dropusuariopesquisa.SelectedValue);
+
                 GrdDados.DataSource = objContasBancarias.PesquisarContasBancarias(ContasBancariasInf);
                 GrdDados.DataBind();
             }
@@ -48,13 +50,21 @@ namespace MyEconomy
             {
              
                 
-                    Dropusuario.DataSource = null;                   
+                    Dropusuario.DataSource = null;
+                    Dropusuariopesquisa.DataSource = null;
+
+
                     Dropusuario.DataSource = objUsuario.CarregarUsuariosCampos("");                
                     Dropusuario.DataTextField = "descricao";
                     Dropusuario.DataValueField = "IdUsuario";
                     Dropusuario.DataBind();
-                
 
+
+                Dropusuariopesquisa.DataSource = objUsuario.CarregarUsuariosCampos("");
+                Dropusuariopesquisa.DataTextField = "descricao";
+                Dropusuariopesquisa.DataValueField = "IdUsuario";
+                Dropusuariopesquisa.DataBind();
+                
             }
             catch (Exception ex)
             {
@@ -117,6 +127,8 @@ namespace MyEconomy
         {
             if(Txtid.Text=="")
             {
+               
+
                 ContasBancariasInf.DescricaoContasBancarias = Txtdescricao.Text;
                 ContasBancariasInf.SaldoContasBancarias = Convert.ToDecimal(Txtsaldo.Text);
                 ContasBancariasInf.IdUsuario = Convert.ToInt32(Dropusuario.SelectedValue);
