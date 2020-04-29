@@ -1,9 +1,34 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Procedure_PesquisaContasBancarias`(in _descricaocontasbancarias varchar(100), in _isdelete bool)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Procedure_PesquisaContasBancarias`(
+in _descricaocontasbancarias varchar(100), in _isdelete bool)
 BEGIN
 if(_descricaocontasbancarias ='') then
-select * from tbl_contasBancarias where Isdelete = _isdelete;
+select
+b.idcontasbancarias,
+b.DescricaoContasBancarias,
+a.descricao as descricaousuario,
+b. Saldo
+from
+
+tbl_usuarios a,
+tbl_contasbancarias b
+where
+b.idusuario = a.idusuario and  b.Isdelete = _isdelete;
+
+
+
+
 else
-select * from tbl_contasbancarias where DescricaoContasBancarias = _descricaocontasbancarias and Isdelete = _isdelete;
+select
+b.idcontasbancarias,
+b.DescricaoContasBancarias,
+a.descricao as descricaousuario,
+b. Saldo
+from
+
+tbl_usuarios a,
+tbl_contasbancarias b
+where
+b.idusuario = a.idusuario and  DescricaoContasBancarias = _descricaocontasbancarias and b.Isdelete = _isdelete;
 
 end if;
 END

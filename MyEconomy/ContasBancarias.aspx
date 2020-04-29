@@ -62,9 +62,10 @@
                                     <asp:UpdatePanel ID="upcontasbancarias" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
-                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5">
+                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Descrição" />
+                                                    <asp:BoundField DataField="descricaousuario" HeaderText="Descrição Usuário" />
                                                     <asp:BoundField DataField="Saldo" HeaderText="saldo" DataFormatString="{0:c}" />
                                                   
 
@@ -78,8 +79,8 @@
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
                                                 </Columns>
-                                                <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" />
-                                                <PagerStyle HorizontalAlign="Right" Wrap="True" />
+                                               <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" />
+                                                <PagerStyle HorizontalAlign="Right" Wrap="True" CssClass="page-item" />
                                             </asp:GridView>
 
                                         </ContentTemplate>
@@ -97,7 +98,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="bootstrap-modal">
-                        <div class="modal fade bd-example-modal-lg" id="basicModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal fade bd-example-modal-lg" id="basicModal"  aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -163,7 +164,7 @@
                         <!-- Button trigger modal -->
                         <!-- Modal -->
 
-                     <div class="modal fade bd-example-modal-lg" id="CadastroModal" tabindex="-1" aria-hidden="true">
+                     <div class="modal fade bd-example-modal-lg" id="CadastroModal" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 
 
@@ -199,8 +200,13 @@
                                                       <div class="form-group col-md-6">
                                                           <asp:Label ID="Label2" runat="server" Text="Label">Saldo R$: </asp:Label> 
                                                           <asp:TextBox ID="Txtsaldo"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
-                                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtsaldo"></asp:RequiredFieldValidator>
+                                                     
+                                                          <asp:RangeValidator ID="MyRangeValidator"  Display="Static" Type="Double" class="text-danger"
+                                                           MaximumValue="99999999,99" MinimumValue="-99999999,99" EnableClientScript="true" 
+                                                            ControlToValidate="Txtsaldo" runat="server" SetFocusOnError="true" 
+                                                           ErrorMessage="* Informações inválidas"></asp:RangeValidator>
                                                          
+
                                                       </div>
                                                     
                                                     <div class="form-group col-md-6">

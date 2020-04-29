@@ -48,8 +48,7 @@ namespace MyEconomy
             {
              
                 
-                    Dropusuario.DataSource = null;
-                   
+                    Dropusuario.DataSource = null;                   
                     Dropusuario.DataSource = objUsuario.CarregarUsuariosCampos("");                
                     Dropusuario.DataTextField = "descricao";
                     Dropusuario.DataValueField = "IdUsuario";
@@ -63,9 +62,28 @@ namespace MyEconomy
             }
         }
 
-        public void CarregarContasBancarias()
+        public void CarregarContasBancarias(string id)
         {
-            
+            try
+            {
+
+
+                ContasBancariasInf = null;
+                foreach (ContasBancariasInformation ContasBancariasInf in objContasBancarias.CarregarContasBancariasCampos(id))
+                {
+                    Txtid.Text = Convert.ToString(ContasBancariasInf.IdContasBancarias);
+                    Txtdescricao.Text = ContasBancariasInf.DescricaoContasBancarias;
+                    Txtsaldo.Text = Convert.ToString(ContasBancariasInf.SaldoContasBancarias);
+                    Dropusuario.SelectedValue = Convert.ToString(ContasBancariasInf.IdUsuario);
+
+                    Chkinativo.Checked = usuario.Isdelete;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
 
         public void LimparCamposPesquisa()
@@ -76,6 +94,7 @@ namespace MyEconomy
 
         public void LimparCampos()
         {
+            Txtid.Text = "";
             Txtdescricao.Text = "";
             Txtsaldo.Text = "";
             Dropusuario.SelectedIndex = 0;
@@ -85,7 +104,7 @@ namespace MyEconomy
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            CarregaGrid();
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -138,7 +157,26 @@ namespace MyEconomy
 
         protected void GrdDados_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            if (e.CommandName == "Editar")
+            {
+                string IdContasBancárias = e.CommandArgument.ToString();
 
+                CarregarContasBancarias(IdContasBancárias);
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
+
+            }
+        }
+
+        protected void GrdDados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+           
+        }
+
+        protected void GrdDados_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GrdDados.PageIndex = e.NewPageIndex;
+            CarregaGrid();
         }
     }
 }
