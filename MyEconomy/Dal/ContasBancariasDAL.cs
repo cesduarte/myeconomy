@@ -176,7 +176,7 @@ namespace MyEconomy
             {
 
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_ContasBancarias";
+                objCommand.CommandText = "Procedure_AlteraContasBancarias";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
                 MySqlParameter pid = new MySqlParameter("_Idcontasbancarias", MySqlDbType.Int32);

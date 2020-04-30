@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace MyEconomy
 {
     public partial class ContasBancarias : System.Web.UI.Page
@@ -13,6 +14,7 @@ namespace MyEconomy
         ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
         UsuariosDAL objUsuario = new UsuariosDAL();
         ContasBancariasDAL objContasBancarias = new ContasBancariasDAL();
+        Validador validador = new Validador();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -130,9 +132,20 @@ namespace MyEconomy
                
 
                 ContasBancariasInf.DescricaoContasBancarias = Txtdescricao.Text;
-                ContasBancariasInf.SaldoContasBancarias = Convert.ToDecimal(Txtsaldo.Text);
+
+                if (validador.ValidarSaldo(Txtsaldo.Text))
+                { 
+               
+                    ContasBancariasInf.SaldoContasBancarias = Convert.ToDecimal(0);
+                }
+                else
+                {
+                    ContasBancariasInf.SaldoContasBancarias = Convert.ToDecimal(Txtsaldo.Text);
+                }
                 ContasBancariasInf.IdUsuario = Convert.ToInt32(Dropusuario.SelectedValue);
                 ContasBancariasInf.Isdelete = Chkinativo.Checked;
+
+
                 objContasBancarias.InserirUsuarios(ContasBancariasInf);
                 Label9.Text = "Registro incluido com sucesso";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
@@ -143,7 +156,15 @@ namespace MyEconomy
             {
                 ContasBancariasInf.IdContasBancarias = Convert.ToInt32(Txtid.Text);
                 ContasBancariasInf.DescricaoContasBancarias = Txtdescricao.Text;
-                ContasBancariasInf.SaldoContasBancarias = Convert.ToDecimal(Txtsaldo.Text);
+                if (validador.ValidarSaldo(Txtsaldo.Text))
+                {
+
+                    ContasBancariasInf.SaldoContasBancarias = Convert.ToDecimal(0);
+                }
+                else
+                {
+                    ContasBancariasInf.SaldoContasBancarias = Convert.ToDecimal(Txtsaldo.Text);
+                }
                 ContasBancariasInf.IdUsuario = Convert.ToInt32(Dropusuario.SelectedValue);
                 ContasBancariasInf.Isdelete = Chkinativo.Checked;
                 objContasBancarias.AlterarUsuarios(ContasBancariasInf);
@@ -154,7 +175,7 @@ namespace MyEconomy
 
             }
         }
-
+     
         protected void Button5_Click(object sender, EventArgs e)
         {
             LimparCampos();

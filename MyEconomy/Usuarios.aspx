@@ -98,7 +98,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="bootstrap-modal">
-                        <div class="modal fade bd-example-modal-lg" id="basicModal"   aria-hidden="true">
+                        <div class="modal fade bd-example-modal-lg" id="basicModal"  data-keyboard="false" data-backdrop="static"   aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">

@@ -13,7 +13,7 @@ tbl_contasbancarias b
 
 
 where
-b.idusuario = a.idusuario and  b.Isdelete = false and a.idusuario<>1;
+b.idusuario = a.idusuario and  b.Isdelete = _isdelete and a.idusuario<>1;
 elseif(_descricaocontasbancarias<>'' && _idusuario = 1) then
 
 select
@@ -41,7 +41,7 @@ tbl_contasbancarias b
 
 
 where
-b.idusuario = a.idusuario and  b.Isdelete = false and  a.idusuario =_idusuario ;
+b.idusuario = a.idusuario and  b.Isdelete = _isdelete and  a.idusuario =_idusuario ;
 else
 select
 b.idcontasbancarias,
@@ -54,7 +54,7 @@ tbl_contasbancarias b
 
 
 where
-b.idusuario = a.idusuario and  b.Isdelete = false and  a.idusuario =_idusuario and DescricaoContasBancarias = _descricaocontasbancarias  ;
+b.idusuario = a.idusuario and  b.Isdelete = _isdelete and  a.idusuario =_idusuario and DescricaoContasBancarias = _descricaocontasbancarias  ;
 
 end if;
 
