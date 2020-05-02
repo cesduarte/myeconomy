@@ -22,7 +22,6 @@ VALUES
 '--',
 false
 );
-
 CREATE TABLE `myeconomy`.`tbl_contasBancarias` (
   `Idcontasbancarias` INT NOT NULL AUTO_INCREMENT,
   `Idusuario` int null,
@@ -38,16 +37,16 @@ INSERT INTO `myeconomy`.`tbl_contasbancarias`
 (
 `Idusuario`,
 `DescricaoContasBancarias`,
+`Saldo`,
 `Isdelete`
 )
 VALUES
 (
 1,
 '--',
+0,
 false
 );
-
-
 CREATE TABLE `myeconomy`.`tbl_classificacao` (
   `Idclassificacao` INT NOT NULL AUTO_INCREMENT,
  
