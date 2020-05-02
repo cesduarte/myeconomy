@@ -70,7 +70,7 @@ namespace MyEconomy
 
                 if (IdContasBancarias == "")
                 {
-                    sql = "select * from tbl_contasBancarias where isdelete = false order by descricao";
+                    sql = "select * from tbl_contasBancarias where isdelete = false order by DescricaoContasBancarias";
                 }
                 else
                 {
@@ -88,7 +88,12 @@ namespace MyEconomy
                 List<ContasBancariasInformation> ListaDeDados = new List<ContasBancariasInformation>();
                 foreach (DataRow dataRow in objDataTable.Rows)
                 {
-                    ListaDeDados.Add(new ContasBancariasInformation() { IdContasBancarias = int.Parse(dataRow["Idcontasbancarias"].ToString()), DescricaoContasBancarias = dataRow["DescricaoContasBancarias"].ToString(),SaldoContasBancarias = Convert.ToDecimal(dataRow["Saldo"].ToString()), IdUsuario = Convert.ToInt32(dataRow["Idusuario"].ToString()), Isdelete = Convert.ToBoolean(dataRow["Isdelete"].ToString()) });
+                    ListaDeDados.Add(new ContasBancariasInformation() { 
+                        IdContasBancarias = int.Parse(dataRow["Idcontasbancarias"].ToString()), 
+                        DescricaoContasBancarias = dataRow["DescricaoContasBancarias"].ToString(),
+                        SaldoContasBancarias = Convert.ToDecimal(dataRow["Saldo"].ToString()), 
+                        IdUsuario = Convert.ToInt32(dataRow["Idusuario"].ToString()), 
+                        Isdelete = Convert.ToBoolean(dataRow["Isdelete"].ToString()) });
                 }
 
 

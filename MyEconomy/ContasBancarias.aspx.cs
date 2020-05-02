@@ -86,9 +86,10 @@ namespace MyEconomy
                     Txtid.Text = Convert.ToString(ContasBancariasInf.IdContasBancarias);
                     Txtdescricao.Text = ContasBancariasInf.DescricaoContasBancarias;
                     Txtsaldo.Text = Convert.ToString(ContasBancariasInf.SaldoContasBancarias);
+                    Chkinativo.Checked = ContasBancariasInf.Isdelete;
                     Dropusuario.SelectedValue = Convert.ToString(ContasBancariasInf.IdUsuario);
 
-                    Chkinativo.Checked = usuario.Isdelete;
+                  
 
                 }
             }

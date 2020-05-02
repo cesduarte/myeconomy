@@ -7,5 +7,7 @@ namespace MyEconomy.Dal
 {
     public class ContasAPagarDAL
     {
+       
+
     }
 }

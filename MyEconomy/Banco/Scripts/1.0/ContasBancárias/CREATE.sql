@@ -13,11 +13,13 @@ INSERT INTO `myeconomy`.`tbl_contasbancarias`
 (
 `Idusuario`,
 `DescricaoContasBancarias`,
+`Saldo`,
 `Isdelete`
 )
 VALUES
 (
 1,
 '--',
+0,
 false
 );
