@@ -65,17 +65,19 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Descrição" />
-                                                    <asp:BoundField DataField="descricaousuario" HeaderText="Descrição Usuário" />
-                                                    <asp:BoundField DataField="Saldo" HeaderText="saldo" DataFormatString="{0:c}" />
-                                                  
-
+                                                    <asp:BoundField DataField="Descricaocontas" HeaderText="Descrição Contas" />
+                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
+                                                    <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
+                                                    <asp:BoundField DataField="ValorContas" HeaderText="Valor parcela" DataFormatString="{0:c}" />
+                                                   <asp:BoundField DataField="ValorTotalContas" HeaderText="Valor total" DataFormatString="{0:c}" />
+                                                    <asp:BoundField DataField="DataVencimento" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
+                                                    <asp:BoundField DataField="QuantParcelas" HeaderText="Parcelas" />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
                                                                 CommandName="Editar" Text="Editar"
                                                                 CommandArgument='<%# DataBinder
-                                                                .Eval(Container.DataItem, "Idcontasbancarias")%>' />
+                                                                .Eval(Container.DataItem, "idcontas")%>' />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -143,15 +145,7 @@
                                                         
                                                      </div>
                                                 </div>
-                                                 <div class="form-row">
-                                                     <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label10" runat="server" Text="Label" >Data de Vencimento: </asp:Label>
-                                                         <asp:TextBox ID="TxtDatavencimentoPesquisa"  runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>                                                         
-                                                       
-                                                     </div>
-                                                     
-                                                      
-                                                </div>
+                                               
                                                
                                                 <div class="form-row">
                                                     <div class="form-group col-md-5">

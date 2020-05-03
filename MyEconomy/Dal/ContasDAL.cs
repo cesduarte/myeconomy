@@ -33,10 +33,9 @@ namespace MyEconomy
                 objCommand.Parameters["_idcontasbancarias"].Value = contasInf.IdContasBancarias;
 
                 objCommand.Parameters.Add(new MySqlParameter("_idclassificacao", MySqlDbType.Int32));
-                objCommand.Parameters["_idclassificacao"].Value = contasInf.IdContasBancarias;
+                objCommand.Parameters["_idclassificacao"].Value = contasInf.IdClassificacao;
 
-                objCommand.Parameters.Add(new MySqlParameter("_datavencimento", MySqlDbType.Date));
-                objCommand.Parameters["_idclassificacao"].Value = contasInf.DataVencimentoContas;
+               
 
 
 
@@ -67,7 +66,7 @@ namespace MyEconomy
             }
 
         }
-
+        
 
         public List<ContasInformation> Carregarcontascampos(string Idcontas)
         {
@@ -165,11 +164,11 @@ namespace MyEconomy
                 pvalortotalparcela.Value = contasInf.ValorTotalContas;
                 objCommand.Parameters.Add(pvalortotalparcela);
 
-                MySqlParameter pdatavencimento = new MySqlParameter("_datavencimento ", MySqlDbType.DateTime, 200);
+                MySqlParameter pdatavencimento = new MySqlParameter("_datavencimento", MySqlDbType.DateTime, 200);
                 pdatavencimento.Value = contasInf.DataVencimentoContas;
                 objCommand.Parameters.Add(pdatavencimento);
 
-                MySqlParameter pquantparcela = new MySqlParameter("_quantparcela  ", MySqlDbType.Int32, 200);
+                MySqlParameter pquantparcela = new MySqlParameter("_quantparcela", MySqlDbType.Int32, 200);
                 pquantparcela.Value = contasInf.QuantParcelasContas;
                 objCommand.Parameters.Add(pquantparcela);
 

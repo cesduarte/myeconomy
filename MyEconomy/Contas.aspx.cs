@@ -18,6 +18,7 @@ namespace MyEconomy
         {
             if (!Page.IsPostBack)
             {
+                
                 CarregarCarregarContasBancarias();
                 CarregarCarregarClassificacao();
                 CarregaGrid();
@@ -29,19 +30,26 @@ namespace MyEconomy
         }
         public void CarregaGrid()
         {
-            //try
-            //{
-            //    ContasBancariasInf.Isdelete = chkinativoPesquisa.Checked;
-            //    ContasBancariasInf.DescricaoContasBancarias = Txtdescricaopesquisa.Text;
-            //    ContasBancariasInf.IdUsuario = Convert.ToInt32(Dropusuariopesquisa.SelectedValue);
+            try
+            {
 
-            //    GrdDados.DataSource = objContasBancarias.PesquisarContasBancarias(ContasBancariasInf);
-            //    GrdDados.DataBind();
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw new Exception();
-            //}
+
+                contasinf.Isdelete = chkinativoPesquisa.Checked;
+                contasinf.DescriaoContas = Txtdescricaopesquisa.Text;
+                contasinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
+                contasinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
+               
+               
+
+
+
+                GrdDados.DataSource = objconta.PesquisarContas(contasinf);
+                GrdDados.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
 
         }
 
@@ -104,8 +112,7 @@ namespace MyEconomy
         {
             Txtdescricaopesquisa.Text = "";
             Dropcontasbancariaspesquisa.SelectedIndex = 0;
-            Dropclassificacaopesquisa.SelectedIndex = 0;
-            TxtDatavencimentoPesquisa.Text = "";
+            Dropclassificacaopesquisa.SelectedIndex = 0;           
             chkinativoPesquisa.Checked = false;
         }
 

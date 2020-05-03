@@ -14,6 +14,9 @@ namespace MyEconomy
         public decimal  ValorContas { get; set; }
         public decimal ValorTotalContas { get; set; }
         public DateTime DataVencimentoContas { get; set; }
+
+        public DateTime DataVencimentoInicialContas { get; set; }
+        public DateTime DataVencimentoFinalContas { get; set; }
         public int QuantParcelasContas { get; set; }
         public int QauntParcelasPagasContas { get; set; }
         public bool Isdelete { get; set; }
