@@ -172,8 +172,11 @@ namespace MyEconomy
                 pquantparcela.Value = contasInf.QuantParcelasContas;
                 objCommand.Parameters.Add(pquantparcela);
 
+                MySqlParameter pquantparcelaapagar = new MySqlParameter("_quantparcelaapagar", MySqlDbType.Int32, 200);
+                pquantparcelaapagar.Value = contasInf.QuantParcelasaPagarContas;
+                objCommand.Parameters.Add(pquantparcelaapagar);
 
-              
+
 
                 MySqlParameter pisdelete = new MySqlParameter("_isdelete", MySqlDbType.Bit, 200);
                 pisdelete.Value = contasInf.Isdelete;
@@ -209,12 +212,13 @@ namespace MyEconomy
             {
 
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_AlterarContas";
+                objCommand.CommandText = "Procedure_AlterarConta";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
                 MySqlParameter pid = new MySqlParameter("_idcontas", MySqlDbType.Int32);
                 pid.Value = contasInf.IdContas;
                 objCommand.Parameters.Add(pid);
+
 
 
 
@@ -239,11 +243,11 @@ namespace MyEconomy
                 pvalortotalparcela.Value = contasInf.ValorTotalContas;
                 objCommand.Parameters.Add(pvalortotalparcela);
 
-                MySqlParameter pdatavencimento = new MySqlParameter("_datavencimento ", MySqlDbType.DateTime, 200);
+                MySqlParameter pdatavencimento = new MySqlParameter("_datavencimento", MySqlDbType.DateTime, 200);
                 pdatavencimento.Value = contasInf.DataVencimentoContas;
                 objCommand.Parameters.Add(pdatavencimento);
 
-                MySqlParameter pquantparcela = new MySqlParameter("_quantparcela  ", MySqlDbType.Int32, 200);
+                MySqlParameter pquantparcela = new MySqlParameter("_quantparcela", MySqlDbType.Int32, 200);
                 pquantparcela.Value = contasInf.QuantParcelasContas;
                 objCommand.Parameters.Add(pquantparcela);
 

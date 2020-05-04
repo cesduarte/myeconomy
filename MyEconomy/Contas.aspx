@@ -72,6 +72,7 @@
                                                    <asp:BoundField DataField="ValorTotalContas" HeaderText="Valor total" DataFormatString="{0:c}" />
                                                     <asp:BoundField DataField="DataVencimento" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
                                                     <asp:BoundField DataField="QuantParcelas" HeaderText="Parcelas" />
+                                                     <asp:BoundField DataField="QuantParcelasAPagar" HeaderText="Parcelas a pagar" />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
@@ -247,22 +248,18 @@
                                                       <div class="form-group col-md-6">
                                                           <asp:Label ID="Label11" runat="server" Text="Label">Valor Parcela R$: </asp:Label> 
                                                           <asp:TextBox ID="Txtvalor"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
-                                                     
-                                                          <asp:RangeValidator ID="MyRangeValidator"  Display="Static" Type="Double" class="text-danger"
-                                                           MaximumValue="99999999,99" MinimumValue="-99999999,99" EnableClientScript="true" 
+                                                       
+                                                          <asp:RangeValidator ID="MyRangeValidator"  Type="Double" class="text-danger"
+                                                           MaximumValue="99999999,99" MinimumValue="0" EnableClientScript="true" Display = "Dynamic"
                                                             ControlToValidate="Txtvalor" runat="server" SetFocusOnError="true"  ValidationGroup="group"
-                                                           ErrorMessage="* O formato do campo saldo está incorreto"></asp:RangeValidator>
-                                                         
+                                                           ErrorMessage="* O formato do campo 'Valor Parcela R$' está incorreto"></asp:RangeValidator>
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtvalor"></asp:RequiredFieldValidator>
 
                                                       </div>
                                                         <div class="form-group col-md-6">
                                                           <asp:Label ID="Label12" runat="server" Text="Label">Valor Total R$: </asp:Label> 
-                                                          <asp:TextBox ID="Txtvalortotal"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                          <asp:TextBox ID="Txtvalortotal"  runat="server" class="form-control form-control-sm" readonly="true"></asp:TextBox>
                                                      
-                                                          <asp:RangeValidator ID="RangeValidator1"  Display="Static" Type="Double" class="text-danger"
-                                                           MaximumValue="99999999,99" MinimumValue="-99999999,99" EnableClientScript="true" 
-                                                            ControlToValidate="Txtvalortotal" runat="server" SetFocusOnError="true"  ValidationGroup="group"
-                                                           ErrorMessage="* O formato do campo saldo está incorreto"></asp:RangeValidator>
                                                          
 
                                                       </div>
@@ -270,14 +267,23 @@
                                                 <div class="form-row">
                                                      <div class="form-group col-md-6">
                                                          <asp:Label ID="Label13" runat="server" Text="Label" >Data de Vencimento: </asp:Label>
-                                                         <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>                                                         
-                                                       
+                                                         <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>     
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdatavencimento"></asp:RequiredFieldValidator>
+                                                     <asp:RangeValidator ID="RangeValidator2"  Display="Dynamic" Type="Date" class="text-danger"
+                                                           MaximumValue="30/12/2050" MinimumValue="1/01/1900" EnableClientScript="true" 
+                                                            ControlToValidate="Txtdatavencimento" runat="server" SetFocusOnError="true"  ValidationGroup="group"
+                                                           ErrorMessage="* O formato do campo 'Data de Vencimento' está incorreto, selecione a data ao lado"></asp:RangeValidator> 
                                                      </div>
                                                      
                                                     <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label14" runat="server" Text="Label" >Quantidades de Parcelas </asp:Label>
-                                                         <asp:TextBox ID="Txtparcelas"  runat="server" CssClass="form-control"></asp:TextBox>                                                         
-                                                       
+                                                         <asp:Label ID="Label14" runat="server" Text="Label" >Quantidades de parcelas </asp:Label>
+                                                         <asp:TextBox ID="Txtparcelas"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                           
+                                                          <asp:RangeValidator ID="RangeValidator1"  Display="Dynamic" Type="Double" class="text-danger"
+                                                           MaximumValue="99999999" MinimumValue="1" EnableClientScript="true" 
+                                                            ControlToValidate="Txtparcelas" runat="server" SetFocusOnError="true"  ValidationGroup="group"
+                                                           ErrorMessage="* O formato do campo 'Quantidade de parcelas' está incorreto"></asp:RangeValidator>                                                         
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtparcelas"></asp:RequiredFieldValidator>
                                                      </div>
                                                       
                                                 </div>

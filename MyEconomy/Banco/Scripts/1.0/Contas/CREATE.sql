@@ -7,6 +7,7 @@ CREATE TABLE `myeconomy`.`tbl_contas` (
   `ValorTotalContas` decimal (10,2), 
   `DataVencimento` datetime,
   `QuantParcelas` int,
+  `QuantParcelasAPagar` int,
   `Isdelete` boolean,
   PRIMARY KEY (`Idcontas`),
   UNIQUE INDEX `Idcontas_UNIQUE` (`Idcontas` ASC) VISIBLE);

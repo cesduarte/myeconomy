@@ -6,6 +6,7 @@ IN _valorparcela decimal(10,2),
 IN _valortotalparcela decimal(10,2),
 IN _datavencimento datetime,
 IN _quantparcela INT,
+IN _quantparcelaapagar INT,
 IN _isdelete bool)
 BEGIN
 insert into tbl_contas(
@@ -16,6 +17,7 @@ ValorContas,
 ValorTotalContas,
 DataVencimento,
 QuantParcelas,
+QuantParcelasAPagar,
 Isdelete)
 values(
 _descricaoconta, 
@@ -25,6 +27,7 @@ _valorparcela,
  _valortotalparcela,
  _datavencimento,
  _quantparcela,
+ _quantparcelaapagar,
  _isdelete);
 
 END

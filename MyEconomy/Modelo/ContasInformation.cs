@@ -18,7 +18,7 @@ namespace MyEconomy
         public DateTime DataVencimentoInicialContas { get; set; }
         public DateTime DataVencimentoFinalContas { get; set; }
         public int QuantParcelasContas { get; set; }
-        public int QauntParcelasPagasContas { get; set; }
+        public int QuantParcelasaPagarContas { get; set; }
         public bool Isdelete { get; set; }
     }
 }

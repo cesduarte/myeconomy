@@ -5,7 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Globalization;
+using System.Text.RegularExpressions;
 namespace MyEconomy
 {
     public partial class Contas : System.Web.UI.Page
@@ -182,32 +183,11 @@ namespace MyEconomy
                 contasinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancarias.SelectedValue);
                 contasinf.IdClassificacao= Convert.ToInt32(Dropclassificacao.SelectedValue);
 
-
-
-
-                if (validador.ValidarSaldo(Txtvalor.Text))
-                {
-                    contasinf.ValorContas = Convert.ToDecimal(0);
-                    
-                }
-                else
-                {
-                    contasinf.ValorContas = Convert.ToDecimal(Txtvalor.Text);
-                }
-
-                if (validador.ValidarSaldo(Txtvalortotal.Text))
-                {
-                    contasinf.ValorTotalContas = Convert.ToDecimal(0);
-
-                }
-                else
-                {
-                    contasinf.ValorTotalContas = Convert.ToDecimal(Txtvalortotal.Text);
-                }
+                contasinf.ValorContas = Convert.ToDecimal(Txtvalor.Text);
                 contasinf.DataVencimentoContas = Convert.ToDateTime(Txtdatavencimento.Text);
                 contasinf.QuantParcelasContas = Convert.ToInt32(Txtparcelas.Text);
-
-
+                contasinf.ValorTotalContas = contasinf.ValorContas * contasinf.QuantParcelasContas;
+                contasinf.QuantParcelasaPagarContas = Convert.ToInt32(Txtparcelas.Text);
                 contasinf.Isdelete = Chkinativo.Checked;
                 objconta.InserirContas(contasinf);
 
@@ -219,38 +199,19 @@ namespace MyEconomy
             }
             else
             {
+
                 contasinf.IdContas = Convert.ToInt32(Txtid.Text);
                 contasinf.DescriaoContas = Txtdescricaoconta.Text;
                 contasinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancarias.SelectedValue);
                 contasinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
 
-
-
-
-                if (validador.ValidarSaldo(Txtvalor.Text))
-                {
-                    contasinf.ValorContas = Convert.ToDecimal(0);
-
-                }
-                else
-                {
-                    contasinf.ValorContas = Convert.ToDecimal(Txtvalor.Text);
-                }
-
-                if (validador.ValidarSaldo(Txtvalortotal.Text))
-                {
-                    contasinf.ValorTotalContas = Convert.ToDecimal(0);
-
-                }
-                else
-                {
-                    contasinf.ValorTotalContas = Convert.ToDecimal(Txtvalortotal.Text);
-                }
+                contasinf.ValorContas = Convert.ToDecimal(Txtvalor.Text);
                 contasinf.DataVencimentoContas = Convert.ToDateTime(Txtdatavencimento.Text);
                 contasinf.QuantParcelasContas = Convert.ToInt32(Txtparcelas.Text);
-
+                contasinf.ValorTotalContas = contasinf.ValorContas * contasinf.QuantParcelasContas;
 
                 contasinf.Isdelete = Chkinativo.Checked;
+
                 objconta.AlterarContas(contasinf);
 
                 Label9.Text = "Registro alterado com sucesso!";
@@ -259,7 +220,7 @@ namespace MyEconomy
 
             }
         }
-
+       
         protected void Button5_Click(object sender, EventArgs e)
         {
             LimparCampos();
