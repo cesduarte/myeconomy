@@ -270,7 +270,7 @@
                                                 <div class="form-row">
                                                      <div class="form-group col-md-6">
                                                          <asp:Label ID="Label13" runat="server" Text="Label" >Data de Vencimento: </asp:Label>
-                                                         <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>                                                         
+                                                         <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>                                                         
                                                        
                                                      </div>
                                                      

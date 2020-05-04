@@ -81,7 +81,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    sql = "select * from tbl_contas where Idusuario = " + Idcontas;
+                    sql = "select * from tbl_contas where Idcontas = " + Idcontas;
                 }
 
 

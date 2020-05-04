@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -19,8 +20,8 @@ namespace MyEconomy
             if (!Page.IsPostBack)
             {
                 
-                CarregarCarregarContasBancarias();
-                CarregarCarregarClassificacao();
+                CarregarContasBancarias();
+                CarregarClassificacao();
                 CarregaGrid();
 
             }
@@ -52,8 +53,39 @@ namespace MyEconomy
             }
 
         }
+        public void CarregarConta(string id)
+        {
+            try
+            {
 
-        public void CarregarCarregarContasBancarias()
+
+                contasinf = null;
+                foreach (ContasInformation contasinf in objconta.Carregarcontascampos(id))
+                {
+                    Txtid.Text = Convert.ToString(contasinf.IdContas);
+                    Txtdescricaoconta.Text = contasinf.DescriaoContas;
+                    Txtvalor.Text = Convert.ToString(contasinf.ValorContas);
+                    Txtvalortotal.Text = Convert.ToString(contasinf.ValorTotalContas);
+                    Dropcontasbancarias.SelectedValue = Convert.ToString(contasinf.IdContasBancarias);
+                    Dropclassificacao.SelectedValue = Convert.ToString(contasinf.IdClassificacao);
+
+
+                    //DateTime datateste = contasinf.DataVencimentoContas;
+                    //string teste = datateste.ToString("yyyy-MM-dd");
+                    Txtdatavencimento.Text = contasinf.DataVencimentoContas.ToString("yyyy-MM-dd");
+                    Txtparcelas.Text = Convert.ToString(contasinf.QuantParcelasContas);
+
+
+                    Chkinativo.Checked = contasinf.Isdelete;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+        public void CarregarContasBancarias()
         {
             try
             {
@@ -81,7 +113,7 @@ namespace MyEconomy
             }
         }
 
-        public void CarregarCarregarClassificacao()
+        public void CarregarClassificacao()
         {
             try
             {
@@ -244,11 +276,11 @@ namespace MyEconomy
         {
             if (e.CommandName == "Editar")
             {
-                //string IdContasBancárias = e.CommandArgument.ToString();
+                string IdContasBancárias = e.CommandArgument.ToString();
 
-                //CarregarContasBancarias(IdContasBancárias);
+                CarregarConta(e.CommandArgument.ToString());
 
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
 
             }
         }
