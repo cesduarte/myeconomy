@@ -118,7 +118,7 @@ namespace MyEconomy
                     usuario.TrocarSenha = true;
                     obj.InserirUsuarios(usuario);
                     //SuccessPanel.Visible = true;
-
+                    Txtid.Text = usuario.IdUsuario.ToString();
 
                     //Button2.Attributes.Add("onclick", "return confirm('teste')");
                     Label9.Text = "Registro incluido com sucesso";
