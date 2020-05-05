@@ -148,6 +148,7 @@ namespace MyEconomy
 
 
                 objContasBancarias.InserirUsuarios(ContasBancariasInf);
+                Txtid.Text = ContasBancariasInf.IdContasBancarias.ToString();
                 Label9.Text = "Registro incluido com sucesso";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
                 Timer1.Enabled = true;

@@ -143,6 +143,7 @@ namespace MyEconomy
 
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
+                classificacaoinf.IdClassificacao = (Int32)objCommand.Parameters["_Idclassificacao"].Value;
                 //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
 
             }

@@ -107,7 +107,7 @@ namespace MyEconomy
                    
                     obj.InserirClassificacao(classificacao);
                     //SuccessPanel.Visible = true;
-
+                    Txtid.Text = classificacao.IdClassificacao.ToString();
 
                     //Button2.Attributes.Add("onclick", "return confirm('teste')");
                     Label9.Text = "Registro incluido com sucesso";

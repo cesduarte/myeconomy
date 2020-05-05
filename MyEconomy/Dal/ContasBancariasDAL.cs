@@ -156,7 +156,7 @@ namespace MyEconomy
 
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
-                //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
+                ContasBancariasinf.IdContasBancarias = (Int32)objCommand.Parameters["_Idcontasbancarias"].Value;
 
             }
             catch (MySqlException ex)
