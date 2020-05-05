@@ -23,15 +23,15 @@ namespace MyEconomy
                 objCommand.CommandText = "Procedure_inserirContasAPagar";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
-                MySqlParameter pid = new MySqlParameter("_IdContaAPagar", MySqlDbType.Int32);
-                pid.Direction = ParameterDirection.Output;
-                objCommand.Parameters.Add(pid);
+                //MySqlParameter pid = new MySqlParameter("_IdContaAPagar", MySqlDbType.Int32);
+                //pid.Direction = ParameterDirection.Output;
+                //objCommand.Parameters.Add(pid);
 
                 MySqlParameter pidcontas = new MySqlParameter("_idcontas", MySqlDbType.Int32);
                 pidcontas.Value = contasapagarInf.IdContas;
-                objCommand.Parameters.Add(pidcontas);             
+                objCommand.Parameters.Add(pidcontas);
 
-                
+
 
                 MySqlParameter pdatavencimentocontasapagar = new MySqlParameter("_datavencimentocontasapagar", MySqlDbType.DateTime, 200);
                 pdatavencimentocontasapagar.Value = contasapagarInf.DataVencimentoContasAPagar;
@@ -55,6 +55,7 @@ namespace MyEconomy
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
                 //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
+                objCommand.Parameters.Clear();
 
             }
             catch (MySqlException ex)

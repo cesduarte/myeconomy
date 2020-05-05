@@ -1,5 +1,5 @@
 CREATE TABLE `myeconomy`.`tbl_contasapagar` (
- `IdContaAPagar` INT,
+ `IdContaAPagar` INT NOT NULL AUTO_INCREMENT,
  `Idcontas` INT,
  `DataVencimentoContaAPagar` datetime,
   `NParcelasContaAPagar` int,

@@ -209,8 +209,9 @@
                                          <asp:UpdatePanel ID="UpdatePanel7" runat="server">
                                            <ContentTemplate>
                                                  <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <asp:TextBox ID="Txtid"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                    <div class="form-group col-md-4">
+                                                        
+                                                        <asp:TextBox ID="Txtid"  runat="server"  class="form-control form-control-sm" Visible ="false"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">

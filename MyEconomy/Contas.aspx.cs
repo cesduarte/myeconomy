@@ -119,17 +119,17 @@ namespace MyEconomy
             ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
 
             DateTime dataatual = DateTime.Now.Date;
-            //if(dataatual<= _contasinf.DataVencimentoContas)
-            //{
-                for (int i = 1; i <= _contasinf.QuantParcelasContas; i++)
+            
+
+                for (int i = 0; i < _contasinf.QuantParcelasContas; i++)
                 {
                     contasapagarinf.IdContas = _contasinf.IdContas;
                     contasapagarinf.DataVencimentoContasAPagar = _contasinf.DataVencimentoContas.AddMonths(i);
-                    contasapagarinf.NParcelaContasAPagar = i;
+                    contasapagarinf.NParcelaContasAPagar = i+1;
                     objcontaapagar.InserirContas(contasapagarinf);
 
                 }
-            //}
+            
 
 
 
