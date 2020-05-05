@@ -15,6 +15,7 @@ namespace MyEconomy
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
         ContasInformation contasinf = new ContasInformation();
         ContasDAL objconta = new ContasDAL();
+        ContasAPagarDAL objcontaapagar = new ContasAPagarDAL();
         Validador validador = new Validador();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -113,7 +114,34 @@ namespace MyEconomy
                 throw new Exception();
             }
         }
+        public void InserirContasAPagar(ContasInformation _contasinf)
+        {
+            ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
 
+            DateTime dataatual = DateTime.Now.Date;
+            //if(dataatual<= _contasinf.DataVencimentoContas)
+            //{
+                for (int i = 1; i <= _contasinf.QuantParcelasContas; i++)
+                {
+                    contasapagarinf.IdContas = _contasinf.IdContas;
+                    contasapagarinf.DataVencimentoContasAPagar = _contasinf.DataVencimentoContas.AddMonths(i);
+                    contasapagarinf.NParcelaContasAPagar = i;
+                    objcontaapagar.InserirContas(contasapagarinf);
+
+                }
+            //}
+
+
+
+            
+           
+            
+
+
+
+            
+
+        }
         public void CarregarClassificacao()
         {
             try
@@ -190,7 +218,8 @@ namespace MyEconomy
                 contasinf.QuantParcelasaPagarContas = Convert.ToInt32(Txtparcelas.Text);
                 contasinf.Isdelete = Chkinativo.Checked;
                 objconta.InserirContas(contasinf);
-
+                Txtid.Text =  contasinf.IdContas.ToString();
+                InserirContasAPagar(contasinf);
                
                 Label9.Text = "Registro incluido com sucesso";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
@@ -226,7 +255,7 @@ namespace MyEconomy
             LimparCampos();
             CarregaGrid();
         }
-
+        
         protected void Timer1_Tick(object sender, EventArgs e)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('hide');", true);

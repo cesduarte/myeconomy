@@ -210,7 +210,7 @@
                                            <ContentTemplate>
                                                  <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <asp:TextBox ID="Txtid"  runat="server"  class="form-control form-control-sm" Visible="false"></asp:TextBox>
+                                                        <asp:TextBox ID="Txtid"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">

@@ -1,4 +1,5 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Procedure_inserirContas`(
+INOUT _IdConta INT,
 IN _descricaoconta nvarchar(200), 
 IN _idcontasbancarias INT,
 IN _idclassificacao INT,
@@ -30,4 +31,6 @@ _valorparcela,
  _quantparcelaapagar,
  _isdelete);
 
+
+set _IdConta   = (SELECT @@IDENTITY);
 END
