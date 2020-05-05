@@ -150,13 +150,13 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label Label10;
 
         /// <summary>
-        /// TextBox1 control.
+        /// Txtdatainicialpesquisa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox Txtdatainicialpesquisa;
 
         /// <summary>
         /// Label15 control.
@@ -168,13 +168,13 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label Label15;
 
         /// <summary>
-        /// TextBox2 control.
+        /// Txtdatafinalpesquisa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox Txtdatafinalpesquisa;
 
         /// <summary>
         /// chkinativoPesquisa control.

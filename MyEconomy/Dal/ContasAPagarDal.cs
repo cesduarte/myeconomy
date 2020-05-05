@@ -13,6 +13,63 @@ namespace MyEconomy
     {
         MySqlConnection objConexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString);
         MySqlCommand objCommand = new MySqlCommand();
+
+        public DataSet PesquisarContasAPagar(ContasAPagarInformation contasapagarInf)
+        {
+            try
+            {
+                DataSet ds;
+                objConexao.Open();
+                objCommand.Connection = objConexao;
+                objCommand.CommandText = "Procedure_PesquisaContaAPagar";
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.Parameters.Add(new MySqlParameter("_descricaoconta", MySqlDbType.VarChar, 100));
+                objCommand.Parameters["_descricaoconta"].Value = contasapagarInf.DescriaoContas;
+
+
+
+                objCommand.Parameters.Add(new MySqlParameter("_idcontasbancarias", MySqlDbType.Int32));
+                objCommand.Parameters["_idcontasbancarias"].Value = contasapagarInf.IdContasBancarias;
+
+                objCommand.Parameters.Add(new MySqlParameter("_idclassificacao", MySqlDbType.Int32));
+                objCommand.Parameters["_idclassificacao"].Value = contasapagarInf.IdClassificacao;
+
+                MySqlParameter pdatainicial = new MySqlParameter("_datainicial", MySqlDbType.DateTime, 200);
+                pdatainicial.Value = contasapagarInf.DataVencimentoInicialContas;
+                objCommand.Parameters.Add(pdatainicial);
+
+                MySqlParameter pdatafinal = new MySqlParameter("_datafinal", MySqlDbType.DateTime, 200);
+                pdatafinal.Value = contasapagarInf.DataVencimentoFinalContas;
+                objCommand.Parameters.Add(pdatafinal);
+
+
+
+
+
+                MySqlDataAdapter da;
+
+                da = new MySqlDataAdapter(objCommand);
+                ds = new DataSet();
+
+
+
+                da.Fill(ds);
+                return ds;
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+
+        }
         public void InserirContas(ContasAPagarInformation contasapagarInf)
         {
 

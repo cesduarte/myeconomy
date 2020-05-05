@@ -9,15 +9,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="Componentes/images/favicon.png">
-   
-   
+    <link rel="icon" type="image/png" sizes="16x16" href="Componentes/images/favicon.png"> 
    
     <!-- Custom Stylesheet -->
     <link href="Componentes/css/style.css" rel="stylesheet">
     
    
-     <link rel="icon" type="image/png" sizes="16x16" href="Componentes/images/favicon.png">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -250,14 +247,14 @@
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                         </ul>
                     </li>
-                    <li class="mega-menu mega-menu-sm">
+                    <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Cadastro</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="Classificacao.aspx">Classificação</a></li>
                                <li><a href="Contas.aspx">Contas</a></li>
-                            <li><a href="ContasAPagar.aspx">Contas a Pagar</a></li>
+                           
                             <li><a href="ContasBancarias.aspx">Contas Bancárias</a></li>
                             <li><a href="Investimento.aspx">Investimento</a></li>
                             <li><a href="Usuarios.aspx">Usuários</a></li>
@@ -267,7 +264,20 @@
                             
                         </ul>
                     </li>
-                   
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-weather-drop menu-icon"></i><span class="nav-text">Gerenciamento</span>
+                        </a>
+                        <ul aria-expanded="false">
+                           
+                            <li><a href="ContasAPagar.aspx">Contas a Pagar</a></li>
+                           
+                            
+                            
+                            
+                            
+                        </ul>
+                    </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>

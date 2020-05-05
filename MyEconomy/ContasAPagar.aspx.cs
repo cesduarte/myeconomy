@@ -9,16 +9,37 @@ namespace MyEconomy
 {
     public partial class ContasAPagar : System.Web.UI.Page
     {
+        ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
+        ContasAPagarDAL objcontasapagar = new ContasAPagarDAL();
+        ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
+        ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
+        ContasInformation contasinf = new ContasInformation();
+        ContasDAL objconta = new ContasDAL();
+        ContasAPagarDAL objcontaapagar = new ContasAPagarDAL();
+        Validador validador = new Validador();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-
+                carrega_data();
                 CarregarContasBancarias();
                 CarregarClassificacao();
                 CarregaGrid();
 
             }
+
+           
+
+        }
+
+        public void carrega_data()
+        {
+            DateTime abre = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+           Txtdatainicialpesquisa.Text = abre.ToString("yyyy-MM-dd");
+
+            DateTime fecha = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            Txtdatafinalpesquisa.Text = fecha.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd");
+
 
 
 
@@ -29,17 +50,19 @@ namespace MyEconomy
             {
 
 
-                //contasinf.Isdelete = chkinativoPesquisa.Checked;
-                //contasinf.DescriaoContas = Txtdescricaopesquisa.Text;
-                //contasinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
-                //contasinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
+
+                contasapagarinf.DescriaoContas = Txtdescricaopesquisa.Text;
+                contasapagarinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
+                contasapagarinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
+                contasapagarinf.DataVencimentoInicialContas = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
+                contasapagarinf.DataVencimentoFinalContas = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
 
 
 
 
 
-                //GrdDados.DataSource = objconta.PesquisarContas(contasinf);
-                //GrdDados.DataBind();
+                GrdDados.DataSource = objcontasapagar.PesquisarContasAPagar(contasapagarinf);
+                GrdDados.DataBind();
             }
             catch (Exception ex)
             {
@@ -85,20 +108,20 @@ namespace MyEconomy
             {
 
 
-                //Dropcontasbancarias.DataSource = null;
-                //Dropcontasbancariaspesquisa.DataSource = null;
+                Dropcontasbancarias.DataSource = null;
+                Dropcontasbancariaspesquisa.DataSource = null;
 
 
-                //Dropcontasbancarias.DataSource = objcontasbancarias.CarregarContasBancariasCampos("");
-                //Dropcontasbancarias.DataTextField = "DescricaoContasBancarias";
-                //Dropcontasbancarias.DataValueField = "Idcontasbancarias";
-                //Dropcontasbancarias.DataBind();
+                Dropcontasbancarias.DataSource = objcontasbancarias.CarregarContasBancariasCampos("");
+                Dropcontasbancarias.DataTextField = "DescricaoContasBancarias";
+                Dropcontasbancarias.DataValueField = "Idcontasbancarias";
+                Dropcontasbancarias.DataBind();
 
 
-                //Dropcontasbancariaspesquisa.DataSource = objcontasbancarias.CarregarContasBancariasCampos("");
-                //Dropcontasbancariaspesquisa.DataTextField = "DescricaoContasBancarias";
-                //Dropcontasbancariaspesquisa.DataValueField = "Idcontasbancarias";
-                //Dropcontasbancariaspesquisa.DataBind();
+                Dropcontasbancariaspesquisa.DataSource = objcontasbancarias.CarregarContasBancariasCampos("");
+                Dropcontasbancariaspesquisa.DataTextField = "DescricaoContasBancarias";
+                Dropcontasbancariaspesquisa.DataValueField = "Idcontasbancarias";
+                Dropcontasbancariaspesquisa.DataBind();
 
             }
             catch (Exception ex)
@@ -140,19 +163,19 @@ namespace MyEconomy
             {
 
 
-                //Dropclassificacao.DataSource = null;
-                //Dropclassificacaopesquisa.DataSource = null;
+                Dropclassificacao.DataSource = null;
+                Dropclassificacaopesquisa.DataSource = null;
 
-                //Dropclassificacao.DataSource = objclassificacao.CarregarClassificacao("");
-                //Dropclassificacao.DataTextField = "DescricaoClassificacao";
-                //Dropclassificacao.DataValueField = "Idclassificacao";
-                //Dropclassificacao.DataBind();
+                Dropclassificacao.DataSource = objclassificacao.CarregarClassificacao("");
+                Dropclassificacao.DataTextField = "DescricaoClassificacao";
+                Dropclassificacao.DataValueField = "Idclassificacao";
+                Dropclassificacao.DataBind();
 
 
-                //Dropclassificacaopesquisa.DataSource = objclassificacao.CarregarClassificacao("");
-                //Dropclassificacaopesquisa.DataTextField = "DescricaoClassificacao";
-                //Dropclassificacaopesquisa.DataValueField = "Idclassificacao";
-                //Dropclassificacaopesquisa.DataBind();
+                Dropclassificacaopesquisa.DataSource = objclassificacao.CarregarClassificacao("");
+                Dropclassificacaopesquisa.DataTextField = "DescricaoClassificacao";
+                Dropclassificacaopesquisa.DataValueField = "Idclassificacao";
+                Dropclassificacaopesquisa.DataBind();
 
             }
             catch (Exception ex)

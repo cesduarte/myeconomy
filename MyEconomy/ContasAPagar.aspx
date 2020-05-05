@@ -66,14 +66,13 @@
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
                                                     <asp:BoundField DataField="ValorContas" HeaderText="Valor parcela" DataFormatString="{0:c}" />
-                                                   <asp:BoundField DataField="ValorTotalContas" HeaderText="Valor total" DataFormatString="{0:c}" />
+                                                    <asp:BoundField DataField="ValorTotalContas" HeaderText="Valor total" DataFormatString="{0:c}" />
                                                     <asp:BoundField DataField="DataVencimento" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
-                                                    <asp:BoundField DataField="QuantParcelas" HeaderText="Parcelas" />
-                                                     <asp:BoundField DataField="QuantParcelasAPagar" HeaderText="Parcelas a pagar" />
+                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
-                                                                CommandName="Editar" Text="Editar"
+                                                                CommandName="Editar" Text="Quitar"
                                                                 CommandArgument='<%# DataBinder
                                                                 .Eval(Container.DataItem, "idcontas")%>' />
                                                         </ItemTemplate>
@@ -146,14 +145,14 @@
                                                  <div class="form-row">
                                                      <div class="form-group col-md-6">
                                                          <asp:Label ID="Label10" runat="server" Text="Label" >Data inicial: </asp:Label>
-                                                         <asp:TextBox ID="TextBox1"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox> 
+                                                         <asp:TextBox ID="Txtdatainicialpesquisa"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox> 
                                                         
                                                      </div>
                                                    
                                                     
                                                      <div class="form-group col-md-6">
                                                          <asp:Label ID="Label15" runat="server" Text="Label" >Data final: </asp:Label>
-                                                         <asp:TextBox ID="TextBox2"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox> 
+                                                         <asp:TextBox ID="Txtdatafinalpesquisa"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox> 
                                                         
                                                      </div>
                                                 </div>
