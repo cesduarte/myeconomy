@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Reflection;
+using System.ComponentModel;
 namespace MyEconomy
 {
     public partial class ContasAPagar : System.Web.UI.Page
@@ -21,6 +22,7 @@ namespace MyEconomy
         {
             if (!Page.IsPostBack)
             {
+                CarregarStatus(DropStatus, new StatusEnum.Status());
                 carrega_data();
                 CarregarContasBancarias();
                 CarregarClassificacao();
@@ -183,13 +185,27 @@ namespace MyEconomy
                 throw new Exception();
             }
         }
+        public void CarregarStatus(DropDownList ddl, Enum source)
+        {
+            foreach (FieldInfo fi in source.GetType().GetFields())
+            {
+                var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+                if (attributes.Length > 0)
+                {
+                    ddl.Items.Add(new ListItem(attributes[0].Description, fi.GetRawConstantValue().ToString()));
+                }
+            }
+
+
+        }
 
         public void LimparCamposPesquisa()
         {
             Txtdescricaopesquisa.Text = "";
             Dropcontasbancariaspesquisa.SelectedIndex = 0;
             Dropclassificacaopesquisa.SelectedIndex = 0;
-            chkinativoPesquisa.Checked = false;
+          
         }
 
         public void LimparCampos()

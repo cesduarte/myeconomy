@@ -159,12 +159,15 @@
                                                
                                                
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-5">
-                                                        <div class="form-check form-check-inline">
-                                                            <asp:CheckBox ID="chkinativoPesquisa" class="form-check-input" runat="server" />
-                                                            <asp:Label ID="Label4" runat="server" Text="Label">Inativo</asp:Label>
-                                                        </div>
-                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                         <asp:Label ID="Label4" runat="server" Text="Label">Status</asp:Label>
+                                                        
+                                                        <asp:DropDownList ID="DropStatus" runat="server" CssClass="form-control form-control" ValidationGroup="group">
+                                                          
+                                                         </asp:DropDownList>
+                                                          
+                                                        
+                                                     </div>
                                                 </div>
 
                                             </ContentTemplate>
