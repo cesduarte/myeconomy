@@ -33,10 +33,7 @@
 
                                                 <ul class="mb-0 form-profile__icons">
 
-                                                    <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-transparent p-0 mr-3" title="Novo conta" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
-
-                                                    </li>
+                                                  
                                                     <li class="d-inline-block">
                                                         <button type="button" class="btn btn-transparent p-0 mr-3" title="Pesquisar Contas" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
                                                     </li>
@@ -65,9 +62,8 @@
                                                     <asp:BoundField DataField="Descricaocontas" HeaderText="Descrição Contas" />
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
-                                                    <asp:BoundField DataField="ValorContas" HeaderText="Valor parcela" DataFormatString="{0:c}" />
-                                                    <asp:BoundField DataField="ValorTotalContas" HeaderText="Valor total" DataFormatString="{0:c}" />
-                                                    <asp:BoundField DataField="DataVencimento" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
+                                                    <asp:BoundField DataField="ValorContas" HeaderText="Valor parcela" DataFormatString="{0:c}" />                                                    
+                                                    <asp:BoundField DataField="DataVencimentoContaAPagar" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
                                                     
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
@@ -208,7 +204,7 @@
 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Cadastro de Contas Bancárias</h5>
+                                        <h5 class="modal-title">Pagar contas</h5>
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
                                             
@@ -270,16 +266,7 @@
                                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtvalor"></asp:RequiredFieldValidator>
 
                                                       </div>
-                                                        <div class="form-group col-md-6">
-                                                          <asp:Label ID="Label12" runat="server" Text="Label">Valor Total R$: </asp:Label> 
-                                                          <asp:TextBox ID="Txtvalortotal"  runat="server" class="form-control form-control-sm" readonly="true"></asp:TextBox>
-                                                     
-                                                         
-
-                                                      </div>
-                                                     </div>
-                                                <div class="form-row">
-                                                     <div class="form-group col-md-6">
+                                                       <div class="form-group col-md-6">
                                                          <asp:Label ID="Label13" runat="server" Text="Label" >Data de Vencimento: </asp:Label>
                                                          <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>     
                                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdatavencimento"></asp:RequiredFieldValidator>
@@ -288,28 +275,10 @@
                                                             ControlToValidate="Txtdatavencimento" runat="server" SetFocusOnError="true"  ValidationGroup="group"
                                                            ErrorMessage="* O formato do campo 'Data de Vencimento' está incorreto, selecione a data ao lado"></asp:RangeValidator> 
                                                      </div>
-                                                     
-                                                    <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label14" runat="server" Text="Label" >Quantidades de parcelas </asp:Label>
-                                                         <asp:TextBox ID="Txtparcelas"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
-                                                           
-                                                          <asp:RangeValidator ID="RangeValidator1"  Display="Dynamic" Type="Double" class="text-danger"
-                                                           MaximumValue="99999999" MinimumValue="1" EnableClientScript="true" 
-                                                            ControlToValidate="Txtparcelas" runat="server" SetFocusOnError="true"  ValidationGroup="group"
-                                                           ErrorMessage="* O formato do campo 'Quantidade de parcelas' está incorreto"></asp:RangeValidator>                                                         
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtparcelas"></asp:RequiredFieldValidator>
+                                                       
                                                      </div>
-                                                      
-                                                </div>
-                                               
-                                               <div class="form-row">
-                                                    <div class="form-group col-md-5">
-                                                         <div class="form-check form-check-inline">
-                                                              <asp:CheckBox ID="Chkinativo" class="form-check-input" runat="server"/>
-                                                               <asp:Label ID="Label5" runat="server" Text="Label">Inativo</asp:Label>
-                                                         </div>
-                                                    </div>
-                                               </div>
+                                                                                           
+                                              
                                              
                                                
 
@@ -320,7 +289,7 @@
                                           
                                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                     <ContentTemplate>
-                                                        <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Salvar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
+                                                        <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Quitar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
                                                         <asp:Button ID="Button5" class="btn btn-outline-primary" runat="server" Text="Limpar"  OnClick="Button5_Click" />
                                                     </ContentTemplate>
                                          </asp:UpdatePanel>

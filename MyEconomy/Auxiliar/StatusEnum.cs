@@ -12,9 +12,9 @@ namespace MyEconomy
         public enum Status
         {
             [Description("Contas a pagar")] //Descrição será exibido como item do dropdown
-            Entrega = 1,// item do enumerator atribuido o seu valor constante.
+            ContasAPagar = 1,// item do enumerator atribuido o seu valor constante.
             [Description("Contas pagas")]
-            Cobranca = 1
+            ContasPagas = 2
         }
     }
 }

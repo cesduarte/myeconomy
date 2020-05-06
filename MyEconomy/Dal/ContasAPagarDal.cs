@@ -100,11 +100,15 @@ namespace MyEconomy
                 pnparcelacontasapagar.Value = contasapagarInf.NParcelaContasAPagar;
                 objCommand.Parameters.Add(pnparcelacontasapagar);
 
-                
+
+                MySqlParameter pstatuscontaapagar = new MySqlParameter("_statuscontaapagar", MySqlDbType.Int32, 200);
+                pstatuscontaapagar.Value = contasapagarInf.StatusContasAPagar;
+                objCommand.Parameters.Add(pstatuscontaapagar);
 
 
 
-                
+
+
 
 
 

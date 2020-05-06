@@ -195,7 +195,7 @@
 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Cadastro de Contas Bancárias</h5>
+                                        <h5 class="modal-title">Cadastro de Contas</h5>
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
                                             

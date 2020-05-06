@@ -3,6 +3,7 @@ CREATE TABLE `myeconomy`.`tbl_contasapagar` (
  `Idcontas` INT,
  `DataVencimentoContaAPagar` datetime,
   `NParcelasContaAPagar` int,
+  `StatusContasAPagar` int,
    PRIMARY KEY (`IdContaAPagar`),
   UNIQUE INDEX `IdContaAPagar_UNIQUE` (`IdContaAPagar` ASC) VISIBLE);
 

@@ -205,7 +205,9 @@ namespace MyEconomy
             Txtdescricaopesquisa.Text = "";
             Dropcontasbancariaspesquisa.SelectedIndex = 0;
             Dropclassificacaopesquisa.SelectedIndex = 0;
-          
+            carrega_data();
+            DropStatus.SelectedIndex = 0;
+
         }
 
         public void LimparCampos()
@@ -214,11 +216,9 @@ namespace MyEconomy
             Txtdescricaoconta.Text = "";
             Dropcontasbancarias.SelectedIndex = 0;
             Dropclassificacao.SelectedIndex = 0;
-            Txtvalor.Text = "";
-            Txtvalortotal.Text = "";
+            Txtvalor.Text = "";            
             Txtdatavencimento.Text = "";
-            Txtparcelas.Text = "";
-            Chkinativo.Checked = false;
+          
 
         }
 
