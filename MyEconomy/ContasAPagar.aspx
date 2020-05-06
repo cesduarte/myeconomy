@@ -204,7 +204,7 @@
 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Pagar contas</h5>
+                                        <h5 class="modal-title">Pagamento</h5>
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
                                             
@@ -217,75 +217,56 @@
                                     <div class="modal-body">
                                          <asp:UpdatePanel ID="UpdatePanel7" runat="server">
                                            <ContentTemplate>
-                                                 <div class="form-row">
-                                                    <div class="form-group col-md-4">
+                                               <div class="default-tab">
+                                                   <ul class="nav nav-tabs mb-3" role="tablist">
+                                                       <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile">Detalhes Pagamento</a></li>
+                                                        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#home">Detalhes Conta</a></li>
                                                         
-                                                        <asp:TextBox ID="Txtid"  runat="server"  class="form-control form-control-sm" Visible ="false"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                     <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição Conta: </asp:Label>
-                                                          <asp:TextBox ID="Txtdescricaoconta"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
-                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="group" runat="server" class="text-danger" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdescricaoconta"></asp:RequiredFieldValidator>
-
-                                                     </div>
-                                                </div>
-                                                <div class="form-row">
+                                                   </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane fade show active" id="profile">
+                                                             <div class="p-t-15">
+                                                                 
+                                                               
+                                                                 <div class="form-row">
                                                     
                                                     
-                                                    <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label3" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
-                                                        <asp:DropDownList ID="Dropcontasbancarias" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
+                                                    <div class="form-group col-md-12">
+                                                         <asp:Label ID="Label12" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="Dropcontasbancarias"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="DropDownList1"></asp:RequiredFieldValidator>
 
                                                         
                                                      </div>
-                                                      <div class="form-group col-md-6">
-                                                        <asp:Label ID="Label2" runat="server" Text="Label">Descrição Classificação: </asp:Label>
-                                                        <asp:DropDownList ID="Dropclassificacao" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
-                                                          
-                                                         </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="Dropclassificacao"></asp:RequiredFieldValidator>
-
-                                                        
-                                                     </div>
+                                                     
                                                    
                                                 </div>
-                                                  <div class="form-row">
+                                                                 <div class="form-row">
                                                       <div class="form-group col-md-6">
-                                                          <asp:Label ID="Label11" runat="server" Text="Label">Valor Parcela R$: </asp:Label> 
-                                                          <asp:TextBox ID="Txtvalor"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                          <asp:Label ID="Label16" runat="server" Text="Label">Valor Pago R$: </asp:Label> 
+                                                          <asp:TextBox ID="TextBox3"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
                                                        
                                                           <asp:RangeValidator ID="MyRangeValidator"  Type="Double" class="text-danger"
                                                            MaximumValue="99999999,99" MinimumValue="0" EnableClientScript="true" Display = "Dynamic"
-                                                            ControlToValidate="Txtvalor" runat="server" SetFocusOnError="true"  ValidationGroup="group"
+                                                            ControlToValidate="TextBox3" runat="server" SetFocusOnError="true"  ValidationGroup="group"
                                                            ErrorMessage="* O formato do campo 'Valor Parcela R$' está incorreto"></asp:RangeValidator>
-                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtvalor"></asp:RequiredFieldValidator>
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
 
                                                       </div>
                                                        <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label13" runat="server" Text="Label" >Data de Vencimento: </asp:Label>
-                                                         <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>     
-                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdatavencimento"></asp:RequiredFieldValidator>
+                                                         <asp:Label ID="Label17" runat="server" Text="Label" >Data pagamento: </asp:Label>
+                                                         <asp:TextBox ID="TextBox4"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>     
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="TextBox4"></asp:RequiredFieldValidator>
                                                      <asp:RangeValidator ID="RangeValidator2"  Display="Dynamic" Type="Date" class="text-danger"
                                                            MaximumValue="30/12/2050" MinimumValue="1/01/1900" EnableClientScript="true" 
-                                                            ControlToValidate="Txtdatavencimento" runat="server" SetFocusOnError="true"  ValidationGroup="group"
+                                                            ControlToValidate="TextBox4" runat="server" SetFocusOnError="true"  ValidationGroup="group"
                                                            ErrorMessage="* O formato do campo 'Data de Vencimento' está incorreto, selecione a data ao lado"></asp:RangeValidator> 
                                                      </div>
                                                        
-                                                     </div>
-                                                                                           
-                                              
-                                             
-                                               
-
-                                           </ContentTemplate>
-                                         </asp:UpdatePanel>
-                                    </div>
-                                     <div class="modal-footer">
+                                                     </div> 
+                                                                  <div class="modal-footer">
                                           
                                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                     <ContentTemplate>
@@ -294,6 +275,71 @@
                                                     </ContentTemplate>
                                          </asp:UpdatePanel>
                                     </div>
+                                                             </div>
+                                                        </div>
+                                                        <div class="tab-pane fade " id="home" role="tabpanel">
+                                                             <div class="p-t-15">
+                                                                 <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        
+                                                        <asp:TextBox ID="Txtid"  runat="server"  class="form-control form-control-sm" Visible ="false"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                                 <div class="form-row">
+                                                     <div class="form-group col-md-12">
+                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição Conta: </asp:Label>
+                                                          <asp:TextBox ID="Txtdescricaoconta"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
+                                                       
+                                                     </div>
+                                                </div>
+                                                                 <div class="form-row">
+                                                    
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                         <asp:Label ID="Label3" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                        <asp:DropDownList ID="Dropcontasbancarias" runat="server" CssClass="form-control form-control-sm" ReadOnly="true">
+                                                          
+                                                         </asp:DropDownList>                                                   
+
+                                                        
+                                                     </div>
+                                                      <div class="form-group col-md-6">
+                                                        <asp:Label ID="Label2" runat="server" Text="Label">Descrição Classificação: </asp:Label>
+                                                        <asp:DropDownList ID="Dropclassificacao" runat="server" CssClass="form-control form-control-sm" ReadOnly="true">
+                                                          
+                                                         </asp:DropDownList>
+                                                    
+
+                                                        
+                                                     </div>
+                                                   
+                                                </div>
+                                                                 <div class="form-row">
+                                                      <div class="form-group col-md-6">
+                                                          <asp:Label ID="Label11" runat="server" Text="Label">Valor Parcela R$: </asp:Label> 
+                                                          <asp:TextBox ID="Txtvalor"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
+                                                       
+                                                          
+                                                      </div>
+                                                       <div class="form-group col-md-6">
+                                                         <asp:Label ID="Label13" runat="server" Text="Label" >Data de Vencimento: </asp:Label>
+                                                         <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date" ReadOnly="true" ></asp:TextBox>     
+                                                         
+                                                     </div>
+                                                       
+                                                     </div>                                                                                         
+                                                                </div>
+                                                          </div>
+                                                       
+                                                    </div> 
+
+                                                 </div>
+                                               
+
+                                           </ContentTemplate>
+                                         </asp:UpdatePanel>
+                                    </div>
+                                    
 
                                   
 
