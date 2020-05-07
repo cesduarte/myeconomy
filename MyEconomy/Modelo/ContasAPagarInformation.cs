@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyEconomy
 {
-    public class ContasAPagarInformation: ContasInformation
+    public class ContasAPagarInformation: DespesaFixaInformation
     {
 
         public int IdContasAPagar { get; set; }

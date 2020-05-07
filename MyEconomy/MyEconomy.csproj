@@ -4998,7 +4998,6 @@
     <Compile Include="Dal\ClassificacaoDAL.cs" />
     <Compile Include="Dal\ContasAPagarDAL.cs" />
     <Compile Include="Dal\ContasBancariasDAL.cs" />
-    <Compile Include="Dal\ContasDAL.cs" />
     <Compile Include="Dal\DespesasFixasDAL.cs" />
     <Compile Include="Dal\InvestimentoDAL.cs" />
     <Compile Include="Dal\UsuariosDAL.cs" />
@@ -5026,7 +5025,6 @@
     <Compile Include="Modelo\ClassificacaoInformation.cs" />
     <Compile Include="Modelo\ContasAPagarInformation.cs" />
     <Compile Include="Modelo\ContasBancariasInformation.cs" />
-    <Compile Include="Modelo\ContasInformation.cs" />
     <Compile Include="Modelo\DespesaFixaInformation.cs" />
     <Compile Include="Modelo\InvestimentoInformation.cs" />
     <Compile Include="Modelo\UsuariosInformation.cs" />

@@ -59,10 +59,10 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Descricaocontas" HeaderText="Descrição Contas" />
+                                                    <asp:BoundField DataField="Descricaodespesa" HeaderText="Descrição Despesa" />
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
-                                                    <asp:BoundField DataField="ValorContas" HeaderText="Valor parcela" DataFormatString="{0:c}" />                                                    
+                                                    <asp:BoundField DataField="ValorDespesa" HeaderText="Valor parcela" DataFormatString="{0:c}" />                                                    
                                                     <asp:BoundField DataField="DataVencimentoContaAPagar" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
                                                     
                                                     <asp:TemplateField>
@@ -70,7 +70,7 @@
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
                                                                 CommandName="Editar" Text="Quitar"
                                                                 CommandArgument='<%# DataBinder
-                                                                .Eval(Container.DataItem, "idcontas")%>' />
+                                                                .Eval(Container.DataItem, "IdDespesaFixa")%>' />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

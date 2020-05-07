@@ -24,7 +24,7 @@ namespace MyEconomy
                 objCommand.CommandText = "Procedure_PesquisaContaAPagar";
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.Parameters.Add(new MySqlParameter("_descricaoconta", MySqlDbType.VarChar, 100));
-                objCommand.Parameters["_descricaoconta"].Value = contasapagarInf.DescriaoContas;
+                objCommand.Parameters["_descricaoconta"].Value = contasapagarInf.DescriaoDespesaFixa;
 
 
 
@@ -35,11 +35,11 @@ namespace MyEconomy
                 objCommand.Parameters["_idclassificacao"].Value = contasapagarInf.IdClassificacao;
 
                 MySqlParameter pdatainicial = new MySqlParameter("_datainicial", MySqlDbType.DateTime, 200);
-                pdatainicial.Value = contasapagarInf.DataVencimentoInicialContas;
+                pdatainicial.Value = contasapagarInf.DataVencimentoInicialDespesaFixa;
                 objCommand.Parameters.Add(pdatainicial);
 
                 MySqlParameter pdatafinal = new MySqlParameter("_datafinal", MySqlDbType.DateTime, 200);
-                pdatafinal.Value = contasapagarInf.DataVencimentoFinalContas;
+                pdatafinal.Value = contasapagarInf.DataVencimentoFinalDespesaFixa;
                 objCommand.Parameters.Add(pdatafinal);
 
 
@@ -84,8 +84,8 @@ namespace MyEconomy
                 //pid.Direction = ParameterDirection.Output;
                 //objCommand.Parameters.Add(pid);
 
-                MySqlParameter pidcontas = new MySqlParameter("_idcontas", MySqlDbType.Int32);
-                pidcontas.Value = contasapagarInf.IdContas;
+                MySqlParameter pidcontas = new MySqlParameter("_IdDespesa", MySqlDbType.Int32);
+                pidcontas.Value = contasapagarInf.IdDespesaFixa;
                 objCommand.Parameters.Add(pidcontas);
 
 

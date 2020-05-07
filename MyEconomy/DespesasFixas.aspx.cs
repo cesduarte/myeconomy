@@ -117,20 +117,20 @@ namespace MyEconomy
         }
         public void InserirContasAPagar(DespesaFixaInformation _contasinf)
         {
-            //ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
+            ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
 
-            //DateTime dataatual = DateTime.Now.Date;
+            DateTime dataatual = DateTime.Now.Date;
 
 
-            //for (int i = 0; i < _contasinf.QuantParcelasContas; i++)
-            //{
-            //    contasapagarinf.IdContas = _contasinf.IdContas;
-            //    contasapagarinf.DataVencimentoContasAPagar = _contasinf.DataVencimentoContas.AddMonths(i);
-            //    contasapagarinf.NParcelaContasAPagar = i + 1;
-            //    contasapagarinf.StatusContasAPagar = Convert.ToInt32(StatusEnum.Status.ContasAPagar);
-            //    objcontaapagar.InserirContas(contasapagarinf);
+            for (int i = 0; i < _contasinf.QuantParcelasDespesaFixa; i++)
+            {
+                contasapagarinf.IdDespesaFixa = _contasinf.IdDespesaFixa;
+                contasapagarinf.DataVencimentoContasAPagar = _contasinf.DataVencimentoDespesaFixa.AddMonths(i);
+                contasapagarinf.NParcelaContasAPagar = i + 1;
+                contasapagarinf.StatusContasAPagar = Convert.ToInt32(StatusEnum.Status.ContasAPagar);
+                objcontaapagar.InserirContas(contasapagarinf);
 
-            //}
+            }
 
 
 

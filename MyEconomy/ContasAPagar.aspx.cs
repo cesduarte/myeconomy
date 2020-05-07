@@ -14,8 +14,11 @@ namespace MyEconomy
         ContasAPagarDAL objcontasapagar = new ContasAPagarDAL();
         ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
-        ContasInformation contasinf = new ContasInformation();
-        ContasDAL objconta = new ContasDAL();
+
+
+        DespesaFixaInformation despesasfixasinf = new DespesaFixaInformation();
+        DespesasFixasDAL objdespesasfixas = new DespesasFixasDAL();
+
         ContasAPagarDAL objcontaapagar = new ContasAPagarDAL();
         Validador validador = new Validador();
         protected void Page_Load(object sender, EventArgs e)
@@ -53,11 +56,11 @@ namespace MyEconomy
 
 
 
-                contasapagarinf.DescriaoContas = Txtdescricaopesquisa.Text;
+                contasapagarinf.DescriaoDespesaFixa = Txtdescricaopesquisa.Text;
                 contasapagarinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
                 contasapagarinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
-                contasapagarinf.DataVencimentoInicialContas = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
-                contasapagarinf.DataVencimentoFinalContas = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
+                contasapagarinf.DataVencimentoInicialDespesaFixa = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
+                contasapagarinf.DataVencimentoFinalDespesaFixa = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
 
 
 
@@ -78,18 +81,18 @@ namespace MyEconomy
             {
 
 
-                contasinf = null;
-                foreach (ContasInformation contasinf in objconta.Carregarcontascampos(id))
+                despesasfixasinf = null;
+                foreach (DespesaFixaInformation despesasfixasinf in objdespesasfixas.Carregarcontascampos(id))
                 {
-                    Txtid.Text = Convert.ToString(contasinf.IdContas);
-                    Txtdescricaoconta.Text = contasinf.DescriaoContas;
-                    Txtvalor.Text = Convert.ToString(contasinf.ValorContas);
-                    Txtvalorcontaapagar.Text = Convert.ToString(contasinf.ValorContas);
-                    Dropcontasbancarias.SelectedValue = Convert.ToString(contasinf.IdContasBancarias);
-                    Dropclassificacao.SelectedValue = Convert.ToString(contasinf.IdClassificacao);
-                    Dropcontasbancariasapagar.SelectedValue = Convert.ToString(contasinf.IdContasBancarias);
+                    //Txtid.Text = Convert.ToString(despesasfixasinf.IdDespesaFixa);
+                    Txtdescricaoconta.Text = despesasfixasinf.DescriaoDespesaFixa;
+                    Txtvalor.Text = Convert.ToString(despesasfixasinf.ValorDespesaFixa);
+                    Txtvalorcontaapagar.Text = Convert.ToString(despesasfixasinf.ValorDespesaFixa);
+                    Dropcontasbancarias.SelectedValue = Convert.ToString(despesasfixasinf.IdContasBancarias);
+                    Dropclassificacao.SelectedValue = Convert.ToString(despesasfixasinf.IdClassificacao);
+                    Dropcontasbancariasapagar.SelectedValue = Convert.ToString(despesasfixasinf.IdContasBancarias);
                     
-                    Txtdatavencimento.Text = contasinf.DataVencimentoContas.ToString("yyyy-MM-dd");
+                    Txtdatavencimento.Text = despesasfixasinf.DataVencimentoDespesaFixa.ToString("yyyy-MM-dd");
                
 
                 }
@@ -138,14 +141,14 @@ namespace MyEconomy
                 throw new Exception();
             }
         }
-        public void InserirContasAPagar(ContasInformation _contasinf)
+        public void InserirContasAPagar(DespesaFixaInformation despesasfixasinf)
         {
             ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
 
             DateTime dataatual = DateTime.Now.Date;
 
 
-            for (int i = 0; i < _contasinf.QuantParcelasContas; i++)
+            for (int i = 0; i < despesasfixasinf.QuantParcelasDespesaFixa; i++)
             {
                 //contasapagarinf.IdContas = _contasinf.IdContas;
                 //contasapagarinf.DataVencimentoContasAPagar = _contasinf.DataVencimentoContas.AddMonths(i);
