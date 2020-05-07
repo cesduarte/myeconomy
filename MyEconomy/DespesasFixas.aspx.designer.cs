@@ -11,7 +11,7 @@ namespace MyEconomy
 {
 
 
-    public partial class Contas
+    public partial class DespesasFixas
     {
 
         /// <summary>
@@ -231,13 +231,13 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Txtdescricaoconta control.
+        /// Txtdescricaodespesa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txtdescricaoconta;
+        protected global::System.Web.UI.WebControls.TextBox Txtdescricaodespesa;
 
         /// <summary>
         /// RequiredFieldValidator1 control.

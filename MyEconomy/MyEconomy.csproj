@@ -4962,10 +4962,10 @@
     <Content Include="Componentes\plugins\x-editable\dist\bootstrap3-editable\img\loading.gif" />
     <Content Include="Componentes\plugins\x-editable\dist\bootstrap3-editable\js\bootstrap-editable.min.js" />
     <Content Include="Componentes\plugins\xml\plugin.js" />
-    <Content Include="Contas.aspx" />
     <Content Include="ContasAPagar.aspx" />
     <Content Include="ContasBancarias.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DespesasFixas.aspx" />
     <Content Include="Diagrama\Modelagem.xml" />
     <Content Include="Investimento.aspx" />
     <Content Include="Usuarios.aspx" />
@@ -4980,13 +4980,6 @@
     </Compile>
     <Compile Include="Classificacao.aspx.designer.cs">
       <DependentUpon>Classificacao.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contas.aspx.cs">
-      <DependentUpon>Contas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contas.aspx.designer.cs">
-      <DependentUpon>Contas.aspx</DependentUpon>
     </Compile>
     <Compile Include="ContasAPagar.aspx.cs">
       <DependentUpon>ContasAPagar.aspx</DependentUpon>
@@ -5006,6 +4999,7 @@
     <Compile Include="Dal\ContasAPagarDAL.cs" />
     <Compile Include="Dal\ContasBancariasDAL.cs" />
     <Compile Include="Dal\ContasDAL.cs" />
+    <Compile Include="Dal\DespesasFixasDAL.cs" />
     <Compile Include="Dal\InvestimentoDAL.cs" />
     <Compile Include="Dal\UsuariosDAL.cs" />
     <Compile Include="Default.aspx.cs">
@@ -5014,6 +5008,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DespesasFixas.aspx.cs">
+      <DependentUpon>DespesasFixas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DespesasFixas.aspx.designer.cs">
+      <DependentUpon>DespesasFixas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Investimento.aspx.cs">
       <DependentUpon>Investimento.aspx</DependentUpon>
@@ -5026,6 +5027,7 @@
     <Compile Include="Modelo\ContasAPagarInformation.cs" />
     <Compile Include="Modelo\ContasBancariasInformation.cs" />
     <Compile Include="Modelo\ContasInformation.cs" />
+    <Compile Include="Modelo\DespesaFixaInformation.cs" />
     <Compile Include="Modelo\InvestimentoInformation.cs" />
     <Compile Include="Modelo\UsuariosInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

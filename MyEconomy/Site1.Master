@@ -253,9 +253,10 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="Classificacao.aspx">Classificação</a></li>
-                               <li><a href="Contas.aspx">Contas</a></li>
+                             
                            
                             <li><a href="ContasBancarias.aspx">Contas Bancárias</a></li>
+                              <li><a href="DespesasFixas.aspx">Despesas Fixas</a></li>
                             <li><a href="Investimento.aspx">Investimento</a></li>
                             <li><a href="Usuarios.aspx">Usuários</a></li>
                             

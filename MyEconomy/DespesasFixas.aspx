@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Contas.aspx.cs" Inherits="MyEconomy.Contas" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="DespesasFixas.aspx.cs" Inherits="MyEconomy.DespesasFixas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
+ <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
     
 
     <div class="container-fluid">
@@ -17,7 +16,7 @@
                             <div class="col p-md-0">
                                 <ol class="breadcrumb">
                                     
-                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Pesquisar Contas </a></li>
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Pesquisar Despesas Fixas </a></li>
                                 </ol>
 
                             </div> 
@@ -37,11 +36,11 @@
                                                 <ul class="mb-0 form-profile__icons">
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-transparent p-0 mr-3" title="Novo conta" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
+                                                        <button type="button" class="btn btn-transparent p-0 mr-3" title="Nova Despesa Fixa" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
 
                                                     </li>
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-transparent p-0 mr-3" title="Pesquisar Contas" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
+                                                        <button type="button" class="btn btn-transparent p-0 mr-3" title="Pesquisar Despesas" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
                                                     </li>
 
                                                     <li class="d-inline-block">
@@ -65,11 +64,11 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Descricaocontas" HeaderText="Descrição Contas" />
+                                                    <asp:BoundField DataField="Descricaodespesa" HeaderText="Descrição Contas" />
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
-                                                    <asp:BoundField DataField="ValorContas" HeaderText="Valor parcela" DataFormatString="{0:c}" />
-                                                   <asp:BoundField DataField="ValorTotalContas" HeaderText="Valor total" DataFormatString="{0:c}" />
+                                                    <asp:BoundField DataField="ValorDespesa" HeaderText="Valor parcela" DataFormatString="{0:c}" />
+                                                   <asp:BoundField DataField="ValorTotalDespesa" HeaderText="Valor total" DataFormatString="{0:c}" />
                                                     <asp:BoundField DataField="DataVencimento" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
                                                     <asp:BoundField DataField="QuantParcelas" HeaderText="Parcelas" />
                                                      <asp:BoundField DataField="QuantParcelasAPagar" HeaderText="Parcelas a pagar" />
@@ -78,7 +77,7 @@
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
                                                                 CommandName="Editar" Text="Editar"
                                                                 CommandArgument='<%# DataBinder
-                                                                .Eval(Container.DataItem, "idcontas")%>' />
+                                                                .Eval(Container.DataItem, "IdDespesaFixa")%>' />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -106,7 +105,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Pesquisar Contas</h5>
+                                        <h5 class="modal-title">Pesquisar Despesas</h5>
                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                                             <ContentTemplate>
                                                 <button type="button" id="teste" class="close" runat="server" onserverclick="Button1_Click" usesubmitbehavior="false" data-dismiss="modal">
@@ -122,7 +121,7 @@
                                             <ContentTemplate>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição Conta: </asp:Label>
+                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição Despesa: </asp:Label>
                                                         <asp:TextBox ID="Txtdescricaopesquisa" runat="server" class="form-control form-control-sm"></asp:TextBox>
                                                     </div>
                                                 </div>
@@ -195,7 +194,7 @@
 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Cadastro de Contas</h5>
+                                        <h5 class="modal-title">Cadastro de Despesa</h5>
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
                                             
@@ -216,9 +215,9 @@
                                                 </div>
                                                 <div class="form-row">
                                                      <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição Conta: </asp:Label>
-                                                          <asp:TextBox ID="Txtdescricaoconta"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
-                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="group" runat="server" class="text-danger" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdescricaoconta"></asp:RequiredFieldValidator>
+                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição Despesa: </asp:Label>
+                                                          <asp:TextBox ID="Txtdescricaodespesa"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="group" runat="server" class="text-danger" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdescricaodespesa"></asp:RequiredFieldValidator>
 
                                                      </div>
                                                 </div>
@@ -354,3 +353,4 @@
 
     
                 
+
