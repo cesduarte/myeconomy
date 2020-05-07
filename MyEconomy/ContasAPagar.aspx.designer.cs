@@ -258,13 +258,13 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label Label12;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// Dropcontasbancariasapagar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList Dropcontasbancariasapagar;
 
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -285,13 +285,13 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label Label16;
 
         /// <summary>
-        /// TextBox3 control.
+        /// Txtvalorcontaapagar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox Txtvalorcontaapagar;
 
         /// <summary>
         /// MyRangeValidator control.

@@ -233,10 +233,10 @@
                                                     
                                                     <div class="form-group col-md-12">
                                                          <asp:Label ID="Label12" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
-                                                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
+                                                        <asp:DropDownList ID="Dropcontasbancariasapagar" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="DropDownList1"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="Dropcontasbancariasapagar"></asp:RequiredFieldValidator>
 
                                                         
                                                      </div>
@@ -246,13 +246,13 @@
                                                                  <div class="form-row">
                                                       <div class="form-group col-md-6">
                                                           <asp:Label ID="Label16" runat="server" Text="Label">Valor Pago R$: </asp:Label> 
-                                                          <asp:TextBox ID="TextBox3"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                          <asp:TextBox ID="Txtvalorcontaapagar"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
                                                        
                                                           <asp:RangeValidator ID="MyRangeValidator"  Type="Double" class="text-danger"
                                                            MaximumValue="99999999,99" MinimumValue="0" EnableClientScript="true" Display = "Dynamic"
-                                                            ControlToValidate="TextBox3" runat="server" SetFocusOnError="true"  ValidationGroup="group"
+                                                            ControlToValidate="Txtvalorcontaapagar" runat="server" SetFocusOnError="true"  ValidationGroup="group"
                                                            ErrorMessage="* O formato do campo 'Valor Parcela R$' está incorreto"></asp:RangeValidator>
-                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="TextBox3"></asp:RequiredFieldValidator>
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtvalorcontaapagar"></asp:RequiredFieldValidator>
 
                                                       </div>
                                                        <div class="form-group col-md-6">

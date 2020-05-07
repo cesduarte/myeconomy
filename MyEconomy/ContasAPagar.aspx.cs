@@ -84,13 +84,11 @@ namespace MyEconomy
                     Txtid.Text = Convert.ToString(contasinf.IdContas);
                     Txtdescricaoconta.Text = contasinf.DescriaoContas;
                     Txtvalor.Text = Convert.ToString(contasinf.ValorContas);
-                  
+                    Txtvalorcontaapagar.Text = Convert.ToString(contasinf.ValorContas);
                     Dropcontasbancarias.SelectedValue = Convert.ToString(contasinf.IdContasBancarias);
                     Dropclassificacao.SelectedValue = Convert.ToString(contasinf.IdClassificacao);
-
-
-                    //DateTime datateste = contasinf.DataVencimentoContas;
-                    //string teste = datateste.ToString("yyyy-MM-dd");
+                    Dropcontasbancariasapagar.SelectedValue = Convert.ToString(contasinf.IdContasBancarias);
+                    
                     Txtdatavencimento.Text = contasinf.DataVencimentoContas.ToString("yyyy-MM-dd");
                
 
@@ -109,6 +107,18 @@ namespace MyEconomy
 
                 Dropcontasbancarias.DataSource = null;
                 Dropcontasbancariaspesquisa.DataSource = null;
+                Dropcontasbancariasapagar.DataSource = null;
+
+
+
+                Dropcontasbancariasapagar.DataSource = objcontasbancarias.CarregarContasBancariasCampos("");
+                Dropcontasbancariasapagar.DataTextField = "DescricaoContasBancarias";
+                Dropcontasbancariasapagar.DataValueField = "Idcontasbancarias";
+                Dropcontasbancariasapagar.DataBind();
+
+
+
+
 
 
                 Dropcontasbancarias.DataSource = objcontasbancarias.CarregarContasBancariasCampos("");
