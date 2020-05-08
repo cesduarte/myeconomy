@@ -68,7 +68,7 @@ namespace MyEconomy
         }
 
 
-        public List<DespesaFixaInformation> Carregarcontascampos(string IdDespesaFixa)
+        public List<DespesaFixaInformation> CarregarDespesaFixascampos(string IdDespesaFixa)
         {
             try
             {

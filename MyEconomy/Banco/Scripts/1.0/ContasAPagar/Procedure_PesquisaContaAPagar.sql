@@ -5,7 +5,7 @@ IN _idclassificacao INT,
 IN _datainicial datetime, in _datafinal datetime)
 BEGIN
 
-select a.IdDespesaFixa, a.Descricaodespesa, a.ValorDespesa, b.DescricaoContasBancarias, c.DescricaoClassificacao, d.DataVencimentoContaAPagar, a.ValorDespesa
+select a.IdDespesaFixa, a.Descricaodespesa, a.ValorDespesa, b.DescricaoContasBancarias, c.DescricaoClassificacao, d.DataVencimentoContaAPagar, a.ValorDespesa, d.IdContaAPagar, d.StatusContasAPagar
 from
 tbl_despesafixa a, tbl_contasbancarias b, tbl_classificacao c, tbl_contasapagar d
 where

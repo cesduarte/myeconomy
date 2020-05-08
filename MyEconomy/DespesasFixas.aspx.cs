@@ -63,7 +63,7 @@ namespace MyEconomy
 
 
                 despesasfixasinf = null;
-                foreach (DespesaFixaInformation despesasfixasinf in objdespesasfixas.Carregarcontascampos(id))
+                foreach (DespesaFixaInformation despesasfixasinf in objdespesasfixas.CarregarDespesaFixascampos(id))
                 {
                     Txtid.Text = Convert.ToString(despesasfixasinf.IdDespesaFixa);
                     Txtdescricaodespesa.Text = despesasfixasinf.DescriaoDespesaFixa;

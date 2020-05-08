@@ -75,25 +75,25 @@ namespace MyEconomy
             }
 
         }
-        public void CarregarConta(string id)
+        public void CarregarContaAPagar(string id)
         {
             try
             {
 
 
-                despesasfixasinf = null;
-                foreach (DespesaFixaInformation despesasfixasinf in objdespesasfixas.Carregarcontascampos(id))
+                contasapagarinf = null;
+                foreach (ContasAPagarInformation contasapagarinf in objcontaapagar.CarregarContasAPagar(id))
                 {
-                    //Txtid.Text = Convert.ToString(despesasfixasinf.IdDespesaFixa);
-                    Txtdescricaoconta.Text = despesasfixasinf.DescriaoDespesaFixa;
-                    Txtvalor.Text = Convert.ToString(despesasfixasinf.ValorDespesaFixa);
-                    Txtvalorcontaapagar.Text = Convert.ToString(despesasfixasinf.ValorDespesaFixa);
-                    Dropcontasbancarias.SelectedValue = Convert.ToString(despesasfixasinf.IdContasBancarias);
-                    Dropclassificacao.SelectedValue = Convert.ToString(despesasfixasinf.IdClassificacao);
-                    Dropcontasbancariasapagar.SelectedValue = Convert.ToString(despesasfixasinf.IdContasBancarias);
-                    
-                    Txtdatavencimento.Text = despesasfixasinf.DataVencimentoDespesaFixa.ToString("yyyy-MM-dd");
-               
+                    Txtid.Text = Convert.ToString(contasapagarinf.IdContasAPagar);
+                    Txtdescricaoconta.Text = contasapagarinf.DescriaoDespesaFixa;
+                    Dropcontasbancarias.SelectedValue = Convert.ToString(contasapagarinf.IdContasBancarias);
+                    Dropcontasbancariasapagar.SelectedValue = Convert.ToString(contasapagarinf.IdContasBancarias);
+                    Dropclassificacao.SelectedValue = Convert.ToString(contasapagarinf.IdClassificacao);
+
+                     Txtvalor.Text = Convert.ToString(contasapagarinf.ValorDespesaFixa);                   
+
+                    Txtdatavencimento.Text = contasapagarinf.DataVencimentoContasAPagar.ToString("yyyy-MM-dd");
+
 
                 }
             }
@@ -301,9 +301,9 @@ namespace MyEconomy
         {
             if (e.CommandName == "Editar")
             {
-                string IdContasBancárias = e.CommandArgument.ToString();
+              
 
-                CarregarConta(e.CommandArgument.ToString());
+                CarregarContaAPagar(e.CommandArgument.ToString());
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
 

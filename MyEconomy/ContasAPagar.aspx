@@ -64,13 +64,14 @@
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
                                                     <asp:BoundField DataField="ValorDespesa" HeaderText="Valor parcela" DataFormatString="{0:c}" />                                                    
                                                     <asp:BoundField DataField="DataVencimentoContaAPagar" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
-                                                    
+                                                    <asp:BoundField DataField="StatusContasAPagar" HeaderText="Status"  />
+                                                   
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
                                                                 CommandName="Editar" Text="Quitar"
                                                                 CommandArgument='<%# DataBinder
-                                                                .Eval(Container.DataItem, "IdDespesaFixa")%>' />
+                                                                .Eval(Container.DataItem, "IdContaAPagar")%>' />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

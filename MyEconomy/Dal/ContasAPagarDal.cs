@@ -70,6 +70,66 @@ namespace MyEconomy
             }
 
         }
+
+
+        public List<ContasAPagarInformation> CarregarContasAPagar(string IdContasAPagar)
+        {
+            try
+            {
+                objConexao.Open();
+                string sql;
+
+                if (IdContasAPagar == "")
+                {
+                    sql = "";
+                }
+                else
+                {
+                    sql = "select  a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar  from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
+                }
+
+
+
+                objCommand = new MySqlCommand(sql, objConexao);
+                MySqlDataAdapter Objdata = new MySqlDataAdapter(objCommand);
+
+                DataTable objDataTable = new DataTable();
+                Objdata.Fill(objDataTable);
+
+                List<ContasAPagarInformation> ListaDeDados = new List<ContasAPagarInformation>();
+                foreach (DataRow dataRow in objDataTable.Rows)
+                {
+                    ListaDeDados.Add(new ContasAPagarInformation()
+                    {
+
+
+                        IdContasAPagar = int.Parse(dataRow["IdContaAPagar"].ToString()),
+                        DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
+                        IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
+                        IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
+                        ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
+
+                        DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
+                        StatusContasAPagar = Convert.ToInt32(dataRow["StatusContasAPagar"].ToString())
+                    }); 
+                }
+
+
+                return ListaDeDados;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+        }
         public void InserirContas(ContasAPagarInformation contasapagarInf)
         {
 
