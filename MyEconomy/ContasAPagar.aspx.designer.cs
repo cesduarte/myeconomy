@@ -186,13 +186,13 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// DropStatus control.
+        /// DropStatusPesquisa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropStatus;
+        protected global::System.Web.UI.WebControls.DropDownList DropStatusPesquisa;
 
         /// <summary>
         /// UpdatePanel1 control.
@@ -285,13 +285,13 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label Label16;
 
         /// <summary>
-        /// Txtvalorcontaapagar control.
+        /// Txtvalorpago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txtvalorcontaapagar;
+        protected global::System.Web.UI.WebControls.TextBox Txtvalorpago;
 
         /// <summary>
         /// MyRangeValidator control.
@@ -472,6 +472,24 @@ namespace MyEconomy
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Txtdatavencimento;
+
+        /// <summary>
+        /// Label5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label5;
+
+        /// <summary>
+        /// txtStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStatus;
 
         /// <summary>
         /// UpdatePanel8 control.

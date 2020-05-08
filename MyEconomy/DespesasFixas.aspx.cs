@@ -127,7 +127,7 @@ namespace MyEconomy
                 contasapagarinf.IdDespesaFixa = _contasinf.IdDespesaFixa;
                 contasapagarinf.DataVencimentoContasAPagar = _contasinf.DataVencimentoDespesaFixa.AddMonths(i);
                 contasapagarinf.NParcelaContasAPagar = i + 1;
-                contasapagarinf.StatusContasAPagar = Convert.ToInt32(StatusEnum.Status.ContasAPagar);
+                contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar));
                 objcontaapagar.InserirContas(contasapagarinf);
 
             }

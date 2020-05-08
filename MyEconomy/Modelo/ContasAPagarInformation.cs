@@ -12,7 +12,7 @@ namespace MyEconomy
         public DateTime DataVencimentoContasAPagar { get; set; }
 
         public int NParcelaContasAPagar { get; set; }
-        public int StatusContasAPagar { get; set; }
+        public string StatusContasAPagar { get; set; }
 
     }
 }

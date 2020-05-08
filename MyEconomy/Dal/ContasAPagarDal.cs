@@ -110,8 +110,8 @@ namespace MyEconomy
                         ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
 
                         DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
-                        StatusContasAPagar = Convert.ToInt32(dataRow["StatusContasAPagar"].ToString())
-                    }); 
+                        StatusContasAPagar = dataRow["StatusContasAPagar"].ToString()
+                    }) ; 
                 }
 
 
@@ -161,7 +161,7 @@ namespace MyEconomy
                 objCommand.Parameters.Add(pnparcelacontasapagar);
 
 
-                MySqlParameter pstatuscontaapagar = new MySqlParameter("_statuscontaapagar", MySqlDbType.Int32, 200);
+                MySqlParameter pstatuscontaapagar = new MySqlParameter("_statuscontaapagar", MySqlDbType.VarChar, 200);
                 pstatuscontaapagar.Value = contasapagarInf.StatusContasAPagar;
                 objCommand.Parameters.Add(pstatuscontaapagar);
 

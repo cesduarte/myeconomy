@@ -156,10 +156,10 @@
                                                
                                                
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-12">
                                                          <asp:Label ID="Label4" runat="server" Text="Label">Status</asp:Label>
                                                         
-                                                        <asp:DropDownList ID="DropStatus" runat="server" CssClass="form-control form-control" ValidationGroup="group">
+                                                        <asp:DropDownList ID="DropStatusPesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
                                                           
@@ -206,9 +206,10 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Pagamento</h5>
+                                            
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
-                                            
+                                          
                                          <button type="button" id="Button4" class="close" runat="server" onserverclick="Button5_Click"   UseSubmitBehavior="false" data-dismiss="modal"><span>&times;</span>
                                                         
                                           </button>
@@ -219,9 +220,10 @@
                                          <asp:UpdatePanel ID="UpdatePanel7" runat="server">
                                            <ContentTemplate>
                                                <div class="default-tab">
+                                            
                                                    <ul class="nav nav-tabs mb-3" role="tablist">
                                                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile">Detalhes Pagamento</a></li>
-                                                        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#home">Detalhes Conta</a></li>
+                                                        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#home">Detalhes Despesa</a></li>
                                                         
                                                    </ul>
                                                     <div class="tab-content">
@@ -247,13 +249,13 @@
                                                                  <div class="form-row">
                                                       <div class="form-group col-md-6">
                                                           <asp:Label ID="Label16" runat="server" Text="Label">Valor Pago R$: </asp:Label> 
-                                                          <asp:TextBox ID="Txtvalorcontaapagar"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                          <asp:TextBox ID="Txtvalorpago"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
                                                        
                                                           <asp:RangeValidator ID="MyRangeValidator"  Type="Double" class="text-danger"
                                                            MaximumValue="99999999,99" MinimumValue="0" EnableClientScript="true" Display = "Dynamic"
-                                                            ControlToValidate="Txtvalorcontaapagar" runat="server" SetFocusOnError="true"  ValidationGroup="group"
+                                                            ControlToValidate="Txtvalorpago" runat="server" SetFocusOnError="true"  ValidationGroup="group"
                                                            ErrorMessage="* O formato do campo 'Valor Parcela R$' está incorreto"></asp:RangeValidator>
-                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtvalorcontaapagar"></asp:RequiredFieldValidator>
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtvalorpago"></asp:RequiredFieldValidator>
 
                                                       </div>
                                                        <div class="form-group col-md-6">
@@ -288,7 +290,7 @@
                                                 </div>
                                                                  <div class="form-row">
                                                      <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição Conta: </asp:Label>
+                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição Despesa: </asp:Label>
                                                           <asp:TextBox ID="Txtdescricaoconta"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
                                                        
                                                      </div>
@@ -315,7 +317,7 @@
                                                      </div>
                                                    
                                                 </div>
-                                                                 <div class="form-row">
+                                                    <div class="form-row">
                                                       <div class="form-group col-md-6">
                                                           <asp:Label ID="Label11" runat="server" Text="Label">Valor Parcela R$: </asp:Label> 
                                                           <asp:TextBox ID="Txtvalor"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
@@ -328,7 +330,17 @@
                                                          
                                                      </div>
                                                        
-                                                     </div>                                                                                         
+                                                     </div>  
+                                                    <div class="form-row">
+                                                      <div class="form-group col-md-6">
+                                                          <asp:Label ID="Label5" runat="server" Text="Label">Status de pagamento</asp:Label> 
+                                                          <asp:TextBox ID="txtStatus"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
+                                                       
+                                                          
+                                                      </div>
+                                                       
+                                                       
+                                                     </div> 
                                                                 </div>
                                                           </div>
                                                        
@@ -339,9 +351,8 @@
 
                                            </ContentTemplate>
                                          </asp:UpdatePanel>
-                                    </div>
+                                    </div>                                   
                                     
-
                                   
 
                                 </div>

@@ -25,7 +25,7 @@ namespace MyEconomy
         {
             if (!Page.IsPostBack)
             {
-                CarregarStatus(DropStatus, new StatusEnum.Status());
+                CarregarStatus(DropStatusPesquisa, new StatusEnum.Status());
                 carrega_data();
                 CarregarContasBancarias();
                 CarregarClassificacao();
@@ -90,10 +90,10 @@ namespace MyEconomy
                     Dropcontasbancariasapagar.SelectedValue = Convert.ToString(contasapagarinf.IdContasBancarias);
                     Dropclassificacao.SelectedValue = Convert.ToString(contasapagarinf.IdClassificacao);
 
-                     Txtvalor.Text = Convert.ToString(contasapagarinf.ValorDespesaFixa);                   
-
+                    Txtvalor.Text = Convert.ToString(contasapagarinf.ValorDespesaFixa);
+                    Txtvalorpago.Text = Convert.ToString(contasapagarinf.ValorDespesaFixa);
                     Txtdatavencimento.Text = contasapagarinf.DataVencimentoContasAPagar.ToString("yyyy-MM-dd");
-
+                    txtStatus.Text = contasapagarinf.StatusContasAPagar;
 
                 }
             }
@@ -216,7 +216,7 @@ namespace MyEconomy
             Dropcontasbancariaspesquisa.SelectedIndex = 0;
             Dropclassificacaopesquisa.SelectedIndex = 0;
             carrega_data();
-            DropStatus.SelectedIndex = 0;
+            DropStatusPesquisa.SelectedIndex = 0;
 
         }
 
