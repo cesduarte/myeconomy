@@ -69,7 +69,7 @@
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
-                                                                CommandName="Editar" Text="Quitar"
+                                                                CommandName="Editar" Text="Editar"
                                                                 CommandArgument='<%# DataBinder
                                                                 .Eval(Container.DataItem, "IdContaAPagar")%>' />
                                                         </ItemTemplate>
@@ -229,7 +229,12 @@
                                                     <div class="tab-content">
                                                         <div class="tab-pane fade show active" id="profile">
                                                              <div class="p-t-15">
-                                                                 
+                                                                    <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        
+                                                        <asp:TextBox ID="Txtid"  runat="server"  class="form-control form-control-sm" Visible ="false"></asp:TextBox>
+                                                    </div>
+                                                </div>
                                                                
                                                                  <div class="form-row">
                                                     
@@ -260,20 +265,30 @@
                                                       </div>
                                                        <div class="form-group col-md-6">
                                                          <asp:Label ID="Label17" runat="server" Text="Label" >Data pagamento: </asp:Label>
-                                                         <asp:TextBox ID="TextBox4"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>     
-                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="TextBox4"></asp:RequiredFieldValidator>
+                                                         <asp:TextBox ID="txtdatapagamento"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>     
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="txtdatapagamento"></asp:RequiredFieldValidator>
                                                      <asp:RangeValidator ID="RangeValidator2"  Display="Dynamic" Type="Date" class="text-danger"
                                                            MaximumValue="30/12/2050" MinimumValue="1/01/1900" EnableClientScript="true" 
-                                                            ControlToValidate="TextBox4" runat="server" SetFocusOnError="true"  ValidationGroup="group"
+                                                            ControlToValidate="txtdatapagamento" runat="server" SetFocusOnError="true"  ValidationGroup="group"
                                                            ErrorMessage="* O formato do campo 'Data de Vencimento' está incorreto, selecione a data ao lado"></asp:RangeValidator> 
                                                      </div>
                                                        
                                                      </div> 
+                                                                 <div class="form-row">
+                                                      <div class="form-group col-md-6">
+                                                          <asp:Label ID="Label5" runat="server" Text="Label">Status de pagamento</asp:Label> 
+                                                          <asp:TextBox ID="txtStatus"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
+                                                       
+                                                          
+                                                      </div>
+                                                       
+                                                       
+                                                     </div>
                                                                   <div class="modal-footer">
                                           
                                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                     <ContentTemplate>
-                                                        <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Quitar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
+                                                        <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Salvar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
                                                         <asp:Button ID="Button5" class="btn btn-outline-primary" runat="server" Text="Limpar"  OnClick="Button5_Click" />
                                                     </ContentTemplate>
                                          </asp:UpdatePanel>
@@ -282,12 +297,7 @@
                                                         </div>
                                                         <div class="tab-pane fade " id="home" role="tabpanel">
                                                              <div class="p-t-15">
-                                                                 <div class="form-row">
-                                                    <div class="form-group col-md-4">
-                                                        
-                                                        <asp:TextBox ID="Txtid"  runat="server"  class="form-control form-control-sm" Visible ="false"></asp:TextBox>
-                                                    </div>
-                                                </div>
+                                                              
                                                                  <div class="form-row">
                                                      <div class="form-group col-md-12">
                                                          <asp:Label ID="Label1" runat="server" Text="Label">Descrição Despesa: </asp:Label>
@@ -331,16 +341,7 @@
                                                      </div>
                                                        
                                                      </div>  
-                                                    <div class="form-row">
-                                                      <div class="form-group col-md-6">
-                                                          <asp:Label ID="Label5" runat="server" Text="Label">Status de pagamento</asp:Label> 
-                                                          <asp:TextBox ID="txtStatus"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
-                                                       
-                                                          
-                                                      </div>
-                                                       
-                                                       
-                                                     </div> 
+                                                     
                                                                 </div>
                                                           </div>
                                                        

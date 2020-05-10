@@ -4,6 +4,9 @@ CREATE TABLE `myeconomy`.`tbl_contasapagar` (
  `DataVencimentoContaAPagar` datetime,
  `NParcelasContaAPagar` int,
  `StatusContasAPagar` varchar(200),
+ `IdContaBancariaPagamento` int,
+ `ValorPagamento` decimal (10,2),
+  `DataPagamento` datetime,
  PRIMARY KEY (`IdContaAPagar`),
 UNIQUE INDEX `IdContaAPagar_UNIQUE` (`IdContaAPagar` ASC) VISIBLE);
 

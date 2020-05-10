@@ -85,7 +85,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    sql = "select  a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar  from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
+                    sql = "select  a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar, b.IdContaBancariaPagamento, b.ValorPagamento, b.DataPagamento from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
                 }
 
 
@@ -99,19 +99,49 @@ namespace MyEconomy
                 List<ContasAPagarInformation> ListaDeDados = new List<ContasAPagarInformation>();
                 foreach (DataRow dataRow in objDataTable.Rows)
                 {
-                    ListaDeDados.Add(new ContasAPagarInformation()
+                    if (dataRow["StatusContasAPagar"].ToString() == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
+                    {
+                        ListaDeDados.Add(new ContasAPagarInformation()
+                        {
+
+
+                            IdContasAPagar = int.Parse(dataRow["IdContaAPagar"].ToString()),
+                            DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
+                            IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
+                            IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
+                            ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
+                            DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
+                            StatusContasAPagar = dataRow["StatusContasAPagar"].ToString(),
+                            IdContaBancariaPagamentoContasAPagar = Convert.ToInt32(dataRow["IdContaBancariaPagamento"].ToString()),
+                            ValorPagamentoContasAPagar = Convert.ToDecimal(dataRow["ValorPagamento"].ToString()),
+                            DataPagamentoContasAPagar = Convert.ToDateTime(dataRow["DataPagamento"].ToString()),
+
+
+                        });
+                    }
+                    else
                     {
 
+                        ListaDeDados.Add(new ContasAPagarInformation()
+                        {
 
-                        IdContasAPagar = int.Parse(dataRow["IdContaAPagar"].ToString()),
-                        DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
-                        IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
-                        IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
-                        ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
 
-                        DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
-                        StatusContasAPagar = dataRow["StatusContasAPagar"].ToString()
-                    }) ; 
+                            IdContasAPagar = int.Parse(dataRow["IdContaAPagar"].ToString()),
+                            DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
+                            IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
+                            IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
+                            ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
+
+                            DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
+                            StatusContasAPagar = dataRow["StatusContasAPagar"].ToString()
+
+
+                        });
+                    }
+                    
+
+                   
+                    
                 }
 
 
@@ -130,7 +160,7 @@ namespace MyEconomy
                 objConexao.Close();
             }
         }
-        public void InserirContas(ContasAPagarInformation contasapagarInf)
+        public void InserirContasAPagar(ContasAPagarInformation contasapagarInf)
         {
 
             try
@@ -177,6 +207,67 @@ namespace MyEconomy
                 objCommand.ExecuteNonQuery();
                 //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
                 objCommand.Parameters.Clear();
+
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+
+        }
+
+        public void AlterarContasAPagar(ContasAPagarInformation contasapagarInf)
+        {
+
+            try
+            {
+
+                objCommand.Connection = objConexao;
+                objCommand.CommandText = "Procedure_AlteraContasAPagarPagamento";
+                objCommand.CommandType = CommandType.StoredProcedure;
+
+                MySqlParameter pid = new MySqlParameter("_IdContaAPagar", MySqlDbType.Int32);
+                pid.Value =contasapagarInf.IdContasAPagar;
+                objCommand.Parameters.Add(pid);
+
+
+
+
+
+
+
+                MySqlParameter pidcontabancariapagamento = new MySqlParameter("_idContaBancariaPagamento", MySqlDbType.Int32);
+                pidcontabancariapagamento.Value = contasapagarInf.IdContaBancariaPagamentoContasAPagar;
+                objCommand.Parameters.Add(pidcontabancariapagamento);
+
+                MySqlParameter pvalorpagamento = new MySqlParameter("_valorpagamento", MySqlDbType.Decimal);
+                pvalorpagamento.Value = contasapagarInf.ValorPagamentoContasAPagar;
+                objCommand.Parameters.Add(pvalorpagamento);
+
+
+
+                MySqlParameter pdatapagamento = new MySqlParameter("_datapagamento", MySqlDbType.DateTime);
+                pdatapagamento.Value = contasapagarInf.DataPagamentoContasAPagar;
+                objCommand.Parameters.Add(pdatapagamento);
+
+
+                MySqlParameter pstatuscontaapagar = new MySqlParameter("_statuscontaapagar", MySqlDbType.VarChar, 200);
+                pstatuscontaapagar.Value = contasapagarInf.StatusContasAPagar;
+                objCommand.Parameters.Add(pstatuscontaapagar);
+
+
+
+                objConexao.Open();
+                objCommand.ExecuteNonQuery();
+                //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
 
             }
             catch (MySqlException ex)
