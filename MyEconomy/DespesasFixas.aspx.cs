@@ -238,7 +238,7 @@ namespace MyEconomy
 
                 despesasfixasinf.ValorDespesaFixa = Convert.ToDecimal(Txtvalor.Text);
                 despesasfixasinf.DataVencimentoDespesaFixa = Convert.ToDateTime(Txtdatavencimento.Text);
-                despesasfixasinf.QuantParcelasaPagarDespesaFixa = Convert.ToInt32(Txtparcelas.Text);
+                despesasfixasinf.QuantParcelasDespesaFixa = Convert.ToInt32(Txtparcelas.Text);
                 despesasfixasinf.ValorTotalDespesaFixa = despesasfixasinf.ValorDespesaFixa * despesasfixasinf.QuantParcelasDespesaFixa;
 
                 despesasfixasinf.Isdelete = Chkinativo.Checked;
