@@ -42,6 +42,9 @@ namespace MyEconomy
                 pdatafinal.Value = contasapagarInf.DataVencimentoFinalDespesaFixa;
                 objCommand.Parameters.Add(pdatafinal);
 
+                MySqlParameter pstatuscontaapagar = new MySqlParameter("_statuscontaapagar", MySqlDbType.VarChar, 200);
+                pstatuscontaapagar.Value = contasapagarInf.StatusContasAPagar;
+                objCommand.Parameters.Add(pstatuscontaapagar);
 
 
 
@@ -85,7 +88,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    sql = "select  a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar, b.IdContaBancariaPagamento, b.ValorPagamento, b.DataPagamento, b.NParcelasContaAPagar from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
+                    sql = "select a.IdDespesaFixa, a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar, b.IdContaBancariaPagamento, b.ValorPagamento, b.DataPagamento, b.NParcelasContaAPagar from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
                 }
 
 
@@ -104,7 +107,7 @@ namespace MyEconomy
                         ListaDeDados.Add(new ContasAPagarInformation()
                         {
 
-
+                            IdDespesaFixa = int.Parse(dataRow["IdDespesaFixa"].ToString()),
                             IdContasAPagar = int.Parse(dataRow["IdContaAPagar"].ToString()),
                             DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
                             IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
@@ -126,7 +129,7 @@ namespace MyEconomy
                         ListaDeDados.Add(new ContasAPagarInformation()
                         {
 
-
+                            IdDespesaFixa = int.Parse(dataRow["IdDespesaFixa"].ToString()),
                             IdContasAPagar = int.Parse(dataRow["IdContaAPagar"].ToString()),
                             DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
                             IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),

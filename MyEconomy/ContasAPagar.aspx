@@ -60,18 +60,26 @@
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
                                                     <asp:BoundField DataField="Descricaodespesa" HeaderText="Descrição Despesa" />
-                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
-                                                    <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
-                                                    
+                                                    <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" /> 
+
+                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />                                                                                                       
                                                     <asp:BoundField DataField="ValorDespesa" HeaderText="Valor parcela" DataFormatString="{0:c}" />                                                    
                                                     <asp:BoundField DataField="DataVencimentoContaAPagar" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
+
+
+                                                    <asp:BoundField DataField="ContaBancariaPagamento" HeaderText="Conta pagamento" />
+                                                    <asp:BoundField DataField="ValorPagamento" HeaderText="Valor pago" DataFormatString="{0:c}" />  
+                                                    <asp:BoundField DataField="DataPagamento" HeaderText="Data Pagamento" DataFormatString="{0:dd/MM/yyyy}" />
+
+
                                                     <asp:BoundField DataField="NParcelasContaAPagar" HeaderText="Parcela" />
                                                     <asp:BoundField DataField="StatusContasAPagar" HeaderText="Status"  />
+                                                   
                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
-                                                                CommandName="Editar" Text="Editar"
+                                                                CommandName="Editar" Text="Pagar Despesa"
                                                                 CommandArgument='<%# DataBinder
                                                                 .Eval(Container.DataItem, "IdContaAPagar")%>' />
                                                         </ItemTemplate>
@@ -80,7 +88,7 @@
                                                      <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnabrir" runat="server" class="btn mb-1  btn-danger btn-sm"
-                                                                CommandName="Abrir" Text="Abrir" 
+                                                                CommandName="Abrir" Text="Abrir Despesa" 
                                                                 CommandArgument='<%# DataBinder
                                                                 .Eval(Container.DataItem, "IdContaAPagar")%>' />
                                                         </ItemTemplate>
@@ -299,8 +307,8 @@
                                           
                                          <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                                     <ContentTemplate>
-                                                        <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Salvar" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
-                                                        <asp:Button ID="Button5" class="btn btn-outline-primary" runat="server" Text="Limpar"  OnClick="Button5_Click" />
+                                                        <asp:Button ID="Button2" class="btn btn-outline-primary" runat="server" Text="Pagar Despesa" UseSubmitBehavior="false"  OnClick="Button2_Click" ValidationGroup="group" />
+                                                        <asp:Button ID="Button5" class="btn btn-outline-danger" runat="server" Text="Abrir Despesa"  OnClick="Button2_Click" />
                                                     </ContentTemplate>
                                          </asp:UpdatePanel>
                                     </div>
@@ -308,7 +316,12 @@
                                                         </div>
                                                         <div class="tab-pane fade " id="home" role="tabpanel">
                                                              <div class="p-t-15">
-                                                              
+                                                               <div class="form-row">
+                                                    <div class="form-group col-md-4">
+                                                        
+                                                        <asp:TextBox ID="txtiddespesa"  runat="server"  class="form-control form-control-sm" Visible ="false"></asp:TextBox>
+                                                    </div>
+                                                </div>
                                                                  <div class="form-row">
                                                      <div class="form-group col-md-12">
                                                          <asp:Label ID="Label1" runat="server" Text="Label">Descrição Despesa: </asp:Label>

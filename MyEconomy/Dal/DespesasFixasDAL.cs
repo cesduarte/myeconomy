@@ -126,7 +126,7 @@ namespace MyEconomy
             }
         }
 
-
+        
 
 
 
@@ -281,6 +281,52 @@ namespace MyEconomy
                 objConexao.Close();
             }
 
+        }
+
+        public void AlterarSaldoDespesasPagas(int IdDespesa, int QuantParcelaPaga)
+        {
+            try
+            {
+
+                objCommand.Connection = objConexao;
+                objCommand.CommandText = "Procedure_AlterarDespesaFixaQuantParcelas";
+                objCommand.CommandType = CommandType.StoredProcedure;
+
+                MySqlParameter pid = new MySqlParameter("_IdDespesa", MySqlDbType.Int32);
+                pid.Value = IdDespesa;
+                objCommand.Parameters.Add(pid);
+
+
+
+
+                
+
+
+                MySqlParameter pidcontasbancarias = new MySqlParameter("_QuantParcela", MySqlDbType.Int32, 200);
+                pidcontasbancarias.Value = QuantParcelaPaga;
+                objCommand.Parameters.Add(pidcontasbancarias);
+
+               
+
+               
+
+                objConexao.Open();
+                objCommand.ExecuteNonQuery();
+                //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
+
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
         }
     }
 }

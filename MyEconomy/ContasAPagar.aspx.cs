@@ -16,6 +16,7 @@ namespace MyEconomy
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
 
 
+
         DespesaFixaInformation despesasfixasinf = new DespesaFixaInformation();
         DespesasFixasDAL objdespesasfixas = new DespesasFixasDAL();
 
@@ -56,21 +57,40 @@ namespace MyEconomy
 
                 
 
-                if (DropStatusPesquisa.SelectedValue == "2")
+                if (DropStatusPesquisa.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
                 {
-                   GrdDados.Columns[8].Visible = true;
-                   GrdDados.Columns[7].Visible = false;
+                    GrdDados.Columns[2].Visible = false;
+                    GrdDados.Columns[3].Visible = false;
+                    GrdDados.Columns[4].Visible = false;
+                    GrdDados.Columns[5].Visible = true;
+                    GrdDados.Columns[6].Visible = true;
+                    GrdDados.Columns[7].Visible = true;
+
+                    GrdDados.Columns[10].Visible = false;
+                    GrdDados.Columns[11].Visible = true;
+
+
                 }
                 else
                 {
-                    GrdDados.Columns[8].Visible = false;
-                    GrdDados.Columns[7].Visible = true;
+                    GrdDados.Columns[2].Visible = true;
+                    GrdDados.Columns[3].Visible = true;
+                    GrdDados.Columns[4].Visible = true;
+
+                    GrdDados.Columns[5].Visible = false;
+                    GrdDados.Columns[6].Visible = false;
+                    GrdDados.Columns[7].Visible = false;
+
+                    GrdDados.Columns[10].Visible = true;
+                    GrdDados.Columns[11].Visible = false;
+
                 }
                 contasapagarinf.DescriaoDespesaFixa = Txtdescricaopesquisa.Text;
                 contasapagarinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
                 contasapagarinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
                 contasapagarinf.DataVencimentoInicialDespesaFixa = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
                 contasapagarinf.DataVencimentoFinalDespesaFixa = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
+                contasapagarinf.StatusContasAPagar = DropStatusPesquisa.SelectedItem.ToString();
 
 
 
@@ -101,6 +121,7 @@ namespace MyEconomy
                     Txtvalor.Text = Convert.ToString(contasapagarinf.ValorDespesaFixa);                    
                     Txtdatavencimento.Text = contasapagarinf.DataVencimentoContasAPagar.ToString("yyyy-MM-dd");
                     txtStatus.Text = contasapagarinf.StatusContasAPagar;
+                    txtiddespesa.Text = contasapagarinf.IdDespesaFixa.ToString();
 
                     if(contasapagarinf.StatusContasAPagar == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
                     {
@@ -115,13 +136,33 @@ namespace MyEconomy
                     }
 
                 }
+                DesabilitaHabilitaCampos();
             }
             catch (Exception ex)
             {
                 throw new Exception();
             }
         }
-
+        public void DesabilitaHabilitaCampos()
+        {
+            if (txtStatus.Text == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
+            {
+                Dropcontasbancariasapagar.Enabled = false;
+                Txtvalorpago.ReadOnly = true;
+                txtdatapagamento.ReadOnly = true;
+                Button2.Visible = false;
+                Button5.Visible = true;
+            }
+            else
+            {
+                Dropcontasbancariasapagar.Enabled = true;
+                Txtvalorpago.ReadOnly = false;
+                txtdatapagamento.ReadOnly = false;
+                Button2.Visible = true;
+                Button5.Visible = false;
+            }
+                
+        }
        
 
        
@@ -236,12 +277,23 @@ namespace MyEconomy
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-           if (Txtid.Text == "")
+          if(txtStatus.Text == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
             {
-           
-
-           }
-           else
+                contasapagarinf.IdContasAPagar = Convert.ToInt32(Txtid.Text);
+                contasapagarinf.IdContaBancariaPagamentoContasAPagar = 1;
+                contasapagarinf.ValorPagamentoContasAPagar = 0;
+                contasapagarinf.DataPagamentoContasAPagar = Convert.ToDateTime(txtdatapagamento.Text);
+                contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar));
+                objcontasapagar.AlterarContasAPagar(contasapagarinf);
+                objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), 1);
+                CarregarContaAPagar(Txtid.Text);
+                Label9.Text = "Despesa aberta com sucesso!";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
+                Timer1.Enabled = true;
+               
+               
+            }
+          else
             {
                 contasapagarinf.IdContasAPagar = Convert.ToInt32(Txtid.Text);
                 contasapagarinf.IdContaBancariaPagamentoContasAPagar = Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue);
@@ -249,12 +301,16 @@ namespace MyEconomy
                 contasapagarinf.DataPagamentoContasAPagar = Convert.ToDateTime(txtdatapagamento.Text);
                 contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas));
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
-               
-                Label9.Text = "Registro alterado com sucesso!";
+                objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), -1);
+                CarregarContaAPagar(Txtid.Text);
+
+                Label9.Text = "Despesa paga com sucesso!";                
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
                 Timer1.Enabled = true;
-
             }
+              
+
+            
         }
 
         protected void Button5_Click(object sender, EventArgs e)
@@ -280,6 +336,15 @@ namespace MyEconomy
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
 
             }
+            else
+            {
+                
+                CarregarContaAPagar(e.CommandArgument.ToString());
+
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
+            }
+          
         }
 
         protected void GrdDados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
