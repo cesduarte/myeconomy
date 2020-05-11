@@ -54,8 +54,18 @@ namespace MyEconomy
             try
             {
 
+                
 
-
+                if (DropStatusPesquisa.SelectedValue == "2")
+                {
+                   GrdDados.Columns[8].Visible = true;
+                   GrdDados.Columns[7].Visible = false;
+                }
+                else
+                {
+                    GrdDados.Columns[8].Visible = false;
+                    GrdDados.Columns[7].Visible = true;
+                }
                 contasapagarinf.DescriaoDespesaFixa = Txtdescricaopesquisa.Text;
                 contasapagarinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
                 contasapagarinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);

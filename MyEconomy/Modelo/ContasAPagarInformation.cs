@@ -11,7 +11,7 @@ namespace MyEconomy
         public int IdContasAPagar { get; set; }
         public DateTime DataVencimentoContasAPagar { get; set; }
 
-        public int NParcelaContasAPagar { get; set; }
+        public string NParcelaContasAPagar { get; set; }
         public string StatusContasAPagar { get; set; }
         public int IdContaBancariaPagamentoContasAPagar { get; set; }
         public decimal ValorPagamentoContasAPagar { get; set; }

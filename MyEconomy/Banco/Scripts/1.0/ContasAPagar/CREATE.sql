@@ -2,7 +2,7 @@ CREATE TABLE `myeconomy`.`tbl_contasapagar` (
  `IdContaAPagar` INT NOT NULL AUTO_INCREMENT,
  `Iddespesas` INT,
  `DataVencimentoContaAPagar` datetime,
- `NParcelasContaAPagar` int,
+ `NParcelasContaAPagar` varchar(200),
  `StatusContasAPagar` varchar(200),
  `IdContaBancariaPagamento` int,
  `ValorPagamento` decimal (10,2),

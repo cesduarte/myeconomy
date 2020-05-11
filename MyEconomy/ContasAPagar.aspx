@@ -62,14 +62,25 @@
                                                     <asp:BoundField DataField="Descricaodespesa" HeaderText="Descrição Despesa" />
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
+                                                    
                                                     <asp:BoundField DataField="ValorDespesa" HeaderText="Valor parcela" DataFormatString="{0:c}" />                                                    
                                                     <asp:BoundField DataField="DataVencimentoContaAPagar" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
+                                                    <asp:BoundField DataField="NParcelasContaAPagar" HeaderText="Parcela" />
                                                     <asp:BoundField DataField="StatusContasAPagar" HeaderText="Status"  />
                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
                                                                 CommandName="Editar" Text="Editar"
+                                                                CommandArgument='<%# DataBinder
+                                                                .Eval(Container.DataItem, "IdContaAPagar")%>' />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
+                                                     <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:Button ID="btnabrir" runat="server" class="btn mb-1  btn-danger btn-sm"
+                                                                CommandName="Abrir" Text="Abrir" 
                                                                 CommandArgument='<%# DataBinder
                                                                 .Eval(Container.DataItem, "IdContaAPagar")%>' />
                                                         </ItemTemplate>

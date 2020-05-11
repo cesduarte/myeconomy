@@ -85,7 +85,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    sql = "select  a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar, b.IdContaBancariaPagamento, b.ValorPagamento, b.DataPagamento from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
+                    sql = "select  a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar, b.IdContaBancariaPagamento, b.ValorPagamento, b.DataPagamento, b.NParcelasContaAPagar from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
                 }
 
 
@@ -109,6 +109,7 @@ namespace MyEconomy
                             DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
                             IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
                             IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
+                            NParcelaContasAPagar = dataRow["NParcelasContaAPagar"].ToString(),
                             ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
                             DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
                             StatusContasAPagar = dataRow["StatusContasAPagar"].ToString(),
@@ -131,7 +132,7 @@ namespace MyEconomy
                             IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
                             IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
                             ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
-
+                            NParcelaContasAPagar = dataRow["NParcelasContaAPagar"].ToString(),
                             DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
                             StatusContasAPagar = dataRow["StatusContasAPagar"].ToString()
 
@@ -186,7 +187,7 @@ namespace MyEconomy
 
 
 
-                MySqlParameter pnparcelacontasapagar = new MySqlParameter("_nparcelacontasapagar", MySqlDbType.Int32, 200);
+                MySqlParameter pnparcelacontasapagar = new MySqlParameter("_nparcelacontasapagar", MySqlDbType.VarChar, 200);
                 pnparcelacontasapagar.Value = contasapagarInf.NParcelaContasAPagar;
                 objCommand.Parameters.Add(pnparcelacontasapagar);
 
