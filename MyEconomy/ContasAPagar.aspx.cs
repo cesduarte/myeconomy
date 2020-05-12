@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Reflection;
 using System.ComponentModel;
+using System.IO;
+using System.Drawing;
+
 namespace MyEconomy
 {
     public partial class ContasAPagar : System.Web.UI.Page
@@ -275,13 +278,32 @@ namespace MyEconomy
         {
             CarregaGrid();
         }
-
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /* Confirms that an HtmlForm control is rendered for the specified ASP.NET
+               server control at run time. */
+        }
         protected void ExportExcel(object sender, EventArgs e)
         {
-           
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/ms-excel";
+            Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.xls", "selectedrows"));
+            Response.Charset = "";
+
+            StringWriter stringwriter = new StringWriter();
+            HtmlTextWriter htmlwriter = new HtmlTextWriter(stringwriter);
+            Response.Write(stringwriter.ToString());
+            Response.End();
+            
         }
 
         protected void ExportWord(object sender, EventArgs e)
+        {
+
+        }
+        protected void ExportPdf(object sender, EventArgs e)
         {
 
         }
