@@ -46,7 +46,9 @@
                                                     <li class="d-inline-block">
                                                         <button type="button" id="teste1" class="btn btn-transparent p-0 mr-3" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
                                                     </li>
-                                                   
+                                                   <li class="d-inline-block">
+                                                        <button type="button" id="Button6" class="btn btn-transparent p-0 mr-3" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
+                                                    </li>
 
                                                 </ul>
 

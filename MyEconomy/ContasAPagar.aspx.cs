@@ -15,7 +15,7 @@ namespace MyEconomy
         ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
 
-
+   
 
         DespesaFixaInformation despesasfixasinf = new DespesaFixaInformation();
         DespesasFixasDAL objdespesasfixas = new DespesasFixasDAL();
@@ -164,7 +164,14 @@ namespace MyEconomy
                 
         }
        
-
+        public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
+        {
+            ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
+            ContasBancariasInf.IdContasBancarias = IdContasBancarias;
+            ContasBancariasInf.SaldoContasBancarias = Saldo;
+            ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
+            objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
+        }
        
         public void CarregarContasBancarias()
         {
@@ -269,6 +276,16 @@ namespace MyEconomy
             CarregaGrid();
         }
 
+        protected void ExportExcel(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void ExportWord(object sender, EventArgs e)
+        {
+
+        }
+
         protected void Button3_Click(object sender, EventArgs e)
         {
             LimparCamposPesquisa();
@@ -286,6 +303,8 @@ namespace MyEconomy
                 contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar));
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), 1);
+
+                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (Convert.ToDecimal(Txtvalorpago.Text)));
                 CarregarContaAPagar(Txtid.Text);
                 Label9.Text = "Despesa aberta com sucesso!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
@@ -302,6 +321,7 @@ namespace MyEconomy
                 contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas));
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), -1);
+                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue),(-Convert.ToDecimal(Txtvalorpago.Text)));
                 CarregarContaAPagar(Txtid.Text);
 
                 Label9.Text = "Despesa paga com sucesso!";                

@@ -232,5 +232,58 @@ namespace MyEconomy
             }
 
         }
+
+        public void AlterarSaldoContasBancarias(ContasBancariasInformation ContasBancariasinf)
+        {
+
+            try
+            {
+
+                objCommand.Connection = objConexao;
+                objCommand.CommandText = "Procedure_AlteraSaldoContasBancarias";
+                objCommand.CommandType = CommandType.StoredProcedure;
+
+                MySqlParameter pid = new MySqlParameter("_Idcontasbancarias", MySqlDbType.Int32);
+                pid.Value = ContasBancariasinf.IdContasBancarias;
+                objCommand.Parameters.Add(pid);
+
+
+
+
+
+
+
+                
+
+                MySqlParameter psaldo = new MySqlParameter("_saldo", MySqlDbType.Decimal);
+                psaldo.Value = ContasBancariasinf.SaldoContasBancarias;
+                objCommand.Parameters.Add(psaldo);
+
+               
+
+
+
+                ;
+
+
+                objConexao.Open();
+                objCommand.ExecuteNonQuery();
+                //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
+
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+
+        }
     }
 }
