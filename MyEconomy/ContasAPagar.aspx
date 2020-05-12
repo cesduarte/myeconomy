@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"></asp:ScriptManager>
+    
      <div class="container-fluid">
 
         <div class="row">
@@ -46,19 +47,25 @@
                                                     </li>
                                                      <li class="d-inline-block">
                                                          
-                                                          <button type="button" id="Button7" class="btn btn-transparent p-0 mr-3" title="Exportar para:" data-toggle="dropdown"><i class="fa fa-list"></i></button>
+                                                          <button type="button"  class="btn btn-transparent p-0 mr-3"  title="Exportar para:" data-toggle="dropdown"><i class="fa fa-list"></i></button>
                                                      <div class="dropdown-menu">
-                                                         <a class="dropdown-item" runat="server" onserverclick="ExportExcel" href="#" >Excel</a>
+                                                         <a class="dropdown-item" runat="server" id="BtnExportExcel" onserverclick="ExportExcel" AutoEventWireup="true" IsPostback ="true"  href="#" >Excel</a>
                                                          <a class="dropdown-item" runat="server" onserverclick="ExportWord" href="#">Word</a>
                                                          <a class="dropdown-item" runat="server" onserverclick="ExportPdf" href="#">PDF</a>
+
+                                                           
                                                          
                                                       </li>
+                                                   
 
                                                 </ul>
 
                                             </div>
-
+                                            
                                         </ContentTemplate>
+                                         <Triggers>
+                                                <asp:PostBackTrigger ControlID="BtnExportExcel" />
+                                         </Triggers>
                                     </asp:UpdatePanel>
                                 </div>
 

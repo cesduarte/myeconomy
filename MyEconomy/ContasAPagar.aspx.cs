@@ -18,7 +18,7 @@ namespace MyEconomy
         ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
 
-   
+
 
         DespesaFixaInformation despesasfixasinf = new DespesaFixaInformation();
         DespesasFixasDAL objdespesasfixas = new DespesasFixasDAL();
@@ -37,14 +37,14 @@ namespace MyEconomy
 
             }
 
-           
+
 
         }
 
         public void carrega_data()
         {
             DateTime abre = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-           Txtdatainicialpesquisa.Text = abre.ToString("yyyy-MM-dd");
+            Txtdatainicialpesquisa.Text = abre.ToString("yyyy-MM-dd");
 
             DateTime fecha = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             Txtdatafinalpesquisa.Text = fecha.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd");
@@ -58,7 +58,7 @@ namespace MyEconomy
             try
             {
 
-                
+
 
                 if (DropStatusPesquisa.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
                 {
@@ -119,14 +119,14 @@ namespace MyEconomy
                 {
                     Txtid.Text = Convert.ToString(contasapagarinf.IdContasAPagar);
                     Txtdescricaoconta.Text = contasapagarinf.DescriaoDespesaFixa;
-                    Dropcontasbancarias.SelectedValue = Convert.ToString(contasapagarinf.IdContasBancarias);                    
+                    Dropcontasbancarias.SelectedValue = Convert.ToString(contasapagarinf.IdContasBancarias);
                     Dropclassificacao.SelectedValue = Convert.ToString(contasapagarinf.IdClassificacao);
-                    Txtvalor.Text = Convert.ToString(contasapagarinf.ValorDespesaFixa);                    
+                    Txtvalor.Text = Convert.ToString(contasapagarinf.ValorDespesaFixa);
                     Txtdatavencimento.Text = contasapagarinf.DataVencimentoContasAPagar.ToString("yyyy-MM-dd");
                     txtStatus.Text = contasapagarinf.StatusContasAPagar;
                     txtiddespesa.Text = contasapagarinf.IdDespesaFixa.ToString();
 
-                    if(contasapagarinf.StatusContasAPagar == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
+                    if (contasapagarinf.StatusContasAPagar == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
                     {
                         Dropcontasbancariasapagar.SelectedValue = Convert.ToString(contasapagarinf.IdContaBancariaPagamentoContasAPagar);
                         Txtvalorpago.Text = Convert.ToString(contasapagarinf.ValorPagamentoContasAPagar);
@@ -164,9 +164,9 @@ namespace MyEconomy
                 Button2.Visible = true;
                 Button5.Visible = false;
             }
-                
+
         }
-       
+
         public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
         {
             ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
@@ -175,7 +175,7 @@ namespace MyEconomy
             ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
             objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
         }
-       
+
         public void CarregarContasBancarias()
         {
             try
@@ -215,7 +215,7 @@ namespace MyEconomy
                 throw new Exception();
             }
         }
-      
+
         public void CarregarClassificacao()
         {
             try
@@ -269,8 +269,8 @@ namespace MyEconomy
 
         public void LimparCampos()
         {
-            
-          
+
+
 
         }
 
@@ -286,17 +286,56 @@ namespace MyEconomy
         protected void ExportExcel(object sender, EventArgs e)
         {
 
-            Response.Clear();
-            Response.Buffer = true;
-            Response.ContentType = "application/ms-excel";
-            Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.xls", "selectedrows"));
-            Response.Charset = "";
+            if (GrdDados.Rows.Count != 0)
+            {
+                
+                Response.Clear();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment;filename=Relatório de Contas a Pagar .xls");
+                Response.Charset = "";
+                Response.ContentType = "application/vnd.ms-excel";
+                using (StringWriter sw = new StringWriter())
+                {
+                    HtmlTextWriter hw = new HtmlTextWriter(sw);
 
-            StringWriter stringwriter = new StringWriter();
-            HtmlTextWriter htmlwriter = new HtmlTextWriter(stringwriter);
-            Response.Write(stringwriter.ToString());
-            Response.End();
-            
+                    //To Export all pages
+                    GrdDados.AllowPaging = false;
+                    this.CarregaGrid();
+                    GrdDados.Columns[10].Visible = false;
+                    GrdDados.Columns[11].Visible = false;
+                    GrdDados.HeaderRow.BackColor = Color.White;
+                    foreach (TableCell cell in GrdDados.HeaderRow.Cells)
+                    {
+                        cell.BackColor = GrdDados.HeaderStyle.BackColor;
+                    }
+                    foreach (GridViewRow row in GrdDados.Rows)
+                    {
+                        row.BackColor = Color.White;
+                        foreach (TableCell cell in row.Cells)
+                        {
+                            if (row.RowIndex % 2 == 0)
+                            {
+                                cell.BackColor = GrdDados.AlternatingRowStyle.BackColor;
+                            }
+                            else
+                            {
+                                cell.BackColor = GrdDados.RowStyle.BackColor;
+                            }
+                            cell.CssClass = "textmode";
+                        }
+                    }
+
+                    GrdDados.RenderControl(hw);
+
+                    //style to format numbers to string
+                    string style = @"<style> .textmode { } </style>";
+                    Response.Write(style);
+                    Response.Output.Write(sw.ToString());
+                    Response.Flush();
+                    Response.End();
+                }
+                DesabilitaHabilitaCampos();
+            }
         }
 
         protected void ExportWord(object sender, EventArgs e)
@@ -316,7 +355,7 @@ namespace MyEconomy
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-          if(txtStatus.Text == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
+            if (txtStatus.Text == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
             {
                 contasapagarinf.IdContasAPagar = Convert.ToInt32(Txtid.Text);
                 contasapagarinf.IdContaBancariaPagamentoContasAPagar = 1;
@@ -331,10 +370,10 @@ namespace MyEconomy
                 Label9.Text = "Despesa aberta com sucesso!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
                 Timer1.Enabled = true;
-               
-               
+
+
             }
-          else
+            else
             {
                 contasapagarinf.IdContasAPagar = Convert.ToInt32(Txtid.Text);
                 contasapagarinf.IdContaBancariaPagamentoContasAPagar = Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue);
@@ -343,16 +382,16 @@ namespace MyEconomy
                 contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas));
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), -1);
-                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue),(-Convert.ToDecimal(Txtvalorpago.Text)));
+                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (-Convert.ToDecimal(Txtvalorpago.Text)));
                 CarregarContaAPagar(Txtid.Text);
 
-                Label9.Text = "Despesa paga com sucesso!";                
+                Label9.Text = "Despesa paga com sucesso!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
                 Timer1.Enabled = true;
             }
-              
 
-            
+
+
         }
 
         protected void Button5_Click(object sender, EventArgs e)
@@ -371,7 +410,7 @@ namespace MyEconomy
         {
             if (e.CommandName == "Editar")
             {
-              
+
 
                 CarregarContaAPagar(e.CommandArgument.ToString());
 
@@ -380,13 +419,13 @@ namespace MyEconomy
             }
             else
             {
-                
+
                 CarregarContaAPagar(e.CommandArgument.ToString());
 
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
             }
-          
+
         }
 
         protected void GrdDados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -399,5 +438,7 @@ namespace MyEconomy
             GrdDados.PageIndex = e.NewPageIndex;
             CarregaGrid();
         }
+
+       
     }
 }
