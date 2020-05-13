@@ -338,13 +338,10 @@ namespace MyEconomy
             }
         }
 
-        protected void ExportWord(object sender, EventArgs e)
-        {
-
-        }
+       
         protected void ExportPdf(object sender, EventArgs e)
         {
-
+          
         }
 
         protected void Button3_Click(object sender, EventArgs e)

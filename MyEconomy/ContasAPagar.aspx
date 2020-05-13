@@ -47,11 +47,10 @@
                                                     </li>
                                                      <li class="d-inline-block">
                                                          
-                                                          <button type="button"  class="btn btn-transparent p-0 mr-3"  title="Exportar para:" data-toggle="dropdown"><i class="fa fa-list"></i></button>
+                                                          <button type="button"  class="btn btn-transparent p-0 mr-3"  title="Exportar" data-toggle="dropdown"><i class="fa fa-list"></i></button>
                                                      <div class="dropdown-menu">
                                                          <a class="dropdown-item" runat="server" id="BtnExportExcel" onserverclick="ExportExcel" AutoEventWireup="true" IsPostback ="true"  href="#" >Excel</a>
-                                                         <a class="dropdown-item" runat="server" onserverclick="ExportWord" href="#">Word</a>
-                                                         <a class="dropdown-item" runat="server" onserverclick="ExportPdf" href="#">PDF</a>
+                                                         <a class="dropdown-item" runat="server" onserverclick="ExportPdf" href="#">PDF (Em desenvolvimento)</a>
 
                                                            
                                                          
