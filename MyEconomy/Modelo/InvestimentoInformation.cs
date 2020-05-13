@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyEconomy.Modelo
+namespace MyEconomy
 {
-    public class InvestimentoInformation
+    public class InvestimentoInformation: ContasBancariasInformation
     {
         public int IdInvestimento { get; set; }
         public string DescricaoInvestimento { get; set; }
