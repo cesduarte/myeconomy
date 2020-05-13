@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -16,6 +18,7 @@ namespace MyEconomy
 
             if (!Page.IsPostBack)
             {
+                CarregarTipo(DropTipo, new StatusEnum.Tipo());
                 CarregaGrid();
             }
 
@@ -45,7 +48,20 @@ namespace MyEconomy
             }
 
         }
+        public void CarregarTipo(DropDownList ddl, Enum source)
+        {
+            foreach (FieldInfo fi in source.GetType().GetFields())
+            {
+                var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
 
+                if (attributes.Length > 0)
+                {
+                    ddl.Items.Add(new ListItem(attributes[0].Description, fi.GetRawConstantValue().ToString()));
+                }
+            }
+
+
+        }
         private void Carregaclassificacao(string id)
         {
             try
@@ -57,7 +73,17 @@ namespace MyEconomy
                 {
                     Txtid.Text = Convert.ToString(classificacao.IdClassificacao);
                     Txtdescricao.Text = classificacao.DescricaoClassificacao;
-                   
+                    if (classificacao.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
+                    {
+                        DropTipo.SelectedValue = "1";
+                    }
+                    else
+                    {
+                        DropTipo.SelectedValue = "2";
+                    }
+
+
+                     
                     Chkinativo.Checked = classificacao.Isdelete;
 
                 }
@@ -77,7 +103,7 @@ namespace MyEconomy
         {
             Txtid.Text = "";
             Txtdescricao.Text = "";
-           
+            DropTipo.SelectedIndex = 0;
             Chkinativo.Checked = false;
 
         }
@@ -102,7 +128,7 @@ namespace MyEconomy
                 if (Txtid.Text == "")
                 {
                     classificacao.DescricaoClassificacao = Txtdescricao.Text;
-                   
+                    classificacao.TipoClassificacao = DropTipo.SelectedItem.ToString();
                     classificacao.Isdelete = Chkinativo.Checked;
                    
                     obj.InserirClassificacao(classificacao);
@@ -122,7 +148,7 @@ namespace MyEconomy
                 {
                     classificacao.IdClassificacao = Convert.ToInt32(Txtid.Text);
                     classificacao.DescricaoClassificacao = Txtdescricao.Text;
-
+                    classificacao.TipoClassificacao = DropTipo.SelectedItem.ToString();
                     classificacao.Isdelete = Chkinativo.Checked;
 
                     obj.AlterarClassificacao(classificacao);

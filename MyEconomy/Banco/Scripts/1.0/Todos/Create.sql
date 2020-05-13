@@ -23,6 +23,31 @@ VALUES
 false
 );
 
+CREATE TABLE `myeconomy`.`tbl_classificacao` (
+  `Idclassificacao` INT NOT NULL AUTO_INCREMENT,
+ 
+  `DescricaoClassificacao` VARCHAR(200) NULL,
+  `TipoClassificacao` VARCHAR(200) NULL,
+  
+  `Isdelete` boolean,
+  PRIMARY KEY (`Idclassificacao`),
+  UNIQUE INDEX `Idclassificacao_UNIQUE` (`Idclassificacao` ASC) VISIBLE);
+
+
+
+INSERT INTO `myeconomy`.`tbl_classificacao`
+(
+
+`DescricaoClassificacao`,
+`Isdelete`
+)
+VALUES
+(
+
+'--',
+false
+);
+
 CREATE TABLE `myeconomy`.`tbl_contasBancarias` (
   `Idcontasbancarias` INT NOT NULL AUTO_INCREMENT,
   `Idusuario` int null,
@@ -49,52 +74,33 @@ VALUES
 false
 );
 
-CREATE TABLE `myeconomy`.`tbl_classificacao` (
-  `Idclassificacao` INT NOT NULL AUTO_INCREMENT,
- 
-  `DescricaoClassificacao` VARCHAR(200) NULL,
-  
-  `Isdelete` boolean,
-  PRIMARY KEY (`Idclassificacao`),
-  UNIQUE INDEX `Idclassificacao_UNIQUE` (`Idclassificacao` ASC) VISIBLE);
-
-
-
-INSERT INTO `myeconomy`.`tbl_classificacao`
-(
-
-`DescricaoClassificacao`,
-`Isdelete`
-)
-VALUES
-(
-
-'--',
-false
-);
-
-CREATE TABLE `myeconomy`.`tbl_contas` (
-  `Idcontas` INT NOT NULL AUTO_INCREMENT,
-  `Descricaocontas` VARCHAR(200) NULL,
+CREATE TABLE `myeconomy`.`tbl_despesafixa` (
+  `IdDespesaFixa` INT NOT NULL AUTO_INCREMENT,
+  `Descricaodespesa` VARCHAR(200) NULL,
   `Idcontasbancarias` int null,
   `Idclassificacao` int null,
-  `ValorContas` decimal (10,2), 
-  `ValorTotalContas` decimal (10,2), 
+  `ValorDespesa` decimal (10,2), 
+  `ValorTotalDespesa` decimal (10,2), 
   `DataVencimento` datetime,
   `QuantParcelas` int,
   `QuantParcelasAPagar` int,
   `Isdelete` boolean,
-  PRIMARY KEY (`Idcontas`),
-  UNIQUE INDEX `Idcontas_UNIQUE` (`Idcontas` ASC) VISIBLE);
+  PRIMARY KEY (`IdDespesaFixa`),
+  UNIQUE INDEX `IdDespesaFixa_UNIQUE` (`IdDespesaFixa` ASC) VISIBLE);
 
-ALTER TABLE `tbl_contas` ADD CONSTRAINT `fk_Idclassificacao` FOREIGN KEY ( `Idclassificacao` ) REFERENCES `tbl_classificacao` ( `Idclassificacao` ) ;
-ALTER TABLE `tbl_contas` ADD CONSTRAINT `fk_Idcontasbancarias` FOREIGN KEY ( `Idcontasbancarias` ) REFERENCES `tbl_contasbancarias` ( `Idcontasbancarias` ) ;
+ALTER TABLE `tbl_despesafixa` ADD CONSTRAINT `fk_Idclassificacao` FOREIGN KEY ( `Idclassificacao` ) REFERENCES `tbl_classificacao` ( `Idclassificacao` ) ;
+ALTER TABLE `tbl_despesafixa` ADD CONSTRAINT `fk_Idcontasbancarias` FOREIGN KEY ( `Idcontasbancarias` ) REFERENCES `tbl_contasbancarias` ( `Idcontasbancarias` ) ;
+
 CREATE TABLE `myeconomy`.`tbl_contasapagar` (
  `IdContaAPagar` INT NOT NULL AUTO_INCREMENT,
- `Idcontas` INT,
+ `Iddespesas` INT,
  `DataVencimentoContaAPagar` datetime,
-  `NParcelasContaAPagar` int,
-   PRIMARY KEY (`IdContaAPagar`),
-  UNIQUE INDEX `IdContaAPagar_UNIQUE` (`IdContaAPagar` ASC) VISIBLE);
+ `NParcelasContaAPagar` varchar(200),
+ `StatusContasAPagar` varchar(200),
+ `IdContaBancariaPagamento` int,
+ `ValorPagamento` decimal (10,2),
+  `DataPagamento` datetime,
+ PRIMARY KEY (`IdContaAPagar`),
+UNIQUE INDEX `IdContaAPagar_UNIQUE` (`IdContaAPagar` ASC) VISIBLE);
 
-ALTER TABLE `tbl_contasapagar` ADD CONSTRAINT `fk_Idcontas` FOREIGN KEY ( `Idcontas` ) REFERENCES `tbl_contas` ( `Idcontas` ) ;
+ALTER TABLE `tbl_contasapagar` ADD CONSTRAINT `fk_Iddespesas` FOREIGN KEY ( `Iddespesas` ) REFERENCES `tbl_despesafixa` ( `IdDespesaFixa` ) ;

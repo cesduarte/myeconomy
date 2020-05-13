@@ -183,7 +183,9 @@ namespace MyEconomy
         {
             Txtid.Text = "";
             Txtdescricaodespesa.Text = "";
-
+            lblinvestimento.Visible = false;
+            DropInvestimento.Visible = false;
+            DropInvestimento.ClearSelection();
             Dropcontasbancarias.SelectedIndex = 0;
             Dropclassificacao.SelectedIndex = 0;
             Txtvalor.Text = "";
@@ -287,5 +289,38 @@ namespace MyEconomy
             GrdDados.PageIndex = e.NewPageIndex;
             CarregaGrid();
         }
+
+        protected void Dropclassificacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+          
+
+            try
+            {
+
+
+              
+                foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue))
+                {
+                   if(classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
+                    {
+                        DropInvestimento.Visible = true;
+                        lblinvestimento.Visible = true;
+                    }
+                   else
+                    {
+                        DropInvestimento.Visible = false;
+                        lblinvestimento.Visible = false;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+
+      
     }
 }

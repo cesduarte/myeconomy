@@ -68,7 +68,7 @@
                                                 <Columns>
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Descrição" />
                                                    
-                                                   
+                                                    <asp:BoundField DataField="TipoClassificacao" HeaderText="Tipo" />
                                                   
 
                                                     <asp:TemplateField>
@@ -199,7 +199,21 @@
 
                                                      </div>
                                                 </div>
-                                              
+                                              <div class="form-row">
+                                                    
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                         <asp:Label ID="Label10" runat="server" Text="Label">Descrição Investimento: </asp:Label>
+                                                        <asp:DropDownList ID="DropTipo" runat="server" CssClass="form-control form-control-sm" ValidationGroup="group">
+                                                          
+                                                         </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="0" ErrorMessage="* Campo obrigatório" ControlToValidate="DropTipo"></asp:RequiredFieldValidator>
+
+                                                        
+                                                     </div>
+                                                      
+                                                        
+                                                </div>
                                                
                                                <div class="form-row">
                                                     <div class="form-group col-md-5">

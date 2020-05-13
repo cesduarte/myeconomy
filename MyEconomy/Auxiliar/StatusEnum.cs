@@ -16,5 +16,16 @@ namespace MyEconomy
             [Description("Conta paga")]
             ContasPagas = 2
         }
+
+        public enum Tipo
+        {
+            [Description("--")] //Descrição será exibido como item do dropdown
+            inicial = 0,// item do enumerator atribuido o seu valor constante.
+            [Description("Investimento")] //Descrição será exibido como item do dropdown
+            Investimento = 1,// item do enumerator atribuido o seu valor constante.
+            [Description("Padrão")]
+            Padrão = 2
+        }
+
     }
 }

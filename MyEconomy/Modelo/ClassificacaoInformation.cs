@@ -9,7 +9,7 @@ namespace MyEconomy
     {
         public int IdClassificacao { get; set; }
         public string DescricaoClassificacao { get; set; }
-      
+        public string TipoClassificacao { get; set; }
         public bool Isdelete { get; set; }
     }
 }

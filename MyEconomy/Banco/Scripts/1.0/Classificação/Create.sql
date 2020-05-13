@@ -2,6 +2,7 @@ CREATE TABLE `myeconomy`.`tbl_classificacao` (
   `Idclassificacao` INT NOT NULL AUTO_INCREMENT,
  
   `DescricaoClassificacao` VARCHAR(200) NULL,
+  `TipoClassificacao` VARCHAR(200) NULL,
   
   `Isdelete` boolean,
   PRIMARY KEY (`Idclassificacao`),

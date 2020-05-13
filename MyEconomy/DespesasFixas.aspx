@@ -237,7 +237,7 @@
                                                      </div>
                                                       <div class="form-group col-md-6">
                                                         <asp:Label ID="Label2" runat="server" Text="Label">Descrição Classificação: </asp:Label>
-                                                        <asp:DropDownList ID="Dropclassificacao" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
+                                                        <asp:DropDownList ID="Dropclassificacao" runat="server" CssClass="form-control form-control-" ValidationGroup="group" OnSelectedIndexChanged="Dropclassificacao_SelectedIndexChanged" AutoPostBack="True">
                                                           
                                                          </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="Dropclassificacao"></asp:RequiredFieldValidator>
@@ -289,7 +289,20 @@
                                                      </div>
                                                       
                                                 </div>
-                                               
+                                                <div class="form-row">
+                                                    
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                         <asp:Label ID="lblinvestimento" runat="server" Text="Label" Visible ="false">Descrição Investimento: </asp:Label>
+                                                        <asp:DropDownList ID="DropInvestimento" runat="server" CssClass="form-control form-control-" ValidationGroup="group" Visible="false">
+                                                          
+                                                         </asp:DropDownList>
+
+                                                        
+                                                     </div>
+                                                      
+                                                        
+                                                     </div>
                                                <div class="form-row">
                                                     <div class="form-group col-md-5">
                                                          <div class="form-check form-check-inline">
