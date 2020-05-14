@@ -123,7 +123,57 @@ namespace MyEconomy
             }
         }
 
+        public List<InvestimentoInformation> Carregarinvestimentosdrop(string IdContasBancarias)
+        {
+            try
+            {
+                objConexao.Open();
+                string sql;
 
+                if (IdContasBancarias == "")
+                {
+                    sql = "";
+                }
+                else
+                {
+                    sql = "select a.IdInvestimento, a.Descricaoinvestimento  from tbl_investimento a, tbl_contasbancarias b where a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = false and b.Idcontasbancarias  = " + IdContasBancarias;
+                }
+
+
+
+                objCommand = new MySqlCommand(sql, objConexao);
+                MySqlDataAdapter Objdata = new MySqlDataAdapter(objCommand);
+
+                DataTable objDataTable = new DataTable();
+                Objdata.Fill(objDataTable);
+
+                List<InvestimentoInformation> ListaDeDados = new List<InvestimentoInformation>();
+                foreach (DataRow dataRow in objDataTable.Rows)
+                {
+                    ListaDeDados.Add(new InvestimentoInformation()
+                    {
+                        IdInvestimento = int.Parse(dataRow["IdInvestimento"].ToString()),
+                        DescricaoInvestimento = dataRow["Descricaoinvestimento"].ToString()
+                        
+                    });
+                }
+
+
+                return ListaDeDados;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+        }
 
 
 

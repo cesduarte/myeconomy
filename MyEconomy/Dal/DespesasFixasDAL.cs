@@ -101,6 +101,7 @@ namespace MyEconomy
                         DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
                         IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
                         IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
+                        IdInvestimento = Convert.ToInt32(dataRow["Idinvestimento"].ToString()),
                         ValorDespesaFixa  = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
                         ValorTotalDespesaFixa = Convert.ToDecimal(dataRow["ValorTotalDespesa"].ToString()),
                         DataVencimentoDespesaFixa = Convert.ToDateTime(dataRow["DataVencimento"].ToString()),
@@ -155,9 +156,14 @@ namespace MyEconomy
                 pidcontasbancarias.Value = despesasinf.IdContasBancarias;
                 objCommand.Parameters.Add(pidcontasbancarias);
 
+
                 MySqlParameter pidclassificacao = new MySqlParameter("_idclassificacao", MySqlDbType.Int32, 200);
                 pidclassificacao.Value = despesasinf.IdClassificacao;
                 objCommand.Parameters.Add(pidclassificacao);
+
+                MySqlParameter pidinvestimento = new MySqlParameter("_idinvestimento", MySqlDbType.Int32, 200);
+                pidinvestimento.Value = despesasinf.IdInvestimento;
+                objCommand.Parameters.Add(pidinvestimento);
 
                 MySqlParameter pvalorparcela = new MySqlParameter("_valorparceladespesa", MySqlDbType.Decimal, 200);
                 pvalorparcela.Value = despesasinf.ValorDespesaFixa;
@@ -238,7 +244,9 @@ namespace MyEconomy
                 MySqlParameter pidclassificacao = new MySqlParameter("_idclassificacao", MySqlDbType.Int32, 200);
                 pidclassificacao.Value = despesasinf.IdClassificacao;
                 objCommand.Parameters.Add(pidclassificacao);
-
+                MySqlParameter pidinvestimento = new MySqlParameter("_idinvestimento", MySqlDbType.Int32, 200);
+                pidinvestimento.Value = despesasinf.IdInvestimento;
+                objCommand.Parameters.Add(pidinvestimento);
                 MySqlParameter pvalorparcela = new MySqlParameter("_valorparceladespesa", MySqlDbType.Decimal, 200);
                 pvalorparcela.Value = despesasinf.ValorDespesaFixa;
                 objCommand.Parameters.Add(pvalorparcela);

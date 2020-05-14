@@ -10,6 +10,8 @@ namespace MyEconomy
         public int IdDespesaFixa { get; set; }
 
         public int IdClassificacao { get; set; }
+
+        public int IdInvestimento { get; set; }
         public string DescriaoDespesaFixa { get; set; }
         public decimal ValorDespesaFixa { get; set; }
         public decimal ValorTotalDespesaFixa { get; set; }

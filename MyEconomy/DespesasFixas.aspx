@@ -228,7 +228,7 @@
                                                     
                                                     <div class="form-group col-md-6">
                                                          <asp:Label ID="Label3" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
-                                                        <asp:DropDownList ID="Dropcontasbancarias" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
+                                                        <asp:DropDownList ID="Dropcontasbancarias" runat="server" CssClass="form-control form-control-" ValidationGroup="group" OnSelectedIndexChanged="Dropcontasbancarias_SelectedIndexChanged" AutoPostBack="True">
                                                           
                                                          </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="Dropcontasbancarias"></asp:RequiredFieldValidator>

@@ -17,6 +17,7 @@ namespace MyEconomy
         DespesasFixasDAL objdespesasfixas = new DespesasFixasDAL();
        
         ContasAPagarDAL objcontaapagar = new ContasAPagarDAL();
+        InvestimentoDAL objinvestimento = new InvestimentoDAL();
         Validador validador = new Validador();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +32,20 @@ namespace MyEconomy
 
 
 
+        }
+
+        public void CarregarInvestimento()
+        {
+            DropInvestimento.DataSource = null;
+
+
+            DropInvestimento.DataSource = objinvestimento.Carregarinvestimentosdrop(Dropcontasbancarias.SelectedValue);
+            DropInvestimento.DataTextField = "Descricaoinvestimento";
+            DropInvestimento.DataValueField = "IdInvestimento";
+            DropInvestimento.DataBind();
+
+
+          
         }
         public void CarregaGrid()
         {
@@ -81,6 +96,23 @@ namespace MyEconomy
 
                     Chkinativo.Checked = despesasfixasinf.Isdelete;
 
+                    foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue))
+                    {
+                        if (classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
+                        {
+                            DropInvestimento.Visible = true;
+                            lblinvestimento.Visible = true;
+                            CarregarInvestimento();
+                            DropInvestimento.SelectedValue = Convert.ToString(despesasfixasinf.IdInvestimento);
+                        }
+                        else
+                        {
+                            DropInvestimento.Visible = false;
+                            lblinvestimento.Visible = false;
+                        }
+
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -115,35 +147,7 @@ namespace MyEconomy
                 throw new Exception();
             }
         }
-        public void InserirContasAPagar(DespesaFixaInformation _contasinf)
-        {
-            ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
-
-            DateTime dataatual = DateTime.Now.Date;
-
-
-            for (int i = 0; i < _contasinf.QuantParcelasDespesaFixa; i++)
-            {
-                contasapagarinf.IdDespesaFixa = _contasinf.IdDespesaFixa;
-                contasapagarinf.DataVencimentoContasAPagar = _contasinf.DataVencimentoDespesaFixa.AddMonths(i);
-                contasapagarinf.NParcelaContasAPagar =Convert.ToString(i + 1+"/"+_contasinf.QuantParcelasDespesaFixa);
-                contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar));
-                objcontaapagar.InserirContasAPagar(contasapagarinf);
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-        }
+     
         public void CarregarClassificacao()
         {
             try
@@ -196,6 +200,63 @@ namespace MyEconomy
 
         }
 
+        public void VerificarInvestimento()
+        {
+            try
+            {
+
+
+
+                foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue))
+                {
+                    if (classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
+                    {
+                        DropInvestimento.Visible = true;
+                        lblinvestimento.Visible = true;
+                        CarregarInvestimento();
+                    }
+                    else
+                    {
+                        DropInvestimento.Visible = false;
+                        lblinvestimento.Visible = false;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+        public void InserirContasAPagar(DespesaFixaInformation _contasinf)
+        {
+            ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
+
+            DateTime dataatual = DateTime.Now.Date;
+
+
+            for (int i = 0; i < _contasinf.QuantParcelasDespesaFixa; i++)
+            {
+                contasapagarinf.IdDespesaFixa = _contasinf.IdDespesaFixa;
+                contasapagarinf.DataVencimentoContasAPagar = _contasinf.DataVencimentoDespesaFixa.AddMonths(i);
+                contasapagarinf.NParcelaContasAPagar = Convert.ToString(i + 1 + "/" + _contasinf.QuantParcelasDespesaFixa);
+                contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar));
+                objcontaapagar.InserirContasAPagar(contasapagarinf);
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             CarregaGrid();
@@ -221,6 +282,14 @@ namespace MyEconomy
                 despesasfixasinf.ValorTotalDespesaFixa = despesasfixasinf.ValorDespesaFixa * despesasfixasinf.QuantParcelasDespesaFixa;
                 despesasfixasinf.QuantParcelasaPagarDespesaFixa = Convert.ToInt32(Txtparcelas.Text);
                 despesasfixasinf.Isdelete = Chkinativo.Checked;
+
+                if(DropInvestimento.Visible)
+                {
+                    despesasfixasinf.IdInvestimento = Convert.ToInt32(DropInvestimento.SelectedValue);
+                } else
+                {
+                    despesasfixasinf.IdInvestimento = 0;
+                }
                 objdespesasfixas.InserirDespesaFixa(despesasfixasinf);
               
                 InserirContasAPagar(despesasfixasinf);
@@ -244,7 +313,14 @@ namespace MyEconomy
                 despesasfixasinf.ValorTotalDespesaFixa = despesasfixasinf.ValorDespesaFixa * despesasfixasinf.QuantParcelasDespesaFixa;
 
                 despesasfixasinf.Isdelete = Chkinativo.Checked;
-
+                if (DropInvestimento.Visible)
+                {
+                    despesasfixasinf.IdInvestimento = Convert.ToInt32(DropInvestimento.SelectedValue);
+                }
+                else
+                {
+                    despesasfixasinf.IdInvestimento = 0;
+                }
                 objdespesasfixas.AlterarDespesaFixa(despesasfixasinf);
 
                 Label9.Text = "Registro alterado com sucesso!";
@@ -292,35 +368,16 @@ namespace MyEconomy
 
         protected void Dropclassificacao_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-          
-
-            try
-            {
 
 
-              
-                foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue))
-                {
-                   if(classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
-                    {
-                        DropInvestimento.Visible = true;
-                        lblinvestimento.Visible = true;
-                    }
-                   else
-                    {
-                        DropInvestimento.Visible = false;
-                        lblinvestimento.Visible = false;
-                    }
+            VerificarInvestimento();
 
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception();
-            }
+
         }
 
-      
+        protected void Dropcontasbancarias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VerificarInvestimento();
+        }
     }
 }

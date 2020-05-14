@@ -69,8 +69,8 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Descricaoinvestimento" HeaderText="Descrição Contas" />
-                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
+                                                    <asp:BoundField DataField="Descricaoinvestimento" HeaderText="Descrição Investimento" />
+                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas Bancárias" />
                                                     
                                                     <asp:BoundField DataField="SaldoInvestimento" HeaderText="Saldo" DataFormatString="{0:c}" />
                                                    
@@ -128,7 +128,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
-                                                     <div class="form-group col-md-6">
+                                                     <div class="form-group col-md-12">
                                                          <asp:Label ID="Label6" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
                                                         
                                                         <asp:DropDownList ID="Dropcontasbancariaspesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group">

@@ -3,6 +3,7 @@ CREATE TABLE `myeconomy`.`tbl_despesafixa` (
   `Descricaodespesa` VARCHAR(200) NULL,
   `Idcontasbancarias` int null,
   `Idclassificacao` int null,
+  `Idinvestimento` int null,
   `ValorDespesa` decimal (10,2), 
   `ValorTotalDespesa` decimal (10,2), 
   `DataVencimento` datetime,
