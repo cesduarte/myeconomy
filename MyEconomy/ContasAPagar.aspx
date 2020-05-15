@@ -36,18 +36,18 @@
 
                                                   
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-transparent p-0 mr-3" title="Pesquisar Contas" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Pesquisar Contas" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
                                                     </li>
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" id="teste1" class="btn btn-transparent p-0 mr-3" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
+                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
                                                     </li>
                                                    <li class="d-inline-block">
-                                                        <button type="button" id="Button6" class="btn btn-transparent p-0 mr-3" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
+                                                        <button type="button" id="Button6" class="btn btn-outline-light" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
                                                     </li>
                                                      <li class="d-inline-block">
                                                          
-                                                          <button type="button"  class="btn btn-transparent p-0 mr-3"  title="Exportar" data-toggle="dropdown"><i class="fa fa-list"></i></button>
+                                                          <button type="button"  class="btn btn-outline-light"  title="Exportar" data-toggle="dropdown"><i class="fa fa-list"></i></button>
                                                      <div class="dropdown-menu">
                                                          <a class="dropdown-item" runat="server" id="BtnExportExcel" onserverclick="ExportExcel" AutoEventWireup="true" IsPostback ="true"  href="#" >Excel</a>
                                                          <a class="dropdown-item" runat="server" onserverclick="ExportPdf" href="#">PDF (Em desenvolvimento)</a>
@@ -381,7 +381,21 @@
                                                          
                                                      </div>
                                                        
-                                                     </div>  
+                                                     </div>
+                                                   <div class="form-row">
+                                                    
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                         <asp:Label ID="lblinvestimento" runat="server" Text="Label">Descrição Investimento: </asp:Label>
+                                                        <asp:DropDownList ID="DropInvestimento" runat="server" CssClass="form-control form-control-" ValidationGroup="group" ReadOnly="true">
+                                                          
+                                                         </asp:DropDownList>
+
+                                                        
+                                                     </div>
+                                                      
+                                                        
+                                                     </div>
                                                      
                                                                 </div>
                                                           </div>

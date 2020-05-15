@@ -17,8 +17,8 @@ namespace MyEconomy
         ContasAPagarDAL objcontasapagar = new ContasAPagarDAL();
         ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
-
-
+        InvestimentoDAL objinvestimento = new InvestimentoDAL();
+        
 
         DespesaFixaInformation despesasfixasinf = new DespesaFixaInformation();
         DespesasFixasDAL objdespesasfixas = new DespesasFixasDAL();
@@ -53,12 +53,26 @@ namespace MyEconomy
 
 
         }
+
+        public void CarregarInvestimento()
+        {
+            DropInvestimento.DataSource = null;
+
+
+            DropInvestimento.DataSource = objinvestimento.Carregarinvestimentosdrop(Dropcontasbancarias.SelectedValue);
+            DropInvestimento.DataTextField = "Descricaoinvestimento";
+            DropInvestimento.DataValueField = "IdInvestimento";
+            DropInvestimento.DataBind();
+
+
+
+        }
         public void CarregaGrid()
         {
             try
             {
 
-
+                ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
 
                 if (DropStatusPesquisa.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
                 {
@@ -138,8 +152,44 @@ namespace MyEconomy
                         Txtvalorpago.Text = Convert.ToString(contasapagarinf.ValorDespesaFixa);
                     }
 
+                    VerificarInvestimento();
+                    if(DropInvestimento.Visible = true && DropInvestimento.Text != "")
+                    {
+                        DropInvestimento.SelectedValue = Convert.ToString(contasapagarinf.IdInvestimento);
+                    }
+                   
+
                 }
                 DesabilitaHabilitaCampos();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+
+        public void VerificarInvestimento()
+        {
+            try
+            {
+
+
+
+                foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue))
+                {
+                    if (classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
+                    {
+                        DropInvestimento.Visible = true;
+                        lblinvestimento.Visible = true;
+                        CarregarInvestimento();
+                    }
+                    else
+                    {
+                        DropInvestimento.Visible = false;
+                        lblinvestimento.Visible = false;
+                    }
+
+                }
             }
             catch (Exception ex)
             {
@@ -361,8 +411,12 @@ namespace MyEconomy
                 contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar));
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), 1);
-
+              
                 AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (Convert.ToDecimal(Txtvalorpago.Text)));
+                if (DropInvestimento.Visible)
+                {
+                    objinvestimento.AlterarSaldoInvestimento(Convert.ToInt32(DropInvestimento.SelectedValue),(-Convert.ToDecimal(Txtvalorpago.Text)));
+                }
                 CarregarContaAPagar(Txtid.Text);
                 Label9.Text = "Despesa aberta com sucesso!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
@@ -380,6 +434,10 @@ namespace MyEconomy
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), -1);
                 AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (-Convert.ToDecimal(Txtvalorpago.Text)));
+                if (DropInvestimento.Visible)
+                {
+                    objinvestimento.AlterarSaldoInvestimento(Convert.ToInt32(DropInvestimento.SelectedValue), (Convert.ToDecimal(Txtvalorpago.Text)));
+                }
                 CarregarContaAPagar(Txtid.Text);
 
                 Label9.Text = "Despesa paga com sucesso!";
@@ -414,7 +472,7 @@ namespace MyEconomy
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
 
             }
-            else
+            else if(e.CommandName == "Abrir")
             {
 
                 CarregarContaAPagar(e.CommandArgument.ToString());

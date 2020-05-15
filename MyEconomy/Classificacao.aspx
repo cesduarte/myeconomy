@@ -36,18 +36,18 @@
                                                 <ul class="mb-0 form-profile__icons">
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-transparent p-0 mr-3" title="Novo classificação" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Novo classificação" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
 
                                                     </li>
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-transparent p-0 mr-3" title="Pesquisar classificação" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Pesquisar classificação" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
                                                     </li>
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" id="teste1" class="btn btn-transparent p-0 mr-3" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
+                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
                                                     </li>
                                                    <li class="d-inline-block">
-                                                        <button type="button" id="Button6" class="btn btn-transparent p-0 mr-3" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
+                                                        <button type="button" id="Button6" class="btn btn-outline-light" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
                                                     </li>
 
                                                 </ul>
@@ -202,7 +202,7 @@
                                               <div class="form-row">
                                                     
                                                     
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-12">
                                                          <asp:Label ID="Label10" runat="server" Text="Label">Descrição Investimento: </asp:Label>
                                                         <asp:DropDownList ID="DropTipo" runat="server" CssClass="form-control form-control-sm" ValidationGroup="group">
                                                           

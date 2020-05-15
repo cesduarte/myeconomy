@@ -88,7 +88,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    sql = "select a.IdDespesaFixa, a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar, b.IdContaBancariaPagamento, b.ValorPagamento, b.DataPagamento, b.NParcelasContaAPagar from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
+                    sql = "select a.IdDespesaFixa, a.Descricaodespesa, a.Idcontasbancarias, a.Idclassificacao, a.ValorDespesa, a.idinvestimento, b.IdContaAPagar, b.DataVencimentoContaAPagar, b.StatusContasAPagar, b.IdContaBancariaPagamento, b.ValorPagamento, b.DataPagamento, b.NParcelasContaAPagar from tbl_despesafixa a , tbl_contasapagar b where isdelete = false and b.Iddespesas = a.IdDespesaFixa and b.IdContaAPagar =  " + IdContasAPagar;
                 }
 
 
@@ -112,6 +112,7 @@ namespace MyEconomy
                             DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
                             IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
                             IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
+                            IdInvestimento = Convert.ToInt32(dataRow["Idinvestimento"].ToString()),
                             NParcelaContasAPagar = dataRow["NParcelasContaAPagar"].ToString(),
                             ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
                             DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
@@ -134,6 +135,7 @@ namespace MyEconomy
                             DescriaoDespesaFixa = dataRow["Descricaodespesa"].ToString(),
                             IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
                             IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
+                            IdInvestimento = Convert.ToInt32(dataRow["Idinvestimento"].ToString()),
                             ValorDespesaFixa = Convert.ToDecimal(dataRow["ValorDespesa"].ToString()),
                             NParcelaContasAPagar = dataRow["NParcelasContaAPagar"].ToString(),
                             DataVencimentoContasAPagar = Convert.ToDateTime(dataRow["DataVencimentoContaAPagar"].ToString()),
