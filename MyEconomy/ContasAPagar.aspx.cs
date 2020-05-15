@@ -71,9 +71,16 @@ namespace MyEconomy
         {
             try
             {
-
+                
                 ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
 
+             
+                contasapagarinf.DescriaoDespesaFixa = Txtdescricaopesquisa.Text;
+                contasapagarinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
+               
+                contasapagarinf.DataVencimentoInicialDespesaFixa = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
+                contasapagarinf.DataVencimentoFinalDespesaFixa = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
+                contasapagarinf.StatusContasAPagar = DropStatusPesquisa.SelectedItem.ToString();
                 if (DropStatusPesquisa.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
                 {
                     GrdDados.Columns[2].Visible = false;
@@ -85,10 +92,11 @@ namespace MyEconomy
 
                     GrdDados.Columns[10].Visible = false;
                     GrdDados.Columns[11].Visible = true;
-
-
+                   
+                    contasapagarinf.IdContaBancariaPagamentoContasAPagar = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
+                    GrdDados.DataSource = objcontasapagar.PesquisarContasPagas(contasapagarinf);
                 }
-                else
+                else if (DropStatusPesquisa.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar)))
                 {
                     GrdDados.Columns[2].Visible = true;
                     GrdDados.Columns[3].Visible = true;
@@ -100,20 +108,15 @@ namespace MyEconomy
 
                     GrdDados.Columns[10].Visible = true;
                     GrdDados.Columns[11].Visible = false;
+                    contasapagarinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
+                    GrdDados.DataSource = objcontasapagar.PesquisarContasAPagar(contasapagarinf);
 
                 }
-                contasapagarinf.DescriaoDespesaFixa = Txtdescricaopesquisa.Text;
-                contasapagarinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
-                contasapagarinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
-                contasapagarinf.DataVencimentoInicialDespesaFixa = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
-                contasapagarinf.DataVencimentoFinalDespesaFixa = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
-                contasapagarinf.StatusContasAPagar = DropStatusPesquisa.SelectedItem.ToString();
+
+               
 
 
-
-
-
-                GrdDados.DataSource = objcontasapagar.PesquisarContasAPagar(contasapagarinf);
+                
                 GrdDados.DataBind();
             }
             catch (Exception ex)
@@ -167,7 +170,20 @@ namespace MyEconomy
                 throw new Exception();
             }
         }
+        public void TrocaContaAPagarFiltro()
+        {
+            if (DropStatusPesquisa.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas)))
+            {
+                Label6.Text = "Descrição Contas Bancárias Pagamento: ";
 
+            }
+            else if (DropStatusPesquisa.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar)))
+            {
+               
+                Label6.Text = "Descrição Contas Bancárias: ";
+
+            }
+        }
         public void VerificarInvestimento()
         {
             try
@@ -314,6 +330,7 @@ namespace MyEconomy
             Dropclassificacaopesquisa.SelectedIndex = 0;
             carrega_data();
             DropStatusPesquisa.SelectedIndex = 0;
+            TrocaContaAPagarFiltro();
 
         }
 
@@ -494,6 +511,9 @@ namespace MyEconomy
             CarregaGrid();
         }
 
-       
+        protected void DropStatusPesquisa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TrocaContaAPagarFiltro();
+        }
     }
 }

@@ -149,6 +149,17 @@
                                     <div class="modal-body">
                                         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                             <ContentTemplate>
+                                                 <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                         <asp:Label ID="Label4" runat="server" Text="Label">Status</asp:Label>
+                                                        
+                                                        <asp:DropDownList ID="DropStatusPesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group" OnSelectedIndexChanged="DropStatusPesquisa_SelectedIndexChanged" AutoPostBack="true">
+                                                          
+                                                         </asp:DropDownList>
+                                                          
+                                                        
+                                                     </div>
+                                                </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <asp:Label ID="Label8" runat="server" Text="Label">Descrição Conta: </asp:Label>
@@ -191,17 +202,7 @@
                                                 </div>
                                                
                                                
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label4" runat="server" Text="Label">Status</asp:Label>
-                                                        
-                                                        <asp:DropDownList ID="DropStatusPesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group">
-                                                          
-                                                         </asp:DropDownList>
-                                                          
-                                                        
-                                                     </div>
-                                                </div>
+                                               
 
                                             </ContentTemplate>
                                         </asp:UpdatePanel>

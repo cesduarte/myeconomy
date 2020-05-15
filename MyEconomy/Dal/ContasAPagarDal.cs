@@ -23,8 +23,8 @@ namespace MyEconomy
                 objCommand.Connection = objConexao;
                 objCommand.CommandText = "Procedure_PesquisaContaAPagar";
                 objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.Parameters.Add(new MySqlParameter("_descricaoconta", MySqlDbType.VarChar, 100));
-                objCommand.Parameters["_descricaoconta"].Value = contasapagarInf.DescriaoDespesaFixa;
+                objCommand.Parameters.Add(new MySqlParameter("_descricaodespesa", MySqlDbType.VarChar, 100));
+                objCommand.Parameters["_descricaodespesa"].Value = contasapagarInf.DescriaoDespesaFixa;
 
 
 
@@ -73,7 +73,65 @@ namespace MyEconomy
             }
 
         }
+        public DataSet PesquisarContasPagas(ContasAPagarInformation contasapagarInf)
+        {
+            try
+            {
+                DataSet ds;
+                objConexao.Open();
+                objCommand.Connection = objConexao;
+                objCommand.CommandText = "Procedure_PesquisaContaPaga";
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.Parameters.Add(new MySqlParameter("_descricaodespesa", MySqlDbType.VarChar, 100));
+                objCommand.Parameters["_descricaodespesa"].Value = contasapagarInf.DescriaoDespesaFixa;
 
+
+
+                objCommand.Parameters.Add(new MySqlParameter("_idcontasbancariaspagamento", MySqlDbType.Int32));
+                objCommand.Parameters["_idcontasbancariaspagamento"].Value = contasapagarInf.IdContaBancariaPagamentoContasAPagar;
+
+                objCommand.Parameters.Add(new MySqlParameter("_idclassificacao", MySqlDbType.Int32));
+                objCommand.Parameters["_idclassificacao"].Value = contasapagarInf.IdClassificacao;
+
+                MySqlParameter pdatainicial = new MySqlParameter("_datainicial", MySqlDbType.DateTime, 200);
+                pdatainicial.Value = contasapagarInf.DataVencimentoInicialDespesaFixa;
+                objCommand.Parameters.Add(pdatainicial);
+
+                MySqlParameter pdatafinal = new MySqlParameter("_datafinal", MySqlDbType.DateTime, 200);
+                pdatafinal.Value = contasapagarInf.DataVencimentoFinalDespesaFixa;
+                objCommand.Parameters.Add(pdatafinal);
+
+                MySqlParameter pstatuscontaapagar = new MySqlParameter("_statuscontaapagar", MySqlDbType.VarChar, 200);
+                pstatuscontaapagar.Value = contasapagarInf.StatusContasAPagar;
+                objCommand.Parameters.Add(pstatuscontaapagar);
+
+
+
+
+                MySqlDataAdapter da;
+
+                da = new MySqlDataAdapter(objCommand);
+                ds = new DataSet();
+
+
+
+                da.Fill(ds);
+                return ds;
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+
+        }
 
         public List<ContasAPagarInformation> CarregarContasAPagar(string IdContasAPagar)
         {
