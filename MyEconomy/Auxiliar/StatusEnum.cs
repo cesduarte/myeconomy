@@ -27,15 +27,7 @@ namespace MyEconomy
             Padrão = 2
         }
 
-        public enum TipoEntradaSaida
-        {
-            [Description("--")] //Descrição será exibido como item do dropdown
-            inicial = 0,// item do enumerator atribuido o seu valor constante.
-            [Description("Entrada")] //Descrição será exibido como item do dropdown
-            Entrada = 1,// item do enumerator atribuido o seu valor constante.
-            [Description("Saída")]
-            Saida = 2
-        }
+       
 
     }
 }
