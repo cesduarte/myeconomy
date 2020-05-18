@@ -31,15 +31,22 @@ namespace MyEconomy
 
 
         }
+        public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
+        {
+            ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
+            ContasBancariasInf.IdContasBancarias = IdContasBancarias;
+            ContasBancariasInf.SaldoContasBancarias = Saldo;
+            ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
+            objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
+        }
 
-       
         public void CarregaGrid()
         {
             try
             {
 
 
-              
+               
                 despesasvariadasinf.DescricaoDespesaVariada = Txtdescricaopesquisa.Text;
                 despesasvariadasinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
                 despesasvariadasinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
@@ -191,9 +198,9 @@ namespace MyEconomy
 
                 despesasvariadasinf.ValorDespesaVariada = Convert.ToDecimal(Txtvalor.Text);
                 despesasvariadasinf.DataDespesaVariada = Convert.ToDateTime(Txtdata.Text);
-             
 
-              
+                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancarias.SelectedValue), (-Convert.ToDecimal(Txtvalor.Text)));
+
                 objdespesasvariadas.InserirDespesaVariadas(despesasvariadasinf);
 
                
@@ -250,15 +257,15 @@ namespace MyEconomy
             {
                 txtidexclusao.Text = e.CommandArgument.ToString();
 
-
+                
 
 
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#ConfirmaExclusao').modal('show');", true);
-
+                
             }
 
-           
+
         }
 
         protected void GrdDados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -284,7 +291,24 @@ namespace MyEconomy
 
         protected void Button7_Click(object sender, EventArgs e)
         {
+           
+
+            foreach (DespesasVariadasInformation despesasvariadasinf1 in objdespesasvariadas.CarregarDespesaVariadascampos(txtidexclusao.Text))
+            {
+                
+
+
+
+
+
+
+
+
+                AtualizaSaldoContaBancaria(despesasvariadasinf1.IdContasBancarias, despesasvariadasinf1.ValorDespesaVariada);
+            }
+
             objdespesasvariadas.ExcluirDespesaVariadas(int.Parse(txtidexclusao.Text));
+            LimparCampos();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#ConfirmaExclusao').modal('hide');", true);
             CarregaGrid();
         }

@@ -328,10 +328,10 @@
                 <div class="card">
                     <div class="bootstrap-modal">
                         <div class="modal fade" id="ConfirmaExclusao">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-dialog modal-dialog-centered" data-animation="pop" role="document">
                                 <div class="modal-content">
                                       <asp:TextBox ID="txtidexclusao" runat="server" class="form-control form-control-sm" Visible="false"></asp:TextBox>
-                                    <div class="sweet-alert showSweetAlert visible"  data-animation="pop" style="display: block; margin-top: -169px;">
+                                    <div class="sweet-alert showSweetAlert visible"  <%--data-animation="pop"--%> style="display: block; margin-top: -169px;">
                                         
                                         <div class="sa-icon sa-warning pulseWarning" style="display: block;">
                                             <span class="sa-body pulseWarningIns"></span>
@@ -344,13 +344,14 @@
                                          <asp:UpdatePanel ID="UpdatePanel9" runat="server">
                                             <ContentTemplate>
                                         <div class="sa-button-container">
-                                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;">Não, Cancelar !!</button>
+                                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;" data-dismiss="modal" >Não, Cancelar !!</button>
+                                          
                                             <div class="sa-confirm-button-container">
                                                 <%--<button class="" tabindex="1" runat="server" onserverclick="Excluir" style="display: inline-block; background-color: rgb(221, 107, 85); runa box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">Sim, Deletar !!</button><div class="la-ball-fall">--%>
-                                                <asp:Button ID="Button7" style="display: inline-block; background-color: rgb(221, 107, 85); runa box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;" runat="server" Text="Sim, Deletar !!" OnClick="Button7_Click" />
+                                                <asp:Button ID="Button7" CssClass="btn btn-danger"  style="display: inline-block;" runat="server" Text="Sim, Deletar !!" OnClick="Button7_Click" />
                                                 </div>
                                             </div>
-                                        </div>
+                                        
                                            </ContentTemplate>
                                         </asp:UpdatePanel>
                                                
