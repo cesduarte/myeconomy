@@ -245,6 +245,20 @@ namespace MyEconomy
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
 
             }
+
+            if (e.CommandName == "Deletar")
+            {
+                txtidexclusao.Text = e.CommandArgument.ToString();
+
+
+
+
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#ConfirmaExclusao').modal('show');", true);
+
+            }
+
+           
         }
 
         protected void GrdDados_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -258,6 +272,21 @@ namespace MyEconomy
             CarregaGrid();
         }
 
-        
+        protected void Excluir(object sender, EventArgs e)
+        {
+          
+
+
+            
+           
+
+        }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            objdespesasvariadas.ExcluirDespesaVariadas(int.Parse(txtidexclusao.Text));
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#ConfirmaExclusao').modal('hide');", true);
+            CarregaGrid();
+        }
     }
 }

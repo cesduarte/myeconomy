@@ -13,6 +13,7 @@
    
     <!-- Custom Stylesheet -->
     <link href="Componentes/css/style.css" rel="stylesheet">
+    <link href="Componentes/plugins/sweetalert/css/sweetalert.css" rel="stylesheet" />
     
    
     <asp:ContentPlaceHolder ID="head" runat="server">

@@ -258,6 +258,43 @@ namespace MyEconomy
 
         }
 
-       
+
+
+        public void ExcluirDespesaVariadas(int idDespesaVariada)
+        {
+           
+            try
+            {
+                objCommand.Connection = objConexao;
+                objCommand.CommandText = "Procedure_excluirDespesaVariada";
+                objCommand.CommandType = CommandType.StoredProcedure;
+
+                MySqlParameter pid = new MySqlParameter("_IdDespesaVariada", MySqlDbType.Int32);
+                pid.Value = idDespesaVariada;
+                objCommand.Parameters.Add(pid);
+
+                objConexao.Open();
+                
+                int resultado = objCommand.ExecuteNonQuery();
+                if (resultado != 1)
+                {
+                    throw new Exception("não foi possivel excluir o extrato" + idDespesaVariada);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+        }
+
+
     }
 }
