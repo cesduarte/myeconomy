@@ -267,11 +267,12 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-weather-drop menu-icon"></i><span class="nav-text">Gerenciamento</span>
+                            <i class="icon-weather-drop menu-icon"></i><span class="nav-text">Movimentação</span>
                         </a>
                         <ul aria-expanded="false">
                            
                             <li><a href="ContasAPagar.aspx">Contas a Pagar</a></li>
+                             <li><a href="EntradaSaidaValores.aspx">Entrada / Saída R$</a></li>
                            
                             
                             

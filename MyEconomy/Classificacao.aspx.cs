@@ -18,7 +18,7 @@ namespace MyEconomy
 
             if (!Page.IsPostBack)
             {
-                CarregarTipo(DropTipo, new StatusEnum.Tipo());
+                CarregarTipo(DropTipo, new StatusEnum.TipoClassificacao());
                 CarregaGrid();
             }
 
@@ -73,7 +73,7 @@ namespace MyEconomy
                 {
                     Txtid.Text = Convert.ToString(classificacao.IdClassificacao);
                     Txtdescricao.Text = classificacao.DescricaoClassificacao;
-                    if (classificacao.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
+                    if (classificacao.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento)))
                     {
                         DropTipo.SelectedValue = "1";
                     }

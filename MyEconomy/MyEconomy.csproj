@@ -4966,6 +4966,7 @@
     <Content Include="Default.aspx" />
     <Content Include="DespesasFixas.aspx" />
     <Content Include="Diagrama\Modelagem.xml" />
+    <Content Include="EntradaSaidaValores.aspx" />
     <Content Include="Investimento.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
@@ -5015,6 +5016,13 @@
     <Compile Include="DespesasFixas.aspx.designer.cs">
       <DependentUpon>DespesasFixas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EntradaSaidaValores.aspx.cs">
+      <DependentUpon>EntradaSaidaValores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntradaSaidaValores.aspx.designer.cs">
+      <DependentUpon>EntradaSaidaValores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Investimento.aspx.cs">
       <DependentUpon>Investimento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5026,6 +5034,7 @@
     <Compile Include="Modelo\ContasAPagarInformation.cs" />
     <Compile Include="Modelo\ContasBancariasInformation.cs" />
     <Compile Include="Modelo\DespesaFixaInformation.cs" />
+    <Compile Include="Modelo\EntradaSaidaInformation.cs" />
     <Compile Include="Modelo\InvestimentoInformation.cs" />
     <Compile Include="Modelo\UsuariosInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

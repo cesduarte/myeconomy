@@ -98,7 +98,7 @@ namespace MyEconomy
 
                     foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue))
                     {
-                        if (classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
+                        if (classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento)))
                         {
                             DropInvestimento.Visible = true;
                             lblinvestimento.Visible = true;
@@ -209,7 +209,7 @@ namespace MyEconomy
 
                 foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue))
                 {
-                    if (classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.Tipo.Investimento)))
+                    if (classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento)))
                     {
                         DropInvestimento.Visible = true;
                         lblinvestimento.Visible = true;
