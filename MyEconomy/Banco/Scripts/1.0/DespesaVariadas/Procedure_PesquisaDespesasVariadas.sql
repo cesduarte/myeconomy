@@ -1,8 +1,7 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Procedure_PesquisaDespesasVariadas`(
 IN _descricaodespesavariadas nvarchar(200), 
 IN _idcontasbancarias INT,
-IN _idclassificacao INT,
-IN _isdelete bool)
+IN _idclassificacao INT)
 BEGIN
 if(_descricaodespesavariadas=''&& _idcontasbancarias = 1 && _idclassificacao =1)then
 select a.IdDespesavariada, a.Descricaodespesavariada, a.ValorDespesaVariada,DataDespesaVariada, b.DescricaoContasBancarias, c.DescricaoClassificacao

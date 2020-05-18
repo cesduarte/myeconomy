@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-namespace MyEconomy.Dal
+namespace MyEconomy
 {
     public class DespesasVariadasDAL
     {
@@ -80,7 +80,7 @@ namespace MyEconomy.Dal
                 }
                 else
                 {
-                    sql = "select * from tbl_despesavariadas where IdDespesaVariada = " + IdDespesaVariada;
+                    sql = "select * from tbl_despesavariada where IdDespesaVariada = " + IdDespesaVariada;
                 }
 
 
@@ -96,7 +96,7 @@ namespace MyEconomy.Dal
                 {
                     ListaDeDados.Add(new DespesasVariadasInformation()
                     {
-                        IdDespesaVariada = int.Parse(dataRow["IdDespesaFixa"].ToString()),
+                        IdDespesaVariada = int.Parse(dataRow["IdDespesaVariada"].ToString()),
                         DescricaoDespesaVariada = dataRow["DescricaodespesaVariada"].ToString(),
                         IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
                         IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),                      
@@ -127,7 +127,7 @@ namespace MyEconomy.Dal
 
 
 
-        public void InserirDespesaFixa(DespesasVariadasInformation despesasinf)
+        public void InserirDespesaVariadas(DespesasVariadasInformation despesasinf)
         {
 
             try
@@ -143,7 +143,7 @@ namespace MyEconomy.Dal
 
 
 
-                MySqlParameter pdescricao = new MySqlParameter("_descricaodespesavariada", MySqlDbType.VarChar, 200);
+                MySqlParameter pdescricao = new MySqlParameter("_descricaodespesavariadas", MySqlDbType.VarChar, 200);
                 pdescricao.Value = despesasinf.DescricaoDespesaVariada;
                 objCommand.Parameters.Add(pdescricao);
 
@@ -176,7 +176,7 @@ namespace MyEconomy.Dal
 
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
-                despesasinf.IdDespesaVariada = (Int32)objCommand.Parameters["_IdDespesa"].Value;
+                despesasinf.IdDespesaVariada = (Int32)objCommand.Parameters["_IdDespesaVariada"].Value;
 
 
             }
@@ -195,7 +195,7 @@ namespace MyEconomy.Dal
 
         }
 
-        public void AlterarDespesaFixa(DespesasVariadasInformation despesasinf)
+        public void AlterarDespesaVariadas(DespesasVariadasInformation despesasinf)
         {
 
             try
@@ -212,7 +212,7 @@ namespace MyEconomy.Dal
 
 
 
-                MySqlParameter pdescricao = new MySqlParameter("_descricaodespesavariada", MySqlDbType.VarChar, 200);
+                MySqlParameter pdescricao = new MySqlParameter("_descricaodespesavariadas", MySqlDbType.VarChar, 200);
                 pdescricao.Value = despesasinf.DescricaoDespesaVariada;
                 objCommand.Parameters.Add(pdescricao);
 

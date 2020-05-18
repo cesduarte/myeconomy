@@ -8,7 +8,7 @@ IN _datadespesavariada datetime)
 BEGIN
 UPDATE `myeconomy`.`tbl_despesavariada`
 SET
-`Descricaodespesavariada` =_descricaodespesa, 
+`Descricaodespesavariada` =_descricaodespesavariadas, 
 `Idcontasbancarias` =_idcontasbancarias,
 `Idclassificacao` = _idclassificacao,
 
