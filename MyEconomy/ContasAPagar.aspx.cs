@@ -156,7 +156,7 @@ namespace MyEconomy
                     }
 
                     VerificarInvestimento();
-                    if(DropInvestimento.Visible = true && DropInvestimento.Text != "")
+                    if(DropInvestimento.Visible = true && DropInvestimento.Text != "" && contasapagarinf.IdInvestimento !=0)
                     {
                         DropInvestimento.SelectedValue = Convert.ToString(contasapagarinf.IdInvestimento);
                     }
@@ -337,7 +337,8 @@ namespace MyEconomy
         public void LimparCampos()
         {
 
-
+            DropInvestimento.Visible = false;
+          
 
         }
 
