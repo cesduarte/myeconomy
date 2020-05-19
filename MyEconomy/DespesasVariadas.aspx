@@ -67,7 +67,7 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Descricaodespesavariada" HeaderText="Descrição Contas" />
+                                                    <asp:BoundField DataField="Descricaodespesavariada" HeaderText="Descrição Despesa" />
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
                                                     <asp:BoundField DataField="ValorDespesaVariada" HeaderText="Valor" DataFormatString="{0:c}" />

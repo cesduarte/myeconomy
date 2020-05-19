@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-namespace MyEconomy.Dal
+namespace MyEconomy
 {
     public class ReceitasVariadasDAL
     {
@@ -14,26 +14,26 @@ namespace MyEconomy.Dal
         MySqlCommand objCommand = new MySqlCommand();
 
 
-        public DataSet PesquisarReceitas(DespesasVariadasInformation despesasinf)
+        public DataSet PesquisarReceitas(ReceitasVariadasInformation receitasvariadasinf)
         {
             try
             {
                 DataSet ds;
                 objConexao.Open();
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_PesquisaReceitas";
+                objCommand.CommandText = "Procedure_PesquisaReceitasVariadas";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
-                objCommand.Parameters.Add(new MySqlParameter("_descricaoreceitas", MySqlDbType.VarChar, 100));
-                objCommand.Parameters["_descricaoreceitas"].Value = despesasinf.DescricaoDespesaVariada;
+                objCommand.Parameters.Add(new MySqlParameter("_descricaoreceitavariadas", MySqlDbType.VarChar, 100));
+                objCommand.Parameters["_descricaoreceitavariadas"].Value = receitasvariadasinf.DescricaoReceitaVariada;
 
 
 
                 objCommand.Parameters.Add(new MySqlParameter("_idcontasbancarias", MySqlDbType.Int32));
-                objCommand.Parameters["_idcontasbancarias"].Value = despesasinf.IdContasBancarias;
+                objCommand.Parameters["_idcontasbancarias"].Value = receitasvariadasinf.IdContasBancarias;
 
                 objCommand.Parameters.Add(new MySqlParameter("_idclassificacao", MySqlDbType.Int32));
-                objCommand.Parameters["_idclassificacao"].Value = despesasinf.IdClassificacao;
+                objCommand.Parameters["_idclassificacao"].Value = receitasvariadasinf.IdClassificacao;
 
 
 
@@ -80,7 +80,7 @@ namespace MyEconomy.Dal
                 }
                 else
                 {
-                    sql = "select * from tbl_receitasvariadas where IdReceitas = " + IdReceitas;
+                    sql = "select * from tbl_receitavariada where Idreceitavariada = " + IdReceitas;
                 }
 
 
@@ -96,12 +96,12 @@ namespace MyEconomy.Dal
                 {
                     ListaDeDados.Add(new ReceitasVariadasInformation()
                     {
-                        IdReceitaVariada = int.Parse(dataRow["IdReceitas"].ToString()),
-                        DescricaoReceitaVariada = dataRow["Descricaoreceitas"].ToString(),
+                        IdReceitaVariada = int.Parse(dataRow["Idreceitavariada"].ToString()),
+                        DescricaoReceitaVariada = dataRow["Descricaoreceitavariada"].ToString(),
                         IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
                         IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
-                        ValorReceita = Convert.ToDecimal(dataRow["ValorReceitas"].ToString()),
-                        DataReceitaVariada = Convert.ToDateTime(dataRow["DataReceita"].ToString())
+                        ValorReceita = Convert.ToDecimal(dataRow["ValorreceitaVariada"].ToString()),
+                        DataReceitaVariada = Convert.ToDateTime(dataRow["DatareceitaVariada"].ToString())
 
                     });
                 }
@@ -134,7 +134,7 @@ namespace MyEconomy.Dal
             {
 
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_inserirReceitas";
+                objCommand.CommandText = "Procedure_inserirReceitasVariadas";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
                 MySqlParameter pid = new MySqlParameter("_IdReceitavariada", MySqlDbType.Int32);
@@ -212,7 +212,7 @@ namespace MyEconomy.Dal
 
 
 
-                MySqlParameter pdescricao = new MySqlParameter("_descricaoreceitasvariadas", MySqlDbType.VarChar, 200);
+                MySqlParameter pdescricao = new MySqlParameter("_descricaoreceitavariadas", MySqlDbType.VarChar, 200);
                 pdescricao.Value = receitasinf.DescricaoReceitaVariada;
                 objCommand.Parameters.Add(pdescricao);
 
@@ -266,10 +266,10 @@ namespace MyEconomy.Dal
             try
             {
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_excluirDespesaVariada";
+                objCommand.CommandText = "Procedure_excluirReceitasVariada";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
-                MySqlParameter pid = new MySqlParameter("_IdReceitasVariada", MySqlDbType.Int32);
+                MySqlParameter pid = new MySqlParameter("_IdReceitaVariada", MySqlDbType.Int32);
                 pid.Value = idDespesaVariada;
                 objCommand.Parameters.Add(pid);
 

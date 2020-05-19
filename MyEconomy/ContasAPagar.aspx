@@ -15,7 +15,7 @@
                             <div class="col p-md-0">
                                 <ol class="breadcrumb">
                                     
-                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Pesquisar Contas a pagar </a></li>
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Movimentação / Contas a pagar </a></li>
                                 </ol>
 
                             </div> 
@@ -36,11 +36,11 @@
 
                                                   
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-outline-light" title="Pesquisar Contas" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Pesquisar contas a pagar" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
                                                     </li>
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
+                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
                                                     </li>
                                                    <li class="d-inline-block">
                                                         <button type="button" id="Button6" class="btn btn-outline-light" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
@@ -76,7 +76,7 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Descricaodespesa" HeaderText="Descrição Despesa" />
+                                                    <asp:BoundField DataField="Descricaodespesa" HeaderText="Descrição despesa" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" /> 
 
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />                                                                                                       
@@ -86,7 +86,7 @@
 
                                                     <asp:BoundField DataField="ContaBancariaPagamento" HeaderText="Conta pagamento" />
                                                     <asp:BoundField DataField="ValorPagamento" HeaderText="Valor pago" DataFormatString="{0:c}" />  
-                                                    <asp:BoundField DataField="DataPagamento" HeaderText="Data Pagamento" DataFormatString="{0:dd/MM/yyyy}" />
+                                                    <asp:BoundField DataField="DataPagamento" HeaderText="Data pagamento" DataFormatString="{0:dd/MM/yyyy}" />
 
 
                                                     <asp:BoundField DataField="NParcelasContaAPagar" HeaderText="Parcela" />
@@ -135,7 +135,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Pesquisar Contas a pagar</h5>
+                                        <h5 class="modal-title">Pesquisar contas a pagar</h5>
                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                                             <ContentTemplate>
                                                 <button type="button" id="teste" class="close" runat="server" onserverclick="Button1_Click" usesubmitbehavior="false" data-dismiss="modal">
@@ -162,13 +162,13 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição Conta: </asp:Label>
+                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição conta: </asp:Label>
                                                         <asp:TextBox ID="Txtdescricaopesquisa" runat="server" class="form-control form-control-sm"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                      <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label6" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                         <asp:Label ID="Label6" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
                                                         
                                                         <asp:DropDownList ID="Dropcontasbancariaspesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group">
                                                           
@@ -179,7 +179,7 @@
                                                    
                                                     
                                                         <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label7" runat="server" Text="Label">Descrição Classificação: </asp:Label>
+                                                         <asp:Label ID="Label7" runat="server" Text="Label">Descrição classificação: </asp:Label>
                                                         <asp:DropDownList ID="Dropclassificacaopesquisa" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
@@ -259,8 +259,8 @@
                                                <div class="default-tab">
                                             
                                                    <ul class="nav nav-tabs mb-3" role="tablist">
-                                                       <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile">Detalhes Pagamento</a></li>
-                                                        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#home">Detalhes Despesa</a></li>
+                                                       <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile">Detalhes pagamento</a></li>
+                                                        <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#home">Detalhes despesa</a></li>
                                                         
                                                    </ul>
                                                     <div class="tab-content">
@@ -277,7 +277,7 @@
                                                     
                                                     
                                                     <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label12" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                         <asp:Label ID="Label12" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
                                                         <asp:DropDownList ID="Dropcontasbancariasapagar" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
@@ -290,7 +290,7 @@
                                                 </div>
                                                                  <div class="form-row">
                                                       <div class="form-group col-md-6">
-                                                          <asp:Label ID="Label16" runat="server" Text="Label">Valor Pago R$: </asp:Label> 
+                                                          <asp:Label ID="Label16" runat="server" Text="Label">Valor pago R$: </asp:Label> 
                                                           <asp:TextBox ID="Txtvalorpago"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
                                                        
                                                           <asp:RangeValidator ID="MyRangeValidator"  Type="Double" class="text-danger"
@@ -342,7 +342,7 @@
                                                 </div>
                                                                  <div class="form-row">
                                                      <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição Despesa: </asp:Label>
+                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição despesa: </asp:Label>
                                                           <asp:TextBox ID="Txtdescricaoconta"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
                                                        
                                                      </div>
@@ -351,7 +351,7 @@
                                                     
                                                     
                                                     <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label3" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                         <asp:Label ID="Label3" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
                                                         <asp:DropDownList ID="Dropcontasbancarias" runat="server" CssClass="form-control form-control-sm" ReadOnly="true">
                                                           
                                                          </asp:DropDownList>                                                   
@@ -359,7 +359,7 @@
                                                         
                                                      </div>
                                                       <div class="form-group col-md-6">
-                                                        <asp:Label ID="Label2" runat="server" Text="Label">Descrição Classificação: </asp:Label>
+                                                        <asp:Label ID="Label2" runat="server" Text="Label">Descrição classificação: </asp:Label>
                                                         <asp:DropDownList ID="Dropclassificacao" runat="server" CssClass="form-control form-control-sm" ReadOnly="true">
                                                           
                                                          </asp:DropDownList>
@@ -371,13 +371,13 @@
                                                 </div>
                                                     <div class="form-row">
                                                       <div class="form-group col-md-6">
-                                                          <asp:Label ID="Label11" runat="server" Text="Label">Valor Parcela R$: </asp:Label> 
+                                                          <asp:Label ID="Label11" runat="server" Text="Label">Valor parcela R$: </asp:Label> 
                                                           <asp:TextBox ID="Txtvalor"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
                                                        
                                                           
                                                       </div>
                                                        <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label13" runat="server" Text="Label" >Data de Vencimento: </asp:Label>
+                                                         <asp:Label ID="Label13" runat="server" Text="Label" >Data de vencimento: </asp:Label>
                                                          <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date" ReadOnly="true" ></asp:TextBox>     
                                                          
                                                      </div>
@@ -387,7 +387,7 @@
                                                     
                                                     
                                                     <div class="form-group col-md-6">
-                                                         <asp:Label ID="lblinvestimento" runat="server" Text="Label">Descrição Investimento: </asp:Label>
+                                                         <asp:Label ID="lblinvestimento" runat="server" Text="Label">Descrição investimento: </asp:Label>
                                                         <asp:DropDownList ID="DropInvestimento" runat="server" CssClass="form-control form-control-" ValidationGroup="group" ReadOnly="true">
                                                           
                                                          </asp:DropDownList>

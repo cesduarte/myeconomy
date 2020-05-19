@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Procedure_inserirReceitas`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Procedure_inserirReceitasVariadas`(
 INOUT _IdReceitavariada INT,
 IN _descricaoreceitasvariadas nvarchar(200), 
 IN _idcontasbancarias INT,
@@ -15,7 +15,7 @@ ValorreceitaVariada,
 DatareceitaVariada
 )
 values(
-_descricaoreceitavariadas,
+_descricaoreceitasvariadas,
 _idcontasbancarias,
 _idclassificacao,
 _valorreceitavariada,

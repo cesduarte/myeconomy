@@ -16,7 +16,7 @@
                             <div class="col p-md-0">
                                 <ol class="breadcrumb">
                                     
-                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Pesquisar Classificação</a></li>
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Cadastro / Classificação</a></li>
                                 </ol>
 
                             </div> 
@@ -36,7 +36,7 @@
                                                 <ul class="mb-0 form-profile__icons">
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-outline-light" title="Novo classificação" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Nova classificação" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
 
                                                     </li>
                                                     <li class="d-inline-block">
@@ -44,7 +44,7 @@
                                                     </li>
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
+                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
                                                     </li>
                                                    <li class="d-inline-block">
                                                         <button type="button" id="Button6" class="btn btn-outline-light" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
@@ -104,7 +104,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Pesquisar Classificação</h5>
+                                        <h5 class="modal-title">Pesquisar classificação</h5>
                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                                             <ContentTemplate>
                                                 <button type="button" id="teste" class="close" runat="server" onserverclick="Button1_Click" usesubmitbehavior="false" data-dismiss="modal">
@@ -173,7 +173,7 @@
 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Cadastro de Classificação</h5>
+                                        <h5 class="modal-title">Cadastro de classificação</h5>
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
                                             
@@ -203,7 +203,7 @@
                                                     
                                                     
                                                     <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label10" runat="server" Text="Label">Descrição Investimento: </asp:Label>
+                                                         <asp:Label ID="Label10" runat="server" Text="Label">Tipo: </asp:Label>
                                                         <asp:DropDownList ID="DropTipo" runat="server" CssClass="form-control form-control-sm" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
