@@ -12,6 +12,8 @@ namespace MyEconomy
         public int IdClassificacao { get; set; }
 
         public string DescricaoReceitaVariada { get; set; }
+
+        public decimal ValorReceita { get; set; }
         public DateTime DataReceitaVariada { get; set; }
     }
 }
