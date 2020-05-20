@@ -37,9 +37,15 @@ namespace MyEconomy
 
 
 
+                MySqlParameter pdatainicial = new MySqlParameter("_datainicial", MySqlDbType.DateTime, 200);
+                pdatainicial.Value = despesasinf.DataInicialPesquisa;
+                objCommand.Parameters.Add(pdatainicial);
+
+                MySqlParameter pdatafinal = new MySqlParameter("_datafinal", MySqlDbType.DateTime, 200);
+                pdatafinal.Value = despesasinf.DataFinalPesquisa;
+                objCommand.Parameters.Add(pdatafinal);
 
 
-                
 
                 MySqlDataAdapter da;
 

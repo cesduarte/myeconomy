@@ -4968,6 +4968,7 @@
     <Content Include="DespesasVariadas.aspx" />
     <Content Include="Diagrama\Modelagem.xml" />
     <Content Include="Investimento.aspx" />
+    <Content Include="InvestimentoManual.aspx" />
     <Content Include="ReceitasVariadas.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
@@ -5033,6 +5034,14 @@
     <Compile Include="Investimento.aspx.designer.cs">
       <DependentUpon>Investimento.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InvestimentoManual.aspx.cs">
+      <DependentUpon>InvestimentoManual.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InvestimentoManual.aspx.designer.cs">
+      <DependentUpon>InvestimentoManual.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ClasseGenericaInformation.cs" />
     <Compile Include="Modelo\ClassificacaoInformation.cs" />
     <Compile Include="Modelo\ContasAPagarInformation.cs" />
     <Compile Include="Modelo\ContasBancariasInformation.cs" />

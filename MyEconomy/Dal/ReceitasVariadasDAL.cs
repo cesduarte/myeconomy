@@ -35,7 +35,13 @@ namespace MyEconomy
                 objCommand.Parameters.Add(new MySqlParameter("_idclassificacao", MySqlDbType.Int32));
                 objCommand.Parameters["_idclassificacao"].Value = receitasvariadasinf.IdClassificacao;
 
+                MySqlParameter pdatainicial = new MySqlParameter("_datainicial", MySqlDbType.DateTime, 200);
+                pdatainicial.Value = receitasvariadasinf.DataInicialPesquisa;
+                objCommand.Parameters.Add(pdatainicial);
 
+                MySqlParameter pdatafinal = new MySqlParameter("_datafinal", MySqlDbType.DateTime, 200);
+                pdatafinal.Value = receitasvariadasinf.DataFinalPesquisa;
+                objCommand.Parameters.Add(pdatafinal);
 
 
 

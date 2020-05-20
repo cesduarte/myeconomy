@@ -181,6 +181,7 @@ namespace MyEconomy
             Dropcontasbancariaspesquisa.SelectedIndex = 0;
             Dropclassificacaopesquisa.SelectedIndex = 0;
             chkinativoPesquisa.Checked = false;
+            
         }
 
         public void LimparCampos()

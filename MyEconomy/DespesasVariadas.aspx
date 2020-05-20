@@ -154,7 +154,20 @@
 
                                                     </div>
                                                 </div>
-
+                                                  <div class="form-row">
+                                                     <div class="form-group col-md-6">
+                                                         <asp:Label ID="Label10" runat="server" Text="Label" >Data inicial: </asp:Label>
+                                                         <asp:TextBox ID="Txtdatainicialpesquisa"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox> 
+                                                        
+                                                     </div>
+                                                   
+                                                    
+                                                     <div class="form-group col-md-6">
+                                                         <asp:Label ID="Label15" runat="server" Text="Label" >Data final: </asp:Label>
+                                                         <asp:TextBox ID="Txtdatafinalpesquisa"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox> 
+                                                        
+                                                     </div>
+                                                </div>
 
 
                                             </ContentTemplate>

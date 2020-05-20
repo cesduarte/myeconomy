@@ -21,12 +21,25 @@ namespace MyEconomy
         {
             if (!Page.IsPostBack)
             {
-
+                carrega_data();
                 CarregarContasBancarias();
                 CarregarClassificacao();
                 CarregaGrid();
 
             }
+
+
+
+        }
+
+        public void carrega_data()
+        {
+            DateTime abre = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            Txtdatainicialpesquisa.Text = abre.ToString("yyyy-MM-dd");
+
+            DateTime fecha = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            Txtdatafinalpesquisa.Text = fecha.AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd");
+
 
 
 
@@ -50,7 +63,8 @@ namespace MyEconomy
                 receitasvariadasinf.DescricaoReceitaVariada = Txtdescricaopesquisa.Text;
                 receitasvariadasinf.IdClassificacao = Convert.ToInt32(Dropclassificacaopesquisa.SelectedValue);
                 receitasvariadasinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
-
+                receitasvariadasinf.DataInicialPesquisa = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
+                receitasvariadasinf.DataFinalPesquisa = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
 
 
 
@@ -158,7 +172,7 @@ namespace MyEconomy
             Txtdescricaopesquisa.Text = "";
             Dropcontasbancariaspesquisa.SelectedIndex = 0;
             Dropclassificacaopesquisa.SelectedIndex = 0;
-
+            carrega_data();
         }
 
         public void LimparCampos()

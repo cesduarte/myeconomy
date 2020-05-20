@@ -5,12 +5,11 @@ using System.Web;
 
 namespace MyEconomy
 {
-    public class ReceitasVariadasInformation: ContasBancariasInformation
+    public class ReceitasVariadasInformation: ClasseGenericaInformation
     {
         public int IdReceitaVariada { get; set; }
 
-        public int IdClassificacao { get; set; }
-
+       
         public string DescricaoReceitaVariada { get; set; }
 
         public decimal ValorReceita { get; set; }
