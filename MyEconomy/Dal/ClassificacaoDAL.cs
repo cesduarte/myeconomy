@@ -59,7 +59,7 @@ namespace MyEconomy
         }
 
 
-        public List<ClassificacaoInformation> CarregarClassificacao(string IdClassificacao)
+        public List<ClassificacaoInformation> CarregarClassificacao(string IdClassificacao, string TipoClassificacao)
         {
             try
             {
@@ -68,8 +68,16 @@ namespace MyEconomy
 
                 if (IdClassificacao == "")
                 {
-                    sql = "select * from tbl_classificacao where isdelete = false order by DescricaoClassificacao";
+                    if(TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Despesas)) || TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas)))
+                    sql = "select * from tbl_classificacao where isdelete = false  and  (TipoClassificacao = '" + TipoClassificacao+ "') OR (TipoClassificacao ='--') order by DescricaoClassificacao";
+                
+                    else
+                    {
+                        sql = "select * from tbl_classificacao where isdelete = false and  TipoClassificacao <> '"+EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas))+ "' order by DescricaoClassificacao";
+                    }
+                
                 }
+                
                 else
                 {
                     sql = "select * from tbl_classificacao where Idclassificacao = " + IdClassificacao;

@@ -273,6 +273,7 @@
                         <ul aria-expanded="false">
                            
                             <li><a href="ContasAPagar.aspx">Contas a Pagar</a></li>
+                             <li><a href="DespesasVariadas.aspx">Despesas</a></li>
                              <li><a href="InvestimentoManual.aspx">Investir</a></li>
                             <li><a href="ReceitasVariadas.aspx">Receitas</a></li>
                            

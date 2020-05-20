@@ -14,11 +14,14 @@ INSERT INTO `myeconomy`.`tbl_classificacao`
 (
 
 `DescricaoClassificacao`,
+`TipoClassificacao`,
 `Isdelete`
 )
 VALUES
 (
 
 '--',
+'--',
+
 false
 );

@@ -21,10 +21,16 @@ namespace MyEconomy
         {
             [Description("--")] //Descrição será exibido como item do dropdown
             inicial = 0,// item do enumerator atribuido o seu valor constante.
+            [Description("Despesas")]
+            Despesas = 2,
             [Description("Investimento")] //Descrição será exibido como item do dropdown
             Investimento = 1,// item do enumerator atribuido o seu valor constante.
-            [Description("Padrão")]
-            Padrão = 2
+            
+            [Description("Receitas")]
+            Receitas = 3
+
+
+
         }
 
        

@@ -69,7 +69,7 @@ namespace MyEconomy
 
 
                 classificacao = null;
-                foreach (ClassificacaoInformation classificacao in obj.CarregarClassificacao(id))
+                foreach (ClassificacaoInformation classificacao in obj.CarregarClassificacao(id,""))
                 {
                     Txtid.Text = Convert.ToString(classificacao.IdClassificacao);
                     Txtdescricao.Text = classificacao.DescricaoClassificacao;

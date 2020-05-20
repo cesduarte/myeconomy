@@ -191,7 +191,7 @@ namespace MyEconomy
 
 
 
-                foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue))
+                foreach (ClassificacaoInformation classificacaoinf in objclassificacao.CarregarClassificacao(Dropclassificacao.SelectedValue, ""))
                 {
                     if (classificacaoinf.TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento)))
                     {
@@ -291,13 +291,13 @@ namespace MyEconomy
                 Dropclassificacao.DataSource = null;
                 Dropclassificacaopesquisa.DataSource = null;
 
-                Dropclassificacao.DataSource = objclassificacao.CarregarClassificacao("");
+                Dropclassificacao.DataSource = objclassificacao.CarregarClassificacao("","");
                 Dropclassificacao.DataTextField = "DescricaoClassificacao";
                 Dropclassificacao.DataValueField = "Idclassificacao";
                 Dropclassificacao.DataBind();
 
 
-                Dropclassificacaopesquisa.DataSource = objclassificacao.CarregarClassificacao("");
+                Dropclassificacaopesquisa.DataSource = objclassificacao.CarregarClassificacao("", "");
                 Dropclassificacaopesquisa.DataTextField = "DescricaoClassificacao";
                 Dropclassificacaopesquisa.DataValueField = "Idclassificacao";
                 Dropclassificacaopesquisa.DataBind();
