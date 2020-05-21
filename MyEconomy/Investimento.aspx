@@ -19,7 +19,7 @@
                             <div class="col p-md-0">
                                 <ol class="breadcrumb">
                                     
-                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Pesquisar Investimento </a></li>
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Cadastro / Investimento </a></li>
                                 </ol>
 
                             </div> 
@@ -39,15 +39,15 @@
                                                 <ul class="mb-0 form-profile__icons">
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-outline-light" title="Novo Investimento" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Novo investimento" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
 
                                                     </li>
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-outline-light" title="Pesquisar Investimentos" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Pesquisar investimentos" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
                                                     </li>
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
+                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
                                                     </li>
                                                    <li class="d-inline-block">
                                                         <button type="button" id="Button6" class="btn btn-transparent p-0 mr-3" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
@@ -69,8 +69,8 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Descricaoinvestimento" HeaderText="Descrição Investimento" />
-                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas Bancárias" />
+                                                    <asp:BoundField DataField="Descricaoinvestimento" HeaderText="Descrição investimento" />
+                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
                                                     
                                                     <asp:BoundField DataField="SaldoInvestimento" HeaderText="Saldo" DataFormatString="{0:c}" />
                                                    
@@ -107,7 +107,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Pesquisar Investimento</h5>
+                                        <h5 class="modal-title">Pesquisar investimento</h5>
                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                                             <ContentTemplate>
                                                 <button type="button" id="teste" class="close" runat="server" onserverclick="Button1_Click" usesubmitbehavior="false" data-dismiss="modal">
@@ -123,13 +123,13 @@
                                             <ContentTemplate>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição Investimento: </asp:Label>
+                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição investimento: </asp:Label>
                                                         <asp:TextBox ID="Txtdescricaopesquisa" runat="server" class="form-control form-control-sm"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                      <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label6" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                         <asp:Label ID="Label6" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
                                                         
                                                         <asp:DropDownList ID="Dropcontasbancariaspesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group">
                                                           
@@ -190,7 +190,7 @@
 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Cadastro de Investimento</h5>
+                                        <h5 class="modal-title">Cadastro de investimento</h5>
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
                                             
@@ -221,7 +221,7 @@
                                                     
                                                     
                                                     <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label3" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                         <asp:Label ID="Label3" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
                                                         <asp:DropDownList ID="Dropcontasbancarias" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>

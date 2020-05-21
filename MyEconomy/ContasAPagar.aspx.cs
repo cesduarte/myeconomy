@@ -19,7 +19,7 @@ namespace MyEconomy
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
         InvestimentoDAL objinvestimento = new InvestimentoDAL();
         ExtratoBancarioDAL objextratobancario = new ExtratoBancarioDAL();
-        ExtratosBancariosInformation extradosinf = new ExtratosBancariosInformation();
+        ExtratosBancariosInformation extratosinf = new ExtratosBancariosInformation();
 
         DespesaFixaInformation despesasfixasinf = new DespesaFixaInformation();
         DespesasFixasDAL objdespesasfixas = new DespesasFixasDAL();
@@ -236,22 +236,22 @@ namespace MyEconomy
 
         public void InserirInvestimentoExtratoBancario()
         {
-
-
-            InvestimentoInformation investimentoinf = new InvestimentoInformation();
-            investimentoinf.DescricaoInvestimento = DropInvestimento.SelectedValue.ToString();
-            investimentoinf.IdInvestimento = Convert.ToInt32(DropInvestimento.SelectedValue);
-            investimentoinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
-            investimentoinf.SaldoInvestimento = Convert.ToDecimal(Txtvalorpago.Text);
-            investimentoinf.DataInvestimento = Convert.ToDateTime(txtdatapagamento.Text);
-           
-            objinvestimento.InserirInvestimentoExtratoBancario(investimentoinf);
+            
+        
+            extratosinf.DescricaoExtratoBancario = Txtdescricaoconta.Text;
+            extratosinf.IdContasBancarias = Convert.ToInt32(DropInvestimento.SelectedValue);
+            extratosinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
+            extratosinf.ValorOcorrencia = Convert.ToDecimal(Txtvalorpago.Text);
+            extratosinf.IdOcorrencia = Convert.ToInt32(DropInvestimento.SelectedValue);
+            extratosinf.DataOcorrencia = Convert.ToDateTime(txtdatapagamento.Text);
+            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.InvestimentoCredito));
+            objextratobancario.InserirExtratoBancario(extratosinf);
         }
         public void DeletarInvestimentoExtratoBancario()
         {
-            extradosinf.IdOcorrencia = Convert.ToInt32(DropInvestimento.SelectedValue);
-            extradosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.InvestimentoCredito));
-            objextratobancario.ExcluirExtratoBancario(extradosinf);
+            extratosinf.IdOcorrencia = Convert.ToInt32(DropInvestimento.SelectedValue);
+            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.InvestimentoCredito));
+            objextratobancario.ExcluirExtratoBancario(extratosinf);
         }
 
         public void CarregarContasBancarias()

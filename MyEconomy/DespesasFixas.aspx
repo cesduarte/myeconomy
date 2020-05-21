@@ -16,7 +16,7 @@
                             <div class="col p-md-0">
                                 <ol class="breadcrumb">
                                     
-                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Pesquisar Despesas Fixas </a></li>
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Cadastro / Despesas fixas </a></li>
                                 </ol>
 
                             </div> 
@@ -36,15 +36,15 @@
                                                 <ul class="mb-0 form-profile__icons">
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-outline-light" title="Nova Despesa Fixa" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Nova despesa fixa" data-toggle="modal" data-target="#CadastroModal"><i class="fa fa-plus"></i></button>
 
                                                     </li>
                                                     <li class="d-inline-block">
-                                                        <button type="button" class="btn btn-outline-light" title="Pesquisar Despesas" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
+                                                        <button type="button" class="btn btn-outline-light" title="Pesquisar despesas" data-toggle="modal" data-target="#basicModal"><i class="fa fa-search"></i></button>
                                                     </li>
 
                                                     <li class="d-inline-block">
-                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar Pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
+                                                        <button type="button" id="teste1" class="btn btn-outline-light" title="Limpar pesquisar" runat="server" onserverclick="Button3_Click"><i class="fa fa-eraser"></i></button>
                                                     </li>
                                                    <li class="d-inline-block">
                                                         <button type="button" id="Button6" class="btn btn-outline-light" title="Atualizar" runat="server" onserverclick="Button1_Click"><i class="fa fa-refresh"></i></button>
@@ -66,7 +66,7 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Descricaodespesa" HeaderText="Descrição Contas" />
+                                                    <asp:BoundField DataField="Descricaodespesa" HeaderText="Descrição contas" />
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" />
                                                     <asp:BoundField DataField="ValorDespesa" HeaderText="Valor parcela" DataFormatString="{0:c}" />
@@ -107,7 +107,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Pesquisar Despesas</h5>
+                                        <h5 class="modal-title">Pesquisar despesas</h5>
                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                                             <ContentTemplate>
                                                 <button type="button" id="teste" class="close" runat="server" onserverclick="Button1_Click" usesubmitbehavior="false" data-dismiss="modal">
@@ -123,13 +123,13 @@
                                             <ContentTemplate>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição Despesa: </asp:Label>
+                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição despesa: </asp:Label>
                                                         <asp:TextBox ID="Txtdescricaopesquisa" runat="server" class="form-control form-control-sm"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
                                                      <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label6" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                         <asp:Label ID="Label6" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
                                                         
                                                         <asp:DropDownList ID="Dropcontasbancariaspesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group">
                                                           
@@ -140,7 +140,7 @@
                                                    
                                                     
                                                         <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label7" runat="server" Text="Label">Descrição Classificação: </asp:Label>
+                                                         <asp:Label ID="Label7" runat="server" Text="Label">Descrição classificação: </asp:Label>
                                                         <asp:DropDownList ID="Dropclassificacaopesquisa" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
@@ -196,7 +196,7 @@
 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Cadastro de Despesa</h5>
+                                        <h5 class="modal-title">Cadastro de despesa</h5>
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
                                             
@@ -217,7 +217,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                      <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição Despesa: </asp:Label>
+                                                         <asp:Label ID="Label1" runat="server" Text="Label">Descrição despesa: </asp:Label>
                                                           <asp:TextBox ID="Txtdescricaodespesa"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
                                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="group" runat="server" class="text-danger" ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdescricaodespesa"></asp:RequiredFieldValidator>
 
@@ -227,7 +227,7 @@
                                                     
                                                     
                                                     <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label3" runat="server" Text="Label">Descrição Contas Bancárias: </asp:Label>
+                                                         <asp:Label ID="Label3" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
                                                         <asp:DropDownList ID="Dropcontasbancarias" runat="server" CssClass="form-control form-control-" ValidationGroup="group" OnSelectedIndexChanged="Dropcontasbancarias_SelectedIndexChanged" AutoPostBack="True">
                                                           
                                                          </asp:DropDownList>
@@ -248,7 +248,7 @@
                                                 </div>
                                                   <div class="form-row">
                                                       <div class="form-group col-md-6">
-                                                          <asp:Label ID="Label11" runat="server" Text="Label">Valor Parcela R$: </asp:Label> 
+                                                          <asp:Label ID="Label11" runat="server" Text="Label">Valor parcela R$: </asp:Label> 
                                                           <asp:TextBox ID="Txtvalor"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
                                                        
                                                           <asp:RangeValidator ID="MyRangeValidator"  Type="Double" class="text-danger"
@@ -259,7 +259,7 @@
 
                                                       </div>
                                                         <div class="form-group col-md-6">
-                                                          <asp:Label ID="Label12" runat="server" Text="Label">Valor Total R$: </asp:Label> 
+                                                          <asp:Label ID="Label12" runat="server" Text="Label">Valor total R$: </asp:Label> 
                                                           <asp:TextBox ID="Txtvalortotal"  runat="server" class="form-control form-control-sm" readonly="true"></asp:TextBox>
                                                      
                                                          
@@ -268,7 +268,7 @@
                                                      </div>
                                                 <div class="form-row">
                                                      <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label13" runat="server" Text="Label" >Data de Vencimento: </asp:Label>
+                                                         <asp:Label ID="Label13" runat="server" Text="Label" >Data de vencimento: </asp:Label>
                                                          <asp:TextBox ID="Txtdatavencimento"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox>     
                                                          <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="group" runat="server" Display = "Dynamic" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Txtdatavencimento"></asp:RequiredFieldValidator>
                                                      <asp:RangeValidator ID="RangeValidator2"  Display="Dynamic" Type="Date" class="text-danger"
@@ -293,7 +293,7 @@
                                                     
                                                     
                                                     <div class="form-group col-md-6">
-                                                         <asp:Label ID="lblinvestimento" runat="server" Text="Label" Visible ="false">Descrição Investimento: </asp:Label>
+                                                         <asp:Label ID="lblinvestimento" runat="server" Text="Label" Visible ="false">Descrição investimento: </asp:Label>
                                                         <asp:DropDownList ID="DropInvestimento" runat="server" CssClass="form-control form-control-" ValidationGroup="group" Visible="false">
                                                           
                                                          </asp:DropDownList>

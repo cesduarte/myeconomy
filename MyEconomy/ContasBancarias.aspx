@@ -16,7 +16,7 @@
                             <div class="col p-md-0">
                                 <ol class="breadcrumb">
                                     
-                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Pesquisar Contas Bancárias</a></li>
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0)"> Cadastro / Contas bancárias</a></li>
                                 </ol>
 
                             </div> 
@@ -106,7 +106,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Pesquisar Contas Bancárias</h5>
+                                        <h5 class="modal-title">Pesquisar contas bancárias</h5>
                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                                             <ContentTemplate>
                                                 <button type="button" id="teste" class="close" runat="server" onserverclick="Button1_Click" usesubmitbehavior="false" data-dismiss="modal">
@@ -183,7 +183,7 @@
 
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Cadastro de Contas Bancárias</h5>
+                                        <h5 class="modal-title">Cadastro de contas bancárias</h5>
                                         <asp:UpdatePanel ID="UpdatePanel6" runat="server" ChildrenAsTriggers="true">
                                         <ContentTemplate>
                                             

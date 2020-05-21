@@ -25,3 +25,53 @@ VALUES
 
 false
 );
+
+
+
+INSERT INTO `myeconomy`.`tbl_classificacao`
+(
+
+`DescricaoClassificacao`,
+`TipoClassificacao`,
+`Isdelete`
+)
+VALUES
+(
+
+'Investimento',
+'Investimento',
+
+false
+);
+
+INSERT INTO `myeconomy`.`tbl_classificacao`
+(
+
+`DescricaoClassificacao`,
+`TipoClassificacao`,
+`Isdelete`
+)
+VALUES
+(
+
+'Salário',
+'Receitas',
+
+false
+);
+
+INSERT INTO `myeconomy`.`tbl_classificacao`
+(
+
+`DescricaoClassificacao`,
+`TipoClassificacao`,
+`Isdelete`
+)
+VALUES
+(
+
+'Cartão de crédito',
+'Despesas',
+
+false
+);
