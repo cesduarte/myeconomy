@@ -44,14 +44,14 @@ namespace MyEconomy
 
 
         }
-        public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
-        {
-            ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
-            ContasBancariasInf.IdContasBancarias = IdContasBancarias;
-            ContasBancariasInf.SaldoContasBancarias = Saldo;
-            ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
-            objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
-        }
+        //public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
+        //{
+        //    ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
+        //    ContasBancariasInf.IdContasBancarias = IdContasBancarias;
+        //    ContasBancariasInf.SaldoContasBancarias = Saldo;
+        //    ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
+        //    objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
+        //}
 
         public void CarregaGrid()
         {
@@ -214,7 +214,7 @@ namespace MyEconomy
                 despesasvariadasinf.ValorDespesaVariada = Convert.ToDecimal(Txtvalor.Text);
                 despesasvariadasinf.DataDespesaVariada = Convert.ToDateTime(Txtdata.Text);
 
-                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancarias.SelectedValue), (-Convert.ToDecimal(Txtvalor.Text)));
+                //AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancarias.SelectedValue), (-Convert.ToDecimal(Txtvalor.Text)));
 
                 objdespesasvariadas.InserirDespesaVariadas(despesasvariadasinf);
 
@@ -308,19 +308,7 @@ namespace MyEconomy
         {
            
 
-            foreach (DespesasVariadasInformation despesasvariadasinf1 in objdespesasvariadas.CarregarDespesaVariadascampos(txtidexclusao.Text))
-            {
-                
-
-
-
-
-
-
-
-
-                AtualizaSaldoContaBancaria(despesasvariadasinf1.IdContasBancarias, despesasvariadasinf1.ValorDespesaVariada);
-            }
+            
 
             objdespesasvariadas.ExcluirDespesaVariadas(int.Parse(txtidexclusao.Text));
             LimparCampos();

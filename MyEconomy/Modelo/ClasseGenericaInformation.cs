@@ -13,5 +13,7 @@ namespace MyEconomy
         public int IdClassificacao { get; set; }
 
         public int IdContasBancarias { get; set; }
+
+        public string StatusOcorrencia { get; set; }
     }
 }

@@ -44,14 +44,14 @@ namespace MyEconomy
 
 
         }
-        public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
-        {
-            ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
-            ContasBancariasInf.IdContasBancarias = IdContasBancarias;
-            ContasBancariasInf.SaldoContasBancarias = Saldo;
-            ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
-            objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
-        }
+        //public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
+        //{
+        //    ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
+        //    ContasBancariasInf.IdContasBancarias = IdContasBancarias;
+        //    ContasBancariasInf.SaldoContasBancarias = Saldo;
+        //    ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
+        //    objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
+        //}
 
         public void CarregaGrid()
         {
@@ -213,7 +213,7 @@ namespace MyEconomy
                 receitasvariadasinf.ValorReceita = Convert.ToDecimal(Txtvalor.Text);
                 receitasvariadasinf.DataReceitaVariada = Convert.ToDateTime(Txtdata.Text);
 
-                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancarias.SelectedValue), (Convert.ToDecimal(Txtvalor.Text)));
+                //AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancarias.SelectedValue), (Convert.ToDecimal(Txtvalor.Text)));
 
                 objreceitasvariadas.InserirReceitas(receitasvariadasinf);
 
@@ -307,8 +307,8 @@ namespace MyEconomy
         {
 
 
-            foreach (ReceitasVariadasInformation receitasvariadasinf1 in objreceitasvariadas.CarregarDespesaVariadascampos(txtidexclusao.Text))
-            {
+            //foreach (ReceitasVariadasInformation receitasvariadasinf1 in objreceitasvariadas.CarregarDespesaVariadascampos(txtidexclusao.Text))
+            //{
 
 
 
@@ -318,8 +318,8 @@ namespace MyEconomy
 
 
 
-                AtualizaSaldoContaBancaria(receitasvariadasinf1.IdContasBancarias, (-receitasvariadasinf1.ValorReceita));
-            }
+            //    AtualizaSaldoContaBancaria(receitasvariadasinf1.IdContasBancarias, (-receitasvariadasinf1.ValorReceita));
+            //}
 
             objreceitasvariadas.ExcluirReceitasVariadas(int.Parse(txtidexclusao.Text));
             LimparCampos();

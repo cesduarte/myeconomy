@@ -4,7 +4,8 @@ IN _descricaodespesavariadas nvarchar(200),
 IN _idcontasbancarias INT,
 IN _idclassificacao INT,
 IN _valordespesavariada decimal(10,2),
-IN _datadespesavariada datetime
+IN _datadespesavariada datetime,
+IN _statusocorrencia nvarchar(200) 
 )
 BEGIN
 insert into tbl_despesavariada(
@@ -24,4 +25,23 @@ _datadespesavariada
 
 
 set _IdDespesaVariada   = (SELECT @@IDENTITY);
+insert into tbl_extratobancario(
+DescricaoExtratoBancario,
+Idcontasbancarias,
+Idclassificacao,
+IdOcorrencia,
+ValorOcorrencia,
+DataOcorrencia,
+StatusOcorrencia
+)
+values(
+_descricaodespesavariadas,
+_idcontasbancarias,
+_idclassificacao,
+_IdDespesaVariada,
+(-_valordespesavariada),
+_datadespesavariada,
+_statusocorrencia
+);
+
 END

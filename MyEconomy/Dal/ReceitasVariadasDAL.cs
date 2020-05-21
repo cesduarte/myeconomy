@@ -176,7 +176,9 @@ namespace MyEconomy
                 objCommand.Parameters.Add(pdata);
 
 
-
+                MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
+                pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Receitas));
+                objCommand.Parameters.Add(pstatusocorrencia);
 
 
 
@@ -278,6 +280,10 @@ namespace MyEconomy
                 MySqlParameter pid = new MySqlParameter("_IdReceitaVariada", MySqlDbType.Int32);
                 pid.Value = idDespesaVariada;
                 objCommand.Parameters.Add(pid);
+
+                MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
+                pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Receitas));
+                objCommand.Parameters.Add(pstatusocorrencia);
 
                 objConexao.Open();
 

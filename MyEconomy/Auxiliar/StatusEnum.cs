@@ -32,8 +32,23 @@ namespace MyEconomy
 
 
         }
+        public enum TipoOcorrencias
+        {
+            [Description("--")] //Descrição será exibido como item do dropdown
+            inicial = 0,// item do enumerator atribuido o seu valor constante.
+            [Description("Despesas Fixas")]
+            DespesasFixas = 1,
+            [Description("Despesas Variadas")]
+            DespesasVariadas = 2,
+            [Description("Receitas")]
+            Receitas = 3,
+            [Description("Investimento crédito")]
+            InvestimentoCredito = 4,
+            [Description("Investimento débito")]
+            InvestimentoDébito = 5,
 
-       
+        }
+
 
     }
 }

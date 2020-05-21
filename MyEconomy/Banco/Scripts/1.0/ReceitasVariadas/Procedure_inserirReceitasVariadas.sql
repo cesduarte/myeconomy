@@ -4,7 +4,8 @@ IN _descricaoreceitasvariadas nvarchar(200),
 IN _idcontasbancarias INT,
 IN _idclassificacao INT,
 IN _valorreceitavariada decimal(10,2),
-IN _datareceitavariada datetime
+IN _datareceitavariada datetime,
+IN _statusocorrencia nvarchar(200) 
 )
 BEGIN
 insert into tbl_receitavariada(
@@ -24,4 +25,24 @@ _datareceitavariada
 
 
 set _IdreceitaVariada   = (SELECT @@IDENTITY);
+
+insert into tbl_extratobancario(
+DescricaoExtratoBancario,
+Idcontasbancarias,
+Idclassificacao,
+IdOcorrencia,
+ValorOcorrencia,
+DataOcorrencia,
+StatusOcorrencia
+)
+values(
+_descricaoreceitasvariadas,
+_idcontasbancarias,
+_idclassificacao,
+_IdreceitaVariada,
+_valorreceitavariada,
+_datareceitavariada,
+_statusocorrencia
+);
+
 END
