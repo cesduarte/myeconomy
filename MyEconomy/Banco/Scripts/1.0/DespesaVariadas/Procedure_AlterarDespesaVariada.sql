@@ -4,7 +4,8 @@ IN _descricaodespesavariadas nvarchar(200),
 IN _idcontasbancarias INT,
 IN _idclassificacao INT,
 IN _valordespesavariada decimal(10,2),
-IN _datadespesavariada datetime)
+IN _datadespesavariada datetime,
+IN _statusocorrencia VARCHAR(200))
 BEGIN
 UPDATE `myeconomy`.`tbl_despesavariada`
 SET
@@ -18,4 +19,23 @@ SET
 
 
 WHERE `IdDespesavariada` = _IdDespesaVariada;
+
+UPDATE `myeconomy`.`tbl_extratobancario`
+SET
+`DescricaoExtratoBancario` =_descricaodespesavariadas, 
+`Idcontasbancarias` =_idcontasbancarias,
+`Idclassificacao` = _idclassificacao,
+
+`ValorOcorrencia` = (-_valordespesavariada) ,
+
+`DataOcorrencia` = _datadespesavariada
+
+
+WHERE `IdOcorrencia` = _IdDespesaVariada AND `StatusOcorrencia` = _statusocorrencia;
+
+
+
+
+
+
 END
