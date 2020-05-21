@@ -18,7 +18,8 @@ namespace MyEconomy
         ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
         InvestimentoDAL objinvestimento = new InvestimentoDAL();
-        
+        ExtratoBancarioDAL objextratobancario = new ExtratoBancarioDAL();
+        ExtratosBancariosInformation extradosinf = new ExtratosBancariosInformation();
 
         DespesaFixaInformation despesasfixasinf = new DespesaFixaInformation();
         DespesasFixasDAL objdespesasfixas = new DespesasFixasDAL();
@@ -233,14 +234,25 @@ namespace MyEconomy
 
         }
 
-        //public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
-        //{
-        //    ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
-        //    ContasBancariasInf.IdContasBancarias = IdContasBancarias;
-        //    ContasBancariasInf.SaldoContasBancarias = Saldo;
-        //    ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
-        //    objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
-        //}
+        public void InserirInvestimentoExtratoBancario()
+        {
+
+
+            InvestimentoInformation investimentoinf = new InvestimentoInformation();
+            investimentoinf.DescricaoInvestimento = DropInvestimento.SelectedValue.ToString();
+            investimentoinf.IdInvestimento = Convert.ToInt32(DropInvestimento.SelectedValue);
+            investimentoinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
+            investimentoinf.SaldoInvestimento = Convert.ToDecimal(Txtvalorpago.Text);
+            investimentoinf.DataInvestimento = Convert.ToDateTime(txtdatapagamento.Text);
+           
+            objinvestimento.InserirInvestimentoExtratoBancario(investimentoinf);
+        }
+        public void DeletarInvestimentoExtratoBancario()
+        {
+            extradosinf.IdOcorrencia = Convert.ToInt32(DropInvestimento.SelectedValue);
+            extradosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.InvestimentoCredito));
+            objextratobancario.ExcluirExtratoBancario(extradosinf);
+        }
 
         public void CarregarContasBancarias()
         {
@@ -429,12 +441,12 @@ namespace MyEconomy
                 contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasAPagar));
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), 1);
-              
-                //AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (Convert.ToDecimal(Txtvalorpago.Text)));
-                //if (DropInvestimento.Visible)
-                //{
-                //    objinvestimento.AlterarSaldoInvestimento(Convert.ToInt32(DropInvestimento.SelectedValue),(-Convert.ToDecimal(Txtvalorpago.Text)));
-                //}
+                if (DropInvestimento.Visible)
+                {
+                    DeletarInvestimentoExtratoBancario();
+                }
+
+
                 CarregarContaAPagar(Txtid.Text);
                 Label9.Text = "Despesa aberta com sucesso!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
@@ -455,11 +467,10 @@ namespace MyEconomy
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), -1);
 
-                //AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (-Convert.ToDecimal(Txtvalorpago.Text)));
-                //if (DropInvestimento.Visible)
-                //{
-                //    contasapagarinf.IdInvestimento = Convert.ToInt32(DropInvestimento.SelectedValue);
-                //}
+                if (DropInvestimento.Visible)
+                {
+                    InserirInvestimentoExtratoBancario();
+                }
                 CarregarContaAPagar(Txtid.Text);
 
                 Label9.Text = "Despesa paga com sucesso!";

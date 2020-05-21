@@ -5003,6 +5003,7 @@
     <Compile Include="Dal\ContasBancariasDAL.cs" />
     <Compile Include="Dal\DespesasFixasDAL.cs" />
     <Compile Include="Dal\DespesasVariadasDAL.cs" />
+    <Compile Include="Dal\ExtratoBancarioDAL.cs" />
     <Compile Include="Dal\InvestimentoDAL.cs" />
     <Compile Include="Dal\ReceitasVariadasDAL.cs" />
     <Compile Include="Dal\UsuariosDAL.cs" />
@@ -5047,6 +5048,7 @@
     <Compile Include="Modelo\ContasBancariasInformation.cs" />
     <Compile Include="Modelo\DespesaFixaInformation.cs" />
     <Compile Include="Modelo\DespesasVariadasInformation.cs" />
+    <Compile Include="Modelo\ExtratosBancariosInformation.cs" />
     <Compile Include="Modelo\InvestimentoInformation.cs" />
     <Compile Include="Modelo\ReceitasVariadasInformation.cs" />
     <Compile Include="Modelo\UsuariosInformation.cs" />

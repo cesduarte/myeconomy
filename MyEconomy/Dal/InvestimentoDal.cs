@@ -295,58 +295,71 @@ namespace MyEconomy
 
         }
 
-        //public void AlterarSaldoInvestimento(int IdInvestimento, decimal SaldoInvestimento)
-        //{
+        public void InserirInvestimentoExtratoBancario(InvestimentoInformation investimentosinf)
+        {
 
-        //    try
-        //    {
+            try
+            {
 
-        //        objCommand.Connection = objConexao;
-        //        objCommand.CommandText = "Procedure_AlteraSaldoInvestimento";
-        //        objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.Connection = objConexao;
+                objCommand.CommandText = "Procedure_inserirInvestimentoExtratoBancario";
+                objCommand.CommandType = CommandType.StoredProcedure;
 
-        //        MySqlParameter pid = new MySqlParameter("_Idcontasinvestimento", MySqlDbType.Int32);
-        //        pid.Value = IdInvestimento;
-        //        objCommand.Parameters.Add(pid);
-
-
+                MySqlParameter pid = new MySqlParameter("_Idextratobancario", MySqlDbType.Int32);
+                pid.Direction = ParameterDirection.Output;
+                objCommand.Parameters.Add(pid);
 
 
 
+                MySqlParameter pdescricao = new MySqlParameter("_descricaoinvestimento", MySqlDbType.VarChar, 200);
+                pdescricao.Value = investimentosinf.DescricaoInvestimento;
+                objCommand.Parameters.Add(pdescricao);
+
+
+                MySqlParameter pidcontasbancarias = new MySqlParameter("_idInvestimento", MySqlDbType.Int32, 200);
+                pidcontasbancarias.Value = investimentosinf.IdInvestimento;
+                objCommand.Parameters.Add(pidcontasbancarias);
+
+                MySqlParameter pidclassificacao = new MySqlParameter("_idclassificacao", MySqlDbType.Int32, 200);
+                pidclassificacao.Value = investimentosinf.IdClassificacao;
+                objCommand.Parameters.Add(pidclassificacao);
+
+                MySqlParameter psaldoinvestimento = new MySqlParameter("_saldoinvestimento", MySqlDbType.Decimal, 200);
+                psaldoinvestimento.Value = investimentosinf.SaldoInvestimento;
+                objCommand.Parameters.Add(psaldoinvestimento);
+
+                MySqlParameter pdata = new MySqlParameter("_datainvestimento", MySqlDbType.DateTime, 200);
+                pdata.Value = investimentosinf.DataInvestimento;
+                objCommand.Parameters.Add(pdata);
+
+                MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
+                pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.InvestimentoCredito));
+                objCommand.Parameters.Add(pstatusocorrencia);
 
 
 
 
-        //        MySqlParameter psaldo = new MySqlParameter("_saldo", MySqlDbType.Decimal);
-        //        psaldo.Value = SaldoInvestimento;
-        //        objCommand.Parameters.Add(psaldo);
+
+                objConexao.Open();
+                objCommand.ExecuteNonQuery();
+                //investimentosinf.IdInvestimento = (Int32)objCommand.Parameters["_Idinvestimento"].Value;
 
 
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
 
-
-
-        //        ;
-
-
-        //        objConexao.Open();
-        //        objCommand.ExecuteNonQuery();
-        //        //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
-
-        //    }
-        //    catch (MySqlException ex)
-        //    {
-        //        throw new Exception("sqlerro" + ex.Number);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        objConexao.Close();
-        //    }
-
-        //}
+        }
 
 
     }
