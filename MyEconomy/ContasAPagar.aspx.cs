@@ -233,14 +233,14 @@ namespace MyEconomy
 
         }
 
-        public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
-        {
-            ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
-            ContasBancariasInf.IdContasBancarias = IdContasBancarias;
-            ContasBancariasInf.SaldoContasBancarias = Saldo;
-            ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
-            objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
-        }
+        //public void AtualizaSaldoContaBancaria(int IdContasBancarias, decimal Saldo)
+        //{
+        //    ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();
+        //    ContasBancariasInf.IdContasBancarias = IdContasBancarias;
+        //    ContasBancariasInf.SaldoContasBancarias = Saldo;
+        //    ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
+        //    objcontasbancarias.AlterarSaldoContasBancarias(ContasBancariasInf);
+        //}
 
         public void CarregarContasBancarias()
         {
@@ -430,11 +430,11 @@ namespace MyEconomy
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), 1);
               
-                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (Convert.ToDecimal(Txtvalorpago.Text)));
-                if (DropInvestimento.Visible)
-                {
-                    objinvestimento.AlterarSaldoInvestimento(Convert.ToInt32(DropInvestimento.SelectedValue),(-Convert.ToDecimal(Txtvalorpago.Text)));
-                }
+                //AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (Convert.ToDecimal(Txtvalorpago.Text)));
+                //if (DropInvestimento.Visible)
+                //{
+                //    objinvestimento.AlterarSaldoInvestimento(Convert.ToInt32(DropInvestimento.SelectedValue),(-Convert.ToDecimal(Txtvalorpago.Text)));
+                //}
                 CarregarContaAPagar(Txtid.Text);
                 Label9.Text = "Despesa aberta com sucesso!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
@@ -448,14 +448,18 @@ namespace MyEconomy
                 contasapagarinf.IdContaBancariaPagamentoContasAPagar = Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue);
                 contasapagarinf.ValorPagamentoContasAPagar = Convert.ToDecimal(Txtvalorpago.Text);
                 contasapagarinf.DataPagamentoContasAPagar = Convert.ToDateTime(txtdatapagamento.Text);
+                contasapagarinf.DescriaoDespesaFixa = Txtdescricaoconta.Text;
+                contasapagarinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
                 contasapagarinf.StatusContasAPagar = EnumExtensions.GetEnumDescription((StatusEnum.Status.ContasPagas));
+                
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), -1);
-                AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (-Convert.ToDecimal(Txtvalorpago.Text)));
-                if (DropInvestimento.Visible)
-                {
-                    objinvestimento.AlterarSaldoInvestimento(Convert.ToInt32(DropInvestimento.SelectedValue), (Convert.ToDecimal(Txtvalorpago.Text)));
-                }
+
+                //AtualizaSaldoContaBancaria(Convert.ToInt32(Dropcontasbancariasapagar.SelectedValue), (-Convert.ToDecimal(Txtvalorpago.Text)));
+                //if (DropInvestimento.Visible)
+                //{
+                //    contasapagarinf.IdInvestimento = Convert.ToInt32(DropInvestimento.SelectedValue);
+                //}
                 CarregarContaAPagar(Txtid.Text);
 
                 Label9.Text = "Despesa paga com sucesso!";

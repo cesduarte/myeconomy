@@ -295,21 +295,19 @@ namespace MyEconomy
 
         }
 
-        public void AlterarSaldoInvestimento(int IdInvestimento, decimal SaldoInvestimento)
-        {
+        //public void AlterarSaldoInvestimento(int IdInvestimento, decimal SaldoInvestimento)
+        //{
 
-            try
-            {
+        //    try
+        //    {
 
-                objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_AlteraSaldoInvestimento";
-                objCommand.CommandType = CommandType.StoredProcedure;
+        //        objCommand.Connection = objConexao;
+        //        objCommand.CommandText = "Procedure_AlteraSaldoInvestimento";
+        //        objCommand.CommandType = CommandType.StoredProcedure;
 
-                MySqlParameter pid = new MySqlParameter("_Idcontasinvestimento", MySqlDbType.Int32);
-                pid.Value = IdInvestimento;
-                objCommand.Parameters.Add(pid);
-
-
+        //        MySqlParameter pid = new MySqlParameter("_Idcontasinvestimento", MySqlDbType.Int32);
+        //        pid.Value = IdInvestimento;
+        //        objCommand.Parameters.Add(pid);
 
 
 
@@ -317,36 +315,38 @@ namespace MyEconomy
 
 
 
-                MySqlParameter psaldo = new MySqlParameter("_saldo", MySqlDbType.Decimal);
-                psaldo.Value = SaldoInvestimento;
-                objCommand.Parameters.Add(psaldo);
+
+
+        //        MySqlParameter psaldo = new MySqlParameter("_saldo", MySqlDbType.Decimal);
+        //        psaldo.Value = SaldoInvestimento;
+        //        objCommand.Parameters.Add(psaldo);
 
 
 
 
 
-                ;
+        //        ;
 
 
-                objConexao.Open();
-                objCommand.ExecuteNonQuery();
-                //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
+        //        objConexao.Open();
+        //        objCommand.ExecuteNonQuery();
+        //        //usuario.Id = (Int32)objCommand.Parameters["id"].Value;
 
-            }
-            catch (MySqlException ex)
-            {
-                throw new Exception("sqlerro" + ex.Number);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                objConexao.Close();
-            }
+        //    }
+        //    catch (MySqlException ex)
+        //    {
+        //        throw new Exception("sqlerro" + ex.Number);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        objConexao.Close();
+        //    }
 
-        }
+        //}
 
 
     }

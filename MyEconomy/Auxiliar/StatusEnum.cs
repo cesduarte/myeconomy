@@ -36,6 +36,8 @@ namespace MyEconomy
         {
             [Description("--")] //Descrição será exibido como item do dropdown
             inicial = 0,// item do enumerator atribuido o seu valor constante.
+            [Description("Saldo inicial")]
+            SaldoInicial = 6,
             [Description("Despesas Fixas")]
             DespesasFixas = 1,
             [Description("Despesas Variadas")]
@@ -45,7 +47,8 @@ namespace MyEconomy
             [Description("Investimento crédito")]
             InvestimentoCredito = 4,
             [Description("Investimento débito")]
-            InvestimentoDébito = 5,
+            InvestimentoDebito = 5,
+
 
         }
 

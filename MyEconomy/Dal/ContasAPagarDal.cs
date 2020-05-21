@@ -261,8 +261,7 @@ namespace MyEconomy
 
 
 
-
-
+                
 
 
 
@@ -323,10 +322,23 @@ namespace MyEconomy
                 objCommand.Parameters.Add(pdatapagamento);
 
 
+                MySqlParameter pdescricao = new MySqlParameter("_descricaodespesa", MySqlDbType.VarChar, 200);
+                pdescricao.Value = contasapagarInf.DescriaoDespesaFixa;
+                objCommand.Parameters.Add(pdescricao);
+
+                MySqlParameter pidclassificacao = new MySqlParameter("_idclassificacao", MySqlDbType.Int32, 200);
+                pidclassificacao.Value = contasapagarInf.IdClassificacao;
+                objCommand.Parameters.Add(pidclassificacao);
+
                 MySqlParameter pstatuscontaapagar = new MySqlParameter("_statuscontaapagar", MySqlDbType.VarChar, 200);
                 pstatuscontaapagar.Value = contasapagarInf.StatusContasAPagar;
                 objCommand.Parameters.Add(pstatuscontaapagar);
+                
+                MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
+                pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.DespesasFixas));
+                objCommand.Parameters.Add(pstatusocorrencia);
 
+                
 
 
                 objConexao.Open();
