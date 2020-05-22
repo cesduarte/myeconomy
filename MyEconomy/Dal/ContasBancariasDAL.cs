@@ -74,7 +74,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    sql = "select * from tbl_contasBancarias where Idcontasbancarias = " + IdContasBancarias;
+                    sql = "select a.Idcontasbancarias, a.isdelete, a.Idusuario, a.DescricaoContasBancarias, sum(b.ValorOcorrencia) as Saldo from tbl_contasBancarias a, tbl_extratobancario b where b.Idcontasbancarias = a.Idcontasbancarias and a.Idcontasbancarias = " + IdContasBancarias;
                 }
 
 
