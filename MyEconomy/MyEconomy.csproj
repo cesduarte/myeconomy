@@ -4970,6 +4970,7 @@
     <Content Include="Investimento.aspx" />
     <Content Include="InvestimentoManual.aspx" />
     <Content Include="ReceitasVariadas.aspx" />
+    <Content Include="RelatorioExtratoAnalitico.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -5059,6 +5060,13 @@
     </Compile>
     <Compile Include="ReceitasVariadas.aspx.designer.cs">
       <DependentUpon>ReceitasVariadas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RelatorioExtratoAnalitico.aspx.cs">
+      <DependentUpon>RelatorioExtratoAnalitico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RelatorioExtratoAnalitico.aspx.designer.cs">
+      <DependentUpon>RelatorioExtratoAnalitico.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

@@ -238,8 +238,8 @@
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
-                    <li>
+                    
+                    <%--<li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
@@ -247,10 +247,10 @@
                             <li><a href="./index.html">Home 1</a></li>
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                         </ul>
-                    </li>
+                    </li>--%>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Cadastro</span>
+                            <i class="icon-list menu-icon"></i><span class="nav-text">Cadastro</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="Classificacao.aspx">Classificação</a></li>
@@ -268,7 +268,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-weather-drop menu-icon"></i><span class="nav-text">Movimentação</span>
+                            <i class="icon-grid menu-icon"></i><span class="nav-text">Movimentação</span>
                         </a>
                         <ul aria-expanded="false">
                            
@@ -285,7 +285,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                            <i class="icon-share menu-icon"></i> <span class="nav-text">Gerenciamento</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./email-inbox.html">Inbox</a></li>
@@ -302,9 +302,27 @@
                             <li><a href="./app-calender.html">Calender</a></li>
                         </ul>
                     </li>
+                    
+                    <li class="nav-label">Relatórios</li>
+                      <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-docs menu-icon"></i><span class="nav-text">Extratos</span>
+                        </a>
+                        <ul aria-expanded="false">
+                           
+                            <li><a href="RelatorioExtratoAnalitico.aspx">Analitico</a></li>
+                             <li><a href="">Geral</a></li>
+                             
+                           
+                            
+                            
+                            
+                            
+                        </ul>
+                    </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
+                            <i class="icon-graph menu-icon"></i> <span class="nav-text">Gráficos</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./chart-flot.html">Flot</a></li>
@@ -315,10 +333,10 @@
                             <li><a href="./chart-peity.html">Peity</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">Relatórios</li>
+                    <li class="nav-label">Configurações</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-grid menu-icon"></i><span class="nav-text">UI Components</span>
+                            <i class="icon-settings menu-icon"></i><span class="nav-text">Configurações</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./ui-accordion.html">Accordion</a></li>

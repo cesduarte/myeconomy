@@ -212,7 +212,7 @@
                                                 <div class="form-row">
                                                       <div class="form-group col-md-6">
                                                           <asp:Label ID="Label2" runat="server" Text="Label">Saldo R$: </asp:Label> 
-                                                          <asp:TextBox ID="Txtsaldo"  runat="server"  class="form-control form-control-sm"></asp:TextBox>
+                                                          <asp:TextBox ID="Txtsaldo"  runat="server"  class="form-control form-control-sm" ReadOnly="true"></asp:TextBox>
                                                      
                                                           <asp:RangeValidator ID="MyRangeValidator"  Display="Static" Type="Double" class="text-danger"
                                                            MaximumValue="99999999,99" MinimumValue="-99999999,99" EnableClientScript="true" 

@@ -46,19 +46,19 @@ namespace MyEconomy
             }
 
         }
-        public void InserirExtratoBancario(string idcontasbancarias)
-        {
+        //public void InserirExtratoBancario(string idcontasbancarias)
+        //{
 
 
-            extratosinf.DescricaoExtratoBancario = Txtdescricao.Text;
-            extratosinf.IdContasBancarias = Convert.ToInt32(idcontasbancarias);
-            extratosinf.IdClassificacao = 0;
-            extratosinf.ValorOcorrencia = Convert.ToDecimal(Txtsaldo.Text);
-            extratosinf.IdOcorrencia = Convert.ToInt32(idcontasbancarias);
-            extratosinf.DataOcorrencia = DateTime.Now;
-            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.inicial));
-            objextratosbancarios.InserirExtratoBancario(extratosinf);
-        }
+        //    extratosinf.DescricaoExtratoBancario = Txtdescricao.Text;
+        //    extratosinf.IdContasBancarias = Convert.ToInt32(idcontasbancarias);
+        //    extratosinf.IdClassificacao = 1;
+        //    extratosinf.ValorOcorrencia = Convert.ToDecimal(Txtsaldo.Text);
+        //    extratosinf.IdOcorrencia = Convert.ToInt32(idcontasbancarias);
+        //    extratosinf.DataOcorrencia = DateTime.Now;
+        //    extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.SaldoInicial));
+        //    objextratosbancarios.InserirExtratoBancario(extratosinf);
+        //}
         public void CarregarUsuario()
         {
             try
@@ -162,7 +162,7 @@ namespace MyEconomy
 
                 objContasBancarias.InserirUsuarios(ContasBancariasInf);
                 Txtid.Text = ContasBancariasInf.IdContasBancarias.ToString();
-                InserirExtratoBancario(ContasBancariasInf.IdContasBancarias.ToString());
+                //InserirExtratoBancario(ContasBancariasInf.IdContasBancarias.ToString());
                 Label9.Text = "Registro incluido com sucesso";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
                 Timer1.Enabled = true;

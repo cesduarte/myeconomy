@@ -12,5 +12,7 @@ namespace MyEconomy
         public string DescricaoExtratoBancario { get; set; }
         public decimal ValorOcorrencia { get; set; }
         public DateTime DataOcorrencia { get; set; }
+
+
     }
 }
