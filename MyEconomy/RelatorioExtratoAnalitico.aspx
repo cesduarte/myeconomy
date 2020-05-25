@@ -76,6 +76,7 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
+                                                    <asp:BoundField DataField="StatusOcorrencia" HeaderText="Tipo ocorrência"  />
                                                     <asp:BoundField DataField="DescricaoExtratoBancario" HeaderText="Descrição despesa" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" /> 
 
@@ -88,7 +89,7 @@
 
 
                                                     
-                                                    <asp:BoundField DataField="StatusOcorrencia" HeaderText="Tipo ocorrência"  />
+                                                   
                                                    
                                                    
                                                     <asp:TemplateField>
