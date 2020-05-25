@@ -278,13 +278,13 @@ namespace MyEconomy
                 Dropclassificacao.DataSource = null;
                 Dropclassificacaopesquisa.DataSource = null;
 
-                Dropclassificacao.DataSource = objclassificacao.CarregarClassificacao("", "");
+                Dropclassificacao.DataSource = objclassificacao.CarregarClassificacao("", "Extrato");
                 Dropclassificacao.DataTextField = "DescricaoClassificacao";
                 Dropclassificacao.DataValueField = "Idclassificacao";
                 Dropclassificacao.DataBind();
 
 
-                Dropclassificacaopesquisa.DataSource = objclassificacao.CarregarClassificacao("", "");
+                Dropclassificacaopesquisa.DataSource = objclassificacao.CarregarClassificacao("", "Extrato");
                 Dropclassificacaopesquisa.DataTextField = "DescricaoClassificacao";
                 Dropclassificacaopesquisa.DataValueField = "Idclassificacao";
                 Dropclassificacaopesquisa.DataBind();

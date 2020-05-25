@@ -19,8 +19,22 @@ namespace MyEconomy
                 DataSet ds;
                 objConexao.Open();
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_RelatorioExtratoAnalitico";
-                objCommand.CommandType = CommandType.StoredProcedure;
+               
+
+                if(extratosinf.StatusOcorrencia == EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.inicial)))
+                {
+                    objCommand.CommandText = "Procedure_RelatorioExtratoAnalitico";
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                }
+                else
+                {
+                    objCommand.CommandText = "Procedure_RelatorioExtratoAnaliticoStatus";
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    MySqlParameter pstatuscontaapagar = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
+                    pstatuscontaapagar.Value = extratosinf.StatusOcorrencia;
+                    objCommand.Parameters.Add(pstatuscontaapagar);
+                }
+
                 objCommand.Parameters.Add(new MySqlParameter("_descricaoocorrencia", MySqlDbType.VarChar, 100));
                 objCommand.Parameters["_descricaoocorrencia"].Value = extratosinf.DescricaoExtratoBancario;
 
@@ -38,9 +52,7 @@ namespace MyEconomy
                 pdatafinal.Value = extratosinf.DataFinalPesquisa;
                 objCommand.Parameters.Add(pdatafinal);
 
-                MySqlParameter pstatuscontaapagar = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
-                pstatuscontaapagar.Value = extratosinf.StatusOcorrencia;
-                objCommand.Parameters.Add(pstatuscontaapagar);
+               
 
                 MySqlDataAdapter da;
 
