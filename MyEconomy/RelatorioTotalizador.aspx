@@ -76,7 +76,7 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias"  />
+                                                    <asp:BoundField DataField="descricao" HeaderText="Contas bancárias"  />
                                                     <asp:BoundField DataField="receitas" HeaderText="Tot. Receitas" DataFormatString="{0:c}" /> 
 
                                                    <asp:BoundField DataField="Despesasvariadas" HeaderText="Tot. Despesa Variada" DataFormatString="{0:c}" /> 
@@ -137,6 +137,21 @@
                                     <div class="modal-body">
                                         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                             <ContentTemplate>
+
+                                                 <div class="form-row">
+                                                     <div class="form-group col-md-12">
+                                                         <asp:Label ID="Label4" runat="server" Text="Label">Organizar por: </asp:Label>
+                                                        
+                                                        <asp:DropDownList ID="DropOrganizarpor" runat="server" CssClass="form-control form-control" ValidationGroup="group">
+                                                          
+                                                         </asp:DropDownList>
+                                                          
+                                                        
+                                                     </div>
+                                                   
+                                                    
+                                                     
+                                                </div>
                                                   <div class="form-row">
                                                      <div class="form-group col-md-6">
                                                          <asp:Label ID="Label6" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>

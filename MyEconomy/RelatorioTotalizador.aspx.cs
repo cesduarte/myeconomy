@@ -28,7 +28,7 @@ namespace MyEconomy
         {
             if (!Page.IsPostBack)
             {
-               
+                CarregarStatus(DropOrganizarpor, new StatusEnum.OrganizarPorRelatorios());
                 carrega_data();
                 CarregarContasBancarias();
                 CarregarClassificacao();
@@ -53,19 +53,20 @@ namespace MyEconomy
 
         }
 
-        //public void CarregarInvestimento()
-        //{
-        //    DropInvestimento.DataSource = null;
+        public void CarregarStatus(DropDownList ddl, Enum source)
+        {
+            foreach (FieldInfo fi in source.GetType().GetFields())
+            {
+                var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+                if (attributes.Length > 0)
+                {
+                    ddl.Items.Add(new ListItem(attributes[0].Description, fi.GetRawConstantValue().ToString()));
+                }
+            }
 
 
-        //    DropInvestimento.DataSource = objinvestimento.Carregarinvestimentosdrop(Dropcontasbancarias.SelectedValue);
-        //    DropInvestimento.DataTextField = "Descricaoinvestimento";
-        //    DropInvestimento.DataValueField = "IdInvestimento";
-        //    DropInvestimento.DataBind();
-
-
-
-        //}
+        }
         public void CarregaGrid()
         {
             try
@@ -80,10 +81,17 @@ namespace MyEconomy
 
                 extratosinf.DataInicialPesquisa = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
                 extratosinf.DataFinalPesquisa = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
-               
 
+                if (DropOrganizarpor.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.OrganizarPorRelatorios.ContasBancarias)))
+                {
+                    GrdDados.DataSource = objextratobancario.RelatorioExtratoTotalizadorContasBancarias(extratosinf);
+                }
+                else
+                {
+                    GrdDados.DataSource = objextratobancario.RelatorioExtratoTotalizadorClassificacao(extratosinf);
+                }
 
-                GrdDados.DataSource = objextratobancario.RelatorioExtratoTotalizador(extratosinf);
+                   
 
 
 

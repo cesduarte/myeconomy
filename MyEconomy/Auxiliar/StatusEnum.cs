@@ -50,6 +50,22 @@ namespace MyEconomy
 
         }
 
+        public enum OrganizarPorRelatorios
+        {
+           
+
+            [Description("Contas bancárias")]
+            ContasBancarias = 1,
+            [Description("Classificação")]
+            Classificacao = 2,
+     
+
+
+
+        }
+
+
+
 
     }
 }
