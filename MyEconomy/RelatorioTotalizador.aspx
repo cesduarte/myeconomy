@@ -123,7 +123,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Filtrar relatório analítico</h5>
+                                        <h5 class="modal-title">Filtrar</h5>
                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                                             <ContentTemplate>
                                                 <button type="button" id="teste" class="close" runat="server" onserverclick="Button1_Click" usesubmitbehavior="false" data-dismiss="modal">
@@ -137,24 +137,7 @@
                                     <div class="modal-body">
                                         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                             <ContentTemplate>
-                                                 <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                         <asp:Label ID="Label4" runat="server" Text="Label">Tipo ocorrencia</asp:Label>
-                                                        
-                                                        <asp:DropDownList ID="DropTipoOcorrenciaPesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group" OnSelectedIndexChanged="DropStatusPesquisa_SelectedIndexChanged" AutoPostBack="true">
-                                                          
-                                                         </asp:DropDownList>
-                                                          
-                                                        
-                                                     </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição Ocorrencia: </asp:Label>
-                                                        <asp:TextBox ID="Txtdescricaopesquisa" runat="server" class="form-control form-control-sm"></asp:TextBox>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
+                                                  <div class="form-row">
                                                      <div class="form-group col-md-6">
                                                          <asp:Label ID="Label6" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
                                                         

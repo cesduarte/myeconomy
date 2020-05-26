@@ -90,8 +90,7 @@ namespace MyEconomy
                 objCommand.CommandType = CommandType.StoredProcedure;
                
 
-                objCommand.Parameters.Add(new MySqlParameter("_descricaoocorrencia", MySqlDbType.VarChar, 100));
-                objCommand.Parameters["_descricaoocorrencia"].Value = extratosinf.DescricaoExtratoBancario;
+                
 
                 objCommand.Parameters.Add(new MySqlParameter("_idcontasbancarias", MySqlDbType.Int32));
                 objCommand.Parameters["_idcontasbancarias"].Value = extratosinf.IdContasBancarias;

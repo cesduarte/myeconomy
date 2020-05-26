@@ -1,5 +1,4 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Procedure_RelatorioTotalizador`(
-IN _descricaoocorrencia nvarchar(200), 
 IN _idcontasbancarias INT, 
 IN _idclassificacao INT,
 IN _datainicial datetime,
