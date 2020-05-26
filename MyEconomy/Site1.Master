@@ -328,65 +328,16 @@
                             <li><a href="./uc-toastr.html">Toastr</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">Extratos / Relatórios </li>
+                    
                      
                      <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-docs menu-icon"></i><span class="nav-text">Contas bancarias</span>
+                            <i class="icon-docs menu-icon"></i><span class="nav-text">Relatórios</span>
                         </a>
                         <ul aria-expanded="false">
                            
-                            <li><a href="RelatorioExtratoAnalitico.aspx">Analitico</a></li>
-                             <li><a href="">Sintético</a></li>
-                             
-                           
-                            
-                            
-                            
-                            
-                        </ul>
-                    </li>
-                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-docs menu-icon"></i><span class="nav-text">Classificação</span>
-                        </a>
-                        <ul aria-expanded="false">
-                           
-                            <li><a href="RelatorioExtratoAnalitico.aspx">Analitico</a></li>
-                             <li><a href="">Sintético</a></li>
-                             
-                           
-                            
-                            
-                            
-                            
-                        </ul>
-                    </li>
-
-                      <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-docs menu-icon"></i><span class="nav-text">Despesas Fixas</span>
-                        </a>
-                        <ul aria-expanded="false">
-                           
-                            <li><a href="RelatorioExtratoAnalitico.aspx">Analitico</a></li>
-                             <li><a href="">Sintético</a></li>
-                             
-                           
-                            
-                            
-                            
-                            
-                        </ul>
-                    </li>
-                       <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-docs menu-icon"></i><span class="nav-text">Investimento</span>
-                        </a>
-                        <ul aria-expanded="false">
-                           
-                            <li><a href="RelatorioExtratoAnalitico.aspx">Analitico</a></li>
-                             <li><a href="">Sintético</a></li>
+                            <li><a href="RelatorioExtratoAnalitico.aspx">Extrato</a></li>
+                             <li><a href="RelatorioTotalizador.aspx">Totalizador</a></li>
                              
                            
                             
@@ -396,22 +347,11 @@
                         </ul>
                     </li>
                    
-                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-docs menu-icon"></i><span class="nav-text">Ocorrências</span>
-                        </a>
-                        <ul aria-expanded="false">
-                           
-                            <li><a href="RelatorioExtratoAnalitico.aspx">Analitico</a></li>
-                             <li><a href="">Sintético</a></li>
-                             
-                           
-                            
-                            
-                            
-                            
-                        </ul>
-                    </li>
+
+                    
+                    
+                   
+                     
                    
                     <li></li>  <li></li> <li></li><li></li><li></li>
                    

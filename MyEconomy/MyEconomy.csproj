@@ -4971,7 +4971,7 @@
     <Content Include="InvestimentoManual.aspx" />
     <Content Include="ReceitasVariadas.aspx" />
     <Content Include="RelatorioExtratoAnalitico.aspx" />
-    <Content Include="RelatorioOcorrenciasSintetico.aspx" />
+    <Content Include="RelatorioTotalizador.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -5069,12 +5069,12 @@
     <Compile Include="RelatorioExtratoAnalitico.aspx.designer.cs">
       <DependentUpon>RelatorioExtratoAnalitico.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RelatorioOcorrenciasSintetico.aspx.cs">
-      <DependentUpon>RelatorioOcorrenciasSintetico.aspx</DependentUpon>
+    <Compile Include="RelatorioTotalizador.aspx.cs">
+      <DependentUpon>RelatorioTotalizador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RelatorioOcorrenciasSintetico.aspx.designer.cs">
-      <DependentUpon>RelatorioOcorrenciasSintetico.aspx</DependentUpon>
+    <Compile Include="RelatorioTotalizador.aspx.designer.cs">
+      <DependentUpon>RelatorioTotalizador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

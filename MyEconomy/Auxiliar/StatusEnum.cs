@@ -11,9 +11,9 @@ namespace MyEconomy
     {
         public enum Status
         {
-            [Description("Conta a pagar")] //Descrição será exibido como item do dropdown
+            [Description("Despesa fixa a pagar")] //Descrição será exibido como item do dropdown
             ContasAPagar = 1,// item do enumerator atribuido o seu valor constante.
-            [Description("Conta paga")]
+            [Description("Despesa fixa paga")]
             ContasPagas = 2
         }
 
@@ -37,18 +37,16 @@ namespace MyEconomy
             [Description("--")] //Descrição será exibido como item do dropdown
             inicial = 0,// item do enumerator atribuido o seu valor constante.
             
-            [Description("Despesas fixas pagas")]
+            [Description("Despesa fixa paga")]
             DespesasFixas = 1,
             [Description("Despesas variadas")]
             DespesasVariadas = 2,
             [Description("Receitas")]
             Receitas = 3,
-            [Description("Investimento crédito")]
+            [Description("Investimento")]
             InvestimentoCredito = 4,
-            [Description("Investimento débito")]
-            InvestimentoDebito = 5,
-            [Description("Saldo inicial")]
-            SaldoInicial = 6,
+           
+            
 
         }
 

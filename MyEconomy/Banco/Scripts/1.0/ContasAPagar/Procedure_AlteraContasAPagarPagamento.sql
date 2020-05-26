@@ -17,7 +17,7 @@ SET
 `StatusContasAPagar` = _statuscontaapagar
 
 WHERE `IdContaAPagar` = _IdContaAPagar;
-if(_statuscontaapagar = 'Conta paga')then
+if(_statuscontaapagar = 'Despesa fixa paga')then
 insert into tbl_extratobancario(
 DescricaoExtratoBancario,
 Idcontasbancarias,

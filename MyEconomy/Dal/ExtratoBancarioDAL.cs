@@ -78,6 +78,61 @@ namespace MyEconomy
             }
 
         }
+
+        public DataSet RelatorioExtratoTotalizador(ExtratosBancariosInformation extratosinf)
+        {
+            try
+            {
+                DataSet ds;
+                objConexao.Open();
+                objCommand.Connection = objConexao;                
+                objCommand.CommandText = "Procedure_RelatorioTotalizador";
+                objCommand.CommandType = CommandType.StoredProcedure;
+               
+
+                objCommand.Parameters.Add(new MySqlParameter("_descricaoocorrencia", MySqlDbType.VarChar, 100));
+                objCommand.Parameters["_descricaoocorrencia"].Value = extratosinf.DescricaoExtratoBancario;
+
+                objCommand.Parameters.Add(new MySqlParameter("_idcontasbancarias", MySqlDbType.Int32));
+                objCommand.Parameters["_idcontasbancarias"].Value = extratosinf.IdContasBancarias;
+
+                objCommand.Parameters.Add(new MySqlParameter("_idclassificacao", MySqlDbType.Int32));
+                objCommand.Parameters["_idclassificacao"].Value = extratosinf.IdClassificacao;
+
+                MySqlParameter pdatainicial = new MySqlParameter("_datainicial", MySqlDbType.DateTime, 200);
+                pdatainicial.Value = extratosinf.DataInicialPesquisa;
+                objCommand.Parameters.Add(pdatainicial);
+
+                MySqlParameter pdatafinal = new MySqlParameter("_datafinal", MySqlDbType.DateTime, 200);
+                pdatafinal.Value = extratosinf.DataFinalPesquisa;
+                objCommand.Parameters.Add(pdatafinal);
+
+
+
+                MySqlDataAdapter da;
+
+                da = new MySqlDataAdapter(objCommand);
+                ds = new DataSet();
+
+
+
+                da.Fill(ds);
+                return ds;
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+
+        }
         public void InserirExtratoBancario(ExtratosBancariosInformation extratobancarioinf)
         {
 
