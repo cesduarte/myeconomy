@@ -92,7 +92,7 @@
                                                    
                                                    
                                                    
-                                                    <asp:TemplateField>
+                                                    <%--<asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-info btn-sm"
                                                                 CommandName="Editar" Text="Detalhes"
@@ -100,7 +100,7 @@
                                                                 .Eval(Container.DataItem, "IdExtratoBancario")%>' />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
-                                                    </asp:TemplateField>                                                    
+                                                    </asp:TemplateField>  --%>                                                  
                                                 </Columns>
                                                <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" />
                                                 <PagerStyle HorizontalAlign="Right" Wrap="True" CssClass="page-item" />

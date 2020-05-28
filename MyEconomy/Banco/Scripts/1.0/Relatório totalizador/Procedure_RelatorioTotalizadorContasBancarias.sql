@@ -27,7 +27,7 @@ where Idcontasbancarias<>1 order by a.DescricaoContasBancarias;
 elseif(_idcontasbancarias <> 1 ) then
 
 select 
-a.DescricaoContasBancarias,
+a.DescricaoContasBancarias as descricao,
 (select sum(ValorOcorrencia) from tbl_extratobancario b where StatusOcorrencia = 'Receitas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
 _datainicial and _datafinal) as receitas,
 (select sum(ValorOcorrencia) from tbl_extratobancario b where StatusOcorrencia = 'Despesas Variadas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
