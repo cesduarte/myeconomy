@@ -5044,6 +5044,7 @@
     <Compile Include="InvestimentoManual.aspx.designer.cs">
       <DependentUpon>InvestimentoManual.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\CalcularTotalizadorInformation.cs" />
     <Compile Include="Modelo\ClasseGenericaInformation.cs" />
     <Compile Include="Modelo\ClassificacaoInformation.cs" />
     <Compile Include="Modelo\ContasAPagarInformation.cs" />

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -39,7 +41,54 @@ namespace MyEconomy
 
 
         }
+        public void CacularRodape(DataSet tabela)
+        {
+            try
+            {
+                CalcularTotalizadorInformation calc = new CalcularTotalizadorInformation();
+                
+               
+              
 
+                for (int i = 0; i < tabela.Tables[0].Rows.Count; i++)
+                {
+
+                    calc.TotReceitas += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["receitas"].ToString());
+                    calc.TotDespesasVariadas += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["Despesasvariadas"].ToString());
+                    calc.TotDespesasFixasPagas += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["DespesaFixaPaga"].ToString());
+                    calc.TotDespesasFixasAPagar += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["DespesaFixaapagar"].ToString());
+
+
+                }
+
+                GridViewRow footer = GrdDados.FooterRow;
+                footer.Cells[0].Text = "Total";
+                footer.Cells[1].Text = string.Format("{0:c}", calc.TotReceitas);
+                footer.Cells[2].Text = string.Format("{0:c}", calc.TotDespesasVariadas);
+                footer.Cells[3].Text = string.Format("{0:c}", calc.TotDespesasFixasPagas);
+                footer.Cells[4].Text = string.Format("{0:c}", calc.TotDespesasFixasAPagar);
+                CalcularTotalizadores(calc);
+
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+        public void CalcularTotalizadores(CalcularTotalizadorInformation calc)
+        {
+            try
+            {
+                lblreceitaDespesasVariadas.Text = "";
+                lblreceitaDespesasVariadas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotReceitas - calc.TotDespesasVariadas);
+            }
+            catch(Exception ex)
+            {
+
+            }
+          
+        }
         public void carrega_data()
         {
             DateTime abre = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -71,6 +120,7 @@ namespace MyEconomy
         {
             try
             {
+                DataSet Grid = new DataSet();
 
                 ExtratosBancariosInformation extratosinf = new ExtratosBancariosInformation();
 
@@ -84,11 +134,13 @@ namespace MyEconomy
 
                 if (DropOrganizarpor.SelectedItem.ToString() == EnumExtensions.GetEnumDescription((StatusEnum.OrganizarPorRelatorios.ContasBancarias)))
                 {
-                    GrdDados.DataSource = objextratobancario.RelatorioExtratoTotalizadorContasBancarias(extratosinf);
+                    Grid = objextratobancario.RelatorioExtratoTotalizadorContasBancarias(extratosinf);
+                    GrdDados.DataSource = Grid;
                 }
                 else
                 {
-                    GrdDados.DataSource = objextratobancario.RelatorioExtratoTotalizadorClassificacao(extratosinf);
+                    Grid = objextratobancario.RelatorioExtratoTotalizadorClassificacao(extratosinf);
+                    GrdDados.DataSource = Grid;
                 }
 
                    
@@ -100,6 +152,7 @@ namespace MyEconomy
 
 
                 GrdDados.DataBind();
+                CacularRodape(Grid);
             }
             catch (Exception ex)
             {
@@ -355,7 +408,12 @@ namespace MyEconomy
             GrdDados.PageIndex = e.NewPageIndex;
             CarregaGrid();
         }
+       
+        protected void GrdDados_RowDataBound(object sender, GridViewRowEventArgs e)
+        { 
+            
+            
 
-        
+        }
     }
 }

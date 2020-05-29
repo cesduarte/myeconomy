@@ -74,7 +74,7 @@
                                     <asp:UpdatePanel ID="upcontas" runat="server">
                                         <ContentTemplate>
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
-                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
+                                                EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging" OnRowDataBound="GrdDados_RowDataBound" ShowFooter="True">
                                                 <Columns>
                                                     <asp:BoundField DataField="descricao" HeaderText="Contas bancárias"  />
                                                     <asp:BoundField DataField="receitas" HeaderText="Tot. Receitas" DataFormatString="{0:c}" /> 
@@ -100,6 +100,7 @@
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>--%>                                                    
                                                 </Columns>
+                                                <FooterStyle CssClass="badge-info" />
                                                <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" />
                                                 <PagerStyle HorizontalAlign="Right" Wrap="True" CssClass="page-item" />
                                             </asp:GridView>
@@ -110,7 +111,53 @@
 
                             </div>
                       
+                           <asp:UpdatePanel ID="UpdatePanel9" runat="server">
+                                        <ContentTemplate>
+                                <div class="card">
+                                      <div class="col-lg-12">
+                    
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h4>Totalizador</h4>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                               
+                                                <th>Descrição</th>
+                                                <th>Valor</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                             
+                                                <td>(Receitas) - (Despesas Variadas)</td>
+                                                <td><asp:Label ID="lblreceitaDespesasVariadas" runat="server" Text="R$ 0,00"></asp:Label></td>
+                                            </tr>
+                                            <tr>
+                                                
+                                               <td>Receitas - Despesas Fixas Pagas</td>
+                                                <td>R$ 200,00</td>
+                                            </tr>
+                                            <tr>
+                                                
+                                               <td>Receitas - Despesas a Pagar</td>
+                                                <td>R$ 200,00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                      
+                                        </div>
+                                    
+                                </div>
+                                            </ContentTemplate>
+                               </asp:UpdatePanel>
 
+                           
                         </div>
                     </div>
                 </div>

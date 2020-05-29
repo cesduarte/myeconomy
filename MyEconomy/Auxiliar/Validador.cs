@@ -20,5 +20,19 @@ namespace MyEconomy
             return ret;
         }
 
+        public decimal ValidarDecimal(string Valor)
+        {
+            decimal resultado = 0;
+            if (decimal.TryParse(Valor, out resultado))
+            {
+                return resultado;
+            }
+            else
+            {
+                return 0;
+            }
+            return resultado;
+        }
+
     }
 }
