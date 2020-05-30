@@ -138,13 +138,13 @@
                                             </tr>
                                             <tr>
                                                 
-                                               <td>Receitas - Despesas Fixas Pagas</td>
-                                                <td>R$ 200,00</td>
+                                               <td>(Receitas) - (Despesas Fixas Pagas)</td>
+                                                <td><asp:Label ID="lblreceitasdespesasfixaspagas" runat="server" Text="R$ 0,00"></asp:Label></td>
                                             </tr>
                                             <tr>
                                                 
-                                               <td>Receitas - Despesas a Pagar</td>
-                                                <td>R$ 200,00</td>
+                                               <td>(Receitas) - (Despesas a Pagar)</td>
+                                                 <td><asp:Label ID="lblreceitasdespesasfixasapagar" runat="server" Text="R$ 0,00"></asp:Label></td>
                                             </tr>
                                         </tbody>
                                     </table>

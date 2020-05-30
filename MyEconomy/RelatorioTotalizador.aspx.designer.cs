@@ -96,6 +96,24 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label lblreceitaDespesasVariadas;
 
         /// <summary>
+        /// lblreceitasdespesasfixaspagas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblreceitasdespesasfixaspagas;
+
+        /// <summary>
+        /// lblreceitasdespesasfixasapagar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblreceitasdespesasfixasapagar;
+
+        /// <summary>
         /// UpdatePanel4 control.
         /// </summary>
         /// <remarks>

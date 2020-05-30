@@ -80,8 +80,10 @@ namespace MyEconomy
         {
             try
             {
-                lblreceitaDespesasVariadas.Text = "";
+                
                 lblreceitaDespesasVariadas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotReceitas - calc.TotDespesasVariadas);
+                lblreceitasdespesasfixaspagas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotReceitas - calc.TotDespesasFixasPagas);
+                lblreceitasdespesasfixasapagar.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotReceitas - calc.TotDespesasFixasAPagar);
             }
             catch(Exception ex)
             {
