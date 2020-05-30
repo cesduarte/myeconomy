@@ -110,12 +110,16 @@
                                 </div>                          
 
                             </div>
+                       </div>
                       
+                    
+               
                            <asp:UpdatePanel ID="UpdatePanel9" runat="server">
                                         <ContentTemplate>
-                                <div class="card">
-                                      <div class="col-lg-12">
-                    
+                             
+                                <div class="row">
+                                     <div class="col-lg-6">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="card-title">
                                     <h4>Totalizador</h4>
@@ -124,52 +128,88 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                               
+                                                
                                                 <th>Descrição</th>
                                                 <th>Valor</th>
-                                               
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                             
-                                                <td>(Receitas) - (Despesas Variadas)</td>
-                                                <td><asp:Label ID="lblreceitaDespesasVariadas" runat="server" Text="R$ 0,00"></asp:Label></td>
+                                                
+                                                <td>(Receitas) - (Despesas variadas)</td>
+                                                <td><asp:Label ID="lblreceitaDespesasVariadas" runat="server" Text="Label"></asp:Label></td>
+                                                
                                             </tr>
                                             <tr>
                                                 
-                                               <td>(Receitas) - (Despesas Fixas Pagas)</td>
-                                                <td><asp:Label ID="lblreceitasdespesasfixaspagas" runat="server" Text="R$ 0,00"></asp:Label></td>
-                                            </tr>
-                                            <tr>
+                                                <td>(Receitas) - (Despesas fixas pagas)</td>
+                                                <td><asp:Label ID="lblreceitasdespesasfixaspagas" runat="server" Text="Label"></asp:Label></td>
                                                 
-                                               <td>(Receitas) - (Despesas Variadas/Fixas Pagas)</td>
-                                                <td><asp:Label ID="lblreceitasdespesasvariadasfixas" runat="server" Text="R$ 0,00"></asp:Label></td>
                                             </tr>
-                                            <tr>
+                                             <tr>
                                                 
-                                               <td>(Receitas) - (Despesas a Pagar)</td>
-                                                 <td><asp:Label ID="lblreceitasdespesasfixasapagar" runat="server" Text="R$ 0,00"></asp:Label></td>
+                                                <td>(Receitas) - (Despesas fixas pagas a pagar)</td>
+                                                <td><asp:Label ID="lblreceitasdespesasfixasapagar" runat="server" Text="Label"></asp:Label></td>
+                                                
                                             </tr>
+                                             <tr>
+                                                
+                                                <td>(Receitas) - (Despesas variadas/fixas)</td>
+                                                <td><asp:Label ID="lblreceitasdespesasvariadasfixas" runat="server" Text="Label"></asp:Label></td>
+                                                
+                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                      
-                                        </div>
-                                      
-                                    
-                                </div>
-                                            </ContentTemplate>
-                               </asp:UpdatePanel>
-
-                           
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <!-- /# column -->
+                                     <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th>Descrição</th>
+                                                <th>Valor</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                
+                                                <td>(Receitas) - (Investimento)</td>
+                                                <td><asp:Label ID="Label8" runat="server" Text="R$ 0,00"></asp:Label></td>
+                                            </tr>
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                   
+                                </div>
+                            
+                                            </ContentTemplate>
+                               </asp:UpdatePanel>
+                      </div>
+                           </div> 
+                       
+                      </div>
+             </div>
+         </div>
+               
+           
+       
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
