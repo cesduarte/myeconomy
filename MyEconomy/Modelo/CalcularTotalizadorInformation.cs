@@ -11,5 +11,6 @@ namespace MyEconomy
         public decimal TotDespesasVariadas { get; set; }
         public decimal TotDespesasFixasPagas { get; set; }
         public decimal TotDespesasFixasAPagar { get; set; }
+        public decimal TotInvestimento { get; set; }
     }
 }

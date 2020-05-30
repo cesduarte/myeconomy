@@ -57,6 +57,7 @@ namespace MyEconomy
                     calc.TotDespesasVariadas += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["Despesasvariadas"].ToString());
                     calc.TotDespesasFixasPagas += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["DespesaFixaPaga"].ToString());
                     calc.TotDespesasFixasAPagar += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["DespesaFixaapagar"].ToString());
+                    calc.TotInvestimento += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["Investimento"].ToString());
 
 
                 }
@@ -67,6 +68,7 @@ namespace MyEconomy
                 footer.Cells[2].Text = string.Format("{0:c}", calc.TotDespesasVariadas);
                 footer.Cells[3].Text = string.Format("{0:c}", calc.TotDespesasFixasPagas);
                 footer.Cells[4].Text = string.Format("{0:c}", calc.TotDespesasFixasAPagar);
+                footer.Cells[5].Text = string.Format("{0:c}", calc.TotInvestimento);
                 CalcularTotalizadores(calc);
 
 
@@ -80,10 +82,18 @@ namespace MyEconomy
         {
             try
             {
-                
-                lblreceitaDespesasVariadas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotReceitas - calc.TotDespesasVariadas);
-                lblreceitasdespesasfixaspagas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotReceitas - calc.TotDespesasFixasPagas);
-                lblreceitasdespesasfixasapagar.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotReceitas - calc.TotDespesasFixasAPagar);
+                 decimal TotReceitas = calc.TotReceitas;
+                //decimal TotReceitasDespesasvariadas = calc.TotReceitas - calc.TotDespesasVariadas;
+                //decimal TotReceitasDespesasFixasPagas = calc.TotReceitas - calc.TotDespesasFixasPagas;
+                //decimal TotReceitasDespesasFixasAPagar = calc.TotReceitas - calc.TotDespesasFixasAPagar;
+                decimal TotDespesasVariadasFixasPagas = calc.TotDespesasVariadas + calc.TotDespesasFixasPagas;
+
+
+
+                lblreceitaDespesasVariadas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasVariadas + calc.TotReceitas);
+                lblreceitasdespesasfixaspagas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasFixasPagas + calc.TotReceitas);
+                lblreceitasdespesasfixasapagar.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}",   calc.TotDespesasFixasAPagar + calc.TotReceitas);
+                lblreceitasdespesasvariadasfixas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", TotDespesasVariadasFixasPagas+ TotReceitas);
             }
             catch(Exception ex)
             {

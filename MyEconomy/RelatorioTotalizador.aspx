@@ -77,12 +77,12 @@
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging" OnRowDataBound="GrdDados_RowDataBound" ShowFooter="True">
                                                 <Columns>
                                                     <asp:BoundField DataField="descricao" HeaderText="Contas bancárias"  />
-                                                    <asp:BoundField DataField="receitas" HeaderText="Tot. Receitas" DataFormatString="{0:c}" /> 
+                                                    <asp:BoundField DataField="receitas" HeaderText="Receitas" DataFormatString="{0:c}" /> 
 
-                                                   <asp:BoundField DataField="Despesasvariadas" HeaderText="Tot. Despesa Variada" DataFormatString="{0:c}" /> 
-                                                    <asp:BoundField DataField="DespesaFixaPaga" HeaderText="Tot. Despesa Fixa Paga" DataFormatString="{0:c}" /> 
-                                                    <asp:BoundField DataField="DespesaFixaapagar" HeaderText="Tot. Despesa Fixa a Pagar" DataFormatString="{0:c}" /> 
-
+                                                   <asp:BoundField DataField="Despesasvariadas" HeaderText="Despesa variada" DataFormatString="{0:c}" /> 
+                                                    <asp:BoundField DataField="DespesaFixaPaga" HeaderText="Despesa fixa paga" DataFormatString="{0:c}" /> 
+                                                    <asp:BoundField DataField="DespesaFixaapagar" HeaderText="Despesa fixa a pagar" DataFormatString="{0:c}" /> 
+                                                    <asp:BoundField DataField="Investimento" HeaderText="Investimento" DataFormatString="{0:c}" />
                                                     
 
 
@@ -143,6 +143,11 @@
                                             </tr>
                                             <tr>
                                                 
+                                               <td>(Receitas) - (Despesas Variadas/Fixas Pagas)</td>
+                                                <td><asp:Label ID="lblreceitasdespesasvariadasfixas" runat="server" Text="R$ 0,00"></asp:Label></td>
+                                            </tr>
+                                            <tr>
+                                                
                                                <td>(Receitas) - (Despesas a Pagar)</td>
                                                  <td><asp:Label ID="lblreceitasdespesasfixasapagar" runat="server" Text="R$ 0,00"></asp:Label></td>
                                             </tr>
@@ -152,6 +157,7 @@
                             </div>
                       
                                         </div>
+                                      
                                     
                                 </div>
                                             </ContentTemplate>

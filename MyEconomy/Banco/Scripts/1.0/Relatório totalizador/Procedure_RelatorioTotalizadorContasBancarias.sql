@@ -9,14 +9,16 @@ BEGIN
 if(_idcontasbancarias = 1) then
 select 
 a.DescricaoContasBancarias as descricao,
-(select sum(ValorOcorrencia) from tbl_extratobancario b where StatusOcorrencia = 'Receitas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
+(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Receitas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
 _datainicial and _datafinal) as receitas,
-(select sum(ValorOcorrencia) from tbl_extratobancario b where StatusOcorrencia = 'Despesas Variadas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
+(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Despesas Variadas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
 _datainicial and _datafinal ) as Despesasvariadas,
-(select sum(ValorOcorrencia) from tbl_extratobancario b where StatusOcorrencia = 'Despesa fixa paga' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
+(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Despesa fixa paga' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
 _datainicial and _datafinal ) as DespesaFixaPaga,
-(select sum(ValorDespesa) from tbl_despesafixa c, tbl_contasapagar d where StatusContasAPagar = 'Despesa fixa a pagar' and d.Iddespesas = c.IdDespesaFixa and c.Idcontasbancarias = a.Idcontasbancarias and d.DataVencimentoContaAPagar BETWEEN 
-_datainicial and _datafinal ) as DespesaFixaapagar
+(select COALESCE(sum(ValorDespesa),0) from tbl_despesafixa c, tbl_contasapagar d where StatusContasAPagar = 'Despesa fixa a pagar' and d.Iddespesas = c.IdDespesaFixa and c.Idcontasbancarias = a.Idcontasbancarias and d.DataVencimentoContaAPagar BETWEEN 
+_datainicial and _datafinal ) as DespesaFixaapagar,
+(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Investimento' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
+_datainicial and _datafinal ) as Investimento
 
 
 from
@@ -28,15 +30,16 @@ elseif(_idcontasbancarias <> 1 ) then
 
 select 
 a.DescricaoContasBancarias as descricao,
-(select sum(ValorOcorrencia) from tbl_extratobancario b where StatusOcorrencia = 'Receitas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
+(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Receitas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
 _datainicial and _datafinal) as receitas,
-(select sum(ValorOcorrencia) from tbl_extratobancario b where StatusOcorrencia = 'Despesas Variadas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
+(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Despesas Variadas' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
 _datainicial and _datafinal ) as Despesasvariadas,
-(select sum(ValorOcorrencia) from tbl_extratobancario b where StatusOcorrencia = 'Despesa fixa paga' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
+(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Despesa fixa paga' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
 _datainicial and _datafinal ) as DespesaFixaPaga,
-(select sum(ValorDespesa) from tbl_despesafixa c, tbl_contasapagar d where StatusContasAPagar = 'Despesa fixa a pagar' and d.Iddespesas = c.IdDespesaFixa and c.Idcontasbancarias = a.Idcontasbancarias and d.DataVencimentoContaAPagar BETWEEN 
-_datainicial and _datafinal ) as DespesaFixaapagar
-
+(select COALESCE(sum(ValorDespesa),0) from tbl_despesafixa c, tbl_contasapagar d where StatusContasAPagar = 'Despesa fixa a pagar' and d.Iddespesas = c.IdDespesaFixa and c.Idcontasbancarias = a.Idcontasbancarias and d.DataVencimentoContaAPagar BETWEEN 
+_datainicial and _datafinal ) as DespesaFixaapagar,
+(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Investimento' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
+_datainicial and _datafinal ) as Investimento
 
 from
 
