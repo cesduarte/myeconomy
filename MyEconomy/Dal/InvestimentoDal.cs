@@ -76,7 +76,7 @@ namespace MyEconomy
 
                 if (IdInvestimento == "")
                 {
-                    sql = "select * from tbl_investimento where isdelete = false order by descricaocontas";
+                    sql = "select * from tbl_investimento where isdelete = false order by Descricaoinvestimento";
                 }
                 else
                 {

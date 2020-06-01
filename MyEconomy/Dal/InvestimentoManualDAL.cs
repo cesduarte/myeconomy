@@ -36,6 +36,13 @@ namespace MyEconomy
                 objCommand.Parameters["_idinvestimento"].Value = investimentosinf.IdInvestimento;
 
 
+                MySqlParameter pdatainicial = new MySqlParameter("_datainicial", MySqlDbType.DateTime, 200);
+                pdatainicial.Value = investimentosinf.DataInicialPesquisa;
+                objCommand.Parameters.Add(pdatainicial);
+
+                MySqlParameter pdatafinal = new MySqlParameter("_datafinal", MySqlDbType.DateTime, 200);
+                pdatafinal.Value = investimentosinf.DataFinalPesquisa;
+                objCommand.Parameters.Add(pdatafinal);
 
 
 
@@ -77,7 +84,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    sql = "select * from tbl_investimentomanual  where IdInvestimento = " + IdInvestimentoManual;
+                    sql = "select * from tbl_investimentomanual  where IdInvestimentoManual = " + IdInvestimentoManual;
                 }
 
 
@@ -93,13 +100,13 @@ namespace MyEconomy
                 {
                     ListaDeDados.Add(new InvestimentoManualInformation()
                     {
-                        IdInvestimento = int.Parse(dataRow["IdInvestimentoManual"].ToString()),
+                        IdinvestimentoManual = int.Parse(dataRow["IdInvestimentoManual"].ToString()),
                         DescricaoInvestimento = dataRow["Descricaoinvestimento"].ToString(),
                         IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
-                        IdinvestimentoManual = Convert.ToInt32(dataRow["Idinvestimento"].ToString()),
+                        IdInvestimento = Convert.ToInt32(dataRow["Idinvestimento"].ToString()),
                         SaldoInvestimento = Convert.ToDecimal(dataRow["valorinvestimento"].ToString()),
+                        DataInvestimento = Convert.ToDateTime(dataRow["DataInvestimento"].ToString()),
 
-                       
                     });
                 }
 

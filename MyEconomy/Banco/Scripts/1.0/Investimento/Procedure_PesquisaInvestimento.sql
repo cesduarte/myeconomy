@@ -8,14 +8,14 @@ select a.IdInvestimento, a.Descricaoinvestimento, a.SaldoInvestimento, b.Descric
 from
 tbl_investimento a, tbl_contasbancarias b
 where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = _isdelete order by a.Descricaoinvestimento;
+a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = _isdelete and a.IdInvestimento<>1 order by a.Descricaoinvestimento ;
 elseif(_descricaoinvestimento<>''&& _idcontasbancarias = 1)then
 
 select a.IdInvestimento, a.Descricaoinvestimento, a.SaldoInvestimento, b.DescricaoContasBancarias
 from
 tbl_investimento a, tbl_contasbancarias b
 where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = _isdelete and a.Descricaoinvestimento LIKE CONCAT('%',_descricaoinvestimento, '%')  order by a.Descricaoinvestimento;
+a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = _isdelete and a.Descricaoinvestimento LIKE CONCAT('%',_descricaoinvestimento, '%') and a.IdInvestimento<>1 order by a.Descricaoinvestimento;
 
 
 elseif(_descricaoinvestimento<>''&& _idcontasbancarias <> 1)then
@@ -24,14 +24,14 @@ select a.IdInvestimento, a.Descricaoinvestimento, a.SaldoInvestimento, b.Descric
 from
 tbl_investimento a, tbl_contasbancarias b
 where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = _isdelete and a.Descricaoinvestimento LIKE CONCAT('%',_descricaoinvestimento, '%') and a.Idcontasbancarias = _idcontasbancarias order by a.Descricaoinvestimento;
+a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = _isdelete and a.Descricaoinvestimento LIKE CONCAT('%',_descricaoinvestimento, '%') and a.IdInvestimento<>1 and  a.Idcontasbancarias = _idcontasbancarias order by a.Descricaoinvestimento;
 
 elseif(_descricaoinvestimento =''&& _idcontasbancarias <> 1)then
 select a.IdInvestimento, a.Descricaoinvestimento, a.SaldoInvestimento, b.DescricaoContasBancarias
 from
 tbl_investimento a, tbl_contasbancarias b
 where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = _isdelete and a.Idcontasbancarias = _idcontasbancarias order by a.Descricaoinvestimento;
+a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = _isdelete and a.Idcontasbancarias = _idcontasbancarias and a.IdInvestimento<>1 order by a.Descricaoinvestimento;
 
 end if;
 END

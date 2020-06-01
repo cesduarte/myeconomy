@@ -20,10 +20,10 @@ namespace MyEconomy
             if (!Page.IsPostBack)
             {
                 carrega_data();
-                CarregarContasBancarias();
-
+                CarregarContasBancarias(); 
+                CarregarInvestimento("");
                 CarregaGrid();
-
+              
             }
 
 
@@ -40,6 +40,8 @@ namespace MyEconomy
 
                 investimentosmanualinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancariaspesquisa.SelectedValue);
                 investimentosmanualinf.IdInvestimento = Convert.ToInt32(Dropinvestimentopesquisa.SelectedValue);
+                investimentosmanualinf.DataInicialPesquisa = Convert.ToDateTime(Txtdatainicialpesquisa.Text);
+                investimentosmanualinf.DataFinalPesquisa = Convert.ToDateTime(Txtdatafinalpesquisa.Text);
 
 
 
@@ -79,7 +81,7 @@ namespace MyEconomy
 
 
         }
-        public void CarregarInvestimento(string id)
+        public void CarregarInvestimentomanual(string id)
         {
             try
             {
@@ -88,19 +90,37 @@ namespace MyEconomy
                 investimentosmanualinf = null;
                 foreach (InvestimentoManualInformation investimentosmanualinf in objinvestimentos.Carregarinvestimentoscampos(id))
                 {
-                    Txtid.Text = Convert.ToString(investimentosmanualinf.IdInvestimento);
+                    Txtid.Text = Convert.ToString(investimentosmanualinf.IdinvestimentoManual);
                     Txtdescricaoinvestimento.Text = investimentosmanualinf.DescricaoInvestimento;
                     Txtsaldo.Text = Convert.ToString(investimentosmanualinf.SaldoInvestimento);
 
                     Dropcontasbancarias.SelectedValue = Convert.ToString(investimentosmanualinf.IdContasBancarias);
+                    CarregarInvestimentoContasbancarias();
+                    Dropinvestimento.SelectedValue = Convert.ToString(investimentosmanualinf.IdInvestimento);
+                    Txtdata.Text = investimentosmanualinf.DataInvestimento.ToString("yyyy-MM-dd");
 
 
 
 
-
-                  
 
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+        public void CarregarInvestimento(string id)
+        {
+            try
+            {
+
+                Dropinvestimentopesquisa.DataSource = null;
+                Dropinvestimentopesquisa.DataSource = objinvestimentosfixo.Carregarinvestimentoscampos("");
+                Dropinvestimentopesquisa.DataTextField = "Descricaoinvestimento";
+                Dropinvestimentopesquisa.DataValueField = "Idinvestimento";
+                Dropinvestimentopesquisa.DataBind();
+
             }
             catch (Exception ex)
             {
@@ -229,7 +249,7 @@ namespace MyEconomy
             {
 
 
-                CarregarInvestimento(e.CommandArgument.ToString());
+               CarregarInvestimentomanual(e.CommandArgument.ToString());
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadastroModal').modal('show');", true);
 

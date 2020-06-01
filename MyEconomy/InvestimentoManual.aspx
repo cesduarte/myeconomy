@@ -69,17 +69,20 @@
                                             <asp:GridView ID="GrdDados" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
-                                                    <asp:BoundField DataField="Descricaoinvestimento" HeaderText="Descrição investimento" />
+                                                    <asp:BoundField DataField="investimentomanual" HeaderText="Descrição investimento Manual" />
+
                                                     <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />
+                                                    <asp:BoundField DataField="Descricaoinvestimento" HeaderText="Contas bancárias" />
                                                     
-                                                    <asp:BoundField DataField="SaldoInvestimento" HeaderText="Saldo" DataFormatString="{0:c}" />
+                                                    <asp:BoundField DataField="ValorInvestimento" HeaderText="Valor" DataFormatString="{0:c}" />
+                                                      <asp:BoundField DataField="DataInvestimento" HeaderText="Data investimento" DataFormatString="{0:dd/MM/yyyy}" />
                                                    
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:Button ID="btnEditar" runat="server" class="btn mb-1  btn-primary btn-sm"
                                                                 CommandName="Editar" Text="Editar"
                                                                 CommandArgument='<%# DataBinder
-                                                                .Eval(Container.DataItem, "IdInvestimento")%>' />
+                                                                .Eval(Container.DataItem, "IdInvestimentoManual")%>' />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
@@ -98,16 +101,16 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+   <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="bootstrap-modal">
-                        <div class="modal fade bd-example-modal-lg" id="basicModal"   data-keyboard="false" data-backdrop="static" aria-hidden="true">
+                        <div class="modal fade bd-example-modal-lg" id="basicModal" data-keyboard="false" data-backdrop="static" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Pesquisar investimento manual</h5>
+                                        <h5 class="modal-title">Pesquisar despesas</h5>
                                         <asp:UpdatePanel ID="UpdatePanel4" runat="server" ChildrenAsTriggers="true">
                                             <ContentTemplate>
                                                 <button type="button" id="teste" class="close" runat="server" onserverclick="Button1_Click" usesubmitbehavior="false" data-dismiss="modal">
@@ -123,32 +126,29 @@
                                             <ContentTemplate>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
-                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descrição investimento: </asp:Label>
+                                                        <asp:Label ID="Label8" runat="server" Text="Label">Descricao investimento: </asp:Label>
                                                         <asp:TextBox ID="Txtdescricaopesquisa" runat="server" class="form-control form-control-sm"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
-                                                     <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label6" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
-                                                        
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label ID="Label6" runat="server" Text="Label">Descrição contas bancárias: </asp:Label>
+
                                                         <asp:DropDownList ID="Dropcontasbancariaspesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group">
-                                                          
-                                                         </asp:DropDownList>
-                                                          
-                                                         </div>
-                                                   
-                                                      <div class="form-group col-md-6">
-                                                         <asp:Label ID="Label2" runat="server" Text="Label">Descrição investimento: </asp:Label>
-                                                        
-                                                        <asp:DropDownList ID="Dropinvestimentopesquisa" runat="server" CssClass="form-control form-control" ValidationGroup="group">
-                                                          
-                                                         </asp:DropDownList>
-                                                          
-                                                        
-                                                     </div>
-                                                      </div>
-                                                   
-                                                     <div class="form-row">
+                                                        </asp:DropDownList>
+
+
+                                                    </div>
+
+
+                                                    <div class="form-group col-md-6">
+                                                        <asp:Label ID="Label7" runat="server" Text="Label">investimento: </asp:Label>
+                                                        <asp:DropDownList ID="Dropinvestimentopesquisa" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
+                                                        </asp:DropDownList>
+
+                                                    </div>
+                                                </div>
+                                                  <div class="form-row">
                                                      <div class="form-group col-md-6">
                                                          <asp:Label ID="Label10" runat="server" Text="Label" >Data inicial: </asp:Label>
                                                          <asp:TextBox ID="Txtdatainicialpesquisa"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox> 
@@ -161,12 +161,8 @@
                                                          <asp:TextBox ID="Txtdatafinalpesquisa"  runat="server" CssClass="form-control" TextMode="Date" ></asp:TextBox> 
                                                         
                                                      </div>
-                                                  </div>
-                                                       
                                                 </div>
-                                               
-                                               
-                                               
+
 
                                             </ContentTemplate>
                                         </asp:UpdatePanel>
@@ -250,7 +246,7 @@
                                                         <asp:DropDownList ID="Dropinvestimento" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
                                                          </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="group" runat="server" class="text-danger"  InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="Dropinvestimento"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="group" runat="server" class="text-danger"  ErrorMessage="* Campo obrigatório" ControlToValidate="Dropinvestimento"></asp:RequiredFieldValidator>
 
                                                         
                                                      </div>
