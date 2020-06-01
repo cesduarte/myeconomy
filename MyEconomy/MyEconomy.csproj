@@ -5007,6 +5007,7 @@
     <Compile Include="Dal\DespesasVariadasDAL.cs" />
     <Compile Include="Dal\ExtratoBancarioDAL.cs" />
     <Compile Include="Dal\InvestimentoDAL.cs" />
+    <Compile Include="Dal\InvestimentoManualDAL.cs" />
     <Compile Include="Dal\ReceitasVariadasDAL.cs" />
     <Compile Include="Dal\UsuariosDAL.cs" />
     <Compile Include="Default.aspx.cs">
@@ -5053,6 +5054,7 @@
     <Compile Include="Modelo\DespesasVariadasInformation.cs" />
     <Compile Include="Modelo\ExtratosBancariosInformation.cs" />
     <Compile Include="Modelo\InvestimentoInformation.cs" />
+    <Compile Include="Modelo\InvestimentoManualInformation.cs" />
     <Compile Include="Modelo\ReceitasVariadasInformation.cs" />
     <Compile Include="Modelo\UsuariosInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

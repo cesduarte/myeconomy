@@ -123,6 +123,15 @@ namespace MyEconomy
         protected global::System.Web.UI.WebControls.Label lblreceitasdespesasvariadasfixas;
 
         /// <summary>
+        /// lbldespesasvariadasfixas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbldespesasvariadasfixas;
+
+        /// <summary>
         /// Label8 control.
         /// </summary>
         /// <remarks>

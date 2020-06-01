@@ -8,20 +8,19 @@ using System.Web;
 
 namespace MyEconomy
 {
-    public class InvestimentoDAL
+    public class InvestimentoManualDAL
     {
         MySqlConnection objConexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString);
         MySqlCommand objCommand = new MySqlCommand();
 
-
-        public DataSet PesquisarInvestimento(InvestimentoInformation investimentosinf)
+        public DataSet PesquisarInvestimento(InvestimentoManualInformation investimentosinf)
         {
             try
             {
                 DataSet ds;
                 objConexao.Open();
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_PesquisaInvestimento";
+                objCommand.CommandText = "Procedure_PesquisaInvestimentoManual";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
                 objCommand.Parameters.Add(new MySqlParameter("_descricaoinvestimento", MySqlDbType.VarChar, 100));
@@ -32,14 +31,13 @@ namespace MyEconomy
                 objCommand.Parameters.Add(new MySqlParameter("_idcontasbancarias", MySqlDbType.Int32));
                 objCommand.Parameters["_idcontasbancarias"].Value = investimentosinf.IdContasBancarias;
 
-               
+
+                objCommand.Parameters.Add(new MySqlParameter("_idinvestimento", MySqlDbType.Int32));
+                objCommand.Parameters["_idinvestimento"].Value = investimentosinf.IdInvestimento;
 
 
 
 
-
-                objCommand.Parameters.Add(new MySqlParameter("_isdelete", MySqlDbType.Bit, 100));
-                objCommand.Parameters["_isdelete"].Value = investimentosinf.Isdelete;
 
                 MySqlDataAdapter da;
 
@@ -66,21 +64,20 @@ namespace MyEconomy
 
         }
 
-
-        public List<InvestimentoInformation> Carregarinvestimentoscampos(string IdInvestimento)
+        public List<InvestimentoManualInformation> Carregarinvestimentoscampos(string IdInvestimentoManual)
         {
             try
             {
                 objConexao.Open();
                 string sql;
 
-                if (IdInvestimento == "")
+                if (IdInvestimentoManual == "")
                 {
-                    sql = "select * from tbl_investimento where isdelete = false order by descricaocontas";
+                    sql = "select * from tbl_investimentomanual where isdelete = false order by descricaoinvestimento";
                 }
                 else
                 {
-                    sql = "select * from tbl_investimento  where IdInvestimento = " + IdInvestimento;
+                    sql = "select * from tbl_investimentomanual  where IdInvestimento = " + IdInvestimentoManual;
                 }
 
 
@@ -91,18 +88,18 @@ namespace MyEconomy
                 DataTable objDataTable = new DataTable();
                 Objdata.Fill(objDataTable);
 
-                List<InvestimentoInformation> ListaDeDados = new List<InvestimentoInformation>();
+                List<InvestimentoManualInformation> ListaDeDados = new List<InvestimentoManualInformation>();
                 foreach (DataRow dataRow in objDataTable.Rows)
                 {
-                    ListaDeDados.Add(new InvestimentoInformation()
+                    ListaDeDados.Add(new InvestimentoManualInformation()
                     {
-                        IdInvestimento = int.Parse(dataRow["IdInvestimento"].ToString()),
+                        IdInvestimento = int.Parse(dataRow["IdInvestimentoManual"].ToString()),
                         DescricaoInvestimento = dataRow["Descricaoinvestimento"].ToString(),
                         IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
+                        IdinvestimentoManual = Convert.ToInt32(dataRow["Idinvestimento"].ToString()),
+                        SaldoInvestimento = Convert.ToDecimal(dataRow["valorinvestimento"].ToString()),
+
                        
-                        SaldoInvestimento = Convert.ToDecimal(dataRow["SaldoInvestimento"].ToString()),
-                     
-                        Isdelete = Convert.ToBoolean(dataRow["Isdelete"].ToString())
                     });
                 }
 
@@ -122,72 +119,17 @@ namespace MyEconomy
                 objConexao.Close();
             }
         }
-
-        public List<InvestimentoInformation> Carregarinvestimentosdrop(string IdContasBancarias)
-        {
-            try
-            {
-                objConexao.Open();
-                string sql;
-
-                if (IdContasBancarias == "")
-                {
-                    sql = "";
-                }
-                else
-                {
-                    sql = "select a.IdInvestimento, a.Descricaoinvestimento  from tbl_investimento a, tbl_contasbancarias b where a.Idcontasbancarias = b.Idcontasbancarias and a.Isdelete = false and b.Idcontasbancarias  = " + IdContasBancarias;
-                }
-
-
-
-                objCommand = new MySqlCommand(sql, objConexao);
-                MySqlDataAdapter Objdata = new MySqlDataAdapter(objCommand);
-
-                DataTable objDataTable = new DataTable();
-                Objdata.Fill(objDataTable);
-
-                List<InvestimentoInformation> ListaDeDados = new List<InvestimentoInformation>();
-                foreach (DataRow dataRow in objDataTable.Rows)
-                {
-                    ListaDeDados.Add(new InvestimentoInformation()
-                    {
-                        IdInvestimento = int.Parse(dataRow["IdInvestimento"].ToString()),
-                        DescricaoInvestimento = dataRow["Descricaoinvestimento"].ToString()
-                        
-                    });
-                }
-
-
-                return ListaDeDados;
-
-
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-
-            }
-            finally
-            {
-                objConexao.Close();
-            }
-        }
-
-
-
-        public void InserirInvestimento(InvestimentoInformation investimentosinf)
+        public void InserirInvestimento(InvestimentoManualInformation investimentosinf)
         {
 
             try
             {
 
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_inserirInvestimento";
+                objCommand.CommandText = "Procedure_inserirInvestimentoManual";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
-                MySqlParameter pid = new MySqlParameter("_Idinvestimento", MySqlDbType.Int32);
+                MySqlParameter pid = new MySqlParameter("_IdinvestimentoManual", MySqlDbType.Int32);
                 pid.Direction = ParameterDirection.Output;
                 objCommand.Parameters.Add(pid);
 
@@ -202,25 +144,29 @@ namespace MyEconomy
                 pidcontasbancarias.Value = investimentosinf.IdContasBancarias;
                 objCommand.Parameters.Add(pidcontasbancarias);
 
-              
+                MySqlParameter pidinvestimento = new MySqlParameter("_idinvestimento", MySqlDbType.Int32, 200);
+                pidinvestimento.Value = investimentosinf.IdInvestimento;
+                objCommand.Parameters.Add(pidinvestimento);
 
-                MySqlParameter psaldoinvestimento = new MySqlParameter("_saldoinvestimento", MySqlDbType.Decimal, 200);
+
+
+                MySqlParameter psaldoinvestimento = new MySqlParameter("_valorinvestimento", MySqlDbType.Decimal, 200);
                 psaldoinvestimento.Value = investimentosinf.SaldoInvestimento;
                 objCommand.Parameters.Add(psaldoinvestimento);
 
 
 
 
-                MySqlParameter pisdelete = new MySqlParameter("_isdelete", MySqlDbType.Bit, 200);
-                pisdelete.Value = investimentosinf.Isdelete;
-                objCommand.Parameters.Add(pisdelete);
+                MySqlParameter pdatainvestimento = new MySqlParameter("_datainvestimento", MySqlDbType.Datetime, 200);
+                pdatainvestimento.Value = investimentosinf.DataInvestimento;
+                objCommand.Parameters.Add(pdatainvestimento);
 
 
 
 
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
-                investimentosinf.IdInvestimento = (Int32)objCommand.Parameters["_Idinvestimento"].Value;
+                investimentosinf.IdInvestimento = (Int32)objCommand.Parameters["_IdinvestimentoManual"].Value;
 
 
             }
@@ -239,18 +185,18 @@ namespace MyEconomy
 
         }
 
-        public void AlterarInvestimento(InvestimentoInformation investimentosinf)
+        public void AlterarInvestimento(InvestimentoManualInformation investimentosinf)
         {
 
             try
             {
 
                 objCommand.Connection = objConexao;
-                objCommand.CommandText = "Procedure_AlterarInvestimento";
+                objCommand.CommandText = "Procedure_AlterarInvestimentoManual";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
-                MySqlParameter pid = new MySqlParameter("_Idinvestimento", MySqlDbType.Int32);
-                pid.Value = investimentosinf.IdInvestimento;
+                MySqlParameter pid = new MySqlParameter("_IdinvestimentoManual", MySqlDbType.Int32);
+                pid.Value = investimentosinf.IdinvestimentoManual;
                 objCommand.Parameters.Add(pid);
 
                 MySqlParameter pdescricao = new MySqlParameter("_descricaoinvestimento", MySqlDbType.VarChar, 200);
@@ -262,18 +208,22 @@ namespace MyEconomy
                 pidcontasbancarias.Value = investimentosinf.IdContasBancarias;
                 objCommand.Parameters.Add(pidcontasbancarias);
 
+                MySqlParameter pidinvestimento = new MySqlParameter("_idinvestimento", MySqlDbType.Int32, 200);
+                pidinvestimento.Value = investimentosinf.IdInvestimento;
+                objCommand.Parameters.Add(pidinvestimento);
 
 
-                MySqlParameter psaldoinvestimento = new MySqlParameter("_saldoinvestimento", MySqlDbType.Decimal, 200);
+
+                MySqlParameter psaldoinvestimento = new MySqlParameter("_valorinvestimento", MySqlDbType.Decimal, 200);
                 psaldoinvestimento.Value = investimentosinf.SaldoInvestimento;
                 objCommand.Parameters.Add(psaldoinvestimento);
 
 
 
 
-                MySqlParameter pisdelete = new MySqlParameter("_isdelete", MySqlDbType.Bit, 200);
-                pisdelete.Value = investimentosinf.Isdelete;
-                objCommand.Parameters.Add(pisdelete);
+                MySqlParameter pdatainvestimento = new MySqlParameter("_datainvestimento", MySqlDbType.Datetime, 200);
+                pdatainvestimento.Value = investimentosinf.DataInvestimento;
+                objCommand.Parameters.Add(pdatainvestimento);
 
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
@@ -294,9 +244,5 @@ namespace MyEconomy
             }
 
         }
-
-       
-
-
     }
 }

@@ -94,6 +94,8 @@ namespace MyEconomy
                 lblreceitasdespesasfixaspagas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasFixasPagas + calc.TotReceitas);
                 lblreceitasdespesasfixasapagar.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasFixasAPagar + calc.TotReceitas);
                 lblreceitasdespesasvariadasfixas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", TotDespesasVariadasFixasPagas + TotReceitas);
+
+                lbldespesasvariadasfixas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasVariadas + calc.TotDespesasFixasPagas);
             }
             catch(Exception ex)
             {

@@ -159,6 +159,12 @@
                                                 <td><asp:Label ID="lblreceitasdespesasvariadasfixas" runat="server" Text="Label"></asp:Label></td>
                                                 
                                             </tr>
+                                             <tr>
+                                                
+                                                <td>(Despesas variadas/fixas Pagas)</td>
+                                                <td><asp:Label ID="lbldespesasvariadasfixas" runat="server" Text="Label"></asp:Label></td>
+                                                
+                                            </tr>
                                             
                                         </tbody>
                                     </table>
