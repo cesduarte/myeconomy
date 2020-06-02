@@ -44,7 +44,7 @@ namespace MyEconomy
             [Description("Receitas")]
             Receitas = 3,
             [Description("Investimento")]
-            InvestimentoCredito = 4,
+            Investimento = 4,
            
             
 

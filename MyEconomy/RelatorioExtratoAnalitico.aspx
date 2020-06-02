@@ -77,12 +77,13 @@
                                                 EmptyDataText="Não Existem infornações" OnRowCommand="GrdDados_RowCommand" PageSize="5" AllowPaging="True" OnPageIndexChanging="GrdDados_PageIndexChanging" OnSelectedIndexChanging="GrdDados_SelectedIndexChanging">
                                                 <Columns>
                                                     <asp:BoundField DataField="StatusOcorrencia" HeaderText="Tipo ocorrência"  />
-                                                    <asp:BoundField DataField="DescricaoExtratoBancario" HeaderText="Descrição despesa" />
+                                                    <asp:BoundField DataField="DescricaoExtratoBancario" HeaderText="Descrição ocorrencia" />
                                                     <asp:BoundField DataField="DescricaoClassificacao" HeaderText="Classificação" /> 
 
-                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" />                                                                                                       
-                                                    <asp:BoundField DataField="ValorOcorrencia" HeaderText="Valor parcela" DataFormatString="{0:c}" />                                                    
-                                                    <asp:BoundField DataField="DataOcorrencia" HeaderText="Vencimento" DataFormatString="{0:dd/MM/yyyy}" />
+                                                    <asp:BoundField DataField="DescricaoContasBancarias" HeaderText="Contas bancárias" /> 
+                                                    <asp:BoundField DataField="Descricaoinvestimento" HeaderText="Descrição investimento" />   
+                                                    <asp:BoundField DataField="ValorOcorrencia" HeaderText="Valor" DataFormatString="{0:c}" />                                                    
+                                                    <asp:BoundField DataField="DataOcorrencia" HeaderText="Data" DataFormatString="{0:dd/MM/yyyy}" />
 
 
                                                     

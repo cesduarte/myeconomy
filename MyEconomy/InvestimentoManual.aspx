@@ -139,15 +139,23 @@
 
 
                                                     </div>
+                                                     <div class="form-group col-md-6">
+                                                        <asp:Label ID="Label2" runat="server" Text="Label">Descrição classificação: </asp:Label>
+                                                        <asp:DropDownList ID="Dropclassificacaopesquisa" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
+                                                        </asp:DropDownList>
 
+                                                    </div>
 
-                                                    <div class="form-group col-md-6">
+                                                </div>
+                                                 <div class="form-row">
+                                                     
+                                                    <div class="form-group col-md-12">
                                                         <asp:Label ID="Label7" runat="server" Text="Label">investimento: </asp:Label>
                                                         <asp:DropDownList ID="Dropinvestimentopesquisa" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                         </asp:DropDownList>
 
                                                     </div>
-                                                </div>
+                                                       </div>
                                                   <div class="form-row">
                                                      <div class="form-group col-md-6">
                                                          <asp:Label ID="Label10" runat="server" Text="Label" >Data inicial: </asp:Label>
@@ -242,6 +250,19 @@
                                                         
                                                      </div>
                                                      <div class="form-group col-md-6">
+                                                        <asp:Label ID="Label5" runat="server" Text="Label">Descrição classificação: </asp:Label>
+                                                        <asp:DropDownList ID="Dropclassificacao" runat="server" CssClass="form-control form-control-" ValidationGroup="group" AutoPostBack="True">
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ValidationGroup="group" runat="server" class="text-danger" InitialValue="1" ErrorMessage="* Campo obrigatório" ControlToValidate="Dropclassificacao"></asp:RequiredFieldValidator>
+
+
+                                                    </div>
+                                                     
+                                                 
+                                                   
+                                                </div>
+                                               <div class="form-row">
+                                                   <div class="form-group col-md-12">
                                                          <asp:Label ID="Label4" runat="server" Text="Label">Descrição investimento: </asp:Label>
                                                         <asp:DropDownList ID="Dropinvestimento" runat="server" CssClass="form-control form-control-" ValidationGroup="group">
                                                           
@@ -250,9 +271,7 @@
 
                                                         
                                                      </div>
-                                                 
-                                                   
-                                                </div>
+                                               </div>
                                                                                                  
                                                
                                                <div class="form-row">

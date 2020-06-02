@@ -68,15 +68,19 @@ namespace MyEconomy
 
                 if (IdClassificacao == "")
                 {
-                    if(TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Despesas)) || TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas)))
-                    sql = "select * from tbl_classificacao where isdelete = false  and  (TipoClassificacao = '" + TipoClassificacao+ "') OR (TipoClassificacao ='--') order by DescricaoClassificacao";
-                    else if(TipoClassificacao == "Extrato")
+                    if (TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Despesas)) || TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas)))
+                        sql = "select * from tbl_classificacao where isdelete = false  and  (TipoClassificacao = '" + TipoClassificacao + "') OR (TipoClassificacao ='--') order by DescricaoClassificacao";
+                    else if (TipoClassificacao == "Extrato")
                     {
                         sql = "select * from tbl_classificacao where isdelete = false order by DescricaoClassificacao";
                     }
+                    else if (TipoClassificacao == EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento))) 
+                    {
+                        sql = "select * from tbl_classificacao where isdelete = false  and  (TipoClassificacao = '" + TipoClassificacao + "') OR (TipoClassificacao ='--') order by DescricaoClassificacao";
+                    }
                     else
                     {
-                        sql = "select * from tbl_classificacao where isdelete = false and  TipoClassificacao <> '"+EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas))+ "' order by DescricaoClassificacao";
+                        sql = "select * from tbl_classificacao where isdelete = false and  TipoClassificacao <> '" + EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas)) + "' order by DescricaoClassificacao";
                     }
                 
                 }

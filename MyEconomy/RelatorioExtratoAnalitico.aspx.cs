@@ -219,13 +219,13 @@ namespace MyEconomy
             extratosinf.ValorOcorrencia = Convert.ToDecimal(Txtvalorpago.Text);
             extratosinf.IdOcorrencia = Convert.ToInt32(DropInvestimento.SelectedValue);
             extratosinf.DataOcorrencia = Convert.ToDateTime(txtdatapagamento.Text);
-            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.InvestimentoCredito));
+            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimento));
             objextratobancario.InserirExtratoBancario(extratosinf);
         }
         public void DeletarInvestimentoExtratoBancario()
         {
             extratosinf.IdOcorrencia = Convert.ToInt32(DropInvestimento.SelectedValue);
-            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.InvestimentoCredito));
+            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimento));
             objextratobancario.ExcluirExtratoBancario(extratosinf);
         }
 

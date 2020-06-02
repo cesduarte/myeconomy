@@ -151,11 +151,15 @@ namespace MyEconomy
                 pidcontasbancarias.Value = investimentosinf.IdContasBancarias;
                 objCommand.Parameters.Add(pidcontasbancarias);
 
+
                 MySqlParameter pidinvestimento = new MySqlParameter("_idinvestimento", MySqlDbType.Int32, 200);
                 pidinvestimento.Value = investimentosinf.IdInvestimento;
                 objCommand.Parameters.Add(pidinvestimento);
 
 
+                MySqlParameter pidclassificacao = new MySqlParameter("_idclassificacao", MySqlDbType.Int32, 200);
+                pidclassificacao.Value = investimentosinf.IdClassificacao;
+                objCommand.Parameters.Add(pidclassificacao);
 
                 MySqlParameter psaldoinvestimento = new MySqlParameter("_valorinvestimento", MySqlDbType.Decimal, 200);
                 psaldoinvestimento.Value = investimentosinf.SaldoInvestimento;
@@ -170,6 +174,9 @@ namespace MyEconomy
 
 
 
+                MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
+                pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimento));
+                objCommand.Parameters.Add(pstatusocorrencia);
 
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
@@ -214,6 +221,10 @@ namespace MyEconomy
                 MySqlParameter pidcontasbancarias = new MySqlParameter("_idcontasbancarias", MySqlDbType.Int32, 200);
                 pidcontasbancarias.Value = investimentosinf.IdContasBancarias;
                 objCommand.Parameters.Add(pidcontasbancarias);
+
+                MySqlParameter pidclassificacao = new MySqlParameter("_idclassificacao", MySqlDbType.Int32, 200);
+                pidclassificacao.Value = investimentosinf.IdClassificacao;
+                objCommand.Parameters.Add(pidclassificacao);
 
                 MySqlParameter pidinvestimento = new MySqlParameter("_idinvestimento", MySqlDbType.Int32, 200);
                 pidinvestimento.Value = investimentosinf.IdInvestimento;

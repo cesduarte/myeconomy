@@ -14,6 +14,7 @@ namespace MyEconomy
         InvestimentoManualInformation investimentosmanualinf = new InvestimentoManualInformation();
         InvestimentoManualDAL objinvestimentos = new InvestimentoManualDAL();
         InvestimentoDAL objinvestimentosfixo = new InvestimentoDAL();
+        ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
         Validador validador = new Validador();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,12 +23,53 @@ namespace MyEconomy
                 carrega_data();
                 CarregarContasBancarias(); 
                 CarregarInvestimento("");
+                CarregarClassificacao();
                 CarregaGrid();
               
             }
 
 
 
+        }
+        public void InserirInvestimentoExtratoBancario()
+        {
+            ExtratoBancarioDAL objextratobancario = new ExtratoBancarioDAL();
+            ExtratosBancariosInformation extratosinf = new ExtratosBancariosInformation();
+
+            extratosinf.DescricaoExtratoBancario = Txtdescricaoinvestimento.Text;
+            extratosinf.IdInvestimento = Convert.ToInt32(Dropinvestimento.SelectedValue);
+            extratosinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
+            extratosinf.ValorOcorrencia = Convert.ToDecimal(Txtsaldo.Text);
+            extratosinf.IdOcorrencia = Convert.ToInt32(Dropinvestimento.SelectedValue);
+            extratosinf.DataOcorrencia = Convert.ToDateTime(Txtdata.Text);
+            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimento));
+            objextratobancario.InserirExtratoBancarioInvestimento(extratosinf);
+        }
+        public void CarregarClassificacao()
+        {
+            try
+            {
+
+
+                Dropclassificacao.DataSource = null;
+                Dropclassificacaopesquisa.DataSource = null;
+
+                Dropclassificacao.DataSource = objclassificacao.CarregarClassificacao("", EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento)));
+                Dropclassificacao.DataTextField = "DescricaoClassificacao";
+                Dropclassificacao.DataValueField = "Idclassificacao";
+                Dropclassificacao.DataBind();
+
+
+                Dropclassificacaopesquisa.DataSource = objclassificacao.CarregarClassificacao("", EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento)));
+                Dropclassificacaopesquisa.DataTextField = "DescricaoClassificacao";
+                Dropclassificacaopesquisa.DataValueField = "Idclassificacao";
+                Dropclassificacaopesquisa.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
         public void CarregaGrid()
         {
@@ -195,16 +237,18 @@ namespace MyEconomy
             {
                 investimentosmanualinf.DescricaoInvestimento = Txtdescricaoinvestimento.Text;
                 investimentosmanualinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancarias.SelectedValue);
+                investimentosmanualinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
                 investimentosmanualinf.IdInvestimento = Convert.ToInt32(Dropinvestimento.SelectedValue);
                 investimentosmanualinf.SaldoInvestimento = Convert.ToDecimal(Txtsaldo.Text);
                 investimentosmanualinf.DataInvestimento = Convert.ToDateTime(Txtdata.Text);
 
               
                 objinvestimentos.InserirInvestimento(investimentosmanualinf);
-
+               
 
 
                 Txtid.Text = investimentosmanualinf.IdinvestimentoManual.ToString();
+                InserirInvestimentoExtratoBancario();
                 Label9.Text = "Registro incluido com sucesso";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
                 Timer1.Enabled = true;
@@ -216,6 +260,7 @@ namespace MyEconomy
                 investimentosmanualinf.IdinvestimentoManual = Convert.ToInt32(Txtid.Text);
                 investimentosmanualinf.DescricaoInvestimento = Txtdescricaoinvestimento.Text;
                 investimentosmanualinf.IdContasBancarias = Convert.ToInt32(Dropcontasbancarias.SelectedValue);
+                investimentosmanualinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
                 investimentosmanualinf.IdInvestimento = Convert.ToInt32(Dropinvestimento.SelectedValue);
                 investimentosmanualinf.SaldoInvestimento = Convert.ToDecimal(Txtsaldo.Text);
                 investimentosmanualinf.DataInvestimento = Convert.ToDateTime(Txtdata.Text);

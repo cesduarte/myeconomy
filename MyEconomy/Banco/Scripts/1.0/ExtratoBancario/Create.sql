@@ -3,6 +3,7 @@ CREATE TABLE `myeconomy`.`tbl_extratobancario` (
   `DescricaoExtratoBancario` VARCHAR(200) NULL,
   `Idcontasbancarias` int null,
   `Idclassificacao` int null,
+  `Idinvestimento` int null,
   `IdOcorrencia` int null,
   `ValorOcorrencia` decimal (10,2),   
   `DataOcorrencia` datetime,

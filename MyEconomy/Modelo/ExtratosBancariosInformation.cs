@@ -9,6 +9,8 @@ namespace MyEconomy
     {
         public int IdExtratoBancarios { get; set; }
         public int IdOcorrencia { get; set; }
+
+        public int IdInvestimento { get; set; }
         public string DescricaoExtratoBancario { get; set; }
         public decimal ValorOcorrencia { get; set; }
         public DateTime DataOcorrencia { get; set; }
