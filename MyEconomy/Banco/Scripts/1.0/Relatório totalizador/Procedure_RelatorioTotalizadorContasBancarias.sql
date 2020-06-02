@@ -16,9 +16,7 @@ _datainicial and _datafinal ) as Despesasvariadas,
 (select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Despesa fixa paga' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
 _datainicial and _datafinal ) as DespesaFixaPaga,
 (select COALESCE(sum(ValorDespesa),0) from tbl_despesafixa c, tbl_contasapagar d where StatusContasAPagar = 'Despesa fixa a pagar' and d.Iddespesas = c.IdDespesaFixa and c.Idcontasbancarias = a.Idcontasbancarias and d.DataVencimentoContaAPagar BETWEEN 
-_datainicial and _datafinal ) as DespesaFixaapagar,
-(select COALESCE(sum(ValorOcorrencia),0) from tbl_extratobancario b where StatusOcorrencia = 'Investimento' and b.Idcontasbancarias= a.Idcontasbancarias and DataOcorrencia BETWEEN 
-_datainicial and _datafinal ) as Investimento
+_datainicial and _datafinal ) as DespesaFixaapagar
 
 
 from

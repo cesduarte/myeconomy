@@ -82,8 +82,7 @@
                                                    <asp:BoundField DataField="Despesasvariadas" HeaderText="Despesa variada" DataFormatString="{0:c}" /> 
                                                     <asp:BoundField DataField="DespesaFixaPaga" HeaderText="Despesa fixa paga" DataFormatString="{0:c}" /> 
                                                     <asp:BoundField DataField="DespesaFixaapagar" HeaderText="Despesa fixa a pagar" DataFormatString="{0:c}" /> 
-                                                    <asp:BoundField DataField="Investimento" HeaderText="Investimento" DataFormatString="{0:c}" />
-                                                    
+                                                                                                    
 
 
                                                     
@@ -188,11 +187,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                
-                                                <td>(Receitas) - (Investimento)</td>
-                                                <td><asp:Label ID="Label8" runat="server" Text="R$ 0,00"></asp:Label></td>
-                                            </tr>
+                                            
                                            
                                         </tbody>
                                     </table>
