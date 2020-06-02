@@ -175,7 +175,7 @@ namespace MyEconomy
 
 
                 MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
-                pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimento));
+                pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimentodebito));
                 objCommand.Parameters.Add(pstatusocorrencia);
 
                 objConexao.Open();

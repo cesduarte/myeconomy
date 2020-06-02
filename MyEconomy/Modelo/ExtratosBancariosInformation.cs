@@ -8,7 +8,8 @@ namespace MyEconomy
     public class ExtratosBancariosInformation:ClasseGenericaInformation
     {
         public int IdExtratoBancarios { get; set; }
-        public int IdOcorrencia { get; set; }
+        public string TipoClassificacao { get; set; }
+        public int Idocorrencia { get; set; }
 
         public int IdInvestimento { get; set; }
         public string DescricaoExtratoBancario { get; set; }

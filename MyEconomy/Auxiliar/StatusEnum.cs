@@ -43,10 +43,12 @@ namespace MyEconomy
             DespesasVariadas = 2,
             [Description("Receitas")]
             Receitas = 3,
-            [Description("Investimento")]
-            Investimento = 4,
-           
-            
+            [Description("Investimento crédito")]
+            Investimentocredito = 4,
+            [Description("Investimento débito")]
+            Investimentodebito = 5,
+
+
 
         }
 

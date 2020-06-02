@@ -7,82 +7,25 @@ IN _datafinal datetime
 )
 BEGIN
 
+select
 
-if(_descricaoocorrencia=''&& _idcontasbancarias = 1 && _idclassificacao =1)then
-select a.IdExtratoBancario, a.DescricaoExtratoBancario, a.ValorOcorrencia, a.DataOcorrencia,a.StatusOcorrencia, b.DescricaoContasBancarias, c.DescricaoClassificacao
+
+
+ a.IdExtratoBancario, 
+ a.DescricaoExtratoBancario,
+ a.ValorOcorrencia, 
+ a.DataOcorrencia,
+ a.StatusOcorrencia, 
+ (select b.descricaocontasbancarias from tbl_contasbancarias b where b.Idcontasbancarias = a.Idcontasbancarias) as DescricaoContasBancarias , 
+(select c.DescricaoClassificacao from tbl_classificacao c where c.Idclassificacao = a.Idclassificacao) as DescricaoClassificacao,
+ (select d.Descricaoinvestimento from tbl_investimento d where d.IdInvestimento = a.Idinvestimento) as Descricaoinvestimento
 from
-tbl_extratobancario a, tbl_contasbancarias b, tbl_classificacao c
+tbl_extratobancario a
+
+
 where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Idclassificacao = c.Idclassificacao and a.DataOcorrencia BETWEEN 
-_datainicial and _datafinal  order by a.DataOcorrencia;
+ a.DataOcorrencia BETWEEN 
+_datainicial and _datafinal order by a.DataOcorrencia;
 
-elseif(_descricaoocorrencia<>''&& _idcontasbancarias = 1 && _idclassificacao =1)then
-select a.IdExtratoBancario, a.DescricaoExtratoBancario, a.ValorOcorrencia, a.DataOcorrencia,a.StatusOcorrencia, b.DescricaoContasBancarias, c.DescricaoClassificacao
-from
-tbl_extratobancario a, tbl_contasbancarias b, tbl_classificacao c
-where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Idclassificacao = c.Idclassificacao and a.DataOcorrencia BETWEEN 
-_datainicial and _datafinal  and DescricaoExtratoBancario LIKE CONCAT('%',_descricaoocorrencia, '%')
 
-order by a.DataOcorrencia;
-
-elseif(_descricaoocorrencia<>''&& _idcontasbancarias <> 1 && _idclassificacao =1)then
-select a.IdExtratoBancario, a.DescricaoExtratoBancario, a.ValorOcorrencia, a.DataOcorrencia,a.StatusOcorrencia, b.DescricaoContasBancarias, c.DescricaoClassificacao
-from
-tbl_extratobancario a, tbl_contasbancarias b, tbl_classificacao c
-where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Idclassificacao = c.Idclassificacao and a.DataOcorrencia BETWEEN 
-_datainicial and _datafinal  and DescricaoExtratoBancario LIKE CONCAT('%',_descricaoocorrencia, '%') and a.Idcontasbancarias = _idcontasbancarias
-
-order by a.DataOcorrencia;
-
-elseif(_descricaoocorrencia<>''&& _idcontasbancarias <> 1 && _idclassificacao <>1)then
-select a.IdExtratoBancario, a.DescricaoExtratoBancario, a.ValorOcorrencia, a.DataOcorrencia,a.StatusOcorrencia, b.DescricaoContasBancarias, c.DescricaoClassificacao
-from
-tbl_extratobancario a, tbl_contasbancarias b, tbl_classificacao c
-where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Idclassificacao = c.Idclassificacao and a.DataOcorrencia BETWEEN 
-_datainicial and _datafinal  and DescricaoExtratoBancario LIKE CONCAT('%',_descricaoocorrencia, '%') and a.Idcontasbancarias = _idcontasbancarias and a.Idclassificacao = _idclassificacao
-
-order by a.DataOcorrencia;
-elseif(_descricaoocorrencia<>''&& _idcontasbancarias = 1 && _idclassificacao <>1)then
-select a.IdExtratoBancario, a.DescricaoExtratoBancario, a.ValorOcorrencia, a.DataOcorrencia,a.StatusOcorrencia, b.DescricaoContasBancarias, c.DescricaoClassificacao
-from
-tbl_extratobancario a, tbl_contasbancarias b, tbl_classificacao c
-where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Idclassificacao = c.Idclassificacao and a.DataOcorrencia BETWEEN 
-_datainicial and _datafinal  and DescricaoExtratoBancario LIKE CONCAT('%',_descricaoocorrencia, '%') and a.Idclassificacao = _idclassificacao
-
-order by a.DataOcorrencia;
-elseif(_descricaoocorrencia=''&& _idcontasbancarias <> 1 && _idclassificacao =1)then
-select a.IdExtratoBancario, a.DescricaoExtratoBancario, a.ValorOcorrencia, a.DataOcorrencia,a.StatusOcorrencia, b.DescricaoContasBancarias, c.DescricaoClassificacao
-from
-tbl_extratobancario a, tbl_contasbancarias b, tbl_classificacao c
-where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Idclassificacao = c.Idclassificacao and a.DataOcorrencia BETWEEN 
-_datainicial and _datafinal  and a.Idcontasbancarias = _idcontasbancarias
-
-order by a.DataOcorrencia;
-
-elseif(_descricaoocorrencia=''&& _idcontasbancarias <> 1 && _idclassificacao <>1)then
-select a.IdExtratoBancario, a.DescricaoExtratoBancario, a.ValorOcorrencia, a.DataOcorrencia,a.StatusOcorrencia, b.DescricaoContasBancarias, c.DescricaoClassificacao
-from
-tbl_extratobancario a, tbl_contasbancarias b, tbl_classificacao c
-where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Idclassificacao = c.Idclassificacao and a.DataOcorrencia BETWEEN 
-_datainicial and _datafinal  and  a.Idcontasbancarias = _idcontasbancarias and a.Idclassificacao = _idclassificacao
-
-order by a.DataOcorrencia;
-
-elseif(_descricaoocorrencia=''&& _idcontasbancarias = 1 && _idclassificacao <>1)then
-select a.IdExtratoBancario, a.DescricaoExtratoBancario, a.ValorOcorrencia, a.DataOcorrencia,a.StatusOcorrencia, b.DescricaoContasBancarias, c.DescricaoClassificacao
-from
-tbl_extratobancario a, tbl_contasbancarias b, tbl_classificacao c
-where
-a.Idcontasbancarias = b.Idcontasbancarias and a.Idclassificacao = c.Idclassificacao and a.DataOcorrencia BETWEEN 
-_datainicial and _datafinal  and   a.Idclassificacao = _idclassificacao
-
-order by a.DataOcorrencia;
-
-end if;
 END

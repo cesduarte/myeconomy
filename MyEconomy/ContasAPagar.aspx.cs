@@ -239,18 +239,20 @@ namespace MyEconomy
             
         
             extratosinf.DescricaoExtratoBancario = Txtdescricaoconta.Text;
-            extratosinf.IdContasBancarias = Convert.ToInt32(DropInvestimento.SelectedValue);
+            extratosinf.IdInvestimento = Convert.ToInt32(DropInvestimento.SelectedValue);
             extratosinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
             extratosinf.ValorOcorrencia = Convert.ToDecimal(Txtvalorpago.Text);
-            extratosinf.IdOcorrencia = Convert.ToInt32(DropInvestimento.SelectedValue);
+            extratosinf.TipoClassificacao = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Despesas));
             extratosinf.DataOcorrencia = Convert.ToDateTime(txtdatapagamento.Text);
-            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimento));
-            objextratobancario.InserirExtratoBancario(extratosinf);
+            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimentocredito));
+            extratosinf.Idocorrencia = Convert.ToInt32(Txtid.Text);
+
+            objextratobancario.InserirExtratoBancarioInvestimento(extratosinf);
         }
         public void DeletarInvestimentoExtratoBancario()
         {
-            extratosinf.IdOcorrencia = Convert.ToInt32(DropInvestimento.SelectedValue);
-            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimento));
+            extratosinf.TipoClassificacao = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Despesas));
+            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimentocredito));
             objextratobancario.ExcluirExtratoBancario(extratosinf);
         }
 
@@ -466,7 +468,7 @@ namespace MyEconomy
                 
                 objcontasapagar.AlterarContasAPagar(contasapagarinf);
                 objdespesasfixas.AlterarSaldoDespesasPagas(Convert.ToInt32(txtiddespesa.Text), -1);
-
+                
                 if (DropInvestimento.Visible)
                 {
                     InserirInvestimentoExtratoBancario();

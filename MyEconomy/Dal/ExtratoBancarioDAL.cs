@@ -213,8 +213,8 @@ namespace MyEconomy
                 pidclassificacao.Value = extratobancarioinf.IdClassificacao;
                 objCommand.Parameters.Add(pidclassificacao);
 
-                MySqlParameter pidOcorrencia = new MySqlParameter("_idOcorrencia", MySqlDbType.Int32, 200);
-                pidOcorrencia.Value = extratobancarioinf.IdOcorrencia;
+                MySqlParameter pidOcorrencia = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                pidOcorrencia.Value = extratobancarioinf.TipoClassificacao;
                 objCommand.Parameters.Add(pidOcorrencia);
 
                 MySqlParameter psaldoinvestimento = new MySqlParameter("_valorocorrencia", MySqlDbType.Decimal, 200);
@@ -284,8 +284,12 @@ namespace MyEconomy
                 pidclassificacao.Value = extratobancarioinf.IdClassificacao;
                 objCommand.Parameters.Add(pidclassificacao);
 
-                MySqlParameter pidOcorrencia = new MySqlParameter("_idOcorrencia", MySqlDbType.Int32, 200);
-                pidOcorrencia.Value = extratobancarioinf.IdOcorrencia;
+                MySqlParameter pidocorrencia = new MySqlParameter("_idocorrencia", MySqlDbType.Int32, 200);
+                pidocorrencia.Value = extratobancarioinf.Idocorrencia;
+                objCommand.Parameters.Add(pidocorrencia);
+
+                MySqlParameter pidOcorrencia = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                pidOcorrencia.Value = extratobancarioinf.TipoClassificacao;
                 objCommand.Parameters.Add(pidOcorrencia);
 
                 MySqlParameter psaldoinvestimento = new MySqlParameter("_valorocorrencia", MySqlDbType.Decimal, 200);
@@ -333,9 +337,15 @@ namespace MyEconomy
                 objCommand.CommandText = "Procedure_excluirExtratoBancario";
                 objCommand.CommandType = CommandType.StoredProcedure;
 
-                MySqlParameter pid = new MySqlParameter("_IdOcorrencia", MySqlDbType.Int32);
-                pid.Value = extratosinf.IdOcorrencia;
-                objCommand.Parameters.Add(pid);
+
+                MySqlParameter ptipoclassificacao = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                ptipoclassificacao.Value = extratosinf.TipoClassificacao;
+                objCommand.Parameters.Add(ptipoclassificacao);
+
+                MySqlParameter pidOcorrencia = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                pidOcorrencia.Value = extratosinf.TipoClassificacao;
+                objCommand.Parameters.Add(pidOcorrencia);
+
 
                 MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
                 pstatusocorrencia.Value = extratosinf.StatusOcorrencia;
@@ -344,10 +354,10 @@ namespace MyEconomy
                 objConexao.Open();
 
                 int resultado = objCommand.ExecuteNonQuery();
-                if (resultado != 1)
-                {
-                    throw new Exception("não foi possivel excluir o extrato" + extratosinf.IdOcorrencia);
-                }
+                //if (resultado != 1)
+                //{
+                //    throw new Exception("não foi possivel excluir o extrato" + extratosinf.IdOcorrencia);
+                //}
             }
             catch (MySqlException ex)
             {

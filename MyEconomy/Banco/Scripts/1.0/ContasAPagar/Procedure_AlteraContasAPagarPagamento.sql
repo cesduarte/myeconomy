@@ -6,7 +6,8 @@ IN _valorpagamento decimal(10,2),
 IN _datapagamento datetime,
 IN _statuscontaapagar VARCHAR(200),
 IN _descricaodespesa VARCHAR(200),
-IN _statusocorrencia VARCHAR(200)
+IN _statusocorrencia VARCHAR(200),
+IN _tipoclassificacao VARCHAR(200)
 )
 BEGIN
 UPDATE `myeconomy`.`tbl_contasapagar`
@@ -22,22 +23,27 @@ insert into tbl_extratobancario(
 DescricaoExtratoBancario,
 Idcontasbancarias,
 Idclassificacao,
-IdOcorrencia,
+TipoClassificacao,
 ValorOcorrencia,
 DataOcorrencia,
-StatusOcorrencia
+StatusOcorrencia,
+Idocorrencia
+
 )
 values(
 _descricaodespesa,
 _idContaBancariaPagamento,
 _idclassificacao,
-_IdContaAPagar,
+_tipoclassificacao,
 (-_valorpagamento),
 _datapagamento,
-_statusocorrencia
+_statusocorrencia,
+_IdContaAPagar 
 );
 else
-delete from tbl_extratobancario where IdOcorrencia = _IdContaAPagar and StatusOcorrencia = _statusocorrencia;
+delete from tbl_extratobancario where _tipoclassificacao = _tipoclassificacao and 
+Idocorrencia = _IdContaAPagar ;
+
 
 END IF;
 

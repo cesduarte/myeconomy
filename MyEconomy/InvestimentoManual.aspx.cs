@@ -40,9 +40,9 @@ namespace MyEconomy
             extratosinf.IdInvestimento = Convert.ToInt32(Dropinvestimento.SelectedValue);
             extratosinf.IdClassificacao = Convert.ToInt32(Dropclassificacao.SelectedValue);
             extratosinf.ValorOcorrencia = Convert.ToDecimal(Txtsaldo.Text);
-            extratosinf.IdOcorrencia = Convert.ToInt32(Dropinvestimento.SelectedValue);
+            extratosinf.TipoClassificacao = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento));
             extratosinf.DataOcorrencia = Convert.ToDateTime(Txtdata.Text);
-            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimento));
+            extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimentocredito));
             objextratobancario.InserirExtratoBancarioInvestimento(extratosinf);
         }
         public void CarregarClassificacao()
