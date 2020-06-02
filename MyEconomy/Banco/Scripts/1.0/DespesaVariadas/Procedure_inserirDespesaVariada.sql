@@ -5,7 +5,8 @@ IN _idcontasbancarias INT,
 IN _idclassificacao INT,
 IN _valordespesavariada decimal(10,2),
 IN _datadespesavariada datetime,
-IN _statusocorrencia nvarchar(200) 
+IN _statusocorrencia nvarchar(200),
+IN _tipoclassificacao nvarchar(200)
 )
 BEGIN
 insert into tbl_despesavariada(
@@ -32,7 +33,8 @@ Idclassificacao,
 IdOcorrencia,
 ValorOcorrencia,
 DataOcorrencia,
-StatusOcorrencia
+StatusOcorrencia,
+TipoClassificacao
 )
 values(
 _descricaodespesavariadas,
@@ -41,7 +43,8 @@ _idclassificacao,
 _IdDespesaVariada,
 (-_valordespesavariada),
 _datadespesavariada,
-_statusocorrencia
+_statusocorrencia,
+_tipoclassificacao
 );
 
 END

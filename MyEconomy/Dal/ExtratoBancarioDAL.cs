@@ -342,9 +342,9 @@ namespace MyEconomy
                 ptipoclassificacao.Value = extratosinf.TipoClassificacao;
                 objCommand.Parameters.Add(ptipoclassificacao);
 
-                MySqlParameter pidOcorrencia = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
-                pidOcorrencia.Value = extratosinf.TipoClassificacao;
-                objCommand.Parameters.Add(pidOcorrencia);
+                MySqlParameter pidocorrencia = new MySqlParameter("_idOcorrencia", MySqlDbType.VarChar, 200);
+                pidocorrencia.Value = extratosinf.Idocorrencia;
+                objCommand.Parameters.Add(pidocorrencia);
 
 
                 MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
@@ -354,10 +354,10 @@ namespace MyEconomy
                 objConexao.Open();
 
                 int resultado = objCommand.ExecuteNonQuery();
-                //if (resultado != 1)
-                //{
-                //    throw new Exception("não foi possivel excluir o extrato" + extratosinf.IdOcorrencia);
-                //}
+                if (resultado != 1)
+                {
+                    throw new Exception("não foi possivel excluir o extrato" + extratosinf.Idocorrencia);
+                }
             }
             catch (MySqlException ex)
             {

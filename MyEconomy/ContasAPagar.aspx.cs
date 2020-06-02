@@ -252,6 +252,7 @@ namespace MyEconomy
         public void DeletarInvestimentoExtratoBancario()
         {
             extratosinf.TipoClassificacao = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Despesas));
+            extratosinf.Idocorrencia = extratosinf.Idocorrencia = Convert.ToInt32(Txtid.Text);
             extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimentocredito));
             objextratobancario.ExcluirExtratoBancario(extratosinf);
         }

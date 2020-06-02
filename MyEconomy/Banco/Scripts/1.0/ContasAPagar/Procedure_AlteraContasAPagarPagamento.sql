@@ -42,7 +42,7 @@ _IdContaAPagar
 );
 else
 delete from tbl_extratobancario where _tipoclassificacao = _tipoclassificacao and 
-Idocorrencia = _IdContaAPagar ;
+Idocorrencia = _IdContaAPagar and  StatusOcorrencia = _statusocorrencia;
 
 
 END IF;
