@@ -252,6 +252,10 @@ namespace MyEconomy
                 pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.DespesasVariadas));
                 objCommand.Parameters.Add(pstatusocorrencia);
 
+                MySqlParameter ptipoclassificacao = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                ptipoclassificacao.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Despesas));
+                objCommand.Parameters.Add(ptipoclassificacao);
+
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
                 //usuario.Id = (Int32)objCommand.Parameters["id"].Value;

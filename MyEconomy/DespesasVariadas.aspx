@@ -17,7 +17,7 @@
                             <div class="col p-md-0">
                                 <ol class="breadcrumb">
 
-                                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Movimentação / Receitas variadas</a></li>
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Movimentação / Despesas variadas</a></li>
                                 </ol>
 
                             </div>

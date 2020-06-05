@@ -33,5 +33,5 @@ SET
 `DataOcorrencia` = _datareceitavariada
 
 
-WHERE `IdOcorrencia` = _IdreceitaVariada and `StatusOcorrencia` = _statusocorrencia and TipoClassificacao = _statusocorrencia;
+WHERE `IdOcorrencia` = _IdreceitaVariada and `StatusOcorrencia` = _statusocorrencia and TipoClassificacao = _tipoclassificacao;
 END
