@@ -259,7 +259,7 @@ namespace MyEconomy
         {
             if (e.CommandName == "Editar")
             {
-                string IdContasBancárias = e.CommandArgument.ToString();
+                
 
                 CarregarDespesasVariadas(e.CommandArgument.ToString());
 

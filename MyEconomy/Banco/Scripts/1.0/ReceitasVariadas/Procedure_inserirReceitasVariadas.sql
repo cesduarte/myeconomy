@@ -5,7 +5,8 @@ IN _idcontasbancarias INT,
 IN _idclassificacao INT,
 IN _valorreceitavariada decimal(10,2),
 IN _datareceitavariada datetime,
-IN _statusocorrencia nvarchar(200) 
+IN _statusocorrencia nvarchar(200),
+IN _tipoclassificacao nvarchar(200) 
 )
 BEGIN
 insert into tbl_receitavariada(
@@ -30,6 +31,7 @@ insert into tbl_extratobancario(
 DescricaoExtratoBancario,
 Idcontasbancarias,
 Idclassificacao,
+TipoClassificacao,
 IdOcorrencia,
 ValorOcorrencia,
 DataOcorrencia,
@@ -39,6 +41,7 @@ values(
 _descricaoreceitasvariadas,
 _idcontasbancarias,
 _idclassificacao,
+_tipoclassificacao,
 _IdreceitaVariada,
 _valorreceitavariada,
 _datareceitavariada,

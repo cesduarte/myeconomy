@@ -5,7 +5,8 @@ IN _idcontasbancarias INT,
 IN _idclassificacao INT,
 IN _valorreceitavariada decimal(10,2),
 IN _datareceitavariada datetime,
-IN _statusocorrencia VARCHAR(200))
+IN _statusocorrencia VARCHAR(200),
+IN _tipoclassificacao VARCHAR(200))
 BEGIN
 UPDATE `myeconomy`.`tbl_receitavariada`
 SET
@@ -32,5 +33,5 @@ SET
 `DataOcorrencia` = _datareceitavariada
 
 
-WHERE `IdOcorrencia` = _IdreceitaVariada and `StatusOcorrencia` = _statusocorrencia ;
+WHERE `IdOcorrencia` = _IdreceitaVariada and `StatusOcorrencia` = _statusocorrencia and TipoClassificacao = _statusocorrencia;
 END

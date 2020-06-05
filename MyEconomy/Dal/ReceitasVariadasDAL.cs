@@ -180,6 +180,9 @@ namespace MyEconomy
                 pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Receitas));
                 objCommand.Parameters.Add(pstatusocorrencia);
 
+                MySqlParameter ptipoclassificacao = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                ptipoclassificacao.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas));
+                objCommand.Parameters.Add(ptipoclassificacao);
 
 
                 objConexao.Open();
@@ -249,6 +252,9 @@ namespace MyEconomy
                 MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
                 pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Receitas));
                 objCommand.Parameters.Add(pstatusocorrencia);
+                MySqlParameter ptipoclassificacao = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                ptipoclassificacao.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas));
+                objCommand.Parameters.Add(ptipoclassificacao);
 
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
@@ -289,6 +295,9 @@ namespace MyEconomy
                 pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Receitas));
                 objCommand.Parameters.Add(pstatusocorrencia);
 
+                MySqlParameter ptipoclassificacao = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                ptipoclassificacao.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Receitas));
+                objCommand.Parameters.Add(ptipoclassificacao);
                 objConexao.Open();
 
                 int resultado = objCommand.ExecuteNonQuery();
