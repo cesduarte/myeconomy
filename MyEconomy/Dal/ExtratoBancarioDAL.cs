@@ -328,6 +328,80 @@ namespace MyEconomy
             }
 
         }
+
+        public void AlterarExtratoBancarioInvestimento(ExtratosBancariosInformation extratobancarioinf)
+        {
+
+            try
+            {
+
+                objCommand.Connection = objConexao;
+                objCommand.CommandText = "Procedure_alterarExtratoBancarioInvestimento";
+                objCommand.CommandType = CommandType.StoredProcedure;
+
+                //MySqlParameter pid = new MySqlParameter("_Idextratobancario", MySqlDbType.Int32);
+                //pid.Direction = ParameterDirection.Output;
+                //objCommand.Parameters.Add(pid);
+
+
+
+                MySqlParameter pdescricao = new MySqlParameter("_descricaoextrato", MySqlDbType.VarChar, 200);
+                pdescricao.Value = extratobancarioinf.DescricaoExtratoBancario;
+                objCommand.Parameters.Add(pdescricao);
+
+
+                MySqlParameter pidinvestimento = new MySqlParameter("_idinvestimento", MySqlDbType.Int32, 200);
+                pidinvestimento.Value = extratobancarioinf.IdInvestimento;
+                objCommand.Parameters.Add(pidinvestimento);
+
+                MySqlParameter pidclassificacao = new MySqlParameter("_idclassificacao", MySqlDbType.Int32, 200);
+                pidclassificacao.Value = extratobancarioinf.IdClassificacao;
+                objCommand.Parameters.Add(pidclassificacao);
+
+                MySqlParameter pidocorrencia = new MySqlParameter("_idocorrencia", MySqlDbType.Int32, 200);
+                pidocorrencia.Value = extratobancarioinf.Idocorrencia;
+                objCommand.Parameters.Add(pidocorrencia);
+
+                MySqlParameter pidOcorrencia = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                pidOcorrencia.Value = extratobancarioinf.TipoClassificacao;
+                objCommand.Parameters.Add(pidOcorrencia);
+
+                MySqlParameter psaldoinvestimento = new MySqlParameter("_valorocorrencia", MySqlDbType.Decimal, 200);
+                psaldoinvestimento.Value = extratobancarioinf.ValorOcorrencia;
+                objCommand.Parameters.Add(psaldoinvestimento);
+
+                MySqlParameter pdata = new MySqlParameter("_dataocorrencia", MySqlDbType.DateTime, 200);
+                pdata.Value = extratobancarioinf.DataOcorrencia;
+                objCommand.Parameters.Add(pdata);
+
+                MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
+                pstatusocorrencia.Value = extratobancarioinf.StatusOcorrencia;
+                objCommand.Parameters.Add(pstatusocorrencia);
+
+
+
+
+
+                objConexao.Open();
+                objCommand.ExecuteNonQuery();
+                //investimentosinf.IdInvestimento = (Int32)objCommand.Parameters["_Idinvestimento"].Value;
+
+
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("sqlerro" + ex.Number);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                objConexao.Close();
+            }
+
+        }
         public void ExcluirExtratoBancario(ExtratosBancariosInformation extratosinf)
         {
 

@@ -178,9 +178,13 @@ namespace MyEconomy
                 pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimentodebito));
                 objCommand.Parameters.Add(pstatusocorrencia);
 
+                MySqlParameter ptipoclassificacao = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                ptipoclassificacao.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento));
+                objCommand.Parameters.Add(ptipoclassificacao);
+
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();
-                investimentosinf.IdInvestimento = (Int32)objCommand.Parameters["_IdinvestimentoManual"].Value;
+                investimentosinf.IdinvestimentoManual = (Int32)objCommand.Parameters["_IdinvestimentoManual"].Value;
 
 
             }
@@ -242,6 +246,15 @@ namespace MyEconomy
                 MySqlParameter pdatainvestimento = new MySqlParameter("_datainvestimento", MySqlDbType.Datetime, 200);
                 pdatainvestimento.Value = investimentosinf.DataInvestimento;
                 objCommand.Parameters.Add(pdatainvestimento);
+
+                MySqlParameter pstatusocorrencia = new MySqlParameter("_statusocorrencia", MySqlDbType.VarChar, 200);
+                pstatusocorrencia.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimentodebito));
+                objCommand.Parameters.Add(pstatusocorrencia);
+
+                MySqlParameter ptipoclassificacao = new MySqlParameter("_tipoclassificacao", MySqlDbType.VarChar, 200);
+                ptipoclassificacao.Value = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento));
+                objCommand.Parameters.Add(ptipoclassificacao);
+
 
                 objConexao.Open();
                 objCommand.ExecuteNonQuery();

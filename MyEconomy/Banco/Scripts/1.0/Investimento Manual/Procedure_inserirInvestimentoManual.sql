@@ -6,7 +6,9 @@ IN _idclassificacao INT,
 in _idinvestimento INT,
 IN _valorinvestimento decimal(10,2),
 IN _datainvestimento datetime,
-IN _statusocorrencia nvarchar(200) )
+IN _statusocorrencia nvarchar(200),
+IN _tipoclassificacao nvarchar(200)
+)
 BEGIN
 insert into tbl_investimentoManual(
  Descricaoinvestimento,
@@ -31,6 +33,7 @@ insert into tbl_extratobancario(
 DescricaoExtratoBancario,
 Idcontasbancarias,
 Idclassificacao,
+TipoClassificacao,
 IdOcorrencia,
 ValorOcorrencia,
 DataOcorrencia,
@@ -40,6 +43,7 @@ values(
 _descricaoinvestimento,
 _idcontasbancarias,
 _idclassificacao,
+_tipoclassificacao,
 _IdinvestimentoManual,
 (-_valorinvestimento),
 _datainvestimento,

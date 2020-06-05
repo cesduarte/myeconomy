@@ -31,7 +31,7 @@ namespace MyEconomy
 
 
         }
-        public void InserirInvestimentoExtratoBancario()
+        public void InserirInvestimentoExtratoBancario(Char  Atividade)
         {
             ExtratoBancarioDAL objextratobancario = new ExtratoBancarioDAL();
             ExtratosBancariosInformation extratosinf = new ExtratosBancariosInformation();
@@ -43,7 +43,16 @@ namespace MyEconomy
             extratosinf.TipoClassificacao = EnumExtensions.GetEnumDescription((StatusEnum.TipoClassificacao.Investimento));
             extratosinf.DataOcorrencia = Convert.ToDateTime(Txtdata.Text);
             extratosinf.StatusOcorrencia = EnumExtensions.GetEnumDescription((StatusEnum.TipoOcorrencias.Investimentocredito));
-            objextratobancario.InserirExtratoBancarioInvestimento(extratosinf);
+            extratosinf.Idocorrencia = Convert.ToInt32(Txtid.Text);
+            if(Atividade == 'I')
+            {
+                objextratobancario.InserirExtratoBancarioInvestimento(extratosinf);
+            }
+            else
+            {
+                objextratobancario.AlterarExtratoBancarioInvestimento(extratosinf);
+            }
+
         }
         public void CarregarClassificacao()
         {
@@ -248,7 +257,7 @@ namespace MyEconomy
 
 
                 Txtid.Text = investimentosmanualinf.IdinvestimentoManual.ToString();
-                InserirInvestimentoExtratoBancario();
+                InserirInvestimentoExtratoBancario('I');
                 Label9.Text = "Registro incluido com sucesso";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
                 Timer1.Enabled = true;
@@ -268,7 +277,7 @@ namespace MyEconomy
 
                 //objdespesasfixas.AlterarDespesaFixa(despesasfixasinf);
                 objinvestimentos.AlterarInvestimento(investimentosmanualinf);
-
+                InserirInvestimentoExtratoBancario('A');
                 Label9.Text = "Registro alterado com sucesso!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
                 Timer1.Enabled = true;
