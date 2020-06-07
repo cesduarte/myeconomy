@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class InvestimentoManual : System.Web.UI.Page
+    public partial class InvestimentoManual : paginaBase
     {
         ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
         //InvestimentoInformation investimentosinf = new InvestimentoInformation();

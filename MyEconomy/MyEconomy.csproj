@@ -4969,6 +4969,8 @@
     <Content Include="Diagrama\Modelagem.xml" />
     <Content Include="Investimento.aspx" />
     <Content Include="InvestimentoManual.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="LogOff.aspx" />
     <Content Include="ReceitasVariadas.aspx" />
     <Content Include="RelatorioExtratoAnalitico.aspx" />
     <Content Include="RelatorioTotalizador.aspx" />
@@ -5010,6 +5012,7 @@
     <Compile Include="Dal\InvestimentoManualDAL.cs" />
     <Compile Include="Dal\ReceitasVariadasDAL.cs" />
     <Compile Include="Dal\UsuariosDAL.cs" />
+    <Compile Include="Dal\validarlogin.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5045,6 +5048,20 @@
     <Compile Include="InvestimentoManual.aspx.designer.cs">
       <DependentUpon>InvestimentoManual.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogOff.aspx.cs">
+      <DependentUpon>LogOff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOff.aspx.designer.cs">
+      <DependentUpon>LogOff.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\CalcularTotalizadorInformation.cs" />
     <Compile Include="Modelo\ClasseGenericaInformation.cs" />
     <Compile Include="Modelo\ClassificacaoInformation.cs" />
@@ -5057,6 +5074,9 @@
     <Compile Include="Modelo\InvestimentoManualInformation.cs" />
     <Compile Include="Modelo\ReceitasVariadasInformation.cs" />
     <Compile Include="Modelo\UsuariosInformation.cs" />
+    <Compile Include="paginaBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReceitasVariadas.aspx.cs">
       <DependentUpon>ReceitasVariadas.aspx</DependentUpon>

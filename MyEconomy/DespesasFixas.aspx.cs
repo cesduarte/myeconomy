@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class DespesasFixas : System.Web.UI.Page
+    public partial class DespesasFixas : paginaBase
     {
 
 

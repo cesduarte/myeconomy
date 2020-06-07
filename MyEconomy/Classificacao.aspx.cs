@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class Classificacao : System.Web.UI.Page
+    public partial class Classificacao : paginaBase
     {
         ClassificacaoInformation classificacao = new ClassificacaoInformation();
         ClassificacaoDAL obj = new ClassificacaoDAL();

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class DespesasVariadas : System.Web.UI.Page
+    public partial class DespesasVariadas : paginaBase
     {
         ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();

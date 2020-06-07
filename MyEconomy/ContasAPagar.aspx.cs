@@ -11,7 +11,7 @@ using System.Drawing;
 
 namespace MyEconomy
 {
-    public partial class ContasAPagar : System.Web.UI.Page
+    public partial class ContasAPagar : paginaBase
     {
         ContasAPagarInformation contasapagarinf = new ContasAPagarInformation();
         ContasAPagarDAL objcontasapagar = new ContasAPagarDAL();

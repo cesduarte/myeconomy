@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class Usuarios : System.Web.UI.Page
+    public partial class Usuarios : paginaBase
     {
         UsuariosInformation usuario = new UsuariosInformation();
         UsuariosDAL obj = new UsuariosDAL();

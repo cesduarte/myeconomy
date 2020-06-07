@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class Default : paginaBase
+    public partial class LogOff : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.Session.Clear();
+            Response.Redirect("Login.aspx");
         }
     }
 }

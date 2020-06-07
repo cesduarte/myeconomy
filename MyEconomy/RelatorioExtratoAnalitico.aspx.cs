@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class RelatorioExtratoAnalitico : System.Web.UI.Page
+    public partial class RelatorioExtratoAnalitico : paginaBase
     {
         
 

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class ContasBancarias : System.Web.UI.Page
+    public partial class ContasBancarias : paginaBase
     {
         UsuariosInformation usuario = new UsuariosInformation();
         ContasBancariasInformation ContasBancariasInf = new ContasBancariasInformation();

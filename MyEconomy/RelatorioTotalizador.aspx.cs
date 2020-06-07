@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 
 namespace MyEconomy
 {
-    public partial class RelatorioTotalizador : System.Web.UI.Page
+    public partial class RelatorioTotalizador : paginaBase
     {
         ContasBancariasDAL objcontasbancarias = new ContasBancariasDAL();
         ClassificacaoDAL objclassificacao = new ClassificacaoDAL();
