@@ -82,7 +82,7 @@
                                                    <asp:BoundField DataField="Despesasvariadas" HeaderText="Despesa variada" DataFormatString="{0:c}" /> 
                                                     <asp:BoundField DataField="DespesaFixaPaga" HeaderText="Despesa fixa paga" DataFormatString="{0:c}" /> 
                                                     <asp:BoundField DataField="DespesaFixaapagar" HeaderText="Despesa fixa a pagar" DataFormatString="{0:c}" /> 
-                                                                                                    
+                                                    <asp:BoundField DataField="investimento" HeaderText="Investimento" DataFormatString="{0:c}" />                                           
 
 
                                                     
@@ -121,7 +121,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-title">
-                                    <h4>Totalizador</h4>
+                                    <h4>Totalizador receitas</h4>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
@@ -158,12 +158,14 @@
                                                 <td><asp:Label ID="lblreceitasdespesasvariadasfixas" runat="server" Text="Label"></asp:Label></td>
                                                 
                                             </tr>
-                                             <tr>
+                                               <tr>
                                                 
-                                                <td>(Despesas variadas/fixas Pagas)</td>
-                                                <td><asp:Label ID="lbldespesasvariadasfixas" runat="server" Text="Label"></asp:Label></td>
+                                                <td>(Receitas) - (Investimentos)</td>
+                                                <td><asp:Label ID="lblreceitasinvest" runat="server" Text="Label"></asp:Label></td>
                                                 
                                             </tr>
+
+                                           
                                             
                                         </tbody>
                                     </table>
@@ -185,10 +187,17 @@
                                                 <th>Valor</th>
                                                 
                                             </tr>
+
                                         </thead>
                                         <tbody>
+                                         
+                                           <tr>
+                                                
+                                                <td>(Despesas variadas/fixas Pagas)</td>
+                                                <td><asp:Label ID="lbldespesasvariadasfixas" runat="server" Text="Label"></asp:Label></td>
+                                                
+                                            </tr>
                                             
-                                           
                                         </tbody>
                                     </table>
                                 </div>

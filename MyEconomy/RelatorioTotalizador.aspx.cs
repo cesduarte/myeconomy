@@ -57,7 +57,7 @@ namespace MyEconomy
                     calc.TotDespesasVariadas += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["Despesasvariadas"].ToString());
                     calc.TotDespesasFixasPagas += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["DespesaFixaPaga"].ToString());
                     calc.TotDespesasFixasAPagar += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["DespesaFixaapagar"].ToString());
-         
+                    calc.TotInvestimento += validador.ValidarDecimal(tabela.Tables[0].Rows[i]["investimento"].ToString());
 
 
                 }
@@ -68,7 +68,7 @@ namespace MyEconomy
                 footer.Cells[2].Text = string.Format("{0:c}", calc.TotDespesasVariadas);
                 footer.Cells[3].Text = string.Format("{0:c}", calc.TotDespesasFixasPagas);
                 footer.Cells[4].Text = string.Format("{0:c}", calc.TotDespesasFixasAPagar);
-                
+                footer.Cells[5].Text = string.Format("{0:c}", calc.TotInvestimento);
                 CalcularTotalizadores(calc);
 
 
@@ -96,6 +96,7 @@ namespace MyEconomy
                 lblreceitasdespesasvariadasfixas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", TotDespesasVariadasFixasPagas + TotReceitas);
 
                 lbldespesasvariadasfixas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasVariadas + calc.TotDespesasFixasPagas);
+                lblreceitasinvest.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotInvestimento + calc.TotReceitas);
             }
             catch(Exception ex)
             {
