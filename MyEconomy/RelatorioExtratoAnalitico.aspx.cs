@@ -459,5 +459,17 @@ namespace MyEconomy
         {
             TrocaContaAPagarFiltro();
         }
+
+        protected void GrdDados_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    string teste = e.Row.Cells[5].Text.Replace("R$", "").Trim();
+            //    if (Convert.ToDecimal(teste) < 0)
+            //    {
+            //        e.Row.BackColor = Color.FromName("red");
+            //    }
+            //}
+        }
     }
 }
