@@ -66,6 +66,18 @@ namespace MyEconomy
 
         }
 
+        public enum StatusTarefa
+        {
+            [Description("--")]
+            todas = 1,
+            [Description("Tarefa Aberta")]
+            TarefaAberta = 1,
+
+            [Description("Tarefa Encerrada")]
+            TarefaEncerrada = 2,
+
+
+        }
 
 
 

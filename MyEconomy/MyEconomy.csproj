@@ -434,6 +434,7 @@
     <Content Include="Componentes\images\logo-text.png" />
     <Content Include="Componentes\images\logo-white.png" />
     <Content Include="Componentes\images\logo.png" />
+    <Content Include="Componentes\images\logo1.png" />
     <Content Include="Componentes\images\media\media-1.png" />
     <Content Include="Componentes\images\media\media-2.png" />
     <Content Include="Componentes\images\media\media-3.png" />
@@ -464,6 +465,7 @@
     <Content Include="Componentes\images\profile\9.jpg" />
     <Content Include="Componentes\images\profile\cover.jpg" />
     <Content Include="Componentes\images\profile\profile.png" />
+    <Content Include="Componentes\images\Untitled-Logo.png" />
     <Content Include="Componentes\images\users\1.jpg" />
     <Content Include="Componentes\images\users\2.jpg" />
     <Content Include="Componentes\images\users\3.jpg" />
@@ -5011,6 +5013,7 @@
     <Compile Include="Dal\InvestimentoDAL.cs" />
     <Compile Include="Dal\InvestimentoManualDAL.cs" />
     <Compile Include="Dal\ReceitasVariadasDAL.cs" />
+    <Compile Include="Dal\TarefaDAL.cs" />
     <Compile Include="Dal\UsuariosDAL.cs" />
     <Compile Include="Dal\validarlogin.cs" />
     <Compile Include="Default.aspx.cs">
@@ -5073,6 +5076,7 @@
     <Compile Include="Modelo\InvestimentoInformation.cs" />
     <Compile Include="Modelo\InvestimentoManualInformation.cs" />
     <Compile Include="Modelo\ReceitasVariadasInformation.cs" />
+    <Compile Include="Modelo\TarefasInformation.cs" />
     <Compile Include="Modelo\UsuariosInformation.cs" />
     <Compile Include="paginaBase.cs">
       <SubType>ASPXCodeBehind</SubType>
