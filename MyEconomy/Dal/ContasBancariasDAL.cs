@@ -117,7 +117,7 @@ namespace MyEconomy
 
 
 
-        public void InserirUsuarios(ContasBancariasInformation ContasBancariasinf)
+        public void InserirContasBancarias(ContasBancariasInformation ContasBancariasinf)
         {
 
             try
@@ -174,7 +174,7 @@ namespace MyEconomy
 
         }
 
-        public void AlterarUsuarios(ContasBancariasInformation ContasBancariasinf)
+        public void AlterarContasBancarias(ContasBancariasInformation ContasBancariasinf)
         {
 
             try

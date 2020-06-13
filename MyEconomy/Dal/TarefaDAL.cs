@@ -151,6 +151,9 @@ namespace MyEconomy
                 pdescricao.Value = tarefainf.DescricaoTarefa;
                 objCommand.Parameters.Add(pdescricao);
 
+                MySqlParameter pIdusuario = new MySqlParameter("_idusuario", MySqlDbType.Int32);
+                pIdusuario.Value = tarefainf.IdUsuario;
+                objCommand.Parameters.Add(pIdusuario);
 
                 //MySqlParameter pidcontasbancarias = new MySqlParameter("_idcontasbancarias", MySqlDbType.Int32, 200);
                 //pidcontasbancarias.Value = tarefainf.IdContasBancarias;
@@ -162,8 +165,10 @@ namespace MyEconomy
                 //objCommand.Parameters.Add(pidclassificacao);
 
 
+                MySqlParameter pobstarefa = new MySqlParameter("_obstarefa", MySqlDbType.VarChar, 200);
+                pobstarefa.Value = tarefainf.ObsTarefa;
+                objCommand.Parameters.Add(pobstarefa);
 
-                
 
 
 
@@ -220,6 +225,9 @@ namespace MyEconomy
                 pdescricao.Value = tarefainf.DescricaoTarefa;
                 objCommand.Parameters.Add(pdescricao);
 
+                MySqlParameter pIdusuario = new MySqlParameter("_idusuario", MySqlDbType.Int32);
+                pIdusuario.Value = tarefainf.IdUsuario;
+                objCommand.Parameters.Add(pIdusuario);
 
                 //MySqlParameter pidcontasbancarias = new MySqlParameter("_idcontasbancarias", MySqlDbType.Int32, 200);
                 //pidcontasbancarias.Value = tarefainf.IdContasBancarias;

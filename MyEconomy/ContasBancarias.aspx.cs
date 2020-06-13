@@ -160,7 +160,7 @@ namespace MyEconomy
                 ContasBancariasInf.Isdelete = Chkinativo.Checked;
 
 
-                objContasBancarias.InserirUsuarios(ContasBancariasInf);
+                objContasBancarias.InserirContasBancarias(ContasBancariasInf);
                 Txtid.Text = ContasBancariasInf.IdContasBancarias.ToString();
                 //InserirExtratoBancario(ContasBancariasInf.IdContasBancarias.ToString());
                 Label9.Text = "Registro incluido com sucesso";
@@ -183,7 +183,7 @@ namespace MyEconomy
                 }
                 ContasBancariasInf.IdUsuario = Convert.ToInt32(Dropusuario.SelectedValue);
                 ContasBancariasInf.Isdelete = Chkinativo.Checked;
-                objContasBancarias.AlterarUsuarios(ContasBancariasInf);
+                objContasBancarias.AlterarContasBancarias(ContasBancariasInf);
 
                 Label9.Text = "Registro alterado com sucesso!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#CadSucess').modal('show');", true);
