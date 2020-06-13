@@ -241,7 +241,9 @@ namespace MyEconomy
 
 
 
-
+                MySqlParameter pobstarefa = new MySqlParameter("_obstarefa", MySqlDbType.VarChar, 200);
+                pobstarefa.Value = tarefainf.ObsTarefa;
+                objCommand.Parameters.Add(pobstarefa);
 
 
                 MySqlParameter pdata = new MySqlParameter("_datatarefa", MySqlDbType.DateTime, 200);
