@@ -70,10 +70,10 @@ namespace MyEconomy
         {
             [Description("--")]
             todas = 1,
-            [Description("Tarefa Aberta")]
-            TarefaAberta = 1,
+            [Description("A fazer")]
+            afazer = 1,
 
-            [Description("Tarefa Encerrada")]
+            [Description("Encerrada")]
             TarefaEncerrada = 2,
 
 

@@ -225,7 +225,7 @@
                             <i class="icon-share menu-icon"></i> <span class="nav-text">Gerenciamento</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./email-inbox.html">Tarefas</a></li>
+                            <li><a href="Tarefas.aspx">Tarefas</a></li>
                             <%--<li><a href="./email-read.html">Read</a></li>
                             <li><a href="./email-compose.html">Compose</a></li>--%>
                         </ul>

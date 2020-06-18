@@ -28,8 +28,9 @@ namespace MyEconomy
                 objCommand.Parameters["_descricaotarefa"].Value = tarefainf.DescricaoTarefa;
 
 
+                objCommand.Parameters.Add(new MySqlParameter("_idusuario", MySqlDbType.Int32));
+                objCommand.Parameters["_idusuario"].Value = tarefainf.IdUsuario;
 
-            
 
                 MySqlParameter pdatainicial = new MySqlParameter("_datainicial", MySqlDbType.DateTime, 200);
                 pdatainicial.Value = tarefainf.DataInicialPesquisa;
