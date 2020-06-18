@@ -84,7 +84,7 @@ namespace MyEconomy
                 }
                 else
                 {
-                    sql = "select * from tbl_tarefas where Idreceitavariada = " + IdTarefa;
+                    sql = "select * from tbl_tarefas where Idtarefa = " + IdTarefa;
                 }
 
 
@@ -102,10 +102,12 @@ namespace MyEconomy
                     {
                         IdTarefa = int.Parse(dataRow["Idtarefa"].ToString()),
                         DescricaoTarefa = dataRow["Descricaotarefa"].ToString(),
+                        StatusTarefa = dataRow["StatusTarefa"].ToString(),
                         //IdContasBancarias = Convert.ToInt32(dataRow["Idcontasbancarias"].ToString()),
                         //IdClassificacao = Convert.ToInt32(dataRow["Idclassificacao"].ToString()),
                         DataTarefa = Convert.ToDateTime(dataRow["Datatarefa"].ToString()),
-                        ObsTarefa = dataRow["obstarefa"].ToString(),
+                        ObsTarefa = dataRow["obs"].ToString(),
+                        IdUsuario = Convert.ToInt32(dataRow["idusuario"].ToString()),
 
 
                     });

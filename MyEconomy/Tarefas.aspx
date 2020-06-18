@@ -83,6 +83,16 @@
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>
+
+                                                      <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:Button ID="btnDeletar" runat="server" class="btn mb-1  btn-danger btn-sm"
+                                                                CommandName="Deletar" Text="Deletar"
+                                                                CommandArgument='<%# DataBinder
+                                                                .Eval(Container.DataItem, "Idtarefa")%>' />
+                                                        </ItemTemplate>
+                                                        <ItemStyle HorizontalAlign="Center" />
+                                                    </asp:TemplateField>
                                                 </Columns>
                                                <PagerSettings Mode="NumericFirstLast" PageButtonCount="5" />
                                                 <PagerStyle HorizontalAlign="Right" Wrap="True" CssClass="page-item" />
