@@ -41,6 +41,17 @@ namespace MyEconomy
 
 
         }
+
+        public void MudarDataPositivo(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        public void MudarDataNegativo(object sender, EventArgs e)
+        {
+           
+        }
         public void CacularRodape(DataSet tabela)
         {
             try
@@ -92,7 +103,7 @@ namespace MyEconomy
 
                 lblreceitaDespesasVariadas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasVariadas + calc.TotReceitas);
                 lblreceitasdespesasfixaspagas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasFixasPagas + calc.TotReceitas);
-                lblreceitasdespesasfixasapagar.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasFixasAPagar + calc.TotReceitas);
+                lblreceitasdespesasfixasapagar.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotReceitas - calc.TotDespesasFixasAPagar);
                 lblreceitasdespesasvariadasfixas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", TotDespesasVariadasFixasPagas + TotReceitas);
 
                 lbldespesasvariadasfixas.Text = String.Format(new CultureInfo("pt-BR"), "{0:C}", calc.TotDespesasVariadas + calc.TotDespesasFixasPagas);

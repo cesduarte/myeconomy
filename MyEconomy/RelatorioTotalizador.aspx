@@ -55,6 +55,12 @@
                                                            
                                                          
                                                       </li>
+                                                     <li class="d-inline-block">
+                                                        <button type="button" id="Button7" class="btn btn-outline-light" title="Mês anterior" runat="server" onserverclick="Button1_Click"><i class="fa fa-arrow-circle-left"></i></button>
+                                                    </li>
+                                                    <li class="d-inline-block">
+                                                        <button type="button" id="Button8" class="btn btn-outline-light" title="Mês posterior" runat="server" onserverclick="Button1_Click"><i class="fa fa-arrow-circle-right"></i></button>
+                                                    </li>
                                                    
 
                                                 </ul>
